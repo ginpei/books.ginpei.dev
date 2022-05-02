@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "books.ginpei.dev",
+  "version": "0.0.1",
+  "description": "Something to read",
+  "main": "index.js",
+  "scripts": {
+    "start": "eleventy --formats=html,md,css,png --serve"
+  },
+  "author": "Ginpei Takanashi",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
+    "git-cz": "^4.8.0",
+    "markdown-it": "^13.0.0"
+  }
+}
