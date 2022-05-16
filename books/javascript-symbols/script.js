@@ -7,9 +7,8 @@
  *   articles: Article[];
  * }} PageProps
  * @typedef {{
- *   html: string;
+ *   el: HTMLHeadingElement;
  *   symbols: string;
- *   text: string;
  * }} Article
  */
 
@@ -38,18 +37,19 @@ function getPageProps() {
     elInput: document.querySelector("[data-ref='input']"),
     elList: document.querySelector("[data-ref='list']"),
     articles: Array.from(document.querySelectorAll("h2, h3")).map((v) =>
+      // @ts-ignore: Argument of type 'Element' is not assignable to parameter of type 'HTMLHeadingElement'.
       createArticle(v)
     ),
   };
 }
 
 /**
- * @param {Element} el
+ * @param {HTMLHeadingElement} el
  * @returns {Article}
  */
 function createArticle(el) {
   return {
-    html: el.innerHTML,
+    el: el,
     symbols: Array.from(el.querySelectorAll("code"))
       .map((v) => v.textContent)
       .join("")
@@ -57,7 +57,6 @@ function createArticle(el) {
       .replaceAll("value", "")
       .replaceAll("xxx", "")
       .replaceAll("yyy", ""),
-    text: el.textContent,
   };
 }
 
@@ -93,7 +92,7 @@ function createListItems(props, state) {
     ? props.articles.filter((v) => isHeadingMatched(v.symbols, state.input))
     : [];
 
-  const elListItems = matchedHeadings.map((v) => createListItem(v.html));
+  const elListItems = matchedHeadings.map((v) => createListItem(v.el));
   return elListItems;
 }
 
@@ -112,15 +111,15 @@ function isHeadingMatched(symbols, input) {
 }
 
 /**
- * @param {string} html
+ * @param {HTMLHeadingElement} elHeading
  */
-function createListItem(html) {
+function createListItem(elHeading) {
   const elLink = document.createElement("a");
-  elLink.innerHTML = html;
-  // elLink.href = "#";
+  elLink.innerHTML = elHeading.innerHTML;
+  elLink.href = `#${elHeading.id}`;
 
-  const el = document.createElement("li");
-  el.append(elLink);
+  const elListItem = document.createElement("li");
+  elListItem.append(elLink);
 
-  return el;
+  return elListItem;
 }
