@@ -101,21 +101,21 @@ const a = 5 - - -1; // => 4
 //          └----- 引き算演算子の `-`
 ```
 
-### `-` 引き算演算子
+### `a - b` 引き算演算子
 
 - [ECMAScript® 2023 Language Specification - 13.8.2 The Subtraction Operator ( `-` )](https://tc39.es/ecma262/#sec-subtraction-operator-minus)
 - [減算 (-) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Subtraction)
 
 `a - b` など。左辺から右辺を引く。
 
-### `-` 単項マイナス演算子
+### `-a` 単項マイナス演算子
 
 - [ECMAScript® 2023 Language Specification - 13.5.5 Unary `-` Operator](https://tc39.es/ecma262/#sec-unary-minus-operator)
 - [単項マイナス (-) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Unary_negation)
 
 `-a` や `- 1` など。左辺を持たず右辺のみを取り演算する単項演算子。
 
-### `-` 数値リテラルの一部（符号付き整数）
+### `-1` 数値リテラルの一部（符号付き整数）
 
 - [ECMAScript® 2023 Language Specification - 12.8.3 Numeric Literals](https://tc39.es/ecma262/#sec-literals-numeric-literals)
 - [符号付数値表現 - Wikipedia](https://ja.wikipedia.org/wiki/%E7%AC%A6%E5%8F%B7%E4%BB%98%E6%95%B0%E5%80%A4%E8%A1%A8%E7%8F%BE)
@@ -134,7 +134,7 @@ const a = 5 - - -1; // => 4
 
 *comma* カンマまたはコンマ。
 
-### `,` カンマ演算子
+### `a, b` カンマ演算子
 
 - [ECMAScript® 2023 Language Specification - 13.16 Comma Operator ( `,` )](https://tc39.es/ecma262/#sec-comma-operator)
 - [カンマ演算子 (,) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Comma_Operator)
@@ -206,7 +206,7 @@ function longFunctionName(
 
 *question* クエスチョン、疑問符、はてな
 
-### `?:` 条件演算子
+### `condition ? value : value` 条件演算子
 
 - [条件 (三項) 演算子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
 - [ECMAScript® 2023 Language Specification - 13.14 Conditional Operator ( `? :` )](https://tc39.es/ecma262/#sec-conditional-operator)
@@ -218,7 +218,7 @@ const a = true ? 1 : 2; // => 1
 const b = false ? 1 : 2; // => 2
 ```
 
-### `??` Null 合体演算子
+### `value ?? value` Null 合体演算子
 
 左辺が nullish 、つまり `null` か `undefined` である場合に左辺を、そうでなければ右辺を返す。 `?.` と組み合わせて利用する場面も多い。
 
@@ -232,7 +232,7 @@ const obj = { a: 1 };
 const e = obj.a?.toFixed(2); ?? "0.00";
 ```
 
-### `?.` オプショナルチェイン演算子
+### `obj?.prop` オプショナルチェイン演算子
 
 左辺が `null` または `undefined` でない場合、左辺を receiver として右辺で与えられるプロパティを返す。
 
@@ -278,7 +278,7 @@ const b = obj.b && obj.b.toFixed(2); // => undefined
 
 数値直後の `.` は小数点として扱われるため、Number のプロパティを `123.toString()` のように参照することはできない。代わりに `123..toString()` であれば `123.` までが数値、その次の `.` からがプロパティ参照となり利用可能。
 
-### `...` スプレッド構文
+### `{ ...obj }`, `[...arr]`, `f(...arr)` スプレッド構文
 
 構文であり演算子ではない。
 
@@ -308,34 +308,34 @@ const b = obj.b && obj.b.toFixed(2); // => undefined
 
 - [アスタリスク - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%B9%E3%82%BF%E3%83%AA%E3%82%B9%E3%82%AF)
 
-### `*`
-### `**`
+### `value * value`
+### `value ** value`
 
 ## `/` スラッシュ
 
 *slash*, *forward slash* スラッシュ、前方スラッシュ
 
-### `/`
+### `value / value`
 ### `/xxx/` 正規表現
 ### `/*`, `*/` 複数行コメント
-### `//` 一行コメント
+### `// xxx` 一行コメント
 
 ## `\` バックスラッシュ
 
 *backslash* バックスラッシュ、後方スラッシュ
 
-### `\n`, `\r` 改行文字
+### `"\n"`, `"\r"` 改行文字
 
 - [ECMAScript® 2023 Language Specification - Table 73: JSON Single Character Escape Sequences](https://tc39.es/ecma262/#table-json-single-character-escapes)
 
-`\n` は LINE FEED (LF) 、`\r` は  CARRIAGE RETURN (CR) 。通常 `\n` のみを使うと思う。
+`"\n"` は LINE FEED (LF) 、`"\r"` は  CARRIAGE RETURN (CR) 。通常 `"\n"` のみを使うと思う。
 
 
-### `\t` タブ文字
+### `"\t"` タブ文字
 
 - [ECMAScript® 2023 Language Specification - Table 73: JSON Single Character Escape Sequences](https://tc39.es/ecma262/#table-json-single-character-escapes)
 
-### `\u` Unicode エスケープシーケンス
+### `"\u0000"` Unicode エスケープシーケンス
 
 - [ECMAScript® 2023 Language Specification - 25.5.2.4 UnicodeEscape ( `C` )](https://tc39.es/ecma262/#sec-unicodeescape)
 
@@ -347,8 +347,8 @@ const b = obj.b && obj.b.toFixed(2); // => undefined
 
 - [アンパサンド - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%83%91%E3%82%B5%E3%83%B3%E3%83%89)
 
-### `&`
-### `&&`
+### `value & value`
+### `value && value`
 ### `&xxx;` 実態参照
 
 JavaScript ではなく HTML。
@@ -385,9 +385,9 @@ JavaScript ではなく HTML。
 
 *equal* イコール、等号
 
-### `=>`
+### `() => xxx` アロー関数の一部
 
-アロー関数の一部。左側に引数、右側に関数の内容を書く。
+左側に引数、右側に関数の内容を書く。
 
 ```js
 const f = (x) => x + 1;
@@ -403,9 +403,9 @@ const f = (x) => x + 1;
 
 *bar*, *vertical bar*, *pipe* バー、垂直バー、パイプ
 
-### `|`
-### `|>`
-### `||`
+### `value | value`
+### `value |> xxx` パイプライン演算子
+### `value || value`
 
 ## `~` チルダ
 
@@ -417,14 +417,14 @@ const f = (x) => x + 1;
 
 *dollar* ダラー、ドル、お金
 
-### `${`, `}`
+### <code>&#96;${xxx}&#96;</code>
 ### `$0`, `$1`, ...
 
 ## その他
 
 せっかくなので記号ではないが特殊な用途のものも紹介します。
 
-### `0x`, `0o`, `0b` 数値リテラルの一部（進数）
+### `0x00`, `0o00`, `0b00` 数値リテラルの一部（進数）
 
 - [ECMAScript® 2023 Language Specification - 12.8.3 Numeric Literals](https://tc39.es/ecma262/#sec-literals-numeric-literals)
 
@@ -437,7 +437,7 @@ const c = 0b10; // => 2
 const d =   10; // => 10
 ```
 
-### `e` 数値リテラルの一部（指数）
+### `0e0` 数値リテラルの一部（指数）
 
 - [BigInt - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
 - [ECMAScript® 2023 Language Specification - 12.8.3 Numeric Literals](https://tc39.es/ecma262/#sec-literals-numeric-literals)
@@ -453,11 +453,11 @@ const d = 1e-1; // => 0.1
 const pi = 314e-2; // => 3.14
 ```
 
-### `function*` ジェネレーター関数
+### `function* () {}` ジェネレーター関数
 
 - [ECMAScript® 2023 Language Specification - 15.5 Generator Function Definitions](https://tc39.es/ecma262/#sec-generator-function-definitions)
 
-### `n` 数値リテラルの一部（bigint）
+### `0n` 数値リテラルの一部（bigint）
 
 - [ECMAScript® 2023 Language Specification - 12.8.3 Numeric Literals](https://tc39.es/ecma262/#sec-literals-numeric-literals)
 - [BigInt - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
