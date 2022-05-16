@@ -37,13 +37,23 @@ function getPageProps() {
   return {
     elInput: document.querySelector("[data-ref='input']"),
     elList: document.querySelector("[data-ref='list']"),
-    articles: Array.from(document.querySelectorAll("h2, h3")).map((v) => ({
-      html: v.innerHTML,
-      symbols: Array.from(v.querySelectorAll("code"))
-        .map((v) => v.textContent)
-        .join(""),
-      text: v.textContent,
-    })),
+    articles: Array.from(document.querySelectorAll("h2, h3")).map((v) =>
+      createArticle(v)
+    ),
+  };
+}
+
+/**
+ * @param {Element} el
+ * @returns {Article}
+ */
+function createArticle(el) {
+  return {
+    html: el.innerHTML,
+    symbols: Array.from(el.querySelectorAll("code"))
+      .map((v) => v.textContent)
+      .join(""),
+    text: el.textContent,
   };
 }
 
