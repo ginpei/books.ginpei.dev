@@ -14,8 +14,16 @@ body {
   color: white;
 }
 
-.baseLayout-headerOuter a {
+.baseLayout-headerLink {
   color: inherit;
+  text-decoration: none;
+}
+  .baseLayout-headerLink:hover {
+    text-decoration: underline;
+  }
+
+.baseLayout-siteTitle {
+  font-family: monospace;
 }
 
 .baseLayout-body {
