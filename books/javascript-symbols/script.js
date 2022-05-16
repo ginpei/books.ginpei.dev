@@ -8,6 +8,7 @@
  * }} PageProps
  * @typedef {{
  *   html: string;
+ *   symbols: string;
  *   text: string;
  * }} Article
  */
@@ -38,6 +39,9 @@ function getPageProps() {
     elList: document.querySelector("[data-ref='list']"),
     articles: Array.from(document.querySelectorAll("h2, h3")).map((v) => ({
       html: v.innerHTML,
+      symbols: Array.from(v.querySelectorAll("code"))
+        .map((v) => v.textContent)
+        .join(""),
       text: v.textContent,
     })),
   };
@@ -72,7 +76,7 @@ function render(props, state) {
  */
 function createListItems(props, state) {
   const matchedHeadings = state.input
-    ? props.articles.filter((v) => isHeadingMatched(v.text, state.input))
+    ? props.articles.filter((v) => isHeadingMatched(v.symbols, state.input))
     : [];
 
   const elListItems = matchedHeadings.map((v) => createListItem(v.html));
@@ -80,11 +84,17 @@ function createListItems(props, state) {
 }
 
 /**
- * @param {string} headingText
+ * @param {string} symbols
  * @param {string} input
  */
-function isHeadingMatched(headingText, input) {
-  return headingText.includes(input);
+function isHeadingMatched(symbols, input) {
+  if (input.match(/^\s+$/)) {
+    return symbols === " ";
+  }
+
+  const inputSymbols = input.split(" ").filter((v) => v.length > 0);
+
+  return inputSymbols.some((v) => symbols.includes(v));
 }
 
 /**
