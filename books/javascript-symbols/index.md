@@ -135,34 +135,66 @@ const a = 5 - - -1; // => 4
 //          └----- 引き算演算子の `-`
 ```
 
-### `a - b` 引き算演算子
+### `value - value` 引き算演算子
 
 - [ECMAScript® 2023 Language Specification - 13.8.2 The Subtraction Operator ( `-` )](https://tc39.es/ecma262/#sec-subtraction-operator-minus)
 - [減算 (-) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Subtraction)
 
-`a - b` など。左辺から右辺を引く。
+`value - value` など。左辺から右辺を引く。
 
-### `-a` 単項マイナス演算子
+### `-value` 単項マイナス演算子
 
 - [ECMAScript® 2023 Language Specification - 13.5.5 Unary `-` Operator](https://tc39.es/ecma262/#sec-unary-minus-operator)
 - [単項マイナス (-) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Unary_negation)
 
-`-a` や `- 1` など。左辺を持たず右辺のみを取り演算する単項演算子。
+`-value` や `- 1` など。左辺を持たず右辺のみを取り演算する単項演算子。右辺の数値の符号 (+/-) を反転させる。
 
 ### `-1` 数値リテラルの一部（符号付き整数）
 
 - [ECMAScript® 2023 Language Specification - 12.8.3 Numeric Literals](https://tc39.es/ecma262/#sec-literals-numeric-literals)
+- [ECMAScript® 2023 Language Specification - 6.1.6 Numeric Types](https://tc39.es/ecma262/#sec-numeric-types)
 - [符号付数値表現 - Wikipedia](https://ja.wikipedia.org/wiki/%E7%AC%A6%E5%8F%B7%E4%BB%98%E6%95%B0%E5%80%A4%E8%A1%A8%E7%8F%BE)
+- [Is Negative Zero (-0) a Number in JavaScript? | by Dr. Derek Austin 🥳 | Coding at Dawn | Medium](https://medium.com/coding-at-dawn/is-negative-zero-0-a-number-in-javascript-c62739f80114)
 
-`-1` など。空白を挟んだ場合は文法上単項演算子のマイナス `-` になる。
+`-1` など。数字との間に空白を挟んだ `- 1` の場合は文法上単項演算子のマイナス `-` になる。
 
-### `--a` 前置き減算演算子
+ちなみに JavaScript には `-0` という値がある。これは基本的に `0`, `+0` と同じで `-0 === +0` も `true` となるが、いくつかの限定された場面で `+0` と異なる挙動をする。
+
+```js
+const a = 1 / 0; // Infinity
+const b = 1 / +0; // Infinity
+const c = 1 / -0; // -Infinity
+```
+
+### `--value` 前置き減算演算子
 
 - [ECMAScript® 2023 Language Specification - 13.4.5 Prefix Decrement Operator](https://tc39.es/ecma262/#sec-prefix-decrement-operator)
 
-### `a--` 後置き減算演算子
+変数 `value` を 1 減算した結果を `value` に代入し、その値を評価値として返す。`value--` との違いに注意。
+
+```js
+let a = 10;
+const b = --a;
+console.log(a, b); // => 9, 9
+```
+
+`--value` は `value -= 1` と同じと考えてよい。近年は `-=` で代入を明示する方が好まれるように思う。
+
+変数が `const` の場合は再代入できないので実行時にエラーになる。（例：TypeError: Assignment to constant variable.）
+
+### `value--` 後置き減算演算子
 
 - [ECMAScript® 2023 Language Specification - 13.4.3 Postfix Decrement Operator](https://tc39.es/ecma262/#sec-postfix-decrement-operator)
+
+変数 `value` を 1 減算した結果を `value` に代入し、減算前の値を評価値として返す。`--value` との違いに注意。
+
+```js
+let a = 10;
+const b = a--;
+console.log(a, b); // => 10, 9
+```
+
+演算後の評価値と変数に格納されている値が異なるのはカンマ `,` を使って確認できる。
 
 ## `,` カンマ
 
