@@ -52,7 +52,10 @@ function createArticle(el) {
     html: el.innerHTML,
     symbols: Array.from(el.querySelectorAll("code"))
       .map((v) => v.textContent)
-      .join(""),
+      .join("")
+      .replaceAll("value", "")
+      .replaceAll("xxx", "")
+      .replaceAll("yyy", ""),
     text: el.textContent,
   };
 }
