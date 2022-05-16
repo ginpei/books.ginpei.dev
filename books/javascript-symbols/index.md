@@ -46,7 +46,7 @@ title: (WIP) JavaScript の記号
 
 ## ` `&nbsp;空白
 
-*white space*
+*white space* 空白、スペース、ホワイトスペース
 
 トークンの区切りとして扱われる。
 
