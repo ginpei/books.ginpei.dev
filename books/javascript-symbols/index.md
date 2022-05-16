@@ -5,6 +5,11 @@ title: (WIP) JavaScript の記号
 
 # {{title}}
 
+<script src="./script.js"></script>
+
+<input data-ref="input" placeholder="_-,;:!?.'&quot;()[]{}@*/\&amp;#%`^+<=>|~$" />
+<ul data-ref="list"></ul>
+
 ## ` `&nbsp;空白
 
 *white space*
