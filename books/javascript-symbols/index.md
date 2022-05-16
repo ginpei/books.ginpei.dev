@@ -198,7 +198,7 @@ console.log(a, b); // => 10, 9
 
 ## `,` カンマ
 
-*comma* カンマまたはコンマ。
+*comma* カンマ、コンマ
 
 ### `a, b` カンマ演算子
 
@@ -216,45 +216,108 @@ minify 後のコードでにはよく出てくる程度で、普通使わない�
 `for` 文の初期化式で使われることがある。良いやり方ではないと思う。
 
 ```js
-for (let i = 0, l = 0; i < str.length && l < MAX; i++) {
+for (let i = 0, count = 0; i < str.length && count < MAX; i++) {
   const c = str.charAt(i);
   if (isSomething(c)) {
-    l++;
+    count++;
   }
 }
 ```
 
-### `[xxx, xxx]` 配列リテラルの一部
+### `[value, value]` 配列初期化子の一部
 
 - [ECMAScript® 2023 Language Specification - 13.2.4 Array Initializer](https://tc39.es/ecma262/#sec-array-initializer)
 
-### `{ xxx: yyy, xxx: yyy }` オブジェクト初期化子の一部
+いわゆる配列リテラルで要素を区切るのに用いる。末尾に置いても良い。
+
+```js
+const a = [1, 2, 3]; // => [1, 2, 3]
+const b = [
+  "foo",
+  "bar",
+  "baz",
+]; // => ["foo", "bar", "baz"]
+```
+
+また要素なしも許可されている。与えられなかった要素は `undefined` ではなく空 (empty) となる。空は `length` に含まれるものの、例えば `map()` 等のコールバックで呼ばれなかったりする。`fill()` で上書きは可能。一方イテレーターには含まれるので `for-of` を使うのが良い。
+
+```js
+const a = [1, 2, 3,,]; // => [ 1, 2, 3, <1 empty item> ]
+const b = [, 1,,, 4]; // => [ <1 empty item>, 1, <2 empty items>, 4 ]
+
+console.log(b.length); // => 5
+
+b.forEach((v, i) => console.log(v, i))
+// => 1 1
+// => 4 4
+
+for (const v of b) {
+  console.log(v)
+}
+// => undefined
+// => 1
+// => undefined
+// => undefined
+// => 4
+// => undefined
+```
+
+### `{ prop: value, prop: value }` オブジェクト初期化子の一部
 
 - [ECMAScript® 2023 Language Specification - 13.2.5 Object Initializer](https://tc39.es/ecma262/#sec-object-initializer)
 
-### `function (xxx, xxx) {}` 関数仮引数の一部
+いわゆるオブジェクトリテラルで要素を区切るのに用いる。末尾に置いても良い。
 
-- [ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-function-definitions)
+```js
+const a = { foo: 123, bar: 456 };
+const b = {
+  foo: 123,
+  bar: 456,
+};
+```
 
-関数宣言等の仮引数の区切り文字。
+### `function (param, param) {}` 関数仮引数の一部
+
+- [ECMAScript® 2023 Language Specification - 15.1 Parameter Lists](https://tc39.es/ecma262/#sec-parameter-lists)
+
+各種関数宣言における仮引数の区切り文字。
 
 ```js
 function f(a, b) {}
 const g = (v, i) => v * i;
 ```
 
-最近の JavaScript （ECMAScript 2017 以降）では区切りだけでなく末尾にも置ける。
+最近の JavaScript （[ECMAScript 2017](https://262.ecma-international.org/8.0/#prod-FormalParameters) 以降）では区切りだけでなく末尾にも置ける。
 
 ```js
 function longFunctionName(
   logNameParameter,
   anotherLongParameter,
-) {}
+) {
+  // ...
+}
 ```
 
-### `f(xxx, xxx)` 関数呼び出しの一部
+### `f(value, value)` 関数呼び出しの一部
 
-- [ECMAScript® 2023 Language Specification - 13.3.6 Function Calls](https://tc39.es/ecma262/#sec-function-calls)
+- [ECMAScript® 2023 Language Specification - 13.3 Left-Hand-Side Expressions](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
+
+各種関数宣言における仮引数の区切り文字。
+
+```js
+f(a, b);
+obj.prop(a, b);
+super(a, b);
+```
+
+最近の JavaScript （[ECMAScript 2017](https://262.ecma-international.org/8.0/#prod-Arguments) 以降）では区切りだけでなく末尾にも置ける。
+
+```js
+const someNiceResult = longFunctionName(
+  logNameParameter,
+  anotherLongParameter,
+);
+```
 
 ## `;` セミコロン
 
