@@ -3,12 +3,43 @@ layout: base.njk
 title: (WIP) JavaScript の記号
 ---
 
+<style>
+.searchResult-list {
+  padding: 0;
+  list-style-type: none;
+}
+  .searchResult-list:empty {
+    display: none;
+  }
+
+.searchResult-item {
+  border-color: lightgray;
+  border-style: solid solid none;
+  border-width: thin;
+}
+  .searchResult-item:last-child {
+    border-bottom-style: solid;
+  }
+
+.searchResult-itemLink {
+  display: block;
+  padding: 0.5em;
+}
+  .searchResult-itemLink:hover {
+    background-color: #9ff1;
+  }
+</style>
+
 # {{title}}
 
 <script src="./script.js"></script>
 
-<input data-ref="input" placeholder="_-,;:!?.'&quot;()[]{}@*/\&amp;#%`^+<=>|~$" />
-<ul data-ref="list"></ul>
+<input
+  data-ref="input"
+  placeholder="_-,;:!?.'&quot;()[]{}@*/\&amp;#%`^+<=>|~$"
+  type="search"
+/>
+<ul class="searchResult-list" data-ref="list"></ul>
 
 ## ` `&nbsp;空白
 

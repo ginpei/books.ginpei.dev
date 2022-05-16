@@ -115,10 +115,12 @@ function isHeadingMatched(symbols, input) {
  */
 function createListItem(elHeading) {
   const elLink = document.createElement("a");
-  elLink.innerHTML = elHeading.innerHTML;
+  elLink.classList.add("searchResult-itemLink");
   elLink.href = `#${elHeading.id}`;
+  elLink.innerHTML = elHeading.innerHTML;
 
   const elListItem = document.createElement("li");
+  elListItem.classList.add("searchResult-item");
   elListItem.append(elLink);
 
   return elListItem;
