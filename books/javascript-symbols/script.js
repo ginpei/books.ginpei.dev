@@ -76,24 +76,24 @@ function getCurrentState(props) {
  * @returns {void}
  */
 function render(props, state) {
-  const elListItems = createListItems(props, state);
-  props.elList.innerHTML = "";
-  for (const elItem of elListItems) {
-    props.elList.append(elItem);
-  }
+  renderList(props, state);
 }
 
 /**
  * @param {PageProps} props
  * @param {PageState} state
  */
-function createListItems(props, state) {
+function renderList(props, state) {
   const matchedHeadings = state.input
     ? props.articles.filter((v) => isHeadingMatched(v.symbols, state.input))
     : [];
 
   const elListItems = matchedHeadings.map((v) => createListItem(v.el));
-  return elListItems;
+
+  props.elList.innerHTML = "";
+  for (const elItem of elListItems) {
+    props.elList.append(elItem);
+  }
 }
 
 /**
