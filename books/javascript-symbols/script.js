@@ -4,8 +4,12 @@
  * @typedef {{
  *   elInput: HTMLInputElement;
  *   elList: HTMLElement;
- *   headingHtmlList: string[];
+ *   articles: Article[];
  * }} PageProps
+ * @typedef {{
+ *   html: string;
+ *   text: string;
+ * }} Article
  */
 
 /**
@@ -32,9 +36,10 @@ function getPageProps() {
   return {
     elInput: document.querySelector("[data-ref='input']"),
     elList: document.querySelector("[data-ref='list']"),
-    headingHtmlList: Array.from(document.querySelectorAll("h2, h3")).map(
-      (v) => v.innerHTML
-    ),
+    articles: Array.from(document.querySelectorAll("h2, h3")).map((v) => ({
+      html: v.innerHTML,
+      text: v.textContent,
+    })),
   };
 }
 
@@ -61,21 +66,25 @@ function render(props, state) {
   }
 }
 
+/**
+ * @param {PageProps} props
+ * @param {PageState} state
+ */
 function createListItems(props, state) {
   const matchedHeadings = state.input
-    ? props.headingHtmlList.filter((v) => isHeadingMatched(v, state.input))
+    ? props.articles.filter((v) => isHeadingMatched(v.text, state.input))
     : [];
 
-  const elListItems = matchedHeadings.map((v) => createListItem(v));
+  const elListItems = matchedHeadings.map((v) => createListItem(v.html));
   return elListItems;
 }
 
 /**
- * @param {string} headingHtml
+ * @param {string} headingText
  * @param {string} input
  */
-function isHeadingMatched(headingHtml, input) {
-  return headingHtml.includes(input);
+function isHeadingMatched(headingText, input) {
+  return headingText.includes(input);
 }
 
 /**
