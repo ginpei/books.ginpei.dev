@@ -34,11 +34,14 @@ title: (WIP) JavaScript の記号
 
 <script src="./script.js"></script>
 
-<input
-  data-ref="input"
-  placeholder="_-,;:!?.'&quot;()[]{}@*/\&amp;#%`^+<=>|~$"
-  type="search"
-/>
+<label>
+  Search by symbols:
+  <input
+    data-ref="input"
+    placeholder="_-,;:!?.'&quot;()[]{}@*/\&amp;#%`^+<=>|~$"
+    type="search"
+  />
+</label>
 <ul class="searchResult-list" data-ref="list"></ul>
 
 ## ` `&nbsp;空白
