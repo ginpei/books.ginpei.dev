@@ -53,6 +53,7 @@ function createArticle(el) {
     symbols: Array.from(el.querySelectorAll("code"))
       .map((v) => v.textContent)
       .join("")
+      // @ts-ignore: Property 'replaceAll' does not exist on type 'string'
       .replaceAll("value", "")
       .replaceAll("xxx", "")
       .replaceAll("yyy", ""),
