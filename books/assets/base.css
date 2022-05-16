@@ -26,6 +26,35 @@ body {
   font-size: 5em;
 }
 
+.baseLayout-body h2 {
+  border-radius: 0.2em;
+  border: thin solid lightgray;
+  box-shadow: 0 0 0.5em #0001;
+  font-size: 2rem;
+  margin-block: 3em 1em;
+  padding: 0 0.5em;
+}
+
+.baseLayout-body h3 {
+  font-size: 1.5rem;
+  margin-block: 3em 1em;
+}
+  .baseLayout-body h3::before {
+    background-image: url("./icon-512.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: "";
+    display: inline-block;
+    height: 1.917em;
+    margin-inline-end: 0.2em;
+    vertical-align: middle;
+    width: 1.917em;
+  }
+
+.baseLayout-body :is(h1,h2, h3) {
+  font-family: 游明朝, serif;
+}
+
 pre {
   overflow: auto;
 }
