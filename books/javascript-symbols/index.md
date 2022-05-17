@@ -129,7 +129,9 @@ function ok(someLongParameter, anotherLongParameter) {
 ```js
 const MAX_VALUE = 1024;
 
-function _someHiddenFunction () {}
+const obj = {
+  _somePrivateFunction() {}
+};
 ```
 
 アンダースコアで単語を区切る命名を[スネークケース](https://en.wikipedia.org/wiki/Snake_case)と呼ぶ。JavaScript では大文字で区切る[キャメルケース](https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%A1%E3%83%AB%E3%82%B1%E3%83%BC%E3%82%B9)が一般的。
