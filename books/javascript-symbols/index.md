@@ -79,7 +79,7 @@ return           a
 }
 ```
 
-ただし改行は、セミコロン `;`  の自動挿入関係で異なる解釈をされる場合がある。例えば非同期関数の `async` と `function` の間には空白を置くが、ここに改行を置くとセミコロンが挿入され、構文ではなく変数等の識別子として解釈される。そのため多くの場合は参照エラーになる。（例：ReferenceError: async is not defined）
+ただし改行は、セミコロン `;`  の自動挿入関係で異なる解釈をされる場合がある。例えば非同期関数の `async` と `function` の間には空白が必要である。ここに改行を置くと、自動挿入の仕組みによりセミコロンがあると暗黙的に解釈されるため、`async` は構文ではなく変数等の識別子として解釈される。多くの場合その結果として参照エラーになる。（例：ReferenceError: async is not defined）
 
 ```js
 // 👍
@@ -90,10 +90,10 @@ async           function asyncFunction() {}
 // 改行を置くとセミコロンが挿入され変数 `async` を参照する
 // （参照するだけで何もしないが参照先がないとエラー）
 async
-function ordinaryFunction() {}
+      function ordinaryFunction() {}
 ```
 
-特に `return` 後の改行に注意。`return` 直後にセミコロンが自動挿入されてしまい `undefined` が返る。（先の例でも `return` と `a` の間で改行すると駄目。）　括弧で括れば大丈夫。
+特に `return` 後の改行に注意。`return` 直後にセミコロンが自動挿入され関数は `undefined` を返す。（先の例でも `return` と `a` の間で改行すると駄目。）　可読性のため改行したければ括弧で括ってから改行しよう。
 
 ```js
 // 👎
