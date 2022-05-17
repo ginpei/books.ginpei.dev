@@ -48,30 +48,71 @@ title: (WIP) JavaScript の記号
 
 *white space* 空白、スペース、ホワイトスペース
 
-トークンの区切りとして扱われる。
+- [ECMAScript® 2023 Language Specification - 12 ECMAScript Language: Lexical Grammar](https://tc39.es/ecma262/#sec-ecmascript-language-lexical-grammar)
+- [ECMAScript® 2023 Language Specification - 12.2 White Space](https://tc39.es/ecma262/#sec-white-space)
+- [ECMAScript® 2023 Language Specification - 12.3 Line Terminators](https://tc39.es/ecma262/#sec-line-terminators)
+- [ECMAScript® 2023 Language Specification - 12.9 Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion)
 
-スペース、タブ、改行を含む。いずれも差はなく、1 行に全て書いても良いし全ての区切りで改行しても良い。インデントも任意。
+トークンの区切りとして扱われる。ただのスペースの他タブやいくつかの空白文字を含み、いずれも差はない。
+
+多くの場合は改行も同じような扱いで、つまり 1 行に全て書いても良いし全ての区切りで改行しても良い。インデントも任意。
 
 ```js
 function f(a, b, c) { return a + b * c; }
 
 function
-g
+   g
 (
-a
+   a
 ,
-b
+   b
 ,
-c
+   c
 )
 {
-return
-a
-+
-b
-*
-c
-;
+return           a
+ +
+  b
+   *
+    c
+     ;
+}
+```
+
+ただし改行は、セミコロン `;`  の自動挿入関係で異なる解釈をされる場合がある。例えば非同期関数の `async` と `function` の間には空白を置くが、ここに改行を置くとセミコロンが挿入され、構文ではなく変数等の識別子として解釈される。そのため多くの場合は参照エラーになる。（例：ReferenceError: async is not defined）
+
+```js
+// 👍
+// 複数の空白を置いても問題ない
+async           function asyncFunction() {}
+
+// 👎
+// 改行を置くとセミコロンが挿入され変数 `async` を参照する
+// （参照するだけで何もしないが参照先がないとエラー）
+async
+function ordinaryFunction() {}
+```
+
+特に `return` 後の改行に注意。`return` 直後にセミコロンが自動挿入されてしまい `undefined` が返る。（先の例でも `return` と `a` の間で改行すると駄目。）　括弧で括れば大丈夫。
+
+```js
+// 👎
+function ng(someLongParameter, anotherLongParameter) {
+  const yetAnotherLongVariable = 1;
+  return
+    someLongParameter +
+    anotherLongParameter +
+    yetAnotherLongVariable;
+}
+
+// 👍
+function ok(someLongParameter, anotherLongParameter) {
+  const yetAnotherLongVariable = 1;
+  return (
+    someLongParameter +
+    anotherLongParameter +
+    yetAnotherLongVariable
+  );
 }
 ```
 
@@ -447,7 +488,12 @@ const b = obj.b && obj.b.toFixed(2); // => undefined
 ### `value / value`
 ### `/xxx/` 正規表現
 ### `/*`, `*/` 複数行コメント
+
+- [ECMAScript® 2023 Language Specification - 12.4 Comments](https://tc39.es/ecma262/#sec-comments)
+
 ### `// xxx` 一行コメント
+
+- [ECMAScript® 2023 Language Specification - 12.4 Comments](https://tc39.es/ecma262/#sec-comments)
 
 ## `\` バックスラッシュ
 
