@@ -120,11 +120,11 @@ function ok(someLongParameter, anotherLongParameter) {
 
 *underscore*, *underbar*, *lodash* アンダースコア、アンダーバー、ローダッシュ
 
-### 変数や関数の名前
+### `_key` 変数や関数の名前
 
 - [ECMAScript® 2023 Language Specification - 12.6 Names and Keywords](https://tc39.es/ecma262/#sec-names-and-keywords)
 
-変数や関数の名前として利用できる。特に意味はなく他の文字 `abc` と同じ。
+変数や関数の名前として利用できる。特に意味はなく他の文字 `abc` やダラー `$` と同じ。名前の先頭でも利用可能。
 
 ```js
 const MAX_VALUE = 1024;
@@ -591,6 +591,37 @@ const f = (x) => x + 1;
 ## `$` ダラー
 
 *dollar* ダラー、ドル、お金
+
+### `$key` 変数や関数の名前
+
+- [ECMAScript® 2023 Language Specification - 12.6 Names and Keywords](https://tc39.es/ecma262/#sec-names-and-keywords)
+
+変数や関数の名前として利用できる。特に意味はなく他の文字 `abc` やアンダースコア `_` と同じ。名前の先頭でも利用可能。
+
+```js
+const $name = document.querySelector("#name");
+
+const cache$12345 = {};
+```
+
+（機械的に生成されるものの命名に用いる文化があると聞いたことがあるがどうだろうか。）
+
+この記号 `$` を名前空間や接頭辞として利用するライブラリー、フレームワークがある。（JavaScript 本体の機能ではない。）　もちろん jQuery が飛びぬけて有名。
+
+- [jQuery](https://jquery.com/)
+- [Svelte • Cybernetically enhanced web apps](https://svelte.dev/)
+
+```js
+// jQuery
+$(() => {
+  const $name = $("#name");
+});
+```
+
+```html
+<!-- Svelte -->
+<h1>The count is {$count}</h1>
+```
 
 ### <code>&#96;${xxx}&#96;</code>
 ### `$0`, `$1`, ...
