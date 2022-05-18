@@ -52,6 +52,7 @@ title: (WIP) JavaScript の記号
 - [ECMAScript® 2023 Language Specification - 12.2 White Space](https://tc39.es/ecma262/#sec-white-space)
 - [ECMAScript® 2023 Language Specification - 12.3 Line Terminators](https://tc39.es/ecma262/#sec-line-terminators)
 - [ECMAScript® 2023 Language Specification - 12.9 Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion)
+- [字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar)
 
 トークンの区切りとして扱われる。ただのスペースの他タブやいくつかの空白文字を含み、いずれも差はない。
 
@@ -365,6 +366,73 @@ const someNiceResult = longFunctionName(
 ## `;` セミコロン
 
 *semicolon* セミコロン
+
+→ `&xxx;` HTML の実体参照
+
+### `value;` 文の終端
+
+- [ECMAScript® 2023 Language Specification - 14 ECMAScript Language: Statements and Declarations](https://tc39.es/ecma262/#sec-ecmascript-language-statements-and-declarations)
+- [ECMAScript® 2023 Language Specification - 12.9 Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion)
+- [ECMAScript® 2023 Language Specification - 16.2 Modules](https://tc39.es/ecma262/#sec-modules)
+- [字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar)
+
+終端として各種の文 (statement) や宣言 (declaration) の末尾に出現する記号。
+
+```js
+var a = 1;   // VariableStatement 変数文
+const b = 2; // LexicalDeclaration 字句宣言
+;            // EmptyStatement 空文
+a = 2;       // ExpressionStatement 式文
+f();         // ExpressionStatement 式文
+continue;    // ContinueStatement
+break;       // BreakStatement
+return;      // ReturnStatement
+throw new Error("Hoi"); // ThrowStatement
+import "sub.js";        // ImportDeclaration
+export f;               // ExportDeclaration
+if (true) f();          // IfStatement + ExpressionStatement
+```
+
+ブロック文 `{…}` や関数宣言の末尾には出現しない。
+
+```js
+if (true) {}     // IfStatement + BlockStatement
+while (false) {} // WhileStatement + BlockStatement
+function f() {}  // FunctionDeclaration
+```
+
+文の区切り（文と文の間に置く）ではなく文の一部であり本来必須だが、必要な箇所になければコードの解釈において自動挿入され、あるものとして扱われる場合がある。
+
+```js
+// 👍
+// 文法上正しい
+const a = 1;
+const b = 2;
+
+// 👍
+// 文の定義に沿わないが、自動挿入の仕組みにより文法上正しい
+const c = 3
+const d = 4
+```
+
+特に `return` 直後の改行は予期せぬ自動挿入のため不具合となりがち。[空白 ` ` の章を参照](#空白)。
+
+### `for (let i = 0; i < length; i++)` `for` 文の一部
+
+- [ECMAScript® 2023 Language Specification - 14.7.4 The for Statement](https://tc39.es/ecma262/#sec-for-statement)
+- [for - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for)
+
+`for (<初期化>; <条件>; <更新>)` のように、`for` 文のうち繰り返しの制御を記述する部分を分かつのに用いられる。
+
+```js
+const arr = [11, 22, 33];
+for (let i = 0; i < arr.length; i++) {
+  const item = arr[i];
+  console.log(item);
+}
+```
+
+（現代ではほとんどの場面で [`for-of` 文](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for...of)を使うべきだと思う。）
 
 ## `:` コロン
 
