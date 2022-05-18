@@ -442,6 +442,61 @@ for (let i = 0; i < arr.length; i++) {
 
 *exclamation* エクスクラメーション、感嘆符、びっくり
 
+### `!value` 論理否定演算子
+
+- [ECMAScript® 2023 Language Specification - 13.5.7 Logical NOT Operator ( `!` )](https://tc39.es/ecma262/#sec-logical-not-operator)
+- [論理否定 (!) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Logical_NOT)
+
+右辺の真偽 `true`, `false` を反転させる演算子。真偽値ではない場合、まず変換してから反転させる。
+
+### `!!value` 二重の論理否定演算子
+
+論理否定演算子 `!` をふたつ続けたもの。そういう仕様があるわけではない。
+
+`!!value` は `!(!value)` と同じ。まず右側の `!value` を評価し、その結果を `!` でもう一度反転させる。論理値ではないものを論理値へ変換するのに使われる。
+
+```js
+const a = 1; // truthy だが `true` ではない
+const b = !!a; // `true` となる
+
+const c = ""; // falsy だが `false` ではない
+const d = !!c; // `false` となる
+```
+
+"truthy" とは真偽値へ変換した際に `true` となるもののこと。同じく "falsy" は `false` となるもの。`0` や空文字列 `""` は falsy だが、空のオブジェクト `{}` や配列 `[]` は truthy 。
+
+[`Boolean` コンストラクター](https://tc39.es/ecma262/#sec-boolean-objects)を関数として使うことで、この `!!` の代替とできる。（その方が明瞭で良いと思う。）
+
+```js
+const a = Boolean(1); // => true
+```
+
+### `value != value` 不等価演算子
+
+- [ECMAScript® 2023 Language Specification - 13.11 Equality Operators](https://tc39.es/ecma262/#sec-equality-operators)
+- [不等価 (!=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Inequality)
+
+`!==` と同じようなもの。ただし左右の値をふわっと変換してよさげに比較する。
+
+変換については `==` を参照。
+
+（`==` と同様、使うのを避け厳密な比較を行うのが良いと思う。）
+
+### `value !== value` 厳密不等価演算子
+
+- [ECMAScript® 2023 Language Specification - 13.11 Equality Operators](https://tc39.es/ecma262/#sec-equality-operators)
+- [厳密不等価 (!==) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Strict_inequality)
+
+左右の値を比較して同じでなければ `true` 、そうでなければ `false` を返す。
+
+比較については `===` を参照。
+
+### `value!` non-null assertion
+
+- [TypeScript: Documentation - Everyday Types - Non-null Assertion Operator (Postfix `!` )](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#non-null-assertion-operator-postfix-)
+
+JavaScript ではなく TypeScript の機能。nullable な値を非 nullable な値として扱う。API 境界を越えるなどの特殊な場合にのみ使う。
+
 ## `?` クエスチョン
 
 *question* クエスチョン、疑問符、はてな
@@ -630,7 +685,19 @@ JavaScript ではなく HTML。
 
 *equal* イコール、等号
 
-### `() => xxx` アロー関数の一部
+### `key = value`
+
+### `value == value`
+
+- [ECMAScript® 2023 Language Specification - 13.11 Equality Operators](https://tc39.es/ecma262/#sec-equality-operators)
+- [等価 (==) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Equality)
+
+### `value === value`
+
+- [ECMAScript® 2023 Language Specification - 13.11 Equality Operators](https://tc39.es/ecma262/#sec-equality-operators)
+- [厳密等価 (===) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Strict_equality)
+
+### `() => value` アロー関数の一部
 
 左側に引数、右側に関数の内容を書く。
 
