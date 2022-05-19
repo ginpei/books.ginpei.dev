@@ -627,9 +627,18 @@ const b = obj.b && obj.b.toFixed(2); // => undefined
 ### `"\n"`, `"\r"` 改行文字
 
 - [ECMAScript® 2023 Language Specification - Table 73: JSON Single Character Escape Sequences](https://tc39.es/ecma262/#table-json-single-character-escapes)
+- [改行コード - Wikipedia](https://ja.wikipedia.org/wiki/%E6%94%B9%E8%A1%8C%E3%82%B3%E3%83%BC%E3%83%89)
+- [キャリッジ・リターン - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%AA%E3%83%83%E3%82%B8%E3%83%BB%E3%83%AA%E3%82%BF%E3%83%BC%E3%83%B3)
 
-`"\n"` は LINE FEED (LF) 、`"\r"` は  CARRIAGE RETURN (CR) 。通常 `"\n"` のみを使うと思う。
+`"\n"` はラインフィード LINE FEED (LF) 、`"\r"` はキャリッジリターン CARRIAGE RETURN (CR) 。（通常 `"\n"` のみを使うと思う。）
 
+CR は、本来は改行ではなく同じ行の先頭へ戻るコード。（どうやら Return キーの語源である。）　Node.js で利用できるかもしれない。
+
+```js
+> console.log("123\rX")
+X23
+undefined
+```
 
 ### `"\t"` タブ文字
 
