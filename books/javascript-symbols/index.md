@@ -240,6 +240,10 @@ console.log(a, b); // => 10, 9
 
 演算後の評価値と変数に格納されている値が異なるのはカンマ `,` を使って確認できる。
 
+### `key -= value` 代入演算子のひとつ
+
+- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+
 ## `,` カンマ
 
 *comma* カンマ、コンマ
@@ -559,6 +563,10 @@ const b = obj.b && obj.b.toFixed(2); // => undefined
 
 2 文字でひとつの演算子なので、`? .` のように空白を挟むことはできない。
 
+### `key ??= value` 代入演算子のひとつ
+
+- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+
 ## `.` ドット
 
 *dot*, *period*, *full stop* ドット、ピリオド、フルストップ、終止符、点
@@ -605,12 +613,23 @@ const b = obj.b && obj.b.toFixed(2); // => undefined
 
 ### `value * value`
 ### `value ** value`
+### `key *= value` 代入演算子のひとつ
+
+- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+
+### `key **= value` 代入演算子のひとつ
+
+- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
 
 ## `/` スラッシュ
 
 *slash*, *forward slash* スラッシュ、前方スラッシュ
 
 ### `value / value`
+### `key /= value` 代入演算子のひとつ
+
+- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+
 ### `/xxx/` 正規表現
 ### `/*`, `*/` 複数行コメント
 
@@ -658,6 +677,14 @@ undefined
 
 ### `value & value`
 ### `value && value`
+### `key &= value` 代入演算子のひとつ
+
+- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+
+### `key &&= value` 代入演算子のひとつ
+
+- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+
 ### `&xxx;` 実態参照
 
 JavaScript ではなく HTML。
@@ -727,6 +754,14 @@ const f = (x) => x + 1;
 ### `value | value`
 ### `value |> xxx` パイプライン演算子
 ### `value || value`
+### `key |= value` 代入演算子のひとつ
+
+- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+
+### `key ||= value` 代入演算子のひとつ
+
+- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+
 
 ## `~` チルダ
 
