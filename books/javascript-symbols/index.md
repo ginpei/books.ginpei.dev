@@ -594,7 +594,17 @@ const b = obj.b && obj.b.toFixed(2); // => undefined
 const c = obj.c && obj.c.toFixed(2); // => 0
 ```
 
+あらゆるプロパティアクセス `obj.prop` を置き換え得るわけではなく、例えば `obj?.prop = value` のように代入の左辺に置くと文法エラーになる。（例：SyntaxError: Invalid left-hand side in assignment）
+
 `?.` の 2 文字でひとつの塊なので、`? .` のように空白を挟むことはできない。`obj ?. foo` のように前後に空白を置くことは可能。
+
+### `f?.()`, `obj?.[value]` オプショナルチェイン構文
+
+`obj?.prop` と同様、nullish かどうかで判断される構文。
+
+`new` と組み合わせた `new f?.()` は構文エラーになる。（例：SyntaxError: Invalid tagged template on optional chain）
+
+テンプレートリテラルとの組み合わせ <code>f?.&#x60;xxx&#x60;</code> は、仕様書の[文法](https://tc39.es/ecma262/#prod-OptionalChain)の方には載っているのに[評価](https://tc39.es/ecma262/#sec-optional-chaining-chain-evaluation)の方には記載がない。実際は構文エラーになるようだ。（例：SyntaxError: Invalid optional chain from new expression）
 
 ### `key ??= value` 代入演算子のひとつ
 
