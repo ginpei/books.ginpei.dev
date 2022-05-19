@@ -606,6 +606,22 @@ const c = obj.c && obj.c.toFixed(2); // => 0
 
 → `?.`
 
+### `obj.prop` メンバー構文（プロパティアクセサー）
+
+- [ECMAScript® 2023 Language Specification - 13.3 Left-Hand-Side Expressions](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
+- [ECMAScript® 2023 Language Specification - 13.3.2 Property Accessors](https://tc39.es/ecma262/#sec-property-accessors)
+- [プロパティアクセサー - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Property_Accessors)
+
+オブジェクトのプロパティにアクセスする。
+
+```js
+const obj = { a: 1 };
+
+const a = obj.a; // => 1
+```
+
+`obj.prop` は `obj["prop"]` に置き換えられる。
+
 ### `0.0` 数値リテラルの一部（小数点）
 
 `3.14` のようにして小数点となる。
@@ -613,6 +629,10 @@ const c = obj.c && obj.c.toFixed(2); // => 0
 `.` 部分の左右は省略可能で、`1.` ないし `.1` という表現も可能。ただし両方を省略した `.` だけでは駄目。
 
 数値直後の `.` は小数点として扱われるため、Number のプロパティを `123.toString()` のように参照することはできない。代わりに `123..toString()` であれば `123.` までが数値、その次の `.` からがプロパティ参照となり利用可能。
+
+### `0..prop` 数値リテラルとプロパティアクセス
+
+`0.` が数値（小数点ありかつ小数点以下の数字なし）で、それとプロパティアクセス `obj.prop` の組み合わせ。つまり `(0.).prop` 。`..` という構文はない。
 
 ### `{ ...obj }`, `[...arr]`, `f(...arr)` スプレッド構文
 
@@ -624,7 +644,11 @@ const c = obj.c && obj.c.toFixed(2); // => 0
 
 ## `(`, `)` 丸括弧
 
-*paren(s)*, *parenthesis (parentheses)* パーレン、丸括弧、小括弧
+*paren(s)*, *parenthesis (plural: parentheses)* パーレン、丸括弧、小括弧
+
+### `f().prop` 関数呼び出しとプロパティアクセス
+
+関数呼び出し `f()` とプロパティアクセス `obj.prop` の組み合わせ。`().` という構文はない。
 
 ## `[`, `]` 角括弧
 
