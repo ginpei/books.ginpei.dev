@@ -222,7 +222,7 @@ const b = --a;
 console.log(a, b); // => 9, 9
 ```
 
-`--value` は `value -= 1` と同じと考えてよい。近年は `-=` で代入を明示する方が好まれるように思う。
+`--value` は `value -= 1` と同じと考えてよい。（近年は `-=` で代入を明示する方が好まれるように思う。）
 
 変数が `const` の場合は再代入できないので実行時にエラーになる。（例：TypeError: Assignment to constant variable.）
 
@@ -255,9 +255,9 @@ console.log(a, b); // => 10, 9
 const a = 1, 2 + 3, 4; // => 4
 ```
 
-minify 後のコードでにはよく出てくる程度で、普通使わないと思う。
+（minify 後のコードでにはよく出てくる程度で、普通使わないと思う。）
 
-`for` 文の初期化式で使われることがある。良いやり方ではないと思う。
+`for` 文の初期化式で使われることがある。（良いやり方ではないと思う。）
 
 ```js
 for (let i = 0, count = 0; i < str.length && count < MAX; i++) {
@@ -432,7 +432,7 @@ for (let i = 0; i < arr.length; i++) {
 }
 ```
 
-（現代ではほとんどの場面で [`for-of` 文](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for...of)を使うべきだと思う。）
+（現代では `for` 文はそのほとんどの場面で [`for-of` 文](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for...of)を使うべきだと思う。）
 
 ## `:` コロン
 
