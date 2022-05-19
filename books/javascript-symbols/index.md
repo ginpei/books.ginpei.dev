@@ -519,7 +519,7 @@ const b = false ? 1 : 2; // => 2
 
 ### `value ?? value` Null 合体演算子
 
-左辺が nullish 、つまり `null` か `undefined` である場合に左辺を、そうでなければ右辺を返す。 `?.` と組み合わせて利用する場面も多い。
+左辺が nullish 、つまり `null` か `undefined` である場合に左辺を、そうでなければ右辺を返す。 
 
 ```js
 const a = null ?? 1; // => 1
@@ -527,41 +527,74 @@ const b = undefined ?? 1; // => 1
 const c = 0 ?? 1; // => 0
 const d = "" ?? 1; // => ""
 
-const obj = { a: 1 };
-const e = obj.a?.toFixed(2); ?? "0.00";
+const obj = { a: 0 };
+const f = obj.a ?? 1; // => 0
+const g = obj.b ?? 1; // => 1
 ```
 
-### `obj?.prop` オプショナルチェイン演算子
+（利用者入力値の初期値を与えたり、`?.` と組み合わせて利用する場面が多いと思う。）
 
-左辺が `null` または `undefined` でない場合、左辺を receiver として右辺で与えられるプロパティを返す。
+かつては `||` を用いて次のように書くことが多かった。この書き方は `null`, `undefined` 以外の falsy な値に対応できないという問題があった。
 
 ```js
-const obj = { a: 1 };
+const a = null || 1; // => 1
+const b = undefined || 1; // => 1
+const c = 0 || 1; // => 1
+const d = "" || 1; // => 1
+
+const obj = { a: 0 };
+const f = obj.a || 1; // => 1
+const g = obj.b || 1; // => 1
+```
+
+### `obj?.prop` オプショナルチェイン構文
+
+- [ECMAScript® 2023 Language Specification - 13.3 Left-Hand-Side Expressions](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
+- [ECMAScript® 2023 Language Specification - 13.3.9 Optional Chains](https://tc39.es/ecma262/#sec-optional-chains)
+
+左側が `null` または `undefined` であれば `undefined` を、そうでない場合は左側を receiver として右側の名前のプロパティを返す。
+
+`null` の場合でも `null` ではなく `undefined` が返る点に注意。なお演算子ではない。
+
+```js
+const obj = { a: 1, c: null };
 
 const a = obj.a?.toFixed(2); // => "1.00"
 const b = obj.b?.toFixed(2); // => undefined
+const c = obj.c?.toFixed(2); // => undefined
 ```
 
-本来存在いないプロパティを利用すると参照エラーになる。
+`??` と組み合わせると nullish な場合の初期値を与えることができる。
 
 ```js
+const obj = { a: 1, c: null };
+
+const b = obj.b?.toFixed(2) ?? "0.00"; // => "0.00"
+```
+
+存在しないプロパティを `?.` ではなく `.` で利用すると型エラーになる。（例：TypeError: Cannot read properties of undefined (reading 'toFixed')）
+
+```js
+const obj = { a: 1, c: null };
+
 // 得るだけは問題なし
-const c = obj.b; // => undefined
+const d = obj.b; // => undefined
 
-// ⛔ 参照エラーになる
-const d = obj.b.toFixed(2);
+// ⛔ 型エラーになる
+const e = obj.b.toFixed(2);
 ```
 
-かつては `&&` を用いてこう書くことが多かった。
+かつては `&&` を用いて次のように書くことが多かった。この書き方は `null`, `undefined` 以外の falsy な値に対応できないという問題があった。
 
 ```js
-const obj = { a: 1 };
+const obj = { a: 1, c: 0 };
 
 const a = obj.a && obj.a.toFixed(2); // => "1.00"
 const b = obj.b && obj.b.toFixed(2); // => undefined
+const c = obj.c && obj.c.toFixed(2); // => 0
 ```
 
-2 文字でひとつの演算子なので、`? .` のように空白を挟むことはできない。
+`?.` の 2 文字でひとつの塊なので、`? .` のように空白を挟むことはできない。`obj ?. foo` のように前後に空白を置くことは可能。
 
 ### `key ??= value` 代入演算子のひとつ
 
