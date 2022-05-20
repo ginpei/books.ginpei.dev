@@ -139,7 +139,7 @@ const _ = 1;
 
 アンダースコアで単語を区切る命名を[スネークケース](https://en.wikipedia.org/wiki/Snake_case)と呼ぶ。JavaScript では大文字で区切る[キャメルケース](https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%A1%E3%83%AB%E3%82%B1%E3%83%BC%E3%82%B9)が一般的。
 
-アンダースコアで始まる名前は外部からアクセスされたくないものに用いられることが多い。ただし言語的に制限はないので、人間が読んで「何かおかしいぞ」と判断する。また JavaScript エンジンが内部的に用意するプロパティは 2 つのアンダースコアを接頭辞とすることがある。（`__proto__` など。）
+アンダースコアで始まる名前を外部からアクセスされたくないプロパティに用いる、という文化がある。これは現在は[プライベートクラスメンバー `this.#key`](#%23prop%2C-%23f()-%7B%7D-プライベートメンバーの宣言) で実現できる。`_key` はあくまで文化やコーディング規約であり言語的な制限はないため、人間が読んで「何かおかしいぞ」と判断する。また JavaScript エンジンが内部的に用意するプロパティは 2 つのアンダースコアを接頭辞とすることがある。（`__proto__` など。）
 
 この記号 `_` を名前空間として利用するライブラリーがある。（JavaScript 本体の機能ではない。）
 
@@ -761,6 +761,108 @@ JavaScript ではなく HTML。
 ## `#` 番号記号
 
 *number sign*, *hash*, *sharp sign* 番号記号、ナンバー、ハッシュ、シャープ（音楽のシャープ ♯ は傾きが異なる。）
+
+### `#prop`, `#f() {}` プライベートメンバーの宣言
+
+- [ECMAScript® 2023 Language Specification - 15.7 Class Definitions](https://tc39.es/ecma262/#sec-class-definitions)
+- [プライベートクラス機能 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Classes/Private_class_fields)
+- [JavaScript classes: Private class fields | Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/mdn-javascript_classes_private_class_fields)
+
+クラスインスタンスの外部からアクセスできないプロパティやメソッドを宣言する文法。名前の接頭辞ではなく構文。
+
+`#prop` のように `#` で始まるメンバーを宣言すると `this` 以外からのアクセスができなくなる。なお `this` を代入した変数からは利用可能。
+
+```js
+class Foo {
+  #prop;
+
+  constructor() {
+    this.#prop = 1;
+  }
+
+  get prop() {
+    return this.#prop;
+  }
+}
+
+const obj = new Foo();
+console.log(obj.prop); // => 1
+
+// ⛔ 文法エラー
+// SyntaxError: Private field '#prop' must be declared in an enclosing class
+console.log(obj.#prop);
+```
+
+`#prop` というプロパティ自体は computed property names `["#prop"]` 及びブラケットを用いたプロパティアクセス `obj["#prop"]` で作成可能。
+
+```js
+class Foo {
+  ["#prop"];
+
+  constructor() {
+    this["#prop"] = 1;
+  }
+}
+
+const obj = new Foo();
+console.log(obj["#prop"]); // => 1
+```
+
+名前の接頭辞ではなく構文なので、`["#prop"]` では得られない。
+
+```js
+class Foo {
+  #prop;
+
+  constructor() {
+    this.#prop = 1;
+  }
+}
+
+const obj = new Foo();
+console.log(obj["#prop"]); // => undefined
+console.log("#prop" in obj); // => false
+```
+
+### `this.#prop`, `this.#f()` プライベートメンバーへのアクセス
+
+- [ECMAScript® 2023 Language Specification - 15.7 Class Definitions](https://tc39.es/ecma262/#sec-class-definitions)
+- [プライベートクラス機能 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Classes/Private_class_fields)
+- [JavaScript classes: Private class fields | Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/mdn-javascript_classes_private_class_fields)
+
+プライベートメンバーへアクセスする文法。名前の接頭辞ではなく構文。
+
+ドット `.` は通常の[メンバー構文 `obj.prop`](#obj.prop-メンバー構文（プロパティアクセサー）)で、`#prop` の部分がプライベートメンバーへアクセスする構文。
+
+[プライベートメンバーの宣言 `#prop`, `#f() {}`](#%23prop%2C-%23f()-%7B%7D-プライベートメンバーの宣言) を参照。
+
+### `https://example.com/#key` URL フラグメント識別子
+
+- [RFC 1630 - Universal Resource Identifiers in WWW: A Unifying Syntax for the Expression of Names and Addresses of Objects on the Network as used in the World-Wide Web](https://datatracker.ietf.org/doc/html/rfc1630)
+- [location.hash - Web API | MDN](https://developer.mozilla.org/ja/docs/Web/API/Location/hash)
+- [URL.hash - Web API | MDN](https://developer.mozilla.org/ja/docs/Web/API/URL/hash)
+
+JavaScript ではなく URL の仕様。通称 URL ハッシュ。
+
+JavaScript では DOM API の `window.location.hash` や `URL.hash` がある。
+
+### `https://example.com/#!/path` ハッシュバング
+
+JavaScript ではなく URL の文化。
+
+URL の[フラグメント識別子 `#`](#https%3A%2F%2Fexample.com%2F%23key-url-フラグメント識別子) の後、`!` に続けてパスを記述するもの。
+
+URL としては `#` 以降はフラグメント識別子以上の意味は持たないためネットワーク上は意味はなく、クライアント側で `!/path` 部分を解釈して画面の描画を行う。
+
+（HTML5 以前、JavaScript から URL を強力に操作できなかった頃に支持された文化。）
+
+### `#!/usr/bin/env node` シバン
+
+- [シバン (Unix) - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%90%E3%83%B3_(Unix))
+
+JavaScript ではなく Linux/UNIX のシェルの機能。
+
+シェルスクリプトを実行するインタープリターを指定する。
 
 ## `%` パーセント
 
