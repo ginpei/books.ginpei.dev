@@ -5,4 +5,4 @@ title: books.ginpei.dev
 
 # books.ginpei.dev
 
-- [JA 日本語](/ja/)
+- [Eleventy](./eleventy/)
