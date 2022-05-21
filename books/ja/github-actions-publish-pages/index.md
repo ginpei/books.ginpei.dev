@@ -98,6 +98,18 @@ GitHub で該当リポジトリーを開いて Settings > 左メニュー Pages 
 
 設定完了後 TLS 証明書が発効され、それも完了すると `https://` で利用できるようになる。割と時間がかかるっぽい。"Enforce HTTPS" の設定をしておくと良さそう。
 
+## エラーと対策
+
+### なんか動いてない気がする
+
+GitHub で該当リポジトリーを開いて Actions からログが閲覧できる。エラーが起きていないか確認する。
+
+### CSS や画像が読み込まれない
+
+Eleventy を `--serve` オプションで起動するとルート `/index.html` で動作する一方、GitHub Pages ではリポジトリー名がパスに含まれるため `/foo-bar/index.html` のようになる。
+
+WIP
+
 ## 他の GitHub Actions
 
 - [GitHub Pages action · Actions · GitHub Marketplace](https://github.com/marketplace/actions/github-pages-action) （今回利用したもの）
