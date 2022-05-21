@@ -15,6 +15,7 @@ jobs:
           fetch-depth: 0
 
       - name: Build
+        run: npm ci
         run: npm run build
 
       - name: Deploy
