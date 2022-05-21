@@ -94,9 +94,23 @@ GitHub で該当リポジトリーを開いて Settings > 左メニュー Pages 
 
 まず利用中のドメイン管理サービスで、該当ドメインに `CNAME` で振り先が `<GitHubアカウント名>.github.io` 、例えば `ginpei` なら `ginpei.github.io` になるよう設定しておく。
 
-GitHub で該当リポジトリーを開いて Settings > 左メニュー Pages > Custom domain にて、目的のドメイン名 (`example.com`) を入力する。URL (`https://example.com`) ではない。
+次に設定ファイルを用意する。`static/CNAME` （拡張子なし）を作成し、該当ドメイン名を記述する。
 
-設定完了後 TLS 証明書が発効され、それも完了すると `https://` で利用できるようになる。割と時間がかかるっぽい。"Enforce HTTPS" の設定をしておくと良さそう。
+```
+my-site.example.com
+```
+
+このファイル `CNAME` は出力ディレクトリーのルートに置かれる必要がある。Eleventy の設定 `.eleventy.js` で以下のようにして、`static/` 以下のファイルを含めるようにする。
+
+```js
+module.exports = function (eleventyConfig) {
+  eleventyConfig.addPassthroughCopy({ static: "/" });
+…
+```
+
+これでビルド時に `_site/CNAME` が用意される。GitHub Pages はこのファイルを読み DNS 設定を行う。
+
+設定後には TLS 証明書が発効され、それも完了すると `https://` で利用できるようになる。割と時間がかかるっぽい。"Enforce HTTPS" の設定をしておくと良さそう。
 
 ## エラーと対策
 
