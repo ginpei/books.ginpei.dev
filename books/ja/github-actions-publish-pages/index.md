@@ -14,7 +14,7 @@ title: GitHub Actions で GitHub Pages へ公開する
 - ジェネレーターは [Eleventy](../eleventy/)
   - そうでなければ適宜読み替えてください
 - `books/` ディレクトリーに Markdown ファイル等のコンテンツが置かれる
-- [`git push`](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push) ではなく GitHub の [release](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release) で公開
+- `main` ブランチへの [`git push`](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push) で公開
 
 ## 作業手順
 
@@ -45,12 +45,11 @@ title: GitHub Actions で GitHub Pages へ公開する
 ```yml
 name: GitHub Pages
 
-on:
-  release:
-    types: [created]
+on: push
 
 jobs:
-  build:
+  publish:
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-20.04
     permissions:
       contents: write
@@ -61,12 +60,20 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+
+      - name: Install
+        run: npm ci
+
       - name: Build
         run: npm run build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: _site/
