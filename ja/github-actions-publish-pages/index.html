@@ -55,8 +55,13 @@
 </ul>
 <p>いわゆる <code>CNAME</code> の設定。</p>
 <p>まず利用中のドメイン管理サービスで、該当ドメインに <code>CNAME</code> で振り先が <code>&lt;GitHubアカウント名&gt;.github.io</code> 、例えば <code>ginpei</code> なら <code>ginpei.github.io</code> になるよう設定しておく。</p>
-<p>GitHub で該当リポジトリーを開いて Settings &gt; 左メニュー Pages &gt; Custom domain にて、目的のドメイン名 (<code>example.com</code>) を入力する。URL (<code>https://example.com</code>) ではない。</p>
-<p>設定完了後 TLS 証明書が発効され、それも完了すると <code>https://</code> で利用できるようになる。割と時間がかかるっぽい。&quot;Enforce HTTPS&quot; の設定をしておくと良さそう。</p>
+<p>次に設定ファイルを用意する。<code>static/CNAME</code> （拡張子なし）を作成し、該当ドメイン名を記述する。</p>
+<pre><code>my-site.example.com
+</code></pre>
+<p>このファイル <code>CNAME</code> は出力ディレクトリーのルートに置かれる必要がある。Eleventy の設定 <code>.eleventy.js</code> で以下のようにして、<code>static/</code> 以下のファイルを含めるようにする。</p>
+<pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">eleventyConfig</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  eleventyConfig<span class="token punctuation">.</span><span class="token function">addPassthroughCopy</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token keyword">static</span><span class="token operator">:</span> <span class="token string">"/"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>…</code></pre>
+<p>これでビルド時に <code>_site/CNAME</code> が用意される。GitHub Pages はこのファイルを読み DNS 設定を行う。</p>
+<p>設定後には TLS 証明書が発効され、それも完了すると <code>https://</code> で利用できるようになる。割と時間がかかるっぽい。&quot;Enforce HTTPS&quot; の設定をしておくと良さそう。</p>
 <h2>エラーと対策</h2>
 <h3>なんか動いてない気がする</h3>
 <p>GitHub で該当リポジトリーを開いて Actions からログが閲覧できる。エラーが起きていないか確認する。</p>
