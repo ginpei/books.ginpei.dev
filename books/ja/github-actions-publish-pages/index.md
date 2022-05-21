@@ -89,6 +89,7 @@ GitHub で該当リポジトリーを開いて Settings > 左メニュー Pages 
 ### 独自ドメインの設定（必要なら）
 
 - [Configuring a custom domain for your GitHub Pages site - GitHub Docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
+- [Passthrough File Copy — Eleventy](https://www.11ty.dev/docs/copy/)
 
 いわゆる `CNAME` の設定。
 
