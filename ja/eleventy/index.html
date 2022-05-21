@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eleventy</title>
+  <link rel="stylesheet" href="https://unpkg.com/prismjs@1.20.0/themes/prism-tomorrow.css">
+  <link rel="stylesheet" href="/assets/base.css">
+</head>
+<body>
+  <header class="baseLayout-headerOuter">
+    <div class="ui-container baseLayout-headerInner">
+      <a class="baseLayout-headerLink" href="/">
+        <span class="baseLayout-siteTitle">books.ginpei.dev</span>
+      </a>
+    </div>
+  </header>
+  <article class="ui-container baseLayout-body">
+    <h1>Eleventy</h1>
+<p>静的サイトジェネレーター。</p>
+<ul>
+<li><a href="https://www.11ty.dev/">Eleventy, a simpler static site generator</a></li>
+<li><a href="https://www.npmjs.com/package/@11ty/eleventy">@11ty/eleventy - npm</a></li>
+</ul>
+<h2>初期設定</h2>
+<h3>インストール</h3>
+<pre><code>$ npm install -D @11ty/eleventy
+</code></pre>
+<h3>ビルド</h3>
+<p>何か markdown ファイルを用意しておく。場所は差し当たりどこでも良い。パスとファイル名から URL が用意される。</p>
+<p>ビルド。</p>
+<pre><code>$ npx @11ty/eleventy
+</code></pre>
+<p><code>_site/</code> 以下に出力される。</p>
+<h3>サーバー</h3>
+<p><code>--serve</code> を与えるとウェブサーバーが起動する。ファイル変更を監視し自動で再出力、ブラウザーで開いていれば再読み込みまでしてくれる。便利。</p>
+<p>ポートは <code>8080</code> 。あるいは <code>--port 3000</code> のように指定。</p>
+<h3>スクリプト</h3>
+<p><code>package.json</code>:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"eleventy"</span><span class="token punctuation">,</span><br>    <span class="token property">"start"</span><span class="token operator">:</span> <span class="token string">"eleventy --serve"</span><br>…</code></pre>
+<h2>テンプレートとレイアウト</h2>
+<p><code>_includes/</code> 以下に <code>*.njk</code> を設置。<code>layout:</code> で指定。</p>
+<p>なお <code>njk</code> は Nunjucks （ヌンチャク）。</p>
+<ul>
+<li><a href="https://mozilla.github.io/nunjucks/">Nunjucks</a></li>
+</ul>
+<h3>実装</h3>
+<p><code>_includes/basicLayout.njk</code>:</p>
+<pre class="language-html"><code class="language-html">---<br>title: (Not titled)<br>---<br><br><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>{{ title }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main</span><span class="token punctuation">></span></span><br>    {{ content | safe }}<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
+<h3>利用</h3>
+<pre class="language-md"><code class="language-md"><span class="token front-matter-block"><span class="token punctuation">---</span><br><span class="token front-matter yaml language-yaml"><span class="token key atrule">layout</span><span class="token punctuation">:</span> basicLayout.njk<br><span class="token key atrule">title</span><span class="token punctuation">:</span> Hello World<span class="token tag">!</span></span><br><span class="token punctuation">---</span></span><br><br><span class="token title important"><span class="token punctuation">#</span> Hello World!</span></code></pre>
+<h3>変数とエスケープ</h3>
+<ul>
+<li><a href="https://www.11ty.dev/docs/layouts/">Layouts — Eleventy</a></li>
+<li><a href="https://mozilla.github.io/nunjucks/templating.html#raw">https://mozilla.github.io/nunjucks/templating.html#raw</a></li>
+</ul>
+<p><code>{{xxx}}</code> で Nunjucks の変数の埋め込みになる。<code>{{title}}</code> とか。</p>
+<p>文章やコード例として画面に <code>{{</code> を表示したい場合は <code>{% raw %}</code>  と <code>{<!-- -->% endraw %}</code> で括る。</p>
+<h2>設定</h2>
+<p><code>.eleventy.js</code> を設置してカスタマイズできる。</p>
+<p>例：</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> syntaxHighlight <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"@11ty/eleventy-plugin-syntaxhighlight"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">const</span> markdownIt <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"markdown-it"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">eleventyConfig</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  eleventyConfig<span class="token punctuation">.</span><span class="token function">setLibrary</span><span class="token punctuation">(</span><br>    <span class="token string">"md"</span><span class="token punctuation">,</span><br>    <span class="token function">markdownIt</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>      <span class="token literal-property property">html</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>      <span class="token literal-property property">linkify</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><br>  <span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  eleventyConfig<span class="token punctuation">.</span><span class="token function">addPlugin</span><span class="token punctuation">(</span>syntaxHighlight<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h3>URL を自動リンク</h3>
+<p>markdown-it の <code>linkify</code> 機能を有効化する。</p>
+<ul>
+<li><a href="https://github.com/markdown-it/markdown-it#init-with-presets-and-options">https://github.com/markdown-it/markdown-it#init-with-presets-and-options</a></li>
+</ul>
+<p>文章中に出現する <code>https://example.com</code> のような文字列を URL としてリンクさせる。スキームなしの <code>example.com</code> には反応しない。</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> markdownIt <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"markdown-it"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">// …</span><br><br>eleventyConfig<span class="token punctuation">.</span><span class="token function">setLibrary</span><span class="token punctuation">(</span><br>  <span class="token string">"md"</span><span class="token punctuation">,</span><br>  <span class="token function">markdownIt</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>    <span class="token literal-property property">html</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>    <span class="token literal-property property">linkify</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3>ソースコードのシンタックスハイライト</h3>
+<p>公式プラグインを利用。中身は <a href="https://prismjs.com/">Prism.js</a> らしい。</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> syntaxHighlight <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"@11ty/eleventy-plugin-syntaxhighlight"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">// …</span><br><br>eleventyConfig<span class="token punctuation">.</span><span class="token function">addPlugin</span><span class="token punctuation">(</span>syntaxHighlight<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>加えてハイライト用の CSS をレイアウトで読み込む。</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://unpkg.com/prismjs@1.28.0/themes/prism-okaidia.css<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
+<p>テーマ一覧。</p>
+<ul>
+<li><a href="https://unpkg.com/browse/prismjs@latest/themes/">https://unpkg.com/browse/prismjs@latest/themes/</a></li>
+</ul>
+
+  </article>
+  <footer class="baseLayout-footer">
+    <div class="ui-container">
+      <p><a href="/">Home</a></p>
+    </div>
+  </footer>
+</body>
+</html>

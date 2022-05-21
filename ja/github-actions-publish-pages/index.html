@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Actions で GitHub Pages へ公開する</title>
+  <link rel="stylesheet" href="https://unpkg.com/prismjs@1.20.0/themes/prism-tomorrow.css">
+  <link rel="stylesheet" href="/assets/base.css">
+</head>
+<body>
+  <header class="baseLayout-headerOuter">
+    <div class="ui-container baseLayout-headerInner">
+      <a class="baseLayout-headerLink" href="/">
+        <span class="baseLayout-siteTitle">books.ginpei.dev</span>
+      </a>
+    </div>
+  </header>
+  <article class="ui-container baseLayout-body">
+    <h1>GitHub Actions で GitHub Pages へ公開する</h1>
+<p>この GitHub Actions を使う。</p>
+<ul>
+<li><a href="https://github.com/marketplace/actions/github-pages-action">GitHub Pages action · Actions · GitHub Marketplace</a></li>
+</ul>
+<h2>方針</h2>
+<ul>
+<li>ジェネレーターは <a href="../eleventy/">Eleventy</a>
+<ul>
+<li>そうでなければ適宜読み替えてください</li>
+</ul>
+</li>
+<li><code>books/</code> ディレクトリーに Markdown ファイル等のコンテンツが置かれる</li>
+<li><a href="https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push"><code>git push</code></a> ではなく GitHub の <a href="https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release">release</a> で公開</li>
+</ul>
+<h2>作業手順</h2>
+<ol>
+<li>ビルドスクリプト (<code>npm run build</code>)</li>
+<li>GitHub Actions のセットアップ</li>
+</ol>
+<h3>ビルドスクリプト (<code>npm run build</code>)</h3>
+<p><code>package.json</code> で npm script <code>build</code> を用意する。</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"eleventy --input=books/ --formats=html,md,css,png"</span><span class="token punctuation">,</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span><br>…</code></pre>
+<p>これで <code>npm run build</code> が使えるようになった。</p>
+<h3>GitHub Actions のセットアップ</h3>
+<p>プロジェクトのディレクトリーに <code>.github/workflows/github-pages.yml</code> を以下の内容で作成。</p>
+<pre class="language-yml"><code class="language-yml"><span class="token key atrule">name</span><span class="token punctuation">:</span> GitHub Pages<br><br><span class="token key atrule">on</span><span class="token punctuation">:</span><br>  <span class="token key atrule">release</span><span class="token punctuation">:</span><br>    <span class="token key atrule">types</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>created<span class="token punctuation">]</span><br><br><span class="token key atrule">jobs</span><span class="token punctuation">:</span><br>  <span class="token key atrule">build</span><span class="token punctuation">:</span><br>    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span><span class="token number">20.04</span><br>    <span class="token key atrule">permissions</span><span class="token punctuation">:</span><br>      <span class="token key atrule">contents</span><span class="token punctuation">:</span> write<br>    <span class="token key atrule">concurrency</span><span class="token punctuation">:</span><br>      <span class="token key atrule">group</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> github.workflow <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">-</span>$<span class="token punctuation">{</span><span class="token punctuation">{</span> github.ref <span class="token punctuation">}</span><span class="token punctuation">}</span><br>    <span class="token key atrule">steps</span><span class="token punctuation">:</span><br>      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v3<br>        <span class="token key atrule">with</span><span class="token punctuation">:</span><br>          <span class="token key atrule">fetch-depth</span><span class="token punctuation">:</span> <span class="token number">0</span><br><br>      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Build<br>        <span class="token key atrule">run</span><span class="token punctuation">:</span> npm run build<br><br>      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Deploy<br>        <span class="token key atrule">uses</span><span class="token punctuation">:</span> peaceiris/actions<span class="token punctuation">-</span>gh<span class="token punctuation">-</span>pages@v3<br>        <span class="token key atrule">if</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> github.ref == 'refs/heads/main' <span class="token punctuation">}</span><span class="token punctuation">}</span><br>        <span class="token key atrule">with</span><span class="token punctuation">:</span><br>          <span class="token key atrule">github_token</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GITHUB_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span><br>          <span class="token key atrule">publish_dir</span><span class="token punctuation">:</span> _site/</code></pre>
+<h2>他の GitHub Actions</h2>
+<ul>
+<li><a href="https://github.com/marketplace/actions/github-pages-action">GitHub Pages action · Actions · GitHub Marketplace</a> （今回利用したもの）</li>
+<li><a href="https://github.com/marketplace/actions/deploy-to-github-pages">Deploy to GitHub Pages · Actions · GitHub Marketplace</a></li>
+<li><a href="https://github.com/marketplace/actions/github-pages">GitHub Pages · Actions · GitHub Marketplace</a></li>
+</ul>
+
+  </article>
+  <footer class="baseLayout-footer">
+    <div class="ui-container">
+      <p><a href="/">Home</a></p>
+    </div>
+  </footer>
+</body>
+</html>

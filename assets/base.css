@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+}
+
+.ui-container {
+  box-sizing: border-box;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  width: min(800px, 100%);
+}
+
+.baseLayout-headerOuter {
+  background-color: #036;
+  color: white;
+}
+
+.baseLayout-headerLink {
+  color: inherit;
+  text-decoration: none;
+}
+  .baseLayout-headerLink:hover {
+    text-decoration: underline;
+  }
+
+.baseLayout-siteTitle {
+  font-family: monospace;
+}
+
+.baseLayout-body {
+  min-height: 50vh;
+}
+
+.baseLayout-body h1 {
+  font-size: 5em;
+}
+
+.baseLayout-body h2 {
+  border-radius: 0.2em;
+  border: thin solid lightgray;
+  box-shadow: 0 0 0.5em #0001;
+  font-size: 2rem;
+  margin-block: 3em 1em;
+  padding: 0 0.5em;
+}
+
+.baseLayout-body h3 {
+  font-size: 1.5rem;
+  margin-block: 3em 1em;
+}
+  .baseLayout-body h3::before {
+    background-image: url("./icon-512.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: "";
+    display: inline-block;
+    height: 1.917em;
+    margin-inline-end: 0.2em;
+    vertical-align: middle;
+    width: 1.917em;
+  }
+
+.baseLayout-body :is(h1,h2, h3) {
+  font-family: 游明朝, serif;
+}
+
+pre {
+  overflow: auto;
+}
+
+/* code without syntax highlight */
+pre:not([class*="language-"]),
+code:not([class*="language-"]) {
+  background-color: #eee;
+  border-radius: 0.2em;
+  font-size: 85%;
+  padding: 0.2em 0.4em;
+}
+
+pre:not([class*="language-"]) {
+  background-color: #272822;
+  color: white;
+  padding: 1rem;
+}
+
+pre:not([class*="language-"]) > code {
+  background-color: transparent;
+  font-size: 1rem;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+.baseLayout-footer {
+  border-top: thin dashed lightgray;
+  margin-top: 5rem;
+  padding-bottom: 5rem;
+}
