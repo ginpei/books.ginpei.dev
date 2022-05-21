@@ -20,6 +20,8 @@ title: GitHub Actions で GitHub Pages へ公開する
 
 1. ビルドスクリプト (`npm run build`)
 2. GitHub Actions のセットアップ
+3. リポジトリーの GitHub Pages 設定
+4. 独自ドメインの設定（必要なら）
 
 ### ビルドスクリプト (`npm run build`)
 
@@ -70,6 +72,24 @@ jobs:
           publish_dir: _site/
 ```
 {% endraw %} 
+
+### リポジトリーの GitHub Pages 設定
+
+GitHub で該当リポジトリーを開いて Settings > 左メニュー Pages > Source にて、`gh-pages` のブランチを選択する。
+
+"(None)" のままだと、この設定ページに "Your site is ready to be published at ..." というメッセージ（青色）が表示されるものの公開が完了しない。"Your site is published at ..." というメッセージ（緑色）になれば完了。
+
+### 独自ドメインの設定（必要なら）
+
+- [Configuring a custom domain for your GitHub Pages site - GitHub Docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
+
+いわゆる `CNAME` の設定。
+
+まず利用中のドメイン管理サービスで、該当ドメインに `CNAME` で振り先が `<GitHubアカウント名>.github.io` 、例えば `ginpei` なら `ginpei.github.io` になるよう設定しておく。
+
+GitHub で該当リポジトリーを開いて Settings > 左メニュー Pages > Custom domain にて、目的のドメイン名 (`example.com`) を入力する。URL (`https://example.com`) ではない。
+
+設定完了後 TLS 証明書が発効され、それも完了すると `https://` で利用できるようになる。割と時間がかかるっぽい。"Enforce HTTPS" の設定をしておくと良さそう。
 
 ## 他の GitHub Actions
 
