@@ -679,9 +679,14 @@ const a = obj.a; // => 1
 
 `0.` が数値（小数点ありかつ小数点以下の数字なし）で、それとプロパティアクセス `obj.prop` の組み合わせ。つまり `(0.).prop` 。`..` という構文はない。
 
-### `{ ...obj }`, `[...arr]`, `f(...arr)` スプレッド構文
+### `{ ...obj }`, `[...arr]`, `f(...arr)` 分割代入（スプレッド構文）
+
+- [ECMAScript® 2023 Language Specification - 14.3.3 Destructuring Binding Patterns](https://tc39.es/ecma262/#sec-destructuring-binding-patterns)
+- [ECMAScript® 2023 Language Specification - 12.7 Punctuators](https://tc39.es/ecma262/#sec-punctuators)
 
 構文であり演算子ではない。
+
+通称スプレッド構文。
 
 ## `'`, `"` シングルクォート、ダブルクォート
 
