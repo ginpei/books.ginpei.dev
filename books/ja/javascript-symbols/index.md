@@ -444,6 +444,39 @@ for (let i = 0; i < arr.length; i++) {
 
 *colon* コロン
 
+→ `condition ? value : value` 条件演算子
+
+### `case key:` `case` 節
+
+- [ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
+
+### `default:` `default` 節
+
+- [ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
+
+### `{ prop: value }` オブジェクト初期化子の一部
+
+- [ECMAScript® 2023 Language Specification - 13.2.5 Object Initializer](https://tc39.es/ecma262/#sec-object-initializer)
+
+### `{ prop: key } = obj`, `function ({ prop: key }) {}` 分割代入の一部
+
+- [ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
+
+### `key: type` 型指定
+
+JavaScript ではなく TypeScript の文法。
+
+### `key:` ラベル
+
+- [ECMAScript® 2023 Language Specification - 14.13 Labelled Statements](https://tc39.es/ecma262/#sec-labelled-statements)
+- [label - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/label)
+
+`break` や `continue` で「ジャンプ」する先の位置を定義する文法。
+
+古の言語にある GOTO の仕組み。（JavaScript では黎明期から現代に至るまでまず使われていない。）
+
+（使うな。）
+
 ## `!` エクスクラメーション
 
 *exclamation* エクスクラメーション、感嘆符、びっくり
