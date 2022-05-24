@@ -30,6 +30,20 @@ body {
   min-height: 50vh;
 }
 
+.baseLayout-titleGroup {
+  margin: 3rem 0;
+}
+
+h1.baseLayout-title {
+  line-height: 1.2;
+  margin: 0;
+}
+
+.baseLayout-time {
+  display: block;
+  font-size: 0.8rem;
+}
+
 .baseLayout-body h1 {
   font-size: 5em;
 }
