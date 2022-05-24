@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: Eleventy
-date: 2021-05-21
+date: 2021-05-23
 ---
 
 静的サイトジェネレーター。
@@ -172,4 +172,66 @@ eleventyConfig.addPlugin(syntaxHighlight);
 
 ### 更新日を表示
 
-更新日を自動で得る方法はないので、各記事に `date` を設定しておく。
+- [Content Dates — Eleventy](https://www.11ty.dev/docs/dates/)
+
+更新日を自動で得る方法はないので、各記事 `*.md` に `date` を設定してテンプレートで表示する。書式は YAML が対応する `YYYY-MM-DD` 等にする。（例えば月を 1 桁で書くと駄目。）
+
+```md
+---
+title: なんかすごいおもしろい記事
+date: 2021-05-21
+---
+```
+
+{% raw %}
+```html
+{% if date %}
+  <time>{{ date }}</time>
+{% endif %}
+```
+{% endraw %}
+
+書式を守ると JavaScript の `Date` オブジェクトになる。`.eleventy.js` に整形フィルターを追加する。
+
+```js
+module.exports = function (eleventyConfig) {
+  eleventyConfig.addFilter("toDate", (v) => articleDateToString(v));
+…
+```
+
+```js
+/**
+ * @param {unknown} date
+ */
+function articleDateToString(date) {
+  if (!(date instanceof Date)) {
+    throw new Error(
+      "[articleDateToString] Date object expected but received " +
+        `${typeof date}: ${JSON.stringify(date)}`
+    );
+  }
+
+  return [
+    date.getFullYear(),
+    toTwoDigits(date.getMonth() + 1),
+    toTwoDigits(date.getDate()),
+  ].join("-");
+}
+
+/**
+ * @param {number} number
+ */
+function toTwoDigits(number) {
+  return number.toString().padStart(2, "0");
+}
+```
+
+{% raw %}
+```html
+{% if date %}
+<time class="baseLayout-time">
+  {{ date | toDate }}
+</time>
+{% endif %}
+```
+{% endraw %}
