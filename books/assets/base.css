@@ -6,7 +6,7 @@ body {
   box-sizing: border-box;
   margin-inline: auto;
   padding-inline: 1rem;
-  width: min(800px, 100%);
+  width: min(50rem, 100%);
 }
 
 .baseLayout-headerOuter {
