@@ -239,6 +239,7 @@ function toTwoDigits(number) {
 ### 記事のファイルパスから目次ページへのリンク作成
 
 - [Eleventy Supplied Data — Eleventy](https://www.11ty.dev/docs/data-eleventy-supplied/)
+- [静的サイトジェネレーターEleventy | 第6回 提供される日時データと表示方法 | CodeGrid](https://www.codegrid.net/articles/2019-11ty-6/)
 
 プロジェクトのルートに `books/` ディレクトリーを用意して、その下に `ja/` とか `en/` とか置く感じの想定。
 
