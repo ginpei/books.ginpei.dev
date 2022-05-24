@@ -23,7 +23,14 @@ title: (Not titled)
       </div>
     </header>
     <article class="ui-container baseLayout-body">
-      <h1>{{ title }}</h1>
+      <div class="baseLayout-titleGroup">
+        <h1 class="baseLayout-title">{{ title }}</h1>
+        {% if updatedAt %}
+        <time class="baseLayout-time">
+          {{ updatedAt | date }}
+        </time>
+        {% endif %}
+      </div>
       {{ content | safe }}
     </article>
     <footer class="baseLayout-footer">

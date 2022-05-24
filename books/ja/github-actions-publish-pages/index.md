@@ -1,6 +1,7 @@
 ---
 layout: base.njk
 title: GitHub Actions で GitHub Pages へ公開する
+updatedAt: 2021-05-21
 ---
 
 この GitHub Actions を使う。
