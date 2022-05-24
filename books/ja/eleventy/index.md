@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: Eleventy
-updatedAt: 2021-05-21
+date: 2021-05-21
 ---
 
 静的サイトジェネレーター。
@@ -103,7 +103,7 @@ title: Hello World!
 文章やコード例として画面に `{{` を表示したい場合は `{% raw %}`  と <code>{<!-- -->% endraw %}</code> で括る。
 {% endraw %}
 
-## 設定
+## カスタマイズ
 
 `.eleventy.js` を設置してカスタマイズできる。
 
@@ -169,3 +169,7 @@ eleventyConfig.addPlugin(syntaxHighlight);
 テーマ一覧。
 
 - https://unpkg.com/browse/prismjs@latest/themes/
+
+### 更新日を表示
+
+更新日を自動で得る方法はないので、各記事に `date` を設定しておく。

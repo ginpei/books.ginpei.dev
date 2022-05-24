@@ -25,9 +25,9 @@ title: (Not titled)
     <article class="ui-container baseLayout-body">
       <div class="baseLayout-titleGroup">
         <h1 class="baseLayout-title">{{ title }}</h1>
-        {% if updatedAt %}
+        {% if date %}
         <time class="baseLayout-time">
-          {{ updatedAt | date }}
+          {{ date | toDate }}
         </time>
         {% endif %}
       </div>

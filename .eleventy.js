@@ -17,7 +17,7 @@ module.exports = function (eleventyConfig) {
   );
 
   eleventyConfig.addPlugin(syntaxHighlight);
-  eleventyConfig.addFilter("date", (v) => articleDateToString(v));
+  eleventyConfig.addFilter("toDate", (v) => articleDateToString(v));
 };
 
 /**
