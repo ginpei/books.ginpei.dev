@@ -3,8 +3,6 @@ layout: base.njk
 title: Eleventy
 ---
 
-# Eleventy
-
 静的サイトジェネレーター。
 
 - [Eleventy, a simpler static site generator](https://www.11ty.dev/)

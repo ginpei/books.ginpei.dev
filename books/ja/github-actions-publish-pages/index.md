@@ -3,8 +3,6 @@ layout: base.njk
 title: GitHub Actions で GitHub Pages へ公開する
 ---
 
-# {{title}}
-
 この GitHub Actions を使う。
 
 - [GitHub Pages action · Actions · GitHub Marketplace](https://github.com/marketplace/actions/github-pages-action)
