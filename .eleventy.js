@@ -25,7 +25,11 @@ module.exports = function (eleventyConfig) {
  */
 function articleDateToString(date) {
   if (!(date instanceof Date)) {
-    throw new Error("Date object expected");
+    throw new Error(
+      `[articleDateToString] Date object expected but received ${typeof date}: ${JSON.stringify(
+        date
+      )}`
+    );
   }
 
   return [
