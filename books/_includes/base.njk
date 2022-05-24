@@ -17,7 +17,10 @@ title: (Not titled)
   <body>
     <header class="baseLayout-headerOuter">
       <div class="ui-container baseLayout-headerInner">
-        <a class="baseLayout-headerLink" href="/">
+        <a
+          class="baseLayout-headerLink"
+          href="{{ page.inputPath | toHomePath }}"
+        >
           <span class="baseLayout-siteTitle">books.ginpei.dev</span>
         </a>
       </div>

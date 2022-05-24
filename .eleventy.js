@@ -18,6 +18,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addFilter("toDate", (v) => articleDateToString(v));
+  eleventyConfig.addFilter("toHomePath", (v) => toHomePath(v));
 };
 
 /**
@@ -44,4 +45,25 @@ function articleDateToString(date) {
  */
 function toTwoDigits(number) {
   return number.toString().padStart(2, "0");
+}
+
+/**
+ * @param {string} path
+ * @example
+ * // {{ page.inputPath | toHomePath }}
+ */
+function toHomePath(path) {
+  if (typeof path !== "string") {
+    throw new Error(
+      "[getPathLang] String expected but received " +
+        `${typeof path}: ${JSON.stringify(path)}`
+    );
+  }
+
+  const [cur, books, lang] = path.split("/");
+  if (cur !== "." || books !== "books" || lang.length !== 2) {
+    return "/";
+  }
+
+  return `/${lang}/`;
 }

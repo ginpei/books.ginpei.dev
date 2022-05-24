@@ -235,3 +235,46 @@ function toTwoDigits(number) {
 {% endif %}
 ```
 {% endraw %}
+
+### 記事のファイルパスから目次ページへのリンク作成
+
+- [Eleventy Supplied Data — Eleventy](https://www.11ty.dev/docs/data-eleventy-supplied/)
+
+プロジェクトのルートに `books/` ディレクトリーを用意して、その下に `ja/` とか `en/` とか置く感じの想定。
+
+```js
+module.exports = function (eleventyConfig) {
+  eleventyConfig.addFilter("toHomePath", (v) => toHomePath(v));
+…
+```
+
+{% raw %}
+```js
+/**
+ * @param {string} path
+ * @example
+ * // <a href="{{ page.inputPath | toHomePath }}">Home</a>
+ */
+function toHomePath(path) {
+  if (typeof path !== "string") {
+    throw new Error(
+      "[getPathLang] String expected but received " +
+        `${typeof path}: ${JSON.stringify(path)}`
+    );
+  }
+
+  const [cur, books, lang] = path.split("/");
+  if (cur !== "." || books !== "books" || lang.length !== 2) {
+    return "/";
+  }
+
+  return `/${lang}/`;
+}
+```
+{% endraw %}
+
+{% raw %}
+```html
+<a href="{{ page.inputPath | toHomePath }}">Home</a>
+```
+{% endraw %}
