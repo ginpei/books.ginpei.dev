@@ -28,11 +28,14 @@ title: (Not titled)
     <article class="ui-container baseLayout-body">
       <div class="baseLayout-titleGroup">
         <h1 class="baseLayout-title">{{ title }}</h1>
-        {% if date %}
-        <time class="baseLayout-time">
-          {{ date | toDate }}
-        </time>
-        {% endif %}
+        <div class="baseLayout-metaLine">
+          <a href="{{ page.inputPath | toHistoryUrl }}">History</a>
+          {% if date %}
+          <time class="baseLayout-time">
+            {{ date | toDate }}
+          </time>
+          {% endif %}
+        </div>
       </div>
       {{ content | safe }}
     </article>

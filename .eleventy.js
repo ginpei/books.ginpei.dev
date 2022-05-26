@@ -19,6 +19,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addFilter("toDate", (v) => articleDateToString(v));
   eleventyConfig.addFilter("toHomePath", (v) => toHomePath(v));
+  eleventyConfig.addFilter("toHistoryUrl", (v) => toHistoryUrl(v));
 };
 
 /**
@@ -66,4 +67,16 @@ function toHomePath(path) {
   }
 
   return `/${lang}/`;
+}
+
+/**
+ * @param {string} pageUrl
+ * @example
+ * // {{ page.inputPath | toHistoryUrl }}
+ */
+function toHistoryUrl(pageUrl) {
+  const account = "ginpei";
+  const repo = "books.ginpei.dev";
+  const ref = "main";
+  return `https://github.com/${account}/${repo}/commits/${ref}/${pageUrl}`;
 }
