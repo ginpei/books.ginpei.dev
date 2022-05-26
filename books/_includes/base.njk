@@ -31,7 +31,9 @@ title: (Not titled)
         <div class="baseLayout-metaLine">
           <a href="{{ page.inputPath | toHistoryUrl }}">History</a>
           {% if date %}
-          <time>{{ date | toDate }}</time>
+          <span>
+            Updated at <time>{{ date | toDate }}</time>
+          </span>
           {% endif %}
         </div>
       </div>
