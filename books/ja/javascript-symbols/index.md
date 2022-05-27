@@ -363,7 +363,7 @@ function longFunctionName(
 
 - [ECMAScript® 2023 Language Specification - 13.3 Left-Hand-Side Expressions](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
 
-各種関数宣言における仮引数の区切り文字。
+各種関数呼び出しにおける引数の区切り文字。
 
 ```js
 f(a, b);
