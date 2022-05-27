@@ -1,4 +1,5 @@
 body {
+  font-family: sans-serif;
   margin: 0;
 }
 
@@ -6,12 +7,19 @@ body {
   box-sizing: border-box;
   margin-inline: auto;
   padding-inline: 1rem;
-  width: min(800px, 100%);
+  width: min(50rem, 100%);
 }
 
 .baseLayout-headerOuter {
   background-color: #036;
   color: white;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.baseLayout-headerInner {
+  display: flex;
+  justify-content: space-between;
 }
 
 .baseLayout-headerLink {
@@ -29,6 +37,25 @@ body {
 .baseLayout-body {
   min-height: 50vh;
 }
+
+.baseLayout-titleGroup {
+  margin: 3rem 0;
+}
+
+h1.baseLayout-title {
+  line-height: 1.2;
+  margin: 0;
+}
+
+.baseLayout-metaLine {
+  display: flex;
+  font-size: 0.8rem;
+  gap: 0.5em;
+}
+  .baseLayout-metaLine > * + *::before {
+    content: "|";
+    color: darkgray;
+  }
 
 .baseLayout-body h1 {
   font-size: 5em;

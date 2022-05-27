@@ -4,28 +4,51 @@ title: (Not titled)
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }}</title>
-  <link rel="stylesheet" href="https://unpkg.com/prismjs@1.20.0/themes/prism-tomorrow.css">
-  <link rel="stylesheet" href="{{ '/assets/base.css' | url }}">
-</head>
-<body>
-  <header class="baseLayout-headerOuter">
-    <div class="ui-container baseLayout-headerInner">
-      <a class="baseLayout-headerLink" href="/">
-        <span class="baseLayout-siteTitle">books.ginpei.dev</span>
-      </a>
-    </div>
-  </header>
-  <article class="ui-container baseLayout-body">
-    {{ content | safe }}
-  </article>
-  <footer class="baseLayout-footer">
-    <div class="ui-container">
-      <p><a href="/">Home</a></p>
-    </div>
-  </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/prismjs@1.20.0/themes/prism-tomorrow.css"
+    />
+    <link rel="stylesheet" href="{{ '/assets/base.css' | url }}" />
+  </head>
+  <body>
+    <header class="baseLayout-headerOuter">
+      <div class="ui-container baseLayout-headerInner">
+        <a
+          class="baseLayout-headerLink"
+          href="{{ page.inputPath | toHomePath }}"
+        >
+          <span class="baseLayout-siteTitle">books.ginpei.dev</span>
+        </a>
+        <a
+          class="baseLayout-headerLink"
+          href="https://github.com/ginpei/books.ginpei.dev"
+        >
+          GitHub
+        </a>
+      </div>
+    </header>
+    <article class="ui-container baseLayout-body">
+      <div class="baseLayout-titleGroup">
+        <h1 class="baseLayout-title">{{ title }}</h1>
+        <div class="baseLayout-metaLine">
+          <a href="{{ page.inputPath | toHistoryUrl }}">History</a>
+          {% if date %}
+          <span>
+            Updated at <time>{{ date | toDate }}</time>
+          </span>
+          {% endif %}
+        </div>
+      </div>
+      {{ content | safe }}
+    </article>
+    <footer class="baseLayout-footer">
+      <div class="ui-container">
+        <p><a href="/">Home</a></p>
+      </div>
+    </footer>
+  </body>
 </html>

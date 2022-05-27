@@ -1,9 +1,8 @@
 ---
 layout: base.njk
 title: Eleventy
+date: 2021-05-23
 ---
-
-# Eleventy
 
 静的サイトジェネレーター。
 
@@ -104,7 +103,7 @@ title: Hello World!
 文章やコード例として画面に `{{` を表示したい場合は `{% raw %}`  と <code>{<!-- -->% endraw %}</code> で括る。
 {% endraw %}
 
-## 設定
+## カスタマイズ
 
 `.eleventy.js` を設置してカスタマイズできる。
 
@@ -170,3 +169,113 @@ eleventyConfig.addPlugin(syntaxHighlight);
 テーマ一覧。
 
 - https://unpkg.com/browse/prismjs@latest/themes/
+
+### 更新日を表示
+
+- [Content Dates — Eleventy](https://www.11ty.dev/docs/dates/)
+
+更新日を自動で得る方法はないので、各記事 `*.md` に `date` を設定してテンプレートで表示する。書式は YAML が対応する `YYYY-MM-DD` 等にする。（例えば月を 1 桁で書くと駄目。）
+
+```md
+---
+title: なんかすごいおもしろい記事
+date: 2021-05-21
+---
+```
+
+{% raw %}
+```html
+{% if date %}
+  <time>{{ date }}</time>
+{% endif %}
+```
+{% endraw %}
+
+書式を守ると JavaScript の `Date` オブジェクトになる。`.eleventy.js` に整形フィルターを追加する。
+
+```js
+module.exports = function (eleventyConfig) {
+  eleventyConfig.addFilter("toDate", (v) => articleDateToString(v));
+…
+```
+
+```js
+/**
+ * @param {unknown} date
+ */
+function articleDateToString(date) {
+  if (!(date instanceof Date)) {
+    throw new Error(
+      "[articleDateToString] Date object expected but received " +
+        `${typeof date}: ${JSON.stringify(date)}`
+    );
+  }
+
+  return [
+    date.getFullYear(),
+    toTwoDigits(date.getMonth() + 1),
+    toTwoDigits(date.getDate()),
+  ].join("-");
+}
+
+/**
+ * @param {number} number
+ */
+function toTwoDigits(number) {
+  return number.toString().padStart(2, "0");
+}
+```
+
+{% raw %}
+```html
+{% if date %}
+<time class="baseLayout-time">
+  {{ date | toDate }}
+</time>
+{% endif %}
+```
+{% endraw %}
+
+### 記事のファイルパスから目次ページへのリンク作成
+
+- [Eleventy Supplied Data — Eleventy](https://www.11ty.dev/docs/data-eleventy-supplied/)
+- [静的サイトジェネレーターEleventy | 第6回 提供される日時データと表示方法 | CodeGrid](https://www.codegrid.net/articles/2019-11ty-6/)
+
+プロジェクトのルートに `books/` ディレクトリーを用意して、その下に `ja/` とか `en/` とか置く感じの想定。
+
+```js
+module.exports = function (eleventyConfig) {
+  eleventyConfig.addFilter("toHomePath", (v) => toHomePath(v));
+…
+```
+
+{% raw %}
+```js
+/**
+ * @param {string} path
+ * @example
+ * // <a href="{{ page.inputPath | toHomePath }}">Home</a>
+ */
+function toHomePath(path) {
+  if (typeof path !== "string") {
+    throw new Error(
+      "[getPathLang] String expected but received " +
+        `${typeof path}: ${JSON.stringify(path)}`
+    );
+  }
+
+  const [cur, books, lang] = path.split("/");
+  if (cur !== "." || books !== "books" || lang.length !== 2) {
+    return "/";
+  }
+
+  return `/${lang}/`;
+}
+```
+{% endraw %}
+
+{% raw %}
+```html
+<a href="{{ page.inputPath | toHomePath }}">Home</a>
+```
+{% endraw %}
