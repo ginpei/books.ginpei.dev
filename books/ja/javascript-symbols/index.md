@@ -565,7 +565,7 @@ const b = false ? 1 : 2; // => 2
 
 ### `value ?? value` Null 合体演算子
 
-左辺が nullish 、つまり `null` か `undefined` である場合に左辺を、そうでなければ右辺を返す。 
+左辺が nullish 、つまり `null` か `undefined` である場合に右辺を、そうでなければ左辺を返す。
 
 ```js
 const a = null ?? 1; // => 1
