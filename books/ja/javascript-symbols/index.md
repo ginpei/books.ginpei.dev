@@ -515,7 +515,7 @@ const d = !!c; // `false` となる
 
 "truthy" とは真偽値へ変換した際に `true` となるもののこと。同じく "falsy" は `false` となるもの。`0` や空文字列 `""` は falsy だが、空のオブジェクト `{}` や配列 `[]` は truthy 。
 
-[`Boolean` コンストラクター](https://tc39.es/ecma262/#sec-boolean-objects)を関数として使うことで、この `!!` の代替とできる。（その方が明瞭で良いと思う。）
+[`Boolean` コンストラクター](https://tc39.es/ecma262/#sec-boolean-objects)を関数として使う（`new` を付けない）ことで、この `!!` の代替とできる。（その方が明瞭で良いと思う。）
 
 ```js
 const a = Boolean(1); // => true
@@ -530,7 +530,7 @@ const a = Boolean(1); // => true
 
 変換については `==` を参照。
 
-（`==` と同様、使うのを避け厳密な比較を行うのが良いと思う。）
+（`==` と同様、使うのを避け厳密な比較 `!==` を用いるべき。）
 
 ### `value !== value` 厳密不等価演算子
 
@@ -556,7 +556,7 @@ JavaScript ではなく TypeScript の機能。nullable な値を非 nullable �
 - [条件 (三項) 演算子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
 - [ECMAScript® 2023 Language Specification - 13.14 Conditional Operator ( `? :` )](https://tc39.es/ecma262/#sec-conditional-operator)
 
-`<条件> ? <真の場合の評価値> : <偽の場合の評価値>` の形を取る。3 つの項を取る唯一の演算子なので「三項演算子」とも呼ばれる。
+`<条件> ? <真の場合の評価値> : <偽の場合の評価値>` の形を取る。3 つの項を取る唯一の演算子なので「三項演算子」とも呼ばれる。（二項演算子、単項演算子は複数ある。）
 
 ```js
 const a = true ? 1 : 2; // => 1
@@ -598,9 +598,7 @@ const g = obj.b || 1; // => 1
 - [ECMAScript® 2023 Language Specification - 13.3 Left-Hand-Side Expressions](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
 - [ECMAScript® 2023 Language Specification - 13.3.9 Optional Chains](https://tc39.es/ecma262/#sec-optional-chains)
 
-左側が `null` または `undefined` であれば `undefined` を、そうでない場合は左側を receiver として右側の名前のプロパティを返す。
-
-`null` の場合でも `null` ではなく `undefined` が返る点に注意。なお演算子ではない。
+左側が `null` または `undefined` であれば `undefined` を、そうでない場合は左側を receiver として右側の名前のプロパティを返す。（receiver という表現で正確だろうか？）　なお `null` の場合でも `null` ではなく `undefined` が返る点に注意。
 
 ```js
 const obj = { a: 1, c: null };
@@ -624,6 +622,7 @@ const b = obj.b?.toFixed(2) ?? "0.00"; // => "0.00"
 const obj = { a: 1, c: null };
 
 // 得るだけは問題なし
+// （もちろん得られる値はない）
 const d = obj.b; // => undefined
 
 // ⛔ 型エラーになる
@@ -640,13 +639,13 @@ const b = obj.b && obj.b.toFixed(2); // => undefined
 const c = obj.c && obj.c.toFixed(2); // => 0
 ```
 
-あらゆるプロパティアクセス `obj.prop` を置き換え得るわけではなく、例えば `obj?.prop = value` のように代入の左辺に置くと文法エラーになる。（例：SyntaxError: Invalid left-hand side in assignment）
+あらゆるプロパティアクセス `obj.prop` を置き換え得るわけではなく、例えば `obj?.prop = value` のように代入の左辺に置くのは禁止されており、文法エラーになる。（例：SyntaxError: Invalid left-hand side in assignment）
 
 `?.` の 2 文字でひとつの塊なので、`? .` のように空白を挟むことはできない。`obj ?. foo` のように前後に空白を置くことは可能。
 
 ### `f?.()`, `obj?.[value]` オプショナルチェイン構文
 
-`obj?.prop` と同様、nullish かどうかで判断される構文。
+プロパティアクセス用のオプショナルチェイン構文 `obj?.prop` と同様、左側が nullish かどうかで判断される構文。
 
 `new` と組み合わせた `new f?.()` は構文エラーになる。（例：SyntaxError: Invalid tagged template on optional chain）
 
