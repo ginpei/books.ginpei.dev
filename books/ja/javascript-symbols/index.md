@@ -651,7 +651,7 @@ const c = obj.c && obj.c.toFixed(2); // => 0
 
 `new` と組み合わせた `new f?.()` は構文エラーになる。（例：SyntaxError: Invalid tagged template on optional chain）
 
-テンプレートリテラルとの組み合わせ <code>f?.&#x60;xxx&#x60;</code> は、仕様書の[文法](https://tc39.es/ecma262/#prod-OptionalChain)の方には載っているのに[評価](https://tc39.es/ecma262/#sec-optional-chaining-chain-evaluation)の方には記載がない。実際は構文エラーになるようだ。（例：SyntaxError: Invalid optional chain from new expression）
+テンプレートリテラルとの組み合わせ <code>f?.&#x60;xxx&#x60;</code> は、[字句解析](https://tc39.es/ecma262/#prod-OptionalChain)の仕様上は許可されているものの[文法エラーを発生する](https://tc39.es/ecma262/#sec-left-hand-side-expressions-static-semantics-early-errors)よう定められている。（例：SyntaxError: Invalid optional chain from new expression）<small>（用語の扱いが不正確かもしれない。エラーになるのはマジ。)</small>
 
 ### `key ??= value` 代入演算子のひとつ
 
