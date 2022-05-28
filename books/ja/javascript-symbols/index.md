@@ -804,13 +804,15 @@ undefined
 
 - [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
 
-### `&xxx;` 実態参照
+### `&xxx;`, `&#0000`, `&#x0000;` 実態参照
 
 JavaScript ではなく HTML。
 
 ## `#` 番号記号
 
 *number sign*, *hash*, *sharp sign* 番号記号、ナンバー、ハッシュ、シャープ（音楽のシャープ ♯ は傾きが異なる。）
+
+→ `&#0000`, `&#x0000;` 実態参照
 
 ### `#prop`, `#f() {}` プライベートメンバーの宣言
 
