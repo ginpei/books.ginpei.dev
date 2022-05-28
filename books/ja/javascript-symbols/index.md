@@ -545,7 +545,7 @@ const a = Boolean(1); // => true
 
 - [TypeScript: Documentation - Everyday Types - Non-null Assertion Operator (Postfix `!` )](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#non-null-assertion-operator-postfix-)
 
-JavaScript ではなく TypeScript の機能。nullable な値を非 nullable な値として扱う。API 境界を越えるなどの特殊な場合にのみ使う。
+JavaScript ではなく TypeScript の機能。nullable な値を非 nullable な値として扱う。<small>（API 境界を越えるなどの特殊な場合にのみ使う。）</small>
 
 ## `?` クエスチョン
 
