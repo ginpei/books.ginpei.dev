@@ -473,6 +473,8 @@ for (let i = 0; i < arr.length; i++) {
 
 ### `key: type` 型指定
 
+- [TypeScript: Documentation - TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
+
 JavaScript ではなく TypeScript の文法。
 
 ### `key:` ラベル
