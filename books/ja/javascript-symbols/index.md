@@ -645,6 +645,8 @@ const c = obj.c && obj.c.toFixed(2); // => 0
 
 ### `f?.()`, `obj?.[value]` オプショナルチェイン構文
 
+- [ECMAScript® 2023 Language Specification - 13.3 Left-Hand-Side Expressions](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
+
 プロパティアクセス用のオプショナルチェイン構文 `obj?.prop` と同様、左側が nullish かどうかで判断される構文。
 
 `new` と組み合わせた `new f?.()` は構文エラーになる。（例：SyntaxError: Invalid tagged template on optional chain）
