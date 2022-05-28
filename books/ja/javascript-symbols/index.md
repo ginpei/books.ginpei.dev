@@ -255,6 +255,8 @@ console.log(a, b); // => 10, 9
 
 - [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
 
+TODO
+
 ## `,` カンマ
 
 *comma* カンマ、コンマ
@@ -459,17 +461,25 @@ for (let i = 0; i < arr.length; i++) {
 
 - [ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
 
+TODO
+
 ### `default:` `default` 節
 
 - [ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
+
+TODO
 
 ### `{ prop: value }` オブジェクト初期化子の一部
 
 - [ECMAScript® 2023 Language Specification - 13.2.5 Object Initializer](https://tc39.es/ecma262/#sec-object-initializer)
 
+TODO
+
 ### `{ prop: key } = obj`, `function ({ prop: key }) {}` 分割代入の一部
 
 - [ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
+
+TODO
 
 ### `key: type` 型指定
 
@@ -657,6 +667,8 @@ const c = obj.c && obj.c.toFixed(2); // => 0
 
 - [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
 
+TODO
+
 ## `.` ドット
 
 *dot*, *period*, *full stop* ドット、ピリオド、フルストップ、終止符、点
@@ -700,31 +712,49 @@ const a = obj.a; // => 1
 
 通称スプレッド構文。
 
+TODO
+
 ### `{ ...obj }`, `[...arr]`, `f(...arr)` 展開（スプレッド構文）
+
+TODO
 
 ## `'`, `"` シングルクォート、ダブルクォート
 
 *quote*, *single quote*, *double quote* クォート、シングルクォート、ダブルクォート、引用符、二重引用符
 
+TODO
+
 ## `(`, `)` 丸括弧
 
 *paren(s)*, *parenthesis (plural: parentheses)* パーレン、丸括弧、小括弧
+
+### `()` 演算順序のあれ
+
+TODO
 
 ### `f().prop` 関数呼び出しとプロパティアクセス
 
 関数呼び出し `f()` とプロパティアクセス `obj.prop` の組み合わせ。`().` という構文はない。
 
+TODO
+
 ## `[`, `]` 角括弧
 
 *square bracket(s)* スクウェアブラケット、角括弧、四角括弧
+
+TODO
 
 ## `{`, `}` 波括弧
 
 *bracket(s)* ブラケット、波括弧、にょろ括弧
 
+TODO
+
 ## `@` アットマーク
 
 *at*, *at sign* アットマーク、単価記号
+
+TODO
 
 ## `*` アスタリスク
 
@@ -733,32 +763,55 @@ const a = obj.a; // => 1
 - [アスタリスク - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%B9%E3%82%BF%E3%83%AA%E3%82%B9%E3%82%AF)
 
 ### `value * value`
+
+TODO
+
 ### `value ** value`
+
+TODO
+
 ### `key *= value` 代入演算子のひとつ
 
 - [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
 
+
+TODO
+
 ### `key **= value` 代入演算子のひとつ
 
 - [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+
+TODO
 
 ## `/` スラッシュ
 
 *slash*, *forward slash* スラッシュ、前方スラッシュ
 
 ### `value / value`
+
+TODO
+
 ### `key /= value` 代入演算子のひとつ
 
 - [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
 
+TODO
+
 ### `/xxx/` 正規表現
+
+TODO
+
 ### `/*`, `*/` 複数行コメント
 
 - [ECMAScript® 2023 Language Specification - 12.4 Comments](https://tc39.es/ecma262/#sec-comments)
 
+TODO
+
 ### `// xxx` 一行コメント
 
 - [ECMAScript® 2023 Language Specification - 12.4 Comments](https://tc39.es/ecma262/#sec-comments)
+
+TODO
 
 ## `\` バックスラッシュ
 
@@ -790,6 +843,15 @@ undefined
 
 `\u0061` と `\u{61}` は `a` になる。（`"a".charCodeAt(0).toString(16)` つまり "a" の文字コードは 0x61 。）
 
+### `"\` 文字列リテラル中の改行
+
+```js
+const s = "foo\
+bar";`
+```
+
+TODO
+
 ## `&` アンパサンド
 
 *ampersand*, *and* アンパサンド、アンド
@@ -797,16 +859,28 @@ undefined
 - [アンパサンド - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%83%91%E3%82%B5%E3%83%B3%E3%83%89)
 
 ### `value & value`
+
+TODO
+
 ### `value && value`
+
+TODO
+
 ### `key &= value` 代入演算子のひとつ
 
 - [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+
+TODO
 
 ### `key &&= value` 代入演算子のひとつ
 
 - [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
 
-### `&xxx;`, `&#0000`, `&#x0000;` 実態参照
+TODO
+
+### `&xxx;`, `&#0000`, `&#x0000;` 文字参照
+
+- [Entity (エンティティ) - MDN Web Docs 用語集: ウェブ関連用語の定義 | MDN](https://developer.mozilla.org/ja/docs/Glossary/Entity)
 
 JavaScript ではなく HTML。
 
@@ -814,7 +888,7 @@ JavaScript ではなく HTML。
 
 *number sign*, *hash*, *sharp sign* 番号記号、ナンバー、ハッシュ、シャープ（音楽のシャープ ♯ は傾きが異なる。）
 
-→ `&#0000`, `&#x0000;` 実態参照
+→ `&#0000`, `&#x0000;` 文字参照
 
 ### `#prop`, `#f() {}` プライベートメンバーの宣言
 
@@ -922,11 +996,15 @@ JavaScript ではなく Linux/UNIX のシェルの機能。
 
 *percent* パーセント、百分率記号
 
+TODO
+
 ## <code>`</code> バックチック
 
 *backtick*, *back quote*, *grave* バックチック、バッククォート、グレイブ、ちょん
 
 - [Backtick - Wikipedia](https://en.wikipedia.org/wiki/Backtick)
+
+TODO
 
 ## `^` キャレット
 
@@ -934,29 +1012,43 @@ JavaScript ではなく Linux/UNIX のシェルの機能。
 
 - [キャレット - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%AC%E3%83%83%E3%83%88)
 
+TODO
+
 ## `+` プラス
 
 *plus* プラス、足す、足し算
+
+TODO
 
 ## `<` 小なり
 
 *less-than sign* 小なり、不等号
 
+TODO
+
 ## `=` イコール
 
 *equal* イコール、等号
 
+TODO
+
 ### `key = value`
+
+TODO
 
 ### `value == value`
 
 - [ECMAScript® 2023 Language Specification - 13.11 Equality Operators](https://tc39.es/ecma262/#sec-equality-operators)
 - [等価 (==) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Equality)
 
+TODO
+
 ### `value === value`
 
 - [ECMAScript® 2023 Language Specification - 13.11 Equality Operators](https://tc39.es/ecma262/#sec-equality-operators)
 - [厳密等価 (===) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Strict_equality)
+
+TODO
 
 ### `() => value` アロー関数の一部
 
@@ -966,33 +1058,53 @@ JavaScript ではなく Linux/UNIX のシェルの機能。
 const f = (x) => x + 1;
 ```
 
+TODO
+
 ## `>` 大なり
 
 *greater-than sign* 大なり、不等号
 
 → `=>`
 
+TODO
+
 ## `|` バー
 
 *bar*, *vertical bar*, *pipe* バー、垂直バー、パイプ
 
+TODO
+
 ### `value | value`
+
+TODO
+
 ### `value |> xxx` パイプライン演算子
+
+TODO
+
 ### `value || value`
+
+TODO
+
 ### `key |= value` 代入演算子のひとつ
 
 - [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+
+TODO
 
 ### `key ||= value` 代入演算子のひとつ
 
 - [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
 
+TODO
 
 ## `~` チルダ
 
 *tilde* チルダ、チルド、波線符号、波、にょろ
 
 - [チルダ - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%81%E3%83%AB%E3%83%80)
+
+TODO
 
 ## `$` ダラー
 
@@ -1032,7 +1144,12 @@ $(() => {
 ```
 
 ### <code>&#96;${xxx}&#96;</code>
+
+TODO
+
 ### `$0`, `$1`, ...
+
+TODO
 
 ## その他
 
