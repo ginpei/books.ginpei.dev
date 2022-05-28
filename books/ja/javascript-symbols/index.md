@@ -553,8 +553,8 @@ JavaScript ではなく TypeScript の機能。nullable な値を非 nullable �
 
 ### `condition ? value : value` 条件演算子
 
-- [条件 (三項) 演算子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
 - [ECMAScript® 2023 Language Specification - 13.14 Conditional Operator ( `? :` )](https://tc39.es/ecma262/#sec-conditional-operator)
+- [条件 (三項) 演算子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
 
 `<条件> ? <真の場合の評価値> : <偽の場合の評価値>` の形を取る。3 つの項を取る唯一の演算子なので「三項演算子」とも呼ばれる。（二項演算子、単項演算子は複数ある。）
 
