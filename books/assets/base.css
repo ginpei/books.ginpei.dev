@@ -57,6 +57,20 @@ h1.baseLayout-title {
     color: darkgray;
   }
 
+.baseLayout-toc {
+  border: thin solid #036;
+  font-size: 0.8rem;
+  padding: 1rem;
+}
+  /* https://github.com/jdsteinbach/eleventy-plugin-toc */
+  .baseLayout-toc ol {
+    margin: 0;
+    padding: 0 0 0 1rem;
+  }
+  .baseLayout-toc ol ol {
+    padding-left: 1.5rem;;
+  }
+
 .baseLayout-body h1 {
   font-size: 5em;
 }

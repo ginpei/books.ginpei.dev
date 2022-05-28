@@ -1,5 +1,7 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it");
+const markdownItAnchor = require("markdown-it-anchor");
+const pluginTOC = require("eleventy-plugin-toc");
 
 /**
  * @param {import("@11ty/eleventy/src/UserConfig")} eleventyConfig
@@ -8,14 +10,14 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ static: "/" });
 
   // https://github.com/markdown-it/markdown-it#init-with-presets-and-options
-  eleventyConfig.setLibrary(
-    "md",
-    markdownIt({
-      html: true,
-      linkify: true,
-    })
-  );
+  const md = markdownIt({
+    html: true,
+    linkify: true,
+  });
+  md.use(markdownItAnchor, {});
+  eleventyConfig.setLibrary("md", md);
 
+  eleventyConfig.addPlugin(pluginTOC);
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addFilter("toDate", (v) => articleDateToString(v));
   eleventyConfig.addFilter("toHomePath", (v) => toHomePath(v));
