@@ -43,6 +43,11 @@ title: (Not titled)
           {% endif %}
         </div>
       </div>
+      {% if not noToc %}
+      <aside class="baseLayout-toc">
+        {{ content | toc | safe }}
+      </aside>
+      {% endif %}
       {{ content | safe }}
     </article>
     <footer class="baseLayout-footer">
