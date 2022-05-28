@@ -30,8 +30,6 @@ title: (WIP) JavaScript の記号
   }
 </style>
 
-# {{title}}
-
 <script src="./script.js"></script>
 
 <label>
