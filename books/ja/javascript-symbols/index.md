@@ -233,7 +233,7 @@ const b = --a;
 console.log(a, b); // => 9, 9
 ```
 
-`--value` は `value -= 1` と同じと考えてよい。（近年は `-=` で代入を明示する方が好まれるように思う。）
+`--value` は `value -= 1` と同じと考えてよい。<small>（近年は `-=` で代入を明示する方が好まれるように思う。）</small>
 
 変数が `const` の場合は再代入できないので実行時にエラーになる。（例：TypeError: Assignment to constant variable.）
 
@@ -270,9 +270,9 @@ console.log(a, b); // => 10, 9
 const a = 1, 2 + 3, 4; // => 4
 ```
 
-（minify 後のコードでにはよく出てくる程度で、普通使わないと思う。）
+<small>（minify 後のコードでにはよく出てくる程度で、普通使わないと思う。）</small>
 
-`for` 文の初期化式で使われることがある。（良いやり方ではないと思う。）
+`for` 文の初期化式で使われることがある。<small>（良いやり方ではないと思う。）</small>
 
 ```js
 for (let i = 0, count = 0; i < str.length && count < MAX; i++) {
@@ -447,7 +447,7 @@ for (let i = 0; i < arr.length; i++) {
 }
 ```
 
-（現代では `for` 文はそのほとんどの場面で [`for-of` 文](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for...of)を使うべきだと思う。）
+<small>（現代では `for` 文はそのほとんどの場面で [`for-of` 文](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for...of)を使うべきだと思う。）</small>
 
 ## `:` コロン
 
@@ -482,9 +482,9 @@ JavaScript ではなく TypeScript の文法。
 
 `break` や `continue` で「ジャンプ」する先の位置を定義する文法。
 
-古の言語にある GOTO の仕組み。（JavaScript では黎明期から現代に至るまでまず使われていない。）
+古の言語にある GOTO の仕組み。<small>（JavaScript では黎明期から現代に至るまでまず使われていない。）</small>
 
-（使うな。）
+<small>（使うな。）</small>
 
 ## `!` エクスクラメーション
 
@@ -513,7 +513,7 @@ const d = !!c; // `false` となる
 
 "truthy" とは真偽値へ変換した際に `true` となるもののこと。同じく "falsy" は `false` となるもの。`0` や空文字列 `""` は falsy だが、空のオブジェクト `{}` や配列 `[]` は truthy 。
 
-[`Boolean` コンストラクター](https://tc39.es/ecma262/#sec-boolean-objects)を関数として使う（`new` を付けない）ことで、この `!!` の代替とできる。（その方が明瞭で良いと思う。）
+[`Boolean` コンストラクター](https://tc39.es/ecma262/#sec-boolean-objects)を関数として使う（`new` を付けない）ことで、この `!!` の代替とできる。<small>（その方が明瞭で良いと思う。）</small>
 
 ```js
 const a = Boolean(1); // => true
@@ -528,7 +528,7 @@ const a = Boolean(1); // => true
 
 変換については `==` を参照。
 
-（`==` と同様、使うのを避け厳密な比較 `!==` を用いるべき。）
+<small>（`==` と同様、使うのを避け厳密な比較 `!==` を用いるべき。）</small>
 
 ### `value !== value` 厳密不等価演算子
 
@@ -576,7 +576,7 @@ const f = obj.a ?? 1; // => 0
 const g = obj.b ?? 1; // => 1
 ```
 
-（利用者入力値の初期値を与えたり、`?.` と組み合わせて利用する場面が多いと思う。）
+<small>（利用者入力値の初期値を与えたり、`?.` と組み合わせて利用する場面が多いと思う。）</small>
 
 かつては `||` を用いて次のように書くことが多かった。この書き方は `null`, `undefined` 以外の falsy な値に対応できないという問題があった。
 
@@ -596,7 +596,7 @@ const g = obj.b || 1; // => 1
 - [ECMAScript® 2023 Language Specification - 13.3 Left-Hand-Side Expressions](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
 - [ECMAScript® 2023 Language Specification - 13.3.9 Optional Chains](https://tc39.es/ecma262/#sec-optional-chains)
 
-左側が `null` または `undefined` であれば `undefined` を、そうでない場合は左側を receiver として右側の名前のプロパティを返す。（receiver という表現で正確だろうか？）　なお `null` の場合でも `null` ではなく `undefined` が返る点に注意。
+左側が `null` または `undefined` であれば `undefined` を、そうでない場合は左側を receiver として右側の名前のプロパティを返す。<small>（receiver という表現で正確だろうか？）</small>　なお `null` の場合でも `null` ではなく `undefined` が返る点に注意。
 
 ```js
 const obj = { a: 1, c: null };
@@ -764,9 +764,9 @@ const a = obj.a; // => 1
 - [改行コード - Wikipedia](https://ja.wikipedia.org/wiki/%E6%94%B9%E8%A1%8C%E3%82%B3%E3%83%BC%E3%83%89)
 - [キャリッジ・リターン - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%AA%E3%83%83%E3%82%B8%E3%83%BB%E3%83%AA%E3%82%BF%E3%83%BC%E3%83%B3)
 
-`"\n"` はラインフィード LINE FEED (LF) 、`"\r"` はキャリッジリターン CARRIAGE RETURN (CR) 。（通常 `"\n"` のみを使うと思う。）
+`"\n"` はラインフィード LINE FEED (LF) 、`"\r"` はキャリッジリターン CARRIAGE RETURN (CR) 。<small>（通常 `"\n"` のみを使うと思う。）</small>
 
-CR は、本来は改行ではなく同じ行の先頭へ戻るコード。（どうやら Return キーの語源である。）　Node.js で利用できるかもしれない。
+CR は、本来は改行ではなく同じ行の先頭へ戻るコード。<small>（どうやら Return キーの語源である。）</small>　Node.js で利用できるかもしれない。
 
 ```js
 > console.log("123\rX")
@@ -900,7 +900,7 @@ URL の[フラグメント識別子 `#`](#https%3A%2F%2Fexample.com%2F%23key-url
 
 URL としては `#` 以降はフラグメント識別子以上の意味は持たないためネットワーク上は意味はなく、クライアント側で `!/path` 部分を解釈して画面の描画を行う。
 
-（HTML5 以前、JavaScript から URL を強力に操作できなかった頃に支持された文化。）
+<small>（HTML5 以前、JavaScript から URL を強力に操作できなかった頃に支持された文化という認識。）</small>
 
 ### `#!/usr/bin/env node` シバン
 
@@ -1004,7 +1004,7 @@ const cache$12345 = {};
 const $ = 1;
 ```
 
-（機械的に生成されるものの命名に用いる文化があると聞いたことがあるがどうだろうか。）
+<small>（機械的に生成されるものの命名に用いる文化があると聞いたことがあるがどうだろうか。）</small>
 
 この記号 `$` を名前空間や接頭辞として利用するライブラリー、フレームワークがある。（JavaScript 本体の機能ではない。）　もちろん jQuery が飛びぬけて有名。
 
