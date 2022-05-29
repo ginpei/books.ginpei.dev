@@ -13,12 +13,12 @@ title: (WIP) JavaScript の記号
   }
 
 .searchResult-item {
-  border-color: lightgray;
-  border-style: solid solid none;
+  border-color: lightgray lightgray transparent;
+  border-style: solid;
   border-width: thin;
 }
   .searchResult-item:last-child {
-    border-bottom-style: solid;
+    border-bottom-color: lightgray;
   }
 
 .searchResult-itemLink {
@@ -28,6 +28,16 @@ title: (WIP) JavaScript の記号
   .searchResult-itemLink:hover {
     background-color: #9ff1;
   }
+
+.searchResult-childList  .searchResult-item {
+  border: none;
+}
+.searchResult-childList {
+  list-style: none;
+  margin-bottom: 1px;
+  margin-right: 1px;
+  padding-left: 1rem;
+}
 </style>
 
 <script src="./script.js"></script>
