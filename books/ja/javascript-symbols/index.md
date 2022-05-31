@@ -520,13 +520,13 @@ for (let i = 0; i < arr.length; i++) {
 
 ### `case key:` `case` 節
 
-- [ECMAScript® 2023 Language Specification - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
+- [14.12 The switch Statement - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
 
 TODO
 
 ### `default:` `default` 節
 
-- [ECMAScript® 2023 Language Specification - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
+- [14.12 The switch Statement - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
 
 TODO
 
@@ -538,7 +538,7 @@ TODO
 
 ### `{ prop: key } = obj`, `function ({ prop: key }) {}` 分割代入の一部
 
-- [ECMAScript® 2023 Language Specification - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
+- [13.15.5 Destructuring Assignment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
 
 TODO
 
