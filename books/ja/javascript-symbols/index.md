@@ -56,8 +56,8 @@ title: (WIP) JavaScript の記号
 
 *white space* 空白、スペース、ホワイトスペース
 
-- [ECMAScript® 2023 Language Specification - 12.2 White Space](https://tc39.es/ecma262/#sec-white-space)
-- [ECMAScript® 2023 Language Specification - 12.3 Line Terminators](https://tc39.es/ecma262/#sec-line-terminators)
+- [ECMAScript® 2023 Language Specification - 12.2 White Space](https://tc39.es/ecma262/#sec-white-space)
+- [ECMAScript® 2023 Language Specification - 12.3 Line Terminators](https://tc39.es/ecma262/#sec-line-terminators)
 - [字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar)
 
 トークンの区切りとして扱われる。ただのスペースの他タブやいくつかの空白文字を含み、いずれも差はない。多くの場合は改行も同じような扱いで、つまり 1 行に全て書いても良いし全ての区切りで改行しても良い。インデントも任意。
@@ -90,8 +90,8 @@ return           a
 
 *line break*, *line feed*, *carriage return* 改行、ラインフィード、キャリッジリターン
 
-- [ECMAScript® 2023 Language Specification - 12.2 White Space](https://tc39.es/ecma262/#sec-white-space)
-- [ECMAScript® 2023 Language Specification - 12.3 Line Terminators](https://tc39.es/ecma262/#sec-line-terminators)
+- [ECMAScript® 2023 Language Specification - 12.2 White Space](https://tc39.es/ecma262/#sec-white-space)
+- [ECMAScript® 2023 Language Specification - 12.3 Line Terminators](https://tc39.es/ecma262/#sec-line-terminators)
 - [ECMAScript® 2023 Language Specification - 12.9 Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion)
 - [字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar)
 
@@ -263,7 +263,7 @@ const m = Symbol() - 0;
 
 - [ECMAScript® 2023 Language Specification - *SignedInteger*](https://tc39.es/ecma262/#prod-SignedInteger)
 - [ECMAScript® 2023 Language Specification - 12.8.3 Numeric Literals](https://tc39.es/ecma262/#sec-literals-numeric-literals)
-- [ECMAScript® 2023 Language Specification - 6.1.6 Numeric Types](https://tc39.es/ecma262/#sec-numeric-types)
+- [ECMAScript® 2023 Language Specification - 6.1.6 Numeric Types](https://tc39.es/ecma262/#sec-numeric-types)
 - [字句文法 - JavaScript | MDN - 数値リテラル](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar#%E6%95%B0%E5%80%A4%E3%83%AA%E3%83%86%E3%83%A9%E3%83%AB)
 - [符号付数値表現 - Wikipedia](https://ja.wikipedia.org/wiki/%E7%AC%A6%E5%8F%B7%E4%BB%98%E6%95%B0%E5%80%A4%E8%A1%A8%E7%8F%BE)
 - [Is Negative Zero (-0) a Number in JavaScript? | by Dr. Derek Austin 🥳 | Coding at Dawn | Medium](https://medium.com/coding-at-dawn/is-negative-zero-0-a-number-in-javascript-c62739f80114)
@@ -400,7 +400,7 @@ const b = {
 
 ### `function (param, param) {}` 関数仮引数の一部
 
-- [ECMAScript® 2023 Language Specification - 15.1 Parameter Lists](https://tc39.es/ecma262/#sec-parameter-lists)
+- [ECMAScript® 2023 Language Specification - 15.1 Parameter Lists](https://tc39.es/ecma262/#sec-parameter-lists)
 
 各種関数宣言における仮引数の区切り文字。
 
@@ -422,7 +422,7 @@ function longFunctionName(
 
 ### `f(value, value)` 関数呼び出しの一部
 
-- [ECMAScript® 2023 Language Specification - 13.3 Left-Hand-Side Expressions](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
+- [ECMAScript® 2023 Language Specification - 13.3 Left-Hand-Side Expressions](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
 
 各種関数呼び出しにおける引数の区切り文字。
 
@@ -449,9 +449,9 @@ const someNiceResult = longFunctionName(
 
 ### `value;` 文の終端
 
-- [ECMAScript® 2023 Language Specification - 14 ECMAScript Language: Statements and Declarations](https://tc39.es/ecma262/#sec-ecmascript-language-statements-and-declarations)
-- [ECMAScript® 2023 Language Specification - 12.9 Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion)
-- [ECMAScript® 2023 Language Specification - 16.2 Modules](https://tc39.es/ecma262/#sec-modules)
+- [ECMAScript® 2023 Language Specification - 14 ECMAScript Language: Statements and Declarations](https://tc39.es/ecma262/#sec-ecmascript-language-statements-and-declarations)
+- [ECMAScript® 2023 Language Specification - 12.9 Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion)
+- [ECMAScript® 2023 Language Specification - 16.2 Modules](https://tc39.es/ecma262/#sec-modules)
 - [字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar)
 
 終端として各種の文 (statement) や宣言 (declaration) の末尾に出現する記号。
@@ -497,7 +497,7 @@ const d = 4
 
 ### `for (let i = 0; i < length; i++)` `for` 文の一部
 
-- [ECMAScript® 2023 Language Specification - 14.7.4 The for Statement](https://tc39.es/ecma262/#sec-for-statement)
+- [ECMAScript® 2023 Language Specification - 14.7.4 The for Statement](https://tc39.es/ecma262/#sec-for-statement)
 - [for - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for)
 
 `for (<初期化>; <条件>; <更新>)` のように、`for` 文のうち繰り返しの制御を記述する部分を分かつのに用いられる。
@@ -520,13 +520,13 @@ for (let i = 0; i < arr.length; i++) {
 
 ### `case key:` `case` 節
 
-- [ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
+- [ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
 
 TODO
 
 ### `default:` `default` 節
 
-- [ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
+- [ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
 
 TODO
 
@@ -538,7 +538,7 @@ TODO
 
 ### `{ prop: key } = obj`, `function ({ prop: key }) {}` 分割代入の一部
 
-- [ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
+- [ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
 
 TODO
 
@@ -550,7 +550,7 @@ JavaScript ではなく TypeScript の文法。
 
 ### `key:` ラベル
 
-- [ECMAScript® 2023 Language Specification - 14.13 Labelled Statements](https://tc39.es/ecma262/#sec-labelled-statements)
+- [ECMAScript® 2023 Language Specification - 14.13 Labelled Statements](https://tc39.es/ecma262/#sec-labelled-statements)
 - [label - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/label)
 
 `break` や `continue` で「ジャンプ」する先の位置を定義する文法。
@@ -766,8 +766,8 @@ const a = obj.a; // => 1
 
 ### `{ ...key } = value`, `[...arr] = key`, `function (...arr) {}` 分割代入（スプレッド構文）
 
-- [ECMAScript® 2023 Language Specification - 14.3.3 Destructuring Binding Patterns](https://tc39.es/ecma262/#sec-destructuring-binding-patterns)
-- [ECMAScript® 2023 Language Specification - 12.7 Punctuators](https://tc39.es/ecma262/#sec-punctuators)
+- [ECMAScript® 2023 Language Specification - 14.3.3 Destructuring Binding Patterns](https://tc39.es/ecma262/#sec-destructuring-binding-patterns)
+- [ECMAScript® 2023 Language Specification - 12.7 Punctuators](https://tc39.es/ecma262/#sec-punctuators)
 
 構文であり演算子ではない。
 
@@ -864,13 +864,13 @@ TODO
 
 ### `/*`, `*/` 複数行コメント
 
-- [ECMAScript® 2023 Language Specification - 12.4 Comments](https://tc39.es/ecma262/#sec-comments)
+- [ECMAScript® 2023 Language Specification - 12.4 Comments](https://tc39.es/ecma262/#sec-comments)
 
 TODO
 
 ### `// xxx` 一行コメント
 
-- [ECMAScript® 2023 Language Specification - 12.4 Comments](https://tc39.es/ecma262/#sec-comments)
+- [ECMAScript® 2023 Language Specification - 12.4 Comments](https://tc39.es/ecma262/#sec-comments)
 
 TODO
 
