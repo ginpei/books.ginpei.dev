@@ -56,8 +56,8 @@ title: (WIP) JavaScript の記号
 
 *white space* 空白、スペース、ホワイトスペース
 
-- [ECMAScript® 2023 Language Specification - 12.2 White Space](https://tc39.es/ecma262/#sec-white-space)
-- [ECMAScript® 2023 Language Specification - 12.3 Line Terminators](https://tc39.es/ecma262/#sec-line-terminators)
+- [12.2 White Space - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-white-space)
+- [12.3 Line Terminators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-line-terminators)
 - [字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar)
 
 トークンの区切りとして扱われる。ただのスペースの他タブやいくつかの空白文字を含み、いずれも差はない。多くの場合は改行も同じような扱いで、つまり 1 行に全て書いても良いし全ての区切りで改行しても良い。インデントも任意。
@@ -90,9 +90,9 @@ return           a
 
 *line break*, *line feed*, *carriage return* 改行、ラインフィード、キャリッジリターン
 
-- [ECMAScript® 2023 Language Specification - 12.2 White Space](https://tc39.es/ecma262/#sec-white-space)
-- [ECMAScript® 2023 Language Specification - 12.3 Line Terminators](https://tc39.es/ecma262/#sec-line-terminators)
-- [ECMAScript® 2023 Language Specification - 12.9 Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion)
+- [12.2 White Space - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-white-space)
+- [12.3 Line Terminators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-line-terminators)
+- [12.9 Automatic Semicolon Insertion - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion)
 - [字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar)
 
 基本的には空白 ` ` と同じで、トークンの区切りとして扱われる。ただし文法上空白を置ける箇所でも一部は許可されていなかったり、セミコロン `;`  の自動挿入関係で異なる解釈をされる場合がある。
@@ -142,7 +142,7 @@ function ok(someLongParameter, anotherLongParameter) {
 
 ### `_key` 変数や関数の名前
 
-- [ECMAScript® 2023 Language Specification - 12.6 Names and Keywords](https://tc39.es/ecma262/#sec-names-and-keywords)
+- [12.6 Names and Keywords - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-names-and-keywords)
 
 変数や関数の名前として利用できる。特に意味はなく他の文字 `abc` やダラー `$` と同じ。名前の先頭でも利用可能。
 
@@ -170,11 +170,11 @@ _.flatten([1, [2], [3, [[4]]]]);
 _.defaults({ 'a': 1 }, { 'a': 3, 'b': 2 });
 ```
 
-[JavaScript の仕様書 (ECMAScript 2023)](https://tc39.es/ecma262/)では "underscore" の表記が出現する。
+[JavaScript の仕様書 (ECMAScript 2023) - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/)では "underscore" の表記が出現する。
 
 ### `1_000` 数値区切り文字
 
-- [ECMAScript® 2023 Language Specification - 12.8.3 Numeric Literals](https://tc39.es/ecma262/#sec-literals-numeric-literals)
+- [12.8.3 Numeric Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-numeric-literals)
 
 `1234` といった数値に混ぜこんで利用できる。
 
@@ -203,14 +203,14 @@ const a = "-5" - - -1; // => -6
 
 ### `value - value` 引き算演算子
 
-- [ECMAScript® 2023 Language Specification - *AdditiveExpression*](https://tc39.es/ecma262/#prod-AdditiveExpression)
-- [ECMAScript® 2023 Language Specification - 13.8.2 The Subtraction Operator ( `-` )](https://tc39.es/ecma262/#sec-subtraction-operator-minus)
+- [*AdditiveExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AdditiveExpression)
+- [13.8.2 The Subtraction Operator ( `-` ) - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-subtraction-operator-minus)
 - [減算 (-) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Subtraction)
-- [ECMAScript® 2023 Language Specification - Table 13: ToNumber Conversions](https://tc39.es/ecma262/#table-tonumber-conversions)
+- [Table 13: ToNumber Conversions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#table-tonumber-conversions)
 
 `value - value` など。左辺から右辺を引く。
 
-左辺や右辺が数値でない場合、数値へ変換してから計算される。[変換方法は値の型による](https://tc39.es/ecma262/#table-tonumber-conversions)。
+左辺や右辺が数値でない場合、数値へ変換してから計算される。[変換方法は値の型による - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#table-tonumber-conversions)。
 
 ```js
 const a = true - 0; // => 1
@@ -253,17 +253,17 @@ const m = Symbol() - 0;
 
 ### `-value` 単項マイナス演算子
 
-- [ECMAScript® 2023 Language Specification - *UnaryExpression*](https://tc39.es/ecma262/#prod-UnaryExpression)
-- [ECMAScript® 2023 Language Specification - 13.5.5 Unary `-` Operator](https://tc39.es/ecma262/#sec-unary-minus-operator)
+- [*UnaryExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UnaryExpression)
+- [13.5.5 Unary `-` Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-unary-minus-operator)
 - [単項マイナス (-) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Unary_negation)
 
 `-value` や `- 1` など。左辺を持たず右辺のみを取り演算する単項演算子。右辺の数値の符号 (+/-) を反転させる。
 
 ### `-1` 数値リテラルの一部（符号付き整数）
 
-- [ECMAScript® 2023 Language Specification - *SignedInteger*](https://tc39.es/ecma262/#prod-SignedInteger)
-- [ECMAScript® 2023 Language Specification - 12.8.3 Numeric Literals](https://tc39.es/ecma262/#sec-literals-numeric-literals)
-- [ECMAScript® 2023 Language Specification - 6.1.6 Numeric Types](https://tc39.es/ecma262/#sec-numeric-types)
+- [*SignedInteger* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-SignedInteger)
+- [12.8.3 Numeric Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-numeric-literals)
+- [6.1.6 Numeric Types - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-numeric-types)
 - [字句文法 - JavaScript | MDN - 数値リテラル](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar#%E6%95%B0%E5%80%A4%E3%83%AA%E3%83%86%E3%83%A9%E3%83%AB)
 - [符号付数値表現 - Wikipedia](https://ja.wikipedia.org/wiki/%E7%AC%A6%E5%8F%B7%E4%BB%98%E6%95%B0%E5%80%A4%E8%A1%A8%E7%8F%BE)
 - [Is Negative Zero (-0) a Number in JavaScript? | by Dr. Derek Austin 🥳 | Coding at Dawn | Medium](https://medium.com/coding-at-dawn/is-negative-zero-0-a-number-in-javascript-c62739f80114)
@@ -280,8 +280,8 @@ const c = 1 / -0; // -Infinity
 
 ### `--value` 前置き減算演算子
 
-- [ECMAScript® 2023 Language Specification - *UpdateExpression*](https://tc39.es/ecma262/#prod-UpdateExpression)
-- [ECMAScript® 2023 Language Specification - 13.4.5 Prefix Decrement Operator](https://tc39.es/ecma262/#sec-prefix-decrement-operator)
+- [*UpdateExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UpdateExpression)
+- [13.4.5 Prefix Decrement Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-prefix-decrement-operator)
 - [デクリメント (--) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Decrement)
 
 変数 `value` を 1 減算した結果を `value` に代入し、その値を評価値として返す。`value--` との違いに注意。
@@ -298,8 +298,8 @@ console.log(a, b); // => 9, 9
 
 ### `value--` 後置き減算演算子
 
-- [ECMAScript® 2023 Language Specification - *UpdateExpression*](https://tc39.es/ecma262/#prod-UpdateExpression)
-- [ECMAScript® 2023 Language Specification - 13.4.3 Postfix Decrement Operator](https://tc39.es/ecma262/#sec-postfix-decrement-operator)
+- [*UpdateExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UpdateExpression)
+- [13.4.3 Postfix Decrement Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-postfix-decrement-operator)
 - [デクリメント (--) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Decrement)
 
 変数 `value` を 1 減算した結果を `value` に代入し、減算前の値を評価値として返す。`--value` との違いに注意。
@@ -314,7 +314,7 @@ console.log(a, b); // => 10, 9
 
 ### `key -= value` 代入演算子のひとつ
 
-- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 
 TODO
 
@@ -324,7 +324,7 @@ TODO
 
 ### `a, b` カンマ演算子
 
-- [ECMAScript® 2023 Language Specification - 13.16 Comma Operator ( `,` )](https://tc39.es/ecma262/#sec-comma-operator)
+- [13.16 Comma Operator ( `,` ) - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-comma-operator)
 - [カンマ演算子 (,) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Comma_Operator)
 
 左辺を評価し、その後右辺を評価しその値を返す。
@@ -348,7 +348,7 @@ for (let i = 0, count = 0; i < str.length && count < MAX; i++) {
 
 ### `[value, value]` 配列初期化子の一部
 
-- [ECMAScript® 2023 Language Specification - 13.2.4 Array Initializer](https://tc39.es/ecma262/#sec-array-initializer)
+- [13.2.4 Array Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-array-initializer)
 
 いわゆる配列リテラルで要素を区切るのに用いる。末尾に置いても良い。
 
@@ -386,7 +386,7 @@ for (const v of b) {
 
 ### `{ prop: value, prop: value }` オブジェクト初期化子の一部
 
-- [ECMAScript® 2023 Language Specification - 13.2.5 Object Initializer](https://tc39.es/ecma262/#sec-object-initializer)
+- [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
 
 いわゆるオブジェクトリテラルで要素を区切るのに用いる。末尾に置いても良い。
 
@@ -400,7 +400,7 @@ const b = {
 
 ### `function (param, param) {}` 関数仮引数の一部
 
-- [ECMAScript® 2023 Language Specification - 15.1 Parameter Lists](https://tc39.es/ecma262/#sec-parameter-lists)
+- [15.1 Parameter Lists - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-parameter-lists)
 
 各種関数宣言における仮引数の区切り文字。
 
@@ -422,7 +422,7 @@ function longFunctionName(
 
 ### `f(value, value)` 関数呼び出しの一部
 
-- [ECMAScript® 2023 Language Specification - 13.3 Left-Hand-Side Expressions](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
+- [13.3 Left-Hand-Side Expressions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
 
 各種関数呼び出しにおける引数の区切り文字。
 
@@ -449,9 +449,9 @@ const someNiceResult = longFunctionName(
 
 ### `value;` 文の終端
 
-- [ECMAScript® 2023 Language Specification - 14 ECMAScript Language: Statements and Declarations](https://tc39.es/ecma262/#sec-ecmascript-language-statements-and-declarations)
-- [ECMAScript® 2023 Language Specification - 12.9 Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion)
-- [ECMAScript® 2023 Language Specification - 16.2 Modules](https://tc39.es/ecma262/#sec-modules)
+- [14 ECMAScript Language: Statements and Declarations - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-ecmascript-language-statements-and-declarations)
+- [12.9 Automatic Semicolon Insertion - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion)
+- [16.2 Modules - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-modules)
 - [字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar)
 
 終端として各種の文 (statement) や宣言 (declaration) の末尾に出現する記号。
@@ -497,7 +497,7 @@ const d = 4
 
 ### `for (let i = 0; i < length; i++)` `for` 文の一部
 
-- [ECMAScript® 2023 Language Specification - 14.7.4 The for Statement](https://tc39.es/ecma262/#sec-for-statement)
+- [14.7.4 The for Statement - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-for-statement)
 - [for - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for)
 
 `for (<初期化>; <条件>; <更新>)` のように、`for` 文のうち繰り返しの制御を記述する部分を分かつのに用いられる。
@@ -520,25 +520,25 @@ for (let i = 0; i < arr.length; i++) {
 
 ### `case key:` `case` 節
 
-- [ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
+- [ECMAScript® 2023 Language Specification - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
 
 TODO
 
 ### `default:` `default` 節
 
-- [ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
+- [ECMAScript® 2023 Language Specification - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
 
 TODO
 
 ### `{ prop: value }` オブジェクト初期化子の一部
 
-- [ECMAScript® 2023 Language Specification - 13.2.5 Object Initializer](https://tc39.es/ecma262/#sec-object-initializer)
+- [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
 
 TODO
 
 ### `{ prop: key } = obj`, `function ({ prop: key }) {}` 分割代入の一部
 
-- [ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
+- [ECMAScript® 2023 Language Specification - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
 
 TODO
 
@@ -550,7 +550,7 @@ JavaScript ではなく TypeScript の文法。
 
 ### `key:` ラベル
 
-- [ECMAScript® 2023 Language Specification - 14.13 Labelled Statements](https://tc39.es/ecma262/#sec-labelled-statements)
+- [14.13 Labelled Statements - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-labelled-statements)
 - [label - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/label)
 
 `break` や `continue` で「ジャンプ」する先の位置を定義する文法。
@@ -565,7 +565,7 @@ JavaScript ではなく TypeScript の文法。
 
 ### `!value` 論理否定演算子
 
-- [ECMAScript® 2023 Language Specification - 13.5.7 Logical NOT Operator ( `!` )](https://tc39.es/ecma262/#sec-logical-not-operator)
+- [13.5.7 Logical NOT Operator ( `!` ) - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-logical-not-operator)
 - [論理否定 (!) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Logical_NOT)
 
 右辺の真偽 `true`, `false` を反転させる演算子。真偽値ではない場合、まず変換してから反転させる。
@@ -586,7 +586,7 @@ const d = !!c; // `false` となる
 
 "truthy" とは真偽値へ変換した際に `true` となるもののこと。同じく "falsy" は `false` となるもの。`0` や空文字列 `""` は falsy だが、空のオブジェクト `{}` や配列 `[]` は truthy 。
 
-[`Boolean` コンストラクター](https://tc39.es/ecma262/#sec-boolean-objects)を関数として使う（`new` を付けない）ことで、この `!!` の代替とできる。<small>（その方が明瞭で良いと思う。）</small>
+[`Boolean` コンストラクター - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-boolean-objects)を関数として使う（`new` を付けない）ことで、この `!!` の代替とできる。<small>（その方が明瞭で良いと思う。）</small>
 
 ```js
 const a = Boolean(1); // => true
@@ -594,7 +594,7 @@ const a = Boolean(1); // => true
 
 ### `value != value` 不等価演算子
 
-- [ECMAScript® 2023 Language Specification - 13.11 Equality Operators](https://tc39.es/ecma262/#sec-equality-operators)
+- [13.11 Equality Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-equality-operators)
 - [不等価 (!=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Inequality)
 
 `!==` と同じようなもの。ただし左右の値をふわっと変換してよさげに比較する。
@@ -605,7 +605,7 @@ const a = Boolean(1); // => true
 
 ### `value !== value` 厳密不等価演算子
 
-- [ECMAScript® 2023 Language Specification - 13.11 Equality Operators](https://tc39.es/ecma262/#sec-equality-operators)
+- [13.11 Equality Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-equality-operators)
 - [厳密不等価 (!==) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Strict_inequality)
 
 左右の値を比較して同じでなければ `true` 、そうでなければ `false` を返す。
@@ -624,7 +624,7 @@ JavaScript ではなく TypeScript の機能。nullable な値を非 nullable �
 
 ### `condition ? value : value` 条件演算子
 
-- [ECMAScript® 2023 Language Specification - 13.14 Conditional Operator ( `? :` )](https://tc39.es/ecma262/#sec-conditional-operator)
+- [13.14 Conditional Operator ( `? :` ) - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-conditional-operator)
 - [条件 (三項) 演算子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
 
 `<条件> ? <真の場合の評価値> : <偽の場合の評価値>` の形を取る。3 つの項を取る唯一の演算子なので「三項演算子」とも呼ばれる。（二項演算子、単項演算子は複数ある。）
@@ -666,8 +666,8 @@ const g = obj.b || 1; // => 1
 
 ### `obj?.prop` オプショナルチェイン構文
 
-- [ECMAScript® 2023 Language Specification - 13.3 Left-Hand-Side Expressions](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
-- [ECMAScript® 2023 Language Specification - 13.3.9 Optional Chains](https://tc39.es/ecma262/#sec-optional-chains)
+- [13.3 Left-Hand-Side Expressions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
+- [13.3.9 Optional Chains - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-optional-chains)
 
 左側が `null` または `undefined` であれば `undefined` を、そうでない場合は左側を receiver として右側の名前のプロパティを返す。<small>（receiver という表現で正確だろうか？）</small>　なお `null` の場合でも `null` ではなく `undefined` が返る点に注意。
 
@@ -716,17 +716,17 @@ const c = obj.c && obj.c.toFixed(2); // => 0
 
 ### `f?.()`, `obj?.[value]` オプショナルチェイン構文
 
-- [ECMAScript® 2023 Language Specification - 13.3 Left-Hand-Side Expressions](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
+- [13.3 Left-Hand-Side Expressions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
 
 プロパティアクセス用のオプショナルチェイン構文 `obj?.prop` と同様、左側が nullish かどうかで判断される構文。
 
 `new` と組み合わせた `new f?.()` は構文エラーになる。（例：SyntaxError: Invalid tagged template on optional chain）
 
-テンプレートリテラルとの組み合わせ <code>f?.&#x60;xxx&#x60;</code> は、[字句解析](https://tc39.es/ecma262/#prod-OptionalChain)の仕様上は許可されているものの[文法エラーを発生する](https://tc39.es/ecma262/#sec-left-hand-side-expressions-static-semantics-early-errors)よう定められている。（例：SyntaxError: Invalid optional chain from new expression）<small>（用語の扱いが不正確かもしれない。エラーになるのはマジ。)</small>
+テンプレートリテラルとの組み合わせ <code>f?.&#x60;xxx&#x60;</code> は、[字句解析 - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-OptionalChain)の仕様上は許可されているものの[文法エラーを発生する - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-left-hand-side-expressions-static-semantics-early-errors)よう定められている。（例：SyntaxError: Invalid optional chain from new expression）<small>（用語の扱いが不正確かもしれない。エラーになるのはマジ。)</small>
 
 ### `key ??= value` 代入演算子のひとつ
 
-- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 
 TODO
 
@@ -738,8 +738,8 @@ TODO
 
 ### `obj.prop` メンバー構文（プロパティアクセサー）
 
-- [ECMAScript® 2023 Language Specification - 13.3 Left-Hand-Side Expressions](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
-- [ECMAScript® 2023 Language Specification - 13.3.2 Property Accessors](https://tc39.es/ecma262/#sec-property-accessors)
+- [13.3 Left-Hand-Side Expressions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
+- [13.3.2 Property Accessors - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-property-accessors)
 - [プロパティアクセサー - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Property_Accessors)
 
 オブジェクトのプロパティにアクセスする。
@@ -766,8 +766,8 @@ const a = obj.a; // => 1
 
 ### `{ ...key } = value`, `[...arr] = key`, `function (...arr) {}` 分割代入（スプレッド構文）
 
-- [ECMAScript® 2023 Language Specification - 14.3.3 Destructuring Binding Patterns](https://tc39.es/ecma262/#sec-destructuring-binding-patterns)
-- [ECMAScript® 2023 Language Specification - 12.7 Punctuators](https://tc39.es/ecma262/#sec-punctuators)
+- [14.3.3 Destructuring Binding Patterns - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-binding-patterns)
+- [12.7 Punctuators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-punctuators)
 
 構文であり演算子ではない。
 
@@ -833,14 +833,14 @@ TODO
 
 ### `key *= value` 代入演算子のひとつ
 
-- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 
 
 TODO
 
 ### `key **= value` 代入演算子のひとつ
 
-- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 
 TODO
 
@@ -854,7 +854,7 @@ TODO
 
 ### `key /= value` 代入演算子のひとつ
 
-- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 
 TODO
 
@@ -864,13 +864,13 @@ TODO
 
 ### `/*`, `*/` 複数行コメント
 
-- [ECMAScript® 2023 Language Specification - 12.4 Comments](https://tc39.es/ecma262/#sec-comments)
+- [12.4 Comments - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-comments)
 
 TODO
 
 ### `// xxx` 一行コメント
 
-- [ECMAScript® 2023 Language Specification - 12.4 Comments](https://tc39.es/ecma262/#sec-comments)
+- [12.4 Comments - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-comments)
 
 TODO
 
@@ -880,7 +880,7 @@ TODO
 
 ### `"\n"`, `"\r"` 改行文字
 
-- [ECMAScript® 2023 Language Specification - Table 73: JSON Single Character Escape Sequences](https://tc39.es/ecma262/#table-json-single-character-escapes)
+- [Table 73: JSON Single Character Escape Sequences - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#table-json-single-character-escapes)
 - [改行コード - Wikipedia](https://ja.wikipedia.org/wiki/%E6%94%B9%E8%A1%8C%E3%82%B3%E3%83%BC%E3%83%89)
 - [キャリッジ・リターン - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%AA%E3%83%83%E3%82%B8%E3%83%BB%E3%83%AA%E3%82%BF%E3%83%BC%E3%83%B3)
 
@@ -896,11 +896,11 @@ undefined
 
 ### `"\t"` タブ文字
 
-- [ECMAScript® 2023 Language Specification - Table 73: JSON Single Character Escape Sequences](https://tc39.es/ecma262/#table-json-single-character-escapes)
+- [Table 73: JSON Single Character Escape Sequences - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#table-json-single-character-escapes)
 
 ### `"\u0000"` Unicode エスケープシーケンス
 
-- [ECMAScript® 2023 Language Specification - 25.5.2.4 UnicodeEscape ( `C` )](https://tc39.es/ecma262/#sec-unicodeescape)
+- [25.5.2.4 UnicodeEscape ( `C` ) - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-unicodeescape)
 
 `\u0061` と `\u{61}` は `a` になる。（`"a".charCodeAt(0).toString(16)` つまり "a" の文字コードは 0x61 。）
 
@@ -929,13 +929,13 @@ TODO
 
 ### `key &= value` 代入演算子のひとつ
 
-- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 
 TODO
 
 ### `key &&= value` 代入演算子のひとつ
 
-- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 
 TODO
 
@@ -953,7 +953,7 @@ JavaScript ではなく HTML。
 
 ### `#prop`, `#f() {}` プライベートメンバーの宣言
 
-- [ECMAScript® 2023 Language Specification - 15.7 Class Definitions](https://tc39.es/ecma262/#sec-class-definitions)
+- [15.7 Class Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-class-definitions)
 - [プライベートクラス機能 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Classes/Private_class_fields)
 - [JavaScript classes: Private class fields | Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/mdn-javascript_classes_private_class_fields)
 
@@ -1015,7 +1015,7 @@ console.log("#prop" in obj); // => false
 
 ### `this.#prop`, `this.#f()` プライベートメンバーへのアクセス
 
-- [ECMAScript® 2023 Language Specification - 15.7 Class Definitions](https://tc39.es/ecma262/#sec-class-definitions)
+- [15.7 Class Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-class-definitions)
 - [プライベートクラス機能 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Classes/Private_class_fields)
 - [JavaScript classes: Private class fields | Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/mdn-javascript_classes_private_class_fields)
 
@@ -1099,14 +1099,14 @@ TODO
 
 ### `value == value`
 
-- [ECMAScript® 2023 Language Specification - 13.11 Equality Operators](https://tc39.es/ecma262/#sec-equality-operators)
+- [13.11 Equality Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-equality-operators)
 - [等価 (==) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Equality)
 
 TODO
 
 ### `value === value`
 
-- [ECMAScript® 2023 Language Specification - 13.11 Equality Operators](https://tc39.es/ecma262/#sec-equality-operators)
+- [13.11 Equality Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-equality-operators)
 - [厳密等価 (===) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Strict_equality)
 
 TODO
@@ -1149,13 +1149,13 @@ TODO
 
 ### `key |= value` 代入演算子のひとつ
 
-- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 
 TODO
 
 ### `key ||= value` 代入演算子のひとつ
 
-- [ECMAScript® 2023 Language Specification - 13.15 Assignment Operators](https://tc39.es/ecma262/#sec-assignment-operators)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 
 TODO
 
@@ -1173,7 +1173,7 @@ TODO
 
 ### `$key` 変数や関数の名前
 
-- [ECMAScript® 2023 Language Specification - 12.6 Names and Keywords](https://tc39.es/ecma262/#sec-names-and-keywords)
+- [12.6 Names and Keywords - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-names-and-keywords)
 
 変数や関数の名前として利用できる。特に意味はなく他の文字 `abc` やアンダースコア `_` と同じ。名前の先頭でも利用可能。
 
@@ -1218,7 +1218,7 @@ TODO
 
 ### `0x00`, `0o00`, `0b00` 数値リテラルの一部（進数）
 
-- [ECMAScript® 2023 Language Specification - 12.8.3 Numeric Literals](https://tc39.es/ecma262/#sec-literals-numeric-literals)
+- [12.8.3 Numeric Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-numeric-literals)
 
 数値への接頭辞 `0x`, `0X` (HexIntegerLiteral) は 16 進数を意味する。同じく `0o`, `0O` (OctalIntegerLiteral) は 8 進数、`0b`, `0B` (BinaryIntegerLiteral) は 2 進数となる。
 
@@ -1232,7 +1232,7 @@ const d =   10; // => 10
 ### `0e0` 数値リテラルの一部（指数）
 
 - [BigInt - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
-- [ECMAScript® 2023 Language Specification - 12.8.3 Numeric Literals](https://tc39.es/ecma262/#sec-literals-numeric-literals)
+- [12.8.3 Numeric Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-numeric-literals)
 
 例えば `3e2` のようにして指数を表現する。この場合は `3 * 10 ** 2` となる。
 
@@ -1247,11 +1247,11 @@ const pi = 314e-2; // => 3.14
 
 ### `function* () {}` ジェネレーター関数
 
-- [ECMAScript® 2023 Language Specification - 15.5 Generator Function Definitions](https://tc39.es/ecma262/#sec-generator-function-definitions)
+- [15.5 Generator Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-generator-function-definitions)
 
 ### `0n` 数値リテラルの一部（bigint）
 
-- [ECMAScript® 2023 Language Specification - 12.8.3 Numeric Literals](https://tc39.es/ecma262/#sec-literals-numeric-literals)
+- [12.8.3 Numeric Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-numeric-literals)
 - [BigInt - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
 
 `123n` のように接尾辞を与えると、数値が bigint (BigInt) になる。通常の数値 number とは一部異なる。
