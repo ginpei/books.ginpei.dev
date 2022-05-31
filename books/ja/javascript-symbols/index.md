@@ -253,6 +253,7 @@ const m = Symbol() - 0;
 
 ### `-value` 単項マイナス演算子
 
+- [ECMAScript® 2023 Language Specification - *UnaryExpression*](https://tc39.es/ecma262/#prod-UnaryExpression)
 - [ECMAScript® 2023 Language Specification - 13.5.5 Unary `-` Operator](https://tc39.es/ecma262/#sec-unary-minus-operator)
 - [単項マイナス (-) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Unary_negation)
 
@@ -260,8 +261,10 @@ const m = Symbol() - 0;
 
 ### `-1` 数値リテラルの一部（符号付き整数）
 
+- [ECMAScript® 2023 Language Specification - *SignedInteger*](https://tc39.es/ecma262/#prod-SignedInteger)
 - [ECMAScript® 2023 Language Specification - 12.8.3 Numeric Literals](https://tc39.es/ecma262/#sec-literals-numeric-literals)
 - [ECMAScript® 2023 Language Specification - 6.1.6 Numeric Types](https://tc39.es/ecma262/#sec-numeric-types)
+- [字句文法 - JavaScript | MDN - 数値リテラル](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar#%E6%95%B0%E5%80%A4%E3%83%AA%E3%83%86%E3%83%A9%E3%83%AB)
 - [符号付数値表現 - Wikipedia](https://ja.wikipedia.org/wiki/%E7%AC%A6%E5%8F%B7%E4%BB%98%E6%95%B0%E5%80%A4%E8%A1%A8%E7%8F%BE)
 - [Is Negative Zero (-0) a Number in JavaScript? | by Dr. Derek Austin 🥳 | Coding at Dawn | Medium](https://medium.com/coding-at-dawn/is-negative-zero-0-a-number-in-javascript-c62739f80114)
 
@@ -277,7 +280,9 @@ const c = 1 / -0; // -Infinity
 
 ### `--value` 前置き減算演算子
 
+- [ECMAScript® 2023 Language Specification - *UpdateExpression*](https://tc39.es/ecma262/#prod-UpdateExpression)
 - [ECMAScript® 2023 Language Specification - 13.4.5 Prefix Decrement Operator](https://tc39.es/ecma262/#sec-prefix-decrement-operator)
+- [デクリメント (--) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Decrement)
 
 変数 `value` を 1 減算した結果を `value` に代入し、その値を評価値として返す。`value--` との違いに注意。
 
@@ -293,7 +298,9 @@ console.log(a, b); // => 9, 9
 
 ### `value--` 後置き減算演算子
 
+- [ECMAScript® 2023 Language Specification - *UpdateExpression*](https://tc39.es/ecma262/#prod-UpdateExpression)
 - [ECMAScript® 2023 Language Specification - 13.4.3 Postfix Decrement Operator](https://tc39.es/ecma262/#sec-postfix-decrement-operator)
+- [デクリメント (--) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Decrement)
 
 変数 `value` を 1 減算した結果を `value` に代入し、減算前の値を評価値として返す。`--value` との違いに注意。
 
