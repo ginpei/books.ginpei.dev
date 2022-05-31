@@ -203,6 +203,7 @@ const a = "-5" - - -1; // => -6
 
 ### `value - value` 引き算演算子
 
+- [ECMAScript® 2023 Language Specification - *AdditiveExpression*](https://tc39.es/ecma262/#prod-AdditiveExpression)
 - [ECMAScript® 2023 Language Specification - 13.8.2 The Subtraction Operator ( `-` )](https://tc39.es/ecma262/#sec-subtraction-operator-minus)
 - [減算 (-) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Subtraction)
 - [ECMAScript® 2023 Language Specification - Table 13: ToNumber Conversions](https://tc39.es/ecma262/#table-tonumber-conversions)
