@@ -205,8 +205,50 @@ const a = "-5" - - -1; // => -6
 
 - [ECMAScript® 2023 Language Specification - 13.8.2 The Subtraction Operator ( `-` )](https://tc39.es/ecma262/#sec-subtraction-operator-minus)
 - [減算 (-) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Subtraction)
+- [ECMAScript® 2023 Language Specification - Table 13: ToNumber Conversions](https://tc39.es/ecma262/#table-tonumber-conversions)
 
 `value - value` など。左辺から右辺を引く。
+
+左辺や右辺が数値でない場合、数値へ変換してから計算される。[変換方法は値の型による](https://tc39.es/ecma262/#table-tonumber-conversions)。
+
+```js
+const a = true - 0; // => 1
+const b = false - 0; // => 0
+const c = null - 0; // => 0
+const d = undefined - 0; // => NaN
+```
+
+文字列は `Number()` コンストラクターを関数として使う（`new` を付けない）場合と同じ方法で変換される。
+
+```js
+const e = "1" - 0; // => 1
+const f = "a" - 0; // => NaN
+```
+
+オブジェクトは基本的に `NaN` になるが、`valueOf()` や `toString()` が実装されている場合はそれらが利用される。<small>（どこの変換作業で `NaN` になるんだろ？）</small>
+
+```js
+const g = {} - 0; // => NaN
+const h = { valueOf: () => 1 } - 0; // => 1
+const i = { toString: () => "1" } - 0; // => 1
+const j = { [Symbol.toPrimitive]: () => 1 } - 0 // => 1
+```
+
+[big int `123n`](#0n-数値リテラルの一部（bigint）) でも利用できるが、数値（や数値へ変換されるもの）と混ぜるとエラー。
+
+```js
+const k = 1n - 0n; // => 1n
+
+// ⛔ TypeError: Cannot mix BigInt and other types, use explicit conversions
+const l = 1n - 0;
+```
+
+シンボルは数値へ変換できないのでエラーになる。
+
+```js
+// ⛔ TypeError: Cannot convert a Symbol value to a number
+const m = Symbol() - 0;
+```
 
 ### `-value` 単項マイナス演算子
 
