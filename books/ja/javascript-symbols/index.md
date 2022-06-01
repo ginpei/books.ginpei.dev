@@ -1016,20 +1016,20 @@ TODO
 - [13.5.2 The void Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-void-operator)
 - [13.5.3 The typeof Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-typeof-operator)
 
-`delete`, `void`, `typeof` は本来はいずれも括弧不要の単項演算子。しかし括弧を付け関数のように書いても動く。（通常空白でトークンの区切りを表すところを括弧で代用したことになる。）
-
-```js
-const a = delete(obj.prop); // => true or false
-const b = void(obj); // => undefined
-const c = typeof(obj); // => "object"
-```
-
-これらは以下のように書ける。
+`delete`, `void`, `typeof` は本来はいずれも括弧不要の単項演算子。
 
 ```js
 const a = delete obj.prop; // => true or false
 const b = void obj; // => undefined
 const c = typeof obj; // => "object"
+```
+
+しかし括弧を付け関数のように書いても動く。（通常空白でトークンの区切りを表すところを括弧で代用したことになる。）
+
+```js
+const a = delete(obj.prop); // => true or false
+const b = void(obj); // => undefined
+const c = typeof(obj); // => "object"
 ```
 
 ## `[`, `]` 角括弧
