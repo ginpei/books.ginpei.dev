@@ -933,7 +933,66 @@ TODO
 
 IIFE = Immediately Invoked Function Expression.
 
-TODO
+`function` から始めると関数宣言文になるところを、括弧で括ることで関数式として文の一部へ組み込みそのまま関数を呼び出す小技。<small>（現代ではあまり使わないと思う。）</small>
+
+```js
+// 関数文
+// （セミコロン `;` 不要）
+function f() {}
+
+// 関数式
+const a = function() { alert("a"); };
+a();
+
+// 即時実行関数式
+(function() { alert("b"); })();
+```
+
+必ずしも括弧である必要はなく、関数文ではなく関数式とできれば何でも良い。
+
+```js
++function(){}();
+!function(){}();
+(function(){}());
+```
+
+効能はスコープを用意できること。その用途は主に 2 つで、ファイルスコープの代わりと `do` 式の代わり。
+
+JavaScript のコードを普通にウェブページで読み込むとグローバル空間を共有してしまうので、ファイルを丸ごとこの即時実行関数で括ることでファイル単位のスコープを作成する。
+
+```js
+// window.a, window.f から見えてしまう
+var a = 123;
+function f() {}
+```
+
+```js
+(function() {
+  // window.a, window.f とは関係ない
+  var a = 123;
+  function f() {}
+})();
+```
+
+ファイルスコープのある [JavaScript モジュール](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Modules) (ES Modules) や Node.js では無意味なので利用されない。またバンドラー（`require()` や `import` から複数のファイルをひとつにまとめるツール。webpack 等）があるならツールが面倒を見てくれるので、気にする必要がない。
+
+後者の `do` 式は、ある値を得るのに複数の工程が必要なときにメソッドチェインや関数呼び出しの入れ子の代わりに利用できる言語機能。現在の JavaScript にはないが新仕様として[検討](https://github.com/tc39/proposal-do-expressions)されている。
+
+```js
+let a = (function() {
+  let tmp = f();
+  return tmp * tmp + 1
+})();
+
+// ⛔ 文法エラー
+// 現在はまだ使えません
+let x = do {
+  let tmp = f();
+  tmp * tmp + 1
+};
+```
+
+<small>（`do` 式の代わりにするのは読みづらいのであまり良くないと思う。）</small>
 
 ### `if ()` if 文の一部
 
