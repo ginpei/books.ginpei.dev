@@ -590,6 +590,7 @@ const d = !!c; // `false` となる
 
 ```js
 const a = Boolean(1); // => true
+const b = Boolean(""); // => false
 ```
 
 ### `value != value` 不等価演算子
