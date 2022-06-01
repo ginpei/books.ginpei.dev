@@ -767,6 +767,9 @@ const a = obj.a; // => 1
 
 ### `{ ...key } = value`, `[...arr] = key`, `function (...arr) {}` 分割代入（スプレッド構文）
 
+- [*AssignmentRestProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentRestProperty)
+- [*BindingRestProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BindingRestProperty)
+- [13.15.5 Destructuring Assignment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
 - [14.3.3 Destructuring Binding Patterns - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-binding-patterns)
 - [12.7 Punctuators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-punctuators)
 
@@ -776,7 +779,24 @@ const a = obj.a; // => 1
 
 TODO
 
-### `{ ...obj }`, `[...arr]`, `f(...arr)` 展開（スプレッド構文）
+### `{ ...obj }` オブジェクトのプロパティ展開（スプレッド構文）-
+
+- [*PropertyDefinition* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-PropertyDefinition)
+- [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
+
+TODO
+
+### `[...arr]` 配列の項目展開（スプレッド構文）
+
+- [*SpreadElement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-SpreadElement)
+- [13.2.4 Array Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-array-initializer)
+
+TODO
+
+### `f(...arr)` 関数の引数展開（スプレッド構文）
+
+- [*ArgumentList* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ArgumentList)
+- [13.3.8 Argument Lists - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-argument-lists)
 
 TODO
 
@@ -784,13 +804,32 @@ TODO
 
 *quote*, *single quote*, *double quote* クォート、シングルクォート、ダブルクォート、引用符、二重引用符
 
+### `"abc"`, `'abc'` 文字列リテラル
+
+- [*StringLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-StringLiteral)
+- [12.8.4 String Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-string-literals)
+
 TODO
 
 ## `(`, `)` 丸括弧
 
 *paren(s)*, *parenthesis (plural: parentheses)* パーレン、丸括弧、小括弧
 
-### `()` 演算順序のあれ
+### `()` 演算順序の優先度変更（括弧付き式）
+
+- [*ParenthesizedExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ParenthesizedExpression)
+
+TODO
+
+### `f()` 関数呼び出し
+
+- [*CallExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-CallExpression)
+
+TODO
+
+### `obj.f()` メソッド呼び出し
+
+- [*CallExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-CallExpression)
 
 TODO
 
@@ -798,7 +837,141 @@ TODO
 
 関数呼び出し `f()` とプロパティアクセス `obj.prop` の組み合わせ。`().` という構文はない。
 
+<small>（読みづらいので `f()` の結果は一度変数に代入してから `obj.prop` でプロパティアクセスするべきだと思う。）</small>
+
+### `super()` スーパークラスのコンストラクター呼び出し
+
+- [*SuperCall* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-SuperCall)
+
 TODO
+
+### `new F()` コンストラクター実行
+
+- [MemberExpression - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MemberExpression)
+
+TODO
+
+### `function () {}` 定義の一部
+
+- [*FunctionDeclaration* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FunctionDeclaration)
+- [*FunctionExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FunctionExpression)
+- [15.2 Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-function-definitions)
+
+TODO
+
+### `{ f() {} }` メソッド定義の一部
+
+- [*MethodDefinition* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MethodDefinition)
+
+オブジェクトリテラルのプロパティとして関数を値に持つものを定義するもの。
+
+```js
+const obj = {
+  f() {
+    // ...
+  },
+};
+```
+
+かつては関数式を用いて書いていた。
+
+```js
+const obj = {
+  f: function() {
+    // ...
+  },
+};
+```
+
+### `{ key: function() {} }` 関数式の一部
+
+- [*FunctionExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FunctionExpression)
+
+TODO
+
+### `{ [key]() {} }` メソッド定義の一部
+
+- [*ComputedPropertyName* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ComputedPropertyName)
+- [*MethodDefinition* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MethodDefinition)
+
+計算プロパティ名 `[key]` を用いたメソッド定義 `{ key(){} }`の方法。
+
+```js
+const methodName = "foo";
+const obj = {
+  [methodName]() {
+    // ...
+  },
+};
+
+obj[methodName]();
+// obj.foo() と同じ
+```
+
+メソッド名をシンボルにする場合に有用。（JavaScript の細かい機能を利用する際に必要となることがある。）
+
+```js
+const obj = {
+  [Symbol.toPrimitive]() {
+    return 10;
+  },
+};
+
+const a = 100 + obj; // => 110
+```
+
+### `import(key)` 動的インポート
+
+- [*ImportCall* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ImportCall)
+- [動的インポート - import - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports)
+
+TODO
+
+### `(function () {})()` 即時実行関数式、IIFE
+
+- [IIFE (即時実行関数式) - MDN Web Docs 用語集: ウェブ関連用語の定義 | MDN](https://developer.mozilla.org/ja/docs/Glossary/IIFE)
+
+IIFE = Immediately Invoked Function Expression.
+
+TODO
+
+### `if ()` if 文の一部
+
+- [*IfStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-IfStatement)
+- [*WhileStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-WhileStatement)
+- [*DoWhileStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-DoWhileStatement)
+- [*SwitchStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-SwitchStatement)
+
+TODO
+
+### `with()` with 文の一部
+
+- [*WithStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-WithStatement)
+
+TODO
+
+### `delete(key)`, `void(key)`, `typeof(key)` 括弧式
+
+- [*UnaryExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UnaryExpression)
+- [13.5.1 The delete Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-delete-operator)
+- [13.5.2 The void Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-void-operator)
+- [13.5.3 The typeof Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-typeof-operator)
+
+`delete`, `void`, `typeof` は本来はいずれも括弧不要の単項演算子。しかし括弧を付け関数のように書いても動く。（通常空白でトークンの区切りを表すところを括弧で代用したことになる。）
+
+```js
+const a = delete(obj.prop); // => true or false
+const b = void(obj); // => undefined
+const c = typeof(obj); // => "object"
+```
+
+これらは以下のように書ける。
+
+```js
+const a = delete obj.prop; // => true or false
+const b = void obj; // => undefined
+const c = typeof obj; // => "object"
+```
 
 ## `[`, `]` 角括弧
 
