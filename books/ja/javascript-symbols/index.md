@@ -518,6 +518,70 @@ for (let i = 0; i < arr.length; i++) {
 
 → `condition ? value : value` 条件演算子
 
+### `{ key: value }` プロパティ定義
+
+- [*PropertyDefinition* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-PropertyDefinition)
+- [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
+
+オブジェクトリテラルでプロパティを定義する。右側に値を与えるが、式ならその評価結果になる。
+
+```js
+const obj = {
+  a: "abc",
+  b: 1 + 2 - 3 * 4 / 5 ** 6 % 7,
+  c: Math.random(), // 関数を実行した結果（数値）
+  d: Math.random,   // 関数オブジェクト自体（`obj.d()` で呼び出し可能）
+  e: function() {},
+  f: () => -1,
+  nest: {
+    foo: {
+      baf: {
+        boo: {},
+      },
+    },
+  },
+};
+```
+
+右側の評価はオブジェクト生成と代入の前に行われるので、再帰構造を表現することはできない。
+
+```js
+// ⛔ まだ `obj.a` はない
+// ReferenceError: obj is not defined
+const obj = { a: obj.a };
+```
+
+右側が変数で、その名前がプロパティ名と同じ場合、省略することができる。
+
+```js
+const foo = "abc";
+const bar = 1;
+
+const obj = {
+  foo: foo, // 省略しない場合
+  bar,      // 省略した場合
+};
+
+const a = obj.foo; // => "abc"
+const b = obj.bar; // => 1
+```
+
+左側プロパティ名は変数名に利用できるものの他、数値リテラル、文字列リテラルも利用可能。与えた名前がドットを用いたプロパティアクセス `obj.key` で利用できないものは、角括弧を用いたプロパティアクセス `obj[key]` で参照できる。なお数値は文字列へ変換される。
+
+```js
+const obj = {
+  abc: "abc",
+  123: 123,
+  "Hello World!": true,
+};
+
+const a = obj[123]; // 123
+const b = obj["123"]; // 123
+const c = obj["Hello World!"]; // true
+```
+
+その条件から外れる命名を行いたい場合、計算プロパティ名 `{ [key]: value }` が利用できる。
+
 ### `case key:` `case` 節
 
 - [14.12 The switch Statement - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
@@ -810,6 +874,12 @@ TODO
 - [12.8.4 String Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-string-literals)
 
 TODO
+
+### `{ "abc": 1 }`, `{ 'abc': 1 }` プロパティ定義
+
+[プロパティ定義 `{ key: value }`](#%7B-key%3A-value-%7D-%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E5%AE%9A%E7%BE%A9) の一種。
+
+なお JSON の場合は必ず二重引用符で括る。
 
 ## `(`, `)` 丸括弧
 
