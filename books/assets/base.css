@@ -27,6 +27,7 @@ body {
   text-decoration: none;
 }
   .baseLayout-headerLink:hover {
+    color: inherit;
     text-decoration: underline;
   }
 
@@ -104,6 +105,12 @@ h1.baseLayout-title {
   font-family: 游明朝, serif;
 }
 
+.baseLayout-footer {
+  border-top: thin dashed lightgray;
+  margin-top: 5rem;
+  padding-bottom: 5rem;
+}
+
 pre {
   overflow: auto;
 }
@@ -133,11 +140,12 @@ img {
   max-width: 100%;
 }
 
-.baseLayout-footer {
-  border-top: thin dashed lightgray;
-  margin-top: 5rem;
-  padding-bottom: 5rem;
+a {
+  color: #059;
 }
+  a:hover {
+    color: #a00;
+  }
 
 /* https://github.com/valeriangalliat/markdown-it-anchor#header-link */
 .header-anchor {
