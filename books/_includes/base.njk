@@ -41,13 +41,13 @@ title: (Not titled)
             href="{{ page.inputPath | toHistoryUrl }}"
             tabindex="-1"
           >
-            History
+            {% if date %}
+              <time>{{ date | toDate }}</time>
+              (History)
+            {% else %}
+              History
+            {% endif %}
           </a>
-          {% if date %}
-          <span>
-            Updated on <time>{{ date | toDate }}</time>
-          </span>
-          {% endif %}
         </div>
       </div>
       {% if not noToc %}
