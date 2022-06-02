@@ -139,6 +139,13 @@ img {
   max-width: 100%;
 }
 
+a {
+  color: #059;
+}
+  a:hover {
+    color: #a00;
+  }
+
 /* https://github.com/valeriangalliat/markdown-it-anchor#header-link */
 .header-anchor {
   color: inherit;
