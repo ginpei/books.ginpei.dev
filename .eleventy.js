@@ -15,7 +15,9 @@ module.exports = function (eleventyConfig) {
     linkify: true,
   });
   md.use(markdownItAnchor, {
-    permalink: markdownItAnchor.permalink.headerLink(),
+    permalink: markdownItAnchor.permalink.headerLink({
+      safariReaderFix: true,
+    }),
   });
   eleventyConfig.setLibrary("md", md);
 
