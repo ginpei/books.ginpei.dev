@@ -844,7 +844,7 @@ const a = obj.a; // => 1
 
 TODO
 
-### `{ ...obj }` オブジェクトのプロパティ展開（スプレッド構文）-
+### `{ ...obj }` オブジェクトのプロパティ展開（スプレッド構文）
 
 - [*PropertyDefinition* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-PropertyDefinition)
 - [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
