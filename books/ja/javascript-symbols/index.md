@@ -1,6 +1,7 @@
 ---
 layout: base.njk
 title: (WIP) JavaScript の記号
+date: 0000-00-00
 ---
 
 <style>
