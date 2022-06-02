@@ -27,6 +27,7 @@ body {
   text-decoration: none;
 }
   .baseLayout-headerLink:hover {
+    color: inherit;
     text-decoration: underline;
   }
 
