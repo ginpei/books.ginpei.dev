@@ -138,3 +138,12 @@ img {
   margin-top: 5rem;
   padding-bottom: 5rem;
 }
+
+/* https://github.com/valeriangalliat/markdown-it-anchor#header-link */
+.header-anchor {
+  color: inherit;
+  text-decoration: none;
+}
+  .header-anchor:hover {
+    text-decoration: underline;
+  }
