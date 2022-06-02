@@ -148,6 +148,27 @@ eleventyConfig.setLibrary(
 );
 ```
 
+### 見出しにリンク
+
+`markdown-it` のプラグイン `markdown-it-anchor` を使う。
+
+- [markdown-it-anchor - npm](https://www.npmjs.com/package/markdown-it-anchor)
+
+```js
+const markdownItAnchor = require("markdown-it-anchor");
+const md = markdownIt({…});
+
+…
+
+md.use(markdownItAnchor, {
+  permalink: markdownItAnchor.permalink.headerLink({
+    safariReaderFix: true,
+  }),
+});
+```
+
+`permalink` の設定でリンクの方法を指定できる。（"🔗" を表示する等。）　[ドキュメント参照](https://github.com/valeriangalliat/markdown-it-anchor#permalinks)。
+
 ### ソースコードのシンタックスハイライト
 
 公式プラグインを利用。中身は [Prism.js](https://prismjs.com/) らしい。
