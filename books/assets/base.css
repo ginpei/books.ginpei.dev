@@ -104,6 +104,12 @@ h1.baseLayout-title {
   font-family: 游明朝, serif;
 }
 
+.baseLayout-footer {
+  border-top: thin dashed lightgray;
+  margin-top: 5rem;
+  padding-bottom: 5rem;
+}
+
 pre {
   overflow: auto;
 }
@@ -131,12 +137,6 @@ pre:not([class*="language-"]) > code {
 
 img {
   max-width: 100%;
-}
-
-.baseLayout-footer {
-  border-top: thin dashed lightgray;
-  margin-top: 5rem;
-  padding-bottom: 5rem;
 }
 
 /* https://github.com/valeriangalliat/markdown-it-anchor#header-link */
