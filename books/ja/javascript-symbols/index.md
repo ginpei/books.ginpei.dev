@@ -790,7 +790,7 @@ const c = obj.c && obj.c.toFixed(2); // => 0
 
 → `?.`
 
-### `obj.prop` メンバー構文（プロパティアクセサー）
+### `obj.prop` プロパティアクセス
 
 - [13.3 Left-Hand-Side Expressions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
 - [13.3.2 Property Accessors - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-property-accessors)
@@ -1067,6 +1067,74 @@ const c = typeof(obj); // => "object"
 
 *square bracket(s)* スクウェアブラケット、角括弧、四角括弧
 
+### [TODO] `[value, value]` 配列リテラル
+
+- [*ArrayLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ArrayLiteral)
+- [13.2.4 Array Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-array-initializer)
+
+### [TODO] `arr[number]` 配列要素アクセス
+
+### [TODO] `arr[number][number]` 2 次元配列要素アクセス
+
+`arr[number]` の結果が配列のとき、さらにその配列の要素へアクセスする。N 次元配列であれば N 回 `[number]` 部分が繰り返される。`[][]` のような構文があるわけではない。
+
+### [TODO] `obj[key]` プロパティアクセス
+
+- [*MemberExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MemberExpression)
+- [13.3.2 Property Accessors - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-property-accessors)
+
+### [TODO] `[key] = value` 分割代入
+
+- [*ArrayAssignmentPattern* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ArrayAssignmentPattern)
+- [13.15.5 Destructuring Assignment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
+
+### [TODO] `function f([key]) {}` 分割代入
+
+- [*ArrayBindingPattern* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ArrayBindingPattern)
+- [14.3.3 Destructuring Binding Patterns - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-binding-patterns)
+
+### [TODO] `{ [key]: value }` 計算プロパティ名
+
+- [*ComputedPropertyName* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ComputedPropertyName)
+
+### `@param {type} [key]` 省略可能な引数
+
+- [`@param` and `@returns` - TypeScript: Documentation - JSDoc Reference](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#param-and-returns)
+
+JavaScript ではなく TypeScript の仕様。`@param` を参照。
+
+ややこしいが、TypeScript ではなく JavaScript のコード (`*.js`) で TypeScript のような型を記述するの際、関数引数が任意であることを TypeScript コンパイラーへ伝える。TypeScript の `key?` に相当。
+
+```js
+/**
+ * @param {string} p1 必須
+ * @param {string} [p2] 任意
+ */
+function f(p1, p2) {}
+```
+
+```ts
+function f(p1: string, p2?: string) {}
+```
+
+### `function f(key [, key])` 省略可能な引数
+
+JavaScript ではなくソフトウェア界隈の習慣。引数が省略可能であるという仕様を表現するときに角括弧で括る。
+
+例えば以下のように説明されている場合、引数 `aaa` は必須だが、`bbb`, `ccc` は省略可能である。
+
+```
+foo(aaa [, bbb [, ccc]]);
+```
+
+Linux の `grep` コマンドも以下のような説明がある。
+
+<pre>
+<code>grep [<u>OPTION</u>...] <u>PATTERNS</u> [<u>FILE</u>...]</code>
+</pre>
+
+この場合コマンド名 `grep` の他に引数 `PATTERNS` は必須で、`[OPTION...]` や `[FILE...]` は書かなくても必要に応じて与えても良い。
+
 ## [TODO] `{`, `}` 波括弧
 
 *bracket(s)* ブラケット、波括弧、にょろ括弧
@@ -1252,7 +1320,7 @@ console.log("#prop" in obj); // => false
 
 プライベートメンバーへアクセスする文法。名前の接頭辞ではなく構文。
 
-ドット `.` は通常の[メンバー構文 `obj.prop`](#obj.prop-メンバー構文（プロパティアクセサー）)で、`#prop` の部分がプライベートメンバーへアクセスする構文。
+ドット `.` は通常の[メンバー構文 `obj.prop`](#obj.prop-プロパティアクセス)で、`#prop` の部分がプライベートメンバーへアクセスする構文。
 
 [プライベートメンバーの宣言 `#prop`, `#f() {}`](#%23prop%2C-%23f()-%7B%7D-プライベートメンバーの宣言) を参照。
 
