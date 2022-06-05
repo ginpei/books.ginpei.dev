@@ -866,6 +866,8 @@ WIP
 
 *paren(s)*, *parenthesis (plural: parentheses)* パーレン、丸括弧、小括弧
 
+- [よく使う括弧の名前（日本語、英語）を調べてみたよ。ブラケット、ブレースとか。 | Ginpen.com](https://ginpen.com/2014/02/20/brackets/)
+
 ### [TODO] `()` 演算順序の優先度変更（括弧付き式）
 
 - [*ParenthesizedExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ParenthesizedExpression)
@@ -1067,6 +1069,8 @@ const c = typeof(obj); // => "object"
 
 *square bracket(s)* スクウェアブラケット、角括弧、四角括弧
 
+- [よく使う括弧の名前（日本語、英語）を調べてみたよ。ブラケット、ブレースとか。 | Ginpen.com](https://ginpen.com/2014/02/20/brackets/)
+
 ### [TODO] `[value, value]` 配列リテラル
 
 - [*ArrayLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ArrayLiteral)
@@ -1138,6 +1142,8 @@ Linux の `grep` コマンドも以下のような説明がある。
 ## [TODO] `{`, `}` 波括弧
 
 *bracket(s)* ブラケット、波括弧、にょろ括弧
+
+- [よく使う括弧の名前（日本語、英語）を調べてみたよ。ブラケット、ブレースとか。 | Ginpen.com](https://ginpen.com/2014/02/20/brackets/)
 
 ## [TODO] `@` アットマーク
 
@@ -1376,6 +1382,8 @@ JavaScript ではなく Linux/UNIX のシェルの機能。
 
 *less-than sign* 小なり、不等号
 
+- [よく使う括弧の名前（日本語、英語）を調べてみたよ。ブラケット、ブレースとか。 | Ginpen.com](https://ginpen.com/2014/02/20/brackets/)
+
 ## [TODO] `=` イコール
 
 *equal* イコール、等号
@@ -1405,6 +1413,8 @@ WIP
 ## [TODO] `>` 大なり
 
 *greater-than sign* 大なり、不等号
+
+- [よく使う括弧の名前（日本語、英語）を調べてみたよ。ブラケット、ブレースとか。 | Ginpen.com](https://ginpen.com/2014/02/20/brackets/)
 
 → `=>`
 
