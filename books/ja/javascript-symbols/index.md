@@ -313,11 +313,9 @@ console.log(a, b); // => 10, 9
 
 演算後の評価値と変数に格納されている値が異なるのはカンマ `,` を使って確認できる。
 
-### `key -= value` 代入演算子のひとつ
+### [TODO] `key -= value` 代入演算子のひとつ
 
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
-
-TODO
 
 ## `,` カンマ
 
@@ -583,29 +581,21 @@ const c = obj["Hello World!"]; // true
 
 その条件から外れる命名を行いたい場合、計算プロパティ名 `{ [key]: value }` が利用できる。
 
-### `case key:` `case` 節
+### [TODO] `case key:` `case` 節
 
 - [14.12 The switch Statement - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
 
-TODO
-
-### `default:` `default` 節
+### [TODO] `default:` `default` 節
 
 - [14.12 The switch Statement - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
 
-TODO
-
-### `{ prop: value }` オブジェクト初期化子の一部
+### [TODO] `{ prop: value }` オブジェクト初期化子の一部
 
 - [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
 
-TODO
-
-### `{ prop: key } = obj`, `function ({ prop: key }) {}` 分割代入の一部
+### [TODO] `{ prop: key } = obj`, `function ({ prop: key }) {}` 分割代入の一部
 
 - [13.15.5 Destructuring Assignment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
-
-TODO
 
 ### `key: type` 型指定
 
@@ -790,11 +780,9 @@ const c = obj.c && obj.c.toFixed(2); // => 0
 
 テンプレートリテラルとの組み合わせ <code>f?.&#x60;xxx&#x60;</code> は、[字句解析 - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-OptionalChain)の仕様上は許可されているものの[文法エラーを発生する - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-left-hand-side-expressions-static-semantics-early-errors)よう定められている。（例：SyntaxError: Invalid optional chain from new expression）<small>（用語の扱いが不正確かもしれない。エラーになるのはマジ。)</small>
 
-### `key ??= value` 代入演算子のひとつ
+### [TODO] `key ??= value` 代入演算子のひとつ
 
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
-
-TODO
 
 ## `.` ドット
 
@@ -830,7 +818,7 @@ const a = obj.a; // => 1
 
 `0.` が数値（小数点ありかつ小数点以下の数字なし）で、それとプロパティアクセス `obj.prop` の組み合わせ。つまり `(0.).prop` 。`..` という構文はない。
 
-### `{ ...key } = value`, `[...arr] = key`, `function (...arr) {}` 分割代入（スプレッド構文）
+### [TODO] `{ ...key } = value`, `[...arr] = key`, `function (...arr) {}` 分割代入（スプレッド構文）
 
 - [*AssignmentRestProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentRestProperty)
 - [*BindingRestProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BindingRestProperty)
@@ -842,39 +830,31 @@ const a = obj.a; // => 1
 
 通称スプレッド構文。
 
-TODO
+WIP
 
-### `{ ...obj }` オブジェクトのプロパティ展開（スプレッド構文）
+### [TODO] `{ ...obj }` オブジェクトのプロパティ展開（スプレッド構文）
 
 - [*PropertyDefinition* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-PropertyDefinition)
 - [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
 
-TODO
-
-### `[...arr]` 配列の項目展開（スプレッド構文）
+### [TODO] `[...arr]` 配列の項目展開（スプレッド構文）
 
 - [*SpreadElement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-SpreadElement)
 - [13.2.4 Array Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-array-initializer)
 
-TODO
-
-### `f(...arr)` 関数の引数展開（スプレッド構文）
+### [TODO] `f(...arr)` 関数の引数展開（スプレッド構文）
 
 - [*ArgumentList* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ArgumentList)
 - [13.3.8 Argument Lists - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-argument-lists)
-
-TODO
 
 ## `'`, `"` シングルクォート、ダブルクォート
 
 *quote*, *single quote*, *double quote* クォート、シングルクォート、ダブルクォート、引用符、二重引用符
 
-### `"abc"`, `'abc'` 文字列リテラル
+### [TODO] `"abc"`, `'abc'` 文字列リテラル
 
 - [*StringLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-StringLiteral)
 - [12.8.4 String Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-string-literals)
-
-TODO
 
 ### `{ "abc": 1 }`, `{ 'abc': 1 }` プロパティ定義
 
@@ -886,23 +866,17 @@ TODO
 
 *paren(s)*, *parenthesis (plural: parentheses)* パーレン、丸括弧、小括弧
 
-### `()` 演算順序の優先度変更（括弧付き式）
+### [TODO] `()` 演算順序の優先度変更（括弧付き式）
 
 - [*ParenthesizedExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ParenthesizedExpression)
 
-TODO
-
-### `f()` 関数呼び出し
+### [TODO] `f()` 関数呼び出し
 
 - [*CallExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-CallExpression)
 
-TODO
-
-### `obj.f()` メソッド呼び出し
+### [TODO] `obj.f()` メソッド呼び出し
 
 - [*CallExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-CallExpression)
-
-TODO
 
 ### `f().prop` 関数呼び出しとプロパティアクセス
 
@@ -910,25 +884,19 @@ TODO
 
 <small>（読みづらいので `f()` の結果は一度変数に代入してから `obj.prop` でプロパティアクセスするべきだと思う。）</small>
 
-### `super()` スーパークラスのコンストラクター呼び出し
+### [TODO] `super()` スーパークラスのコンストラクター呼び出し
 
 - [*SuperCall* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-SuperCall)
 
-TODO
-
-### `new F()` コンストラクター実行
+### [TODO] `new F()` コンストラクター実行
 
 - [MemberExpression - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MemberExpression)
 
-TODO
-
-### `function () {}` 定義の一部
+### [TODO] `function () {}` 定義の一部
 
 - [*FunctionDeclaration* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FunctionDeclaration)
 - [*FunctionExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FunctionExpression)
 - [15.2 Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-function-definitions)
-
-TODO
 
 ### `{ f() {} }` メソッド定義の一部
 
@@ -954,11 +922,9 @@ const obj = {
 };
 ```
 
-### `{ key: function() {} }` 関数式の一部
+### [TODO] `{ key: function() {} }` 関数式の一部
 
 - [*FunctionExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FunctionExpression)
-
-TODO
 
 ### `{ [key]() {} }` メソッド定義の一部
 
@@ -991,12 +957,10 @@ const obj = {
 const a = 100 + obj; // => 110
 ```
 
-### `import(key)` 動的インポート
+### [TODO] `import(key)` 動的インポート
 
 - [*ImportCall* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ImportCall)
 - [動的インポート - import - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports)
-
-TODO
 
 ### `(function () {})()` 即時実行関数式、IIFE
 
@@ -1065,20 +1029,16 @@ let x = do {
 
 <small>（`do` 式の代わりにするのは読みづらいのであまり良くないと思う。）</small>
 
-### `if ()` if 文の一部
+### [TODO] `if ()` if 文の一部
 
 - [*IfStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-IfStatement)
 - [*WhileStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-WhileStatement)
 - [*DoWhileStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-DoWhileStatement)
 - [*SwitchStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-SwitchStatement)
 
-TODO
-
-### `with()` with 文の一部
+### [TODO] `with()` with 文の一部
 
 - [*WithStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-WithStatement)
-
-TODO
 
 ### `delete(key)`, `void(key)`, `typeof(key)` 括弧式
 
@@ -1103,23 +1063,17 @@ const b = void(obj); // => undefined
 const c = typeof(obj); // => "object"
 ```
 
-## `[`, `]` 角括弧
+## [TODO] `[`, `]` 角括弧
 
 *square bracket(s)* スクウェアブラケット、角括弧、四角括弧
 
-TODO
-
-## `{`, `}` 波括弧
+## [TODO] `{`, `}` 波括弧
 
 *bracket(s)* ブラケット、波括弧、にょろ括弧
 
-TODO
-
-## `@` アットマーク
+## [TODO] `@` アットマーク
 
 *at*, *at sign* アットマーク、単価記号
-
-TODO
 
 ## `*` アスタリスク
 
@@ -1127,56 +1081,37 @@ TODO
 
 - [アスタリスク - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%B9%E3%82%BF%E3%83%AA%E3%82%B9%E3%82%AF)
 
-### `value * value`
+### [TODO] `value * value`
 
-TODO
+### [TODO] `value ** value`
 
-### `value ** value`
-
-TODO
-
-### `key *= value` 代入演算子のひとつ
+### [TODO] `key *= value` 代入演算子のひとつ
 
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 
-
-TODO
-
-### `key **= value` 代入演算子のひとつ
+### [TODO] `key **= value` 代入演算子のひとつ
 
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
-
-TODO
 
 ## `/` スラッシュ
 
 *slash*, *forward slash* スラッシュ、前方スラッシュ
 
-### `value / value`
+### [TODO] `value / value`
 
-TODO
-
-### `key /= value` 代入演算子のひとつ
+### [TODO] `key /= value` 代入演算子のひとつ
 
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 
-TODO
+### [TODO] `/xxx/` 正規表現
 
-### `/xxx/` 正規表現
-
-TODO
-
-### `/*`, `*/` 複数行コメント
+### [TODO] `/*`, `*/` 複数行コメント
 
 - [12.4 Comments - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-comments)
 
-TODO
-
-### `// xxx` 一行コメント
+### [TODO] `// xxx` 一行コメント
 
 - [12.4 Comments - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-comments)
-
-TODO
 
 ## `\` バックスラッシュ
 
@@ -1208,14 +1143,14 @@ undefined
 
 `\u0061` と `\u{61}` は `a` になる。（`"a".charCodeAt(0).toString(16)` つまり "a" の文字コードは 0x61 。）
 
-### `"\` 文字列リテラル中の改行
+### [TODO] `"\` 文字列リテラル中の改行
 
 ```js
 const s = "foo\
 bar";`
 ```
 
-TODO
+WIP
 
 ## `&` アンパサンド
 
@@ -1223,25 +1158,17 @@ TODO
 
 - [アンパサンド - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%83%91%E3%82%B5%E3%83%B3%E3%83%89)
 
-### `value & value`
+### [TODO] `value & value`
 
-TODO
+### [TODO] `value && value`
 
-### `value && value`
-
-TODO
-
-### `key &= value` 代入演算子のひとつ
+### [TODO] `key &= value` 代入演算子のひとつ
 
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 
-TODO
-
-### `key &&= value` 代入演算子のひとつ
+### [TODO] `key &&= value` 代入演算子のひとつ
 
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
-
-TODO
 
 ### `&xxx;`, `&#0000`, `&#x0000;` 文字参照
 
@@ -1357,65 +1284,47 @@ JavaScript ではなく Linux/UNIX のシェルの機能。
 
 シェルスクリプトを実行するインタープリターを指定する。
 
-## `%` パーセント
+## [TODO] `%` パーセント
 
 *percent* パーセント、百分率記号
 
-TODO
-
-## <code>`</code> バックチック
+## [TODO] <code>`</code> バックチック
 
 *backtick*, *back quote*, *grave* バックチック、バッククォート、グレイブ、ちょん
 
 - [Backtick - Wikipedia](https://en.wikipedia.org/wiki/Backtick)
 
-TODO
-
-## `^` キャレット
+## [TODO] `^` キャレット
 
 *caret*, *hat* キャレット、ハット、三角、とんがり
 
 - [キャレット - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%AC%E3%83%83%E3%83%88)
 
-TODO
-
-## `+` プラス
+## [TODO] `+` プラス
 
 *plus* プラス、足す、足し算
 
-TODO
-
-## `<` 小なり
+## [TODO] `<` 小なり
 
 *less-than sign* 小なり、不等号
 
-TODO
-
-## `=` イコール
+## [TODO] `=` イコール
 
 *equal* イコール、等号
 
-TODO
+### [TODO] `key = value`
 
-### `key = value`
-
-TODO
-
-### `value == value`
+### [TODO] `value == value`
 
 - [13.11 Equality Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-equality-operators)
 - [等価 (==) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Equality)
 
-TODO
-
-### `value === value`
+### [TODO] `value === value`
 
 - [13.11 Equality Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-equality-operators)
 - [厳密等価 (===) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Strict_equality)
 
-TODO
-
-### `() => value` アロー関数の一部
+### [TODO] `() => value` アロー関数の一部
 
 左側に引数、右側に関数の内容を書く。
 
@@ -1423,53 +1332,37 @@ TODO
 const f = (x) => x + 1;
 ```
 
-TODO
+WIP
 
-## `>` 大なり
+## [TODO] `>` 大なり
 
 *greater-than sign* 大なり、不等号
 
 → `=>`
 
-TODO
-
-## `|` バー
+## [TODO] `|` バー
 
 *bar*, *vertical bar*, *pipe* バー、垂直バー、パイプ
 
-TODO
+### [TODO] `value | value`
 
-### `value | value`
+### [TODO] `value |> xxx` パイプライン演算子
 
-TODO
+### [TODO] `value || value`
 
-### `value |> xxx` パイプライン演算子
-
-TODO
-
-### `value || value`
-
-TODO
-
-### `key |= value` 代入演算子のひとつ
+### [TODO] `key |= value` 代入演算子のひとつ
 
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 
-TODO
-
-### `key ||= value` 代入演算子のひとつ
+### [TODO] `key ||= value` 代入演算子のひとつ
 
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 
-TODO
-
-## `~` チルダ
+## [TODO] `~` チルダ
 
 *tilde* チルダ、チルド、波線符号、波、にょろ
 
 - [チルダ - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%81%E3%83%AB%E3%83%80)
-
-TODO
 
 ## `$` ダラー
 
@@ -1508,13 +1401,9 @@ $(() => {
 <h1>The count is {$count}</h1>
 ```
 
-### <code>&#96;${xxx}&#96;</code>
+### [TODO] <code>&#96;${xxx}&#96;</code>
 
-TODO
-
-### `$0`, `$1`, ...
-
-TODO
+### [TODO] `$0`, `$1`, ...
 
 ## その他
 
