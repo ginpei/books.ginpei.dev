@@ -111,6 +111,10 @@ h1.baseLayout-title {
   padding-bottom: 5rem;
 }
 
+li {
+  margin: 0.5rem 0;
+}
+
 pre {
   overflow: auto;
 }
