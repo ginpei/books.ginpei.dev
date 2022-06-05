@@ -1,14 +1,9 @@
-body {
-  font-family: sans-serif;
-  margin: 0;
-}
+@import url("./_values.css");
+@import url("./_elements.css");
 
-.ui-container {
-  box-sizing: border-box;
-  margin-inline: auto;
-  padding-inline: 1rem;
-  width: min(50rem, 100%);
-}
+/* ---------------------------------------------------------------- */
+/* Base layout                                                      */
+/* ---------------------------------------------------------------- */
 
 .baseLayout-headerOuter {
   background-color: #036;
@@ -111,46 +106,18 @@ h1.baseLayout-title {
   padding-bottom: 5rem;
 }
 
-li {
-  margin: 0.5rem 0;
+/* ---------------------------------------------------------------- */
+/* Misc                                                             */
+/* ---------------------------------------------------------------- */
+
+.ui-container {
+  box-sizing: border-box;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  width: min(50rem, 100%);
 }
 
-pre {
-  overflow: auto;
-}
-
-/* code without syntax highlight */
-pre:not([class*="language-"]),
-code:not([class*="language-"]) {
-  background-color: #eee;
-  border-radius: 0.2em;
-  font-size: 85%;
-  padding: 0.2em 0.4em;
-}
-
-pre:not([class*="language-"]) {
-  background-color: #272822;
-  color: white;
-  padding: 1rem;
-}
-
-pre:not([class*="language-"]) > code {
-  background-color: transparent;
-  font-size: 1rem;
-  padding: 0;
-}
-
-img {
-  max-width: 100%;
-}
-
-a {
-  color: #059;
-}
-  a:hover {
-    color: #a00;
-  }
-
+/* markdown-it-anchor */
 /* https://github.com/valeriangalliat/markdown-it-anchor#header-link */
 .header-anchor {
   color: inherit;
