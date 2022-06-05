@@ -1065,7 +1065,7 @@ const b = void(obj); // => undefined
 const c = typeof(obj); // => "object"
 ```
 
-## [TODO] `[`, `]` 角括弧
+## `[`, `]` 角括弧
 
 *square bracket(s)* スクウェアブラケット、角括弧、四角括弧
 
