@@ -1,0 +1,41 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+li {
+  margin: 0.5rem 0;
+}
+
+pre {
+  background-color: #272822;
+  border-radius: 0.2em;
+  color: #ccc;
+  font-size: 85%;
+  overflow: auto;
+  padding: 0.2em 0.4em;
+  padding: 1rem;
+}
+
+code {
+  background-color: #eee;
+  border-radius: 0.2em;
+  font-size: 85%;
+  padding: 0.2em 0.4em;
+}
+  pre > code {
+    background-color: transparent;
+    font-size: 1rem;
+    padding: 0;
+  }
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: #059;
+}
+  a:hover {
+    color: #a00;
+  }
