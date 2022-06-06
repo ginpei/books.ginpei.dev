@@ -4,6 +4,8 @@ title: (WIP) JavaScript の記号
 date: 0000-00-00
 ---
 
+{% raw %}
+
 <style>
 .searchResult-list {
   padding: 0;
@@ -1139,11 +1141,114 @@ Linux の `grep` コマンドも以下のような説明がある。
 
 この場合コマンド名 `grep` の他に引数 `PATTERNS` は必須で、`[OPTION...]` や `[FILE...]` は書かなくても必要に応じて与えても良い。
 
-## [TODO] `{`, `}` 波括弧
+## `{`, `}` 波括弧
 
-*bracket(s)* ブラケット、波括弧、にょろ括弧
+*brace(s)* ブレース、波括弧、にょろ括弧
 
 - [よく使う括弧の名前（日本語、英語）を調べてみたよ。ブラケット、ブレースとか。 | Ginpen.com](https://ginpen.com/2014/02/20/brackets/)
+
+### [TODO] `{ }` ブロック文
+
+- [*BlockStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BlockStatement)
+
+### [TODO] `if() {}`, `else {}`, `for() {}` `if` 文等とブロック文
+
+- [*IfStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-IfStatement)
+- [*BlockStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BlockStatement)
+- [*ForStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ForStatement)
+
+### [TODO] `function() {}` 関数宣言の一部
+
+- [*FunctionExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FunctionExpression)
+- [*FunctionDeclaration* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FunctionDeclaration)
+
+### [TODO] `try {}`, `catch() {}`, `finally {}` `try` 文等の一部
+
+- [*TryStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-TryStatement)
+- [*Catch* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-Catch)
+- [*Finally* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-Finally)
+
+### [TODO] `obj = {}` オブジェクトリテラル
+
+- [*ObjectLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ObjectLiteral)
+
+### `f({})` オブジェクトリテラルと関数呼び出し
+
+オブジェクトリテラル `{}` で記述したオブジェクトを引数へ与えて関数を呼び出す。そういう文法があるわけではない。
+
+```js
+function f(obj) {};
+
+// オブジェクトリテラルをそのまま引数に与える
+f({ foo: 1 });
+
+// オブジェクトリテラルで生成したオブジェクトを
+// 変数へ代入してから引数へ与える
+const a = { foo: 1 };
+f(a);
+```
+
+めちゃくちゃ長いこともある。
+
+```js
+someInitializer({
+  option1: "foo",
+  option2: "bar",
+  option3: {
+    valueSet: [
+      { type: 1, value: "haha" },
+      { type: 2, value: "hehe" },
+      { type: 3, value: "hihi" },
+    ],
+  },
+  // …
+});
+```
+
+### [TODO] `{key} = obj`, `function f({key}) {}`, `({key}) => value` 分割代入
+
+- [13.15.5 Destructuring Assignment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
+
+### [TODO] <code>&#96;${value}&#96;</code> 値の埋め込み（テンプレートリテラル）
+
+- [*TemplateHead* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-TemplateHead)
+- [*TemplateMiddle* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-TemplateMiddle)
+- [*TemplateTail* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-TemplateTail)
+
+### `<div>{value}<div>` 値の埋め込み（React/JSX）
+
+- [JSX の導入 – React](https://ja.reactjs.org/docs/introducing-jsx.html)
+
+JavaScript ではなく React/JSX の仕様。変数や値を出力 DOM へ埋め込む。
+
+```jsx
+const a = "World";
+const b = <div>Hello {a}!</div>;
+// => <div>Hello World!</div>
+```
+
+### `<MyComponent onClick={onClick} />` 値の埋め込み（React/JSX）
+
+- [JSX の導入 – React](https://ja.reactjs.org/docs/introducing-jsx.html)
+
+JavaScript ではなく React/JSX の仕様。変数や値を出力 DOM へ埋め込む。
+
+```jsx
+const f = () => console.log("Clicked");
+const a = <button onClick={f}>Click me</button>;
+```
+
+### `<div>{{value}}<div>` 値の埋め込み（Vue.js、他）
+
+- [テンプレート構文 — Vue.js](https://jp.vuejs.org/v2/guide/syntax.html)
+- [Expressions | Handlebars](https://handlebarsjs.com/guide/expressions.html)
+- [Variables - Nunjucks](https://mozilla.github.io/nunjucks/templating.html#variables)
+
+JavaScript ではなく Vue.js や Handlebars 、Nunjucks 等々の仕様。変数や値を出力 DOM へ埋め込む。<small>（多数のテンプレート言語がこの二重波括弧を採用している。）</small>
+
+```jsx
+<span>Message: {{ msg }}</span>
+```
 
 ## [TODO] `@` アットマーク
 
@@ -1530,3 +1635,5 @@ const pi = 314e-2; // => 3.14
 ```js
 const a = 123 === 123n; // => false
 ```
+
+{% endraw %}
