@@ -1250,9 +1250,54 @@ JavaScript ではなく Vue.js や Handlebars 、Nunjucks 等々の仕様。変�
 <span>Message: {{ msg }}</span>
 ```
 
-## [TODO] `@` アットマーク
+## `@` アットマーク
 
-*at*, *at sign* アットマーク、単価記号
+*at sign* アットマーク、単価記号
+
+現在の JavaScript では利用されていない記号。
+
+### `/** @type {type} */`, `@param {type} key` 型情報 (TypeScript/JSDoc)
+
+- [TypeScript: Documentation - JSDoc Reference](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html)
+
+JavaScript ではなく TypeScript の機能であり JSDoc の仕様。変数や引数に型情報を与える。
+
+TypeScript コンパイラーは JavaScript のファイル (`*.js`) 中の JSDoc 形式で記述されたコメントを読み、型情報を得ることができる。型情報はエディターの補完や、コマンドラインの `tsc` で矛盾がないかの検証で利用できる。
+
+```js
+/** @type {string[]} */
+const a = [];
+```
+
+```js
+/**
+ * @param {Date} date
+ * @returns {string}
+ */
+function toDateString(date) {
+  return `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`;
+}
+```
+
+### `@key`, `@f()` デコレーター (TypeScript)
+
+- [TypeScript: Documentation - Decorators](https://www.typescriptlang.org/docs/handbook/decorators.html)
+
+JavaScript ではなく TypeScript の機能。クラスやプロパティを装飾 (*decorate*) して拡張された意味を与える。
+
+```ts
+class Line {
+  @validate
+  @Reflect.metadata("design:type", Point)
+  set start(value: Point) {
+    // …
+  }
+}
+```
+
+<small>（使ったことない、よくわかっていない。Vue.js でよく使われている印象。）</small>
+
+<small>（翻訳するなら装飾子？　修飾子 (*modifier*) と紛らわしい）</small>
 
 ## `*` アスタリスク
 
