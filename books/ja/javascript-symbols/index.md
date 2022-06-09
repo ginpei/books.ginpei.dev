@@ -1491,15 +1491,19 @@ a /= 3; // => 4
 
 *backslash* バックスラッシュ、後方スラッシュ
 
+環境によっては円記号 `￥` になる場合がある。
+
 ### `"\n"`, `"\r"` 改行文字
 
-- [Table 73: JSON Single Character Escape Sequences - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#table-json-single-character-escapes)
+- [Table 40: String Single Character Escape Sequences - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#table-string-single-character-escape-sequences)
 - [改行コード - Wikipedia](https://ja.wikipedia.org/wiki/%E6%94%B9%E8%A1%8C%E3%82%B3%E3%83%BC%E3%83%89)
 - [キャリッジ・リターン - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%AA%E3%83%83%E3%82%B8%E3%83%BB%E3%83%AA%E3%82%BF%E3%83%BC%E3%83%B3)
 
+文字列リテラル `"xxx"` 中には改行を含めることができないので、エスケープした `"\n"` を使う。（なおテンプレートリテラル <code>&#96;xxx&#96;</code> 中では利用可能。）
+
 `"\n"` はラインフィード LINE FEED (LF) 、`"\r"` はキャリッジリターン CARRIAGE RETURN (CR) 。<small>（通常 `"\n"` のみを使うと思う。）</small>
 
-CR は、本来は改行ではなく同じ行の先頭へ戻るコード。<small>（どうやら Return キーの語源である。）</small>　Node.js で利用できるかもしれない。
+CR は、本来は改行ではなく同じ行の先頭へ戻るコード。<small>（どうやら Return キーの語源である。）</small>　Node.js では利用できるかもしれない。
 
 ```js
 > console.log("123\rX")
@@ -1507,24 +1511,48 @@ X23
 undefined
 ```
 
+なおエスケープすることで利用自体は可能。
+
+```js
+const a = "\
+";
+a.length; // => 0
+```
+
+(WIP)
+
 ### `"\t"` タブ文字
 
-- [Table 73: JSON Single Character Escape Sequences - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#table-json-single-character-escapes)
+- [Table 40: String Single Character Escape Sequences - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#table-string-single-character-escape-sequences)
+- [タブキー - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%BF%E3%83%96%E3%82%AD%E3%83%BC)
 
-### `"\u0000"` Unicode エスケープシーケンス
+明示的にタブ文字を表現したい場合にエスケープした `"\t"` を利用できる。
+
+タブ文字は改行と違い文字列リテラル中でも利用可能だが、エディターの自動変換（タブキーを押しても複数の空白文字が入力される等）も作用するため入力が難しい場合がある。
+
+### `"\\"` バックスラッシュ
+
+- [Table 40: String Single Character Escape Sequences - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#table-string-single-character-escape-sequences)
+
+例えば `"\n"` で改行になるが、この "\n" という文字自体を表現したい場合、バックスラッシュをエスケープして `"\\n"` とすると画面にも "\n" が表示される。
+
+複数回アンエスケープされる場合にも必要。
+
+```js
+const a = new RegExp("\\n");
+
+const b = `
+`;
+a.test(b); // => true
+```
+
+### [TODO] `"\u0000"` Unicode エスケープシーケンス
 
 - [25.5.2.4 UnicodeEscape ( `C` ) - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-unicodeescape)
 
 `\u0061` と `\u{61}` は `a` になる。（`"a".charCodeAt(0).toString(16)` つまり "a" の文字コードは 0x61 。）
 
-### [TODO] `"\` 文字列リテラル中の改行
-
-```js
-const s = "foo\
-bar";`
-```
-
-WIP
+(WIP)
 
 ## `&` アンパサンド
 
