@@ -1446,19 +1446,46 @@ for (const value of it) {
 
 ### [TODO] `value / value`
 
-### [TODO] `key /= value` 代入演算子のひとつ
+- [MultiplicativeOperator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MultiplicativeOperator)
+- [13.7 Multiplicative Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-multiplicative-operators)
+- [除算 (/) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Division)
 
+(WIP)
+
+```js
+const a = 12 / 3; // => 4
+```
+
+### [TODO] `key /= value` 除算代入
+
+- [*AssignmentOperator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentOperator)
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
+- [除算代入 (/=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Division_assignment)
 
-### [TODO] `/xxx/` 正規表現
-
-### [TODO] `/*`, `*/` 複数行コメント
-
-- [12.4 Comments - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-comments)
+```js
+let a = 12;
+a /= 3; // => 4
+```
 
 ### [TODO] `// xxx` 一行コメント
 
+- [*SingleLineComment* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-SingleLineComment)
 - [12.4 Comments - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-comments)
+- [コメント - 字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar#%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88)
+
+### [TODO] `/*`, `*/` 複数行コメント
+
+- [*MultiLineComment* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MultiLineComment)
+- [12.4 Comments - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-comments)
+- [コメント - 字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar#%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88)
+
+### [TODO] `/xxx/`. `/xxx/ig` 正規表現
+
+- [*RegularExpressionLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-RegularExpressionLiteral)
+
+(WIP)
+
+行コメント `//` の方が優先されるので、空の正規表現をリテラルで表現することはできない。`/(?:)/` で代用することはできる。
 
 ## `\` バックスラッシュ
 
