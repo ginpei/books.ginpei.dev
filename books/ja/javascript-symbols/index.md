@@ -1256,7 +1256,7 @@ JavaScript ではなく Vue.js や Handlebars 、Nunjucks 等々の仕様。変�
 
 現在の JavaScript では利用されていない記号。
 
-### `/** @type {type} */`, `@param {type} key` 型情報 (TypeScript/JSDoc)
+### `/** @type {type} */`, `/** @param {type} key */` 型情報 (TypeScript/JSDoc)
 
 - [TypeScript: Documentation - JSDoc Reference](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html)
 
