@@ -1305,17 +1305,140 @@ class Line {
 
 - [アスタリスク - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%B9%E3%82%BF%E3%83%AA%E3%82%B9%E3%82%AF)
 
-### [TODO] `value * value`
+フォントによって星のとげ？の数が 6 個だったり 5 個だったりする。
 
-### [TODO] `value ** value`
+### [TODO] `value * value` 掛け算演算子
 
-### [TODO] `key *= value` 代入演算子のひとつ
+- [*MultiplicativeOperator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MultiplicativeOperator)
 
+掛け算を行う。
+
+```js
+const a = 5 * 8; // => 40
+```
+
+(WIP)
+
+### [TODO] `value ** value` べき乗演算子
+
+- [*ExponentiationExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ExponentiationExpression)
+- [べき乗 (**) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Exponentiation)
+- [冪乗 - Wikipedia](https://ja.wikipedia.org/wiki/%E5%86%AA%E4%B9%97)
+
+べき乗、つまり `n` の `m` 乗 (*n<sup>m</sum>*) を計算する演算子。<small>（漢字では「<ruby>冪<rp>（</rp><rt>べき</rt><rp>）</rp></ruby>乗」と書けるが普通はひらがなにする。）</small>
+
+「`n` の `m` 乗」とは「`n` を `m` 回かける」という意味。
+
+```js
+const a = 2 ** 1; // => 2
+const b = 2 ** 2; // => 4
+const c = 2 ** 3; // => 8
+```
+
+```js
+const a = 10 ** 1; // => 10
+const b = 10 ** 2; // => 100
+const c = 10 ** 3; // => 1000
+
+const d = 10 ** -1; // => 0.1
+const e = 10 ** -2; // => 0.01
+
+const f = 10 ** 0; // => 1
+```
+
+ちなみに名前の雰囲気が近い算法に[「<ruby>階<rp>（</rp><rt>かい</rt><rp>）</rp></ruby>乗」(*n!*)](https://ja.wikipedia.org/wiki/%E9%9A%8E%E4%B9%97) というのがある。こちらは JavaScript には該当する文法はない。
+
+(WIP)
+
+```js
+const a = (-1) ** 2; // => 1
+
+// ⛔ SyntaxError: Unary operator used immediately before exponentiation expression. Parenthesis must be used to disambiguate operator precedence
+const b = -1 ** 2;
+```
+
+### [TODO] `key *= value` 乗算代入
+
+- [*AssignmentOperator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentOperator)
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
+- [乗算代入 (*=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Multiplication_assignment)
 
-### [TODO] `key **= value` 代入演算子のひとつ
+(WIP)
 
+```js
+let a = 3;
+a *= 4; // => 12
+```
+
+### [TODO] `key **= value` べき乗代入
+
+- [*AssignmentOperator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentOperator)
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
+- [べき乗代入 (**=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Exponentiation_assignment)
+
+(WIP)
+
+```js
+let a = 3;
+a **= 3; // => 27
+```
+
+### [TODO] `function* () {}` ジェネレーター関数
+
+- [*GeneratorDeclaration* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-GeneratorDeclaration)
+- [*GeneratorExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-GeneratorExpression)
+- [*GeneratorMethod* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-GeneratorMethod)
+- [15.5 Generator Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-generator-function-definitions)
+- [function* 宣言 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/function*)
+
+(WIP)
+
+```js
+function* f() {
+  yield 1;
+  yield 2;
+}
+
+const it = f();
+
+const a = it.next();
+a.value; // => 1
+a.done; // => false
+
+const b = it.next();
+b.value; // => 2
+b.done; // => false
+
+const c = it.next();
+c.value; // => undefined
+c.done; // => true
+```
+
+```js
+function* f() {
+  yield 1;
+  yield 2;
+}
+
+const it = f();
+
+const a = [...it]; // => [1, 2]
+```
+
+```js
+function* f() {
+  yield 1;
+  yield 2;
+}
+
+const it = f();
+
+for (const value of it) {
+  console.log(value);
+  // => 1
+  // => 2
+}
+```
 
 ## `/` スラッシュ
 
@@ -1665,10 +1788,6 @@ const d = 1e-1; // => 0.1
 
 const pi = 314e-2; // => 3.14
 ```
-
-### `function* () {}` ジェネレーター関数
-
-- [15.5 Generator Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-generator-function-definitions)
 
 ### `0n` 数値リテラルの一部（bigint）
 
