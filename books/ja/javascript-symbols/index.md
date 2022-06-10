@@ -1560,17 +1560,114 @@ a.test(b); // => true
 
 - [アンパサンド - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%83%91%E3%82%B5%E3%83%B3%E3%83%89)
 
-### [TODO] `value & value`
+### `value & value` ビット論理積
 
-### [TODO] `value && value`
+- [*BitwiseANDExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BitwiseANDExpression)
+- [13.12 Binary Bitwise Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-binary-bitwise-operators)
+- [ビット論理積 (&) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Bitwise_AND)
+
+ビット、つまり 2 進数の計算で、両辺が `1` である箇所を `1` に、それ以外を `0` にする。
+
+ちなみに JavaScript では `0b10` のような形で 2 進数を表現できる。
+
+```js
+const a = 0b0101; // => 5
+const b = 0b1100; // => 12
+const c = a & b; // => 4 (0b0100)
+```
+
+### `value && value` 論理積
+
+- [*LogicalANDExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-LogicalANDExpression)
+- [13.13 Binary Logical Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-binary-logical-operators)
+- [論理積 (&&) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Logical_AND)
+
+左辺が truthy の場合は右辺、そうでなければ左辺を返す。条件分岐でよく利用される。
+
+```js
+// 両方が OK なら
+if (he.isOk() && she.isOk()) {
+  he.marry(she);
+}
+```
+
+他の言語では真偽値 `true` か `false` を返すものが多いが、JavaScript では与えられた 2 項のいずれかを返す点に注意。
+
+```js
+const a = true && 123; // => 123
+const b = false && 123; // => false
+
+const c = 1 && 123; // => 123
+const d = 0 && 123; // => 0
+```
+
+真偽値として欲しい場合 `Boolean()` を用いるとよい。
+
+```js
+const a = Boolean(true && 123); // => true
+const b = Boolean(false && 123); // => false
+
+const c = Boolean(1 && 123); // => true
+const d = Boolean(0 && 123); // => false
+```
+
+かつて、オプションが与えられた場合にのみ処理実行、のような用途でも使われていた。
+
+```js
+const obj = { a: [1, 2, 3], b: undefined };
+
+if (obj.a && obj.a.length > 1) {
+  // …
+}
+
+if (obj.b && obj.b.length > 1) {
+  // …
+}
+```
+
+現代ではオプショナルチェイン `?.` で実現できる。
+
+```js
+const obj = { a: [1, 2, 3], b: undefined };
+
+if (obj.a?.length > 0) {
+  // …
+}
+
+if (obj.b?.length > 0) {
+  // …
+}
+```
 
 ### [TODO] `key &= value` 代入演算子のひとつ
 
+- [*AssignmentOperator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentOperator)
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
+- [ビット論理積代入 (&=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Bitwise_AND_assignment)
 
-### [TODO] `key &&= value` 代入演算子のひとつ
+(WIP)
 
+```js
+const a = 0b0101; // => 5
+let b = 0b1100; // => 12
+b &= a; // 4 (0b0100)
+```
+
+### [TODO] `key &&= value` 論理積代入
+
+- [*AssignmentExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentExpression)
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
+- [論理積代入 (&&=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Logical_AND_assignment)
+
+(WIP)
+
+```js
+let a = true;
+a &&= false; // false
+
+let b = false;
+b &&= true; // false
+```
 
 ### `&xxx;`, `&#0000`, `&#x0000;` 文字参照
 
