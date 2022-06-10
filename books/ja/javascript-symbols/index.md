@@ -446,8 +446,6 @@ const someNiceResult = longFunctionName(
 
 *semicolon* セミコロン
 
-→ `&xxx;` HTML の実体参照
-
 ### `value;` 文の終端
 
 - [14 ECMAScript Language: Statements and Declarations - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-ecmascript-language-statements-and-declarations)
@@ -516,8 +514,6 @@ for (let i = 0; i < arr.length; i++) {
 ## `:` コロン
 
 *colon* コロン
-
-→ `condition ? value : value` 条件演算子
 
 ### `{ key: value }` プロパティ定義
 
@@ -789,8 +785,6 @@ const c = obj.c && obj.c.toFixed(2); // => 0
 ## `.` ドット
 
 *dot*, *period*, *full stop* ドット、ピリオド、フルストップ、終止符、点
-
-→ `?.`
 
 ### `obj.prop` プロパティアクセス
 
@@ -1694,8 +1688,6 @@ JavaScript ではなく HTML。文字のエスケープ表現。HTML のタグ `
 
 *number sign*, *hash*, *sharp sign* 番号記号、ナンバー、ハッシュ、シャープ（音楽のシャープ ♯ は傾きが異なる。）
 
-→ `&#0000`, `&#x0000;` 文字参照
-
 ### `#prop`, `#f() {}` プライベートメンバーの宣言
 
 - [15.7 Class Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-class-definitions)
@@ -1855,8 +1847,6 @@ WIP
 *greater-than sign* 大なり、不等号
 
 - [よく使う括弧の名前（日本語、英語）を調べてみたよ。ブラケット、ブレースとか。 | Ginpen.com](https://ginpen.com/2014/02/20/brackets/)
-
-→ `=>`
 
 ## [TODO] `|` バー
 
