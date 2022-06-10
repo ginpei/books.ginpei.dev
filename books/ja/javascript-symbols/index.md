@@ -1669,7 +1669,7 @@ let b = false;
 b &&= true; // false
 ```
 
-### `&lt;`, `&gt;`, `&amp;`, `&#96;` エンティティ
+### `&lt;`, `&gt;`, `&#96;`, `&#x20;` エンティティ
 
 - [Entity (エンティティ) - MDN Web Docs 用語集: ウェブ関連用語の定義 | MDN](https://developer.mozilla.org/ja/docs/Glossary/Entity)
 
