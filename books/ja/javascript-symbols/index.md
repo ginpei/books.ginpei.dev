@@ -1669,11 +1669,26 @@ let b = false;
 b &&= true; // false
 ```
 
-### `&xxx;`, `&#0000`, `&#x0000;` 文字参照
+### `&lt;`, `&gt;`, `&amp;`, `&#96;` エンティティ
 
 - [Entity (エンティティ) - MDN Web Docs 用語集: ウェブ関連用語の定義 | MDN](https://developer.mozilla.org/ja/docs/Glossary/Entity)
 
-JavaScript ではなく HTML。
+JavaScript ではなく HTML。文字のエスケープ表現。HTML のタグ `<h1>` を画面に出力したい場合に利用できる。
+
+次の 4 つが特に有名。
+
+- `&gt;` : `<`
+- `&lt;` : `>`
+- `&amp;` : `&`
+- `&quot;` : `"`
+
+文字コードの数値を利用して任意の文字を表現することもできる。
+
+- `&#39;` : `'`
+- `&#96;` : <code>&#96;</code>
+- `&#27700;` : <code>&#27700;</code>
+- `&#x1F363;` : <code>&#x1F363;</code>
+
 
 ## `#` 番号記号
 
