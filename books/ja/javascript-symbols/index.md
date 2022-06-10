@@ -1677,10 +1677,10 @@ JavaScript ではなく HTML。文字のエスケープ表現。HTML のタグ `
 
 次の 4 つが特に有名。
 
-- `&lt;` : `<`
-- `&gt;` : `>`
-- `&amp;` : `&`
-- `&quot;` : `"`
+- `&lt;` : `<` (less than)
+- `&gt;` : `>` (greater than)
+- `&amp;` : `&` (ampersand)
+- `&quot;` : `"` (quote)
 
 文字コードの数値を利用して任意の文字を表現することもできる。
 
