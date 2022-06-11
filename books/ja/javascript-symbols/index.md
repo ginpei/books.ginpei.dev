@@ -1772,23 +1772,46 @@ JavaScript ではなく URL の仕様。通称 URL ハッシュ。
 
 JavaScript では DOM API の `window.location.hash` や `URL.hash` がある。
 
-### `https://example.com/#!/path` ハッシュバング
+### `#!/usr/bin/env node` シバン
 
-JavaScript ではなく URL の文化。
+- [ハッシュバンコメント - 字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar)
+- [tc39/proposal-hashbang: #! for JS](https://github.com/tc39/proposal-hashbang)
+- [シバン (Unix) - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%90%E3%83%B3_(Unix))
+
+JavaScript ではなく Linux/UNIX のシェルの機能。ハッシュバンとも。スクリプトを実行するインタープリターを指定する。
+
+Node.js 用の `*.js` ファイルに実行権限を与えて利用する場合に必要。
+
+```js
+#!/usr/bin/env node
+process.stdout.write("OK\n");
+```
+
+1 行目の `#!…` を書かないとエラー。
+
+```
+./a.js: line 1: syntax error near unexpected token `"OK\n"'
+./a.js: line 1: `process.stdout.write("OK\n");'
+```
+
+"#" がハッシュ *hash* 、"!" がバン *bang* （ドカーン）で組み合わせてハッシュバン（グ) *hashbang* 、縮めてシバン *shebang* 。
+
+本来 JavaScript の仕様ではないが、実はコメントとして無視するような特別扱いをする[仕様案](https://github.com/tc39/proposal-hashbang)があり、Chrome や Firefox 、Node.js では実装済み。
+
+### `https://example.com/#!/path` URL ハッシュバン
+
+JavaScript ではなく URL の文化。<small>（なんとなくこちらはシバンよりハッシュバン（あるいはハッシュバング）とよく呼ばれてる気がする。気のせいかも。）</small>
 
 URL の[フラグメント識別子 `#`](#https%3A%2F%2Fexample.com%2F%23key-url-フラグメント識別子) の後、`!` に続けてパスを記述するもの。
 
-URL としては `#` 以降はフラグメント識別子以上の意味は持たないためネットワーク上は意味はなく、クライアント側で `!/path` 部分を解釈して画面の描画を行う。
+例：
 
-<small>（HTML5 以前、JavaScript から URL を強力に操作できなかった頃に支持された文化という認識。）</small>
+- `https://example.com/#!path/to/file`
+- `https://example.com/index.html#!path/to/file`
 
-### `#!/usr/bin/env node` シバン
+URL としては `#` 以降はフラグメント識別子以上の意味は持たない。サーバー側では何もせず常に同じリソースを返却し、クライアント側で `#!/path` 部分を解釈して適切な画面の描画を行う。
 
-- [シバン (Unix) - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%90%E3%83%B3_(Unix))
-
-JavaScript ではなく Linux/UNIX のシェルの機能。
-
-シェルスクリプトを実行するインタープリターを指定する。
+<small>（HTML5 初期ないし以前の、JavaScript から URL を強力に操作できなかった頃に [SPA](https://developer.mozilla.org/ja/docs/Glossary/SPA) 用に支持された文化という認識。現在は利用されないと思う。）</small>
 
 ## [TODO] `%` パーセント
 
