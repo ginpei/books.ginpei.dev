@@ -1813,9 +1813,36 @@ URL としては `#` 以降はフラグメント識別子以上の意味は持�
 
 <small>（HTML5 初期ないし以前の、JavaScript から URL を強力に操作できなかった頃に [SPA](https://developer.mozilla.org/ja/docs/Glossary/SPA) 用に支持された文化という認識。現在は利用されないと思う。）</small>
 
-## [TODO] `%` パーセント
+## `%` パーセント
 
 *percent* パーセント、百分率記号
+
+### [TODO] `value % value` 剰余
+
+- [*MultiplicativeOperator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#prod-MultiplicativeOperator)
+- [13.7 Multiplicative Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-multiplicative-operators)
+- [剰余 (%) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Remainder)
+
+割った余りを求める。
+
+```js
+const a = 10 % 3; // 1
+```
+
+(WIP)
+
+### [TODO] `key %= value` 剰余代入
+
+- [*AssignmentOperator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentOperator)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
+- [剰余代入 (%=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Remainder_assignment)
+
+```js
+let a = 10;
+a %= 3; // => 1
+```
+
+(WIP)
 
 ## [TODO] <code>`</code> バックチック
 
