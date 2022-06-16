@@ -1844,11 +1844,65 @@ a %= 3; // => 1
 
 (WIP)
 
-## [TODO] <code>`</code> バックチック
+## <code>`</code> バックチック
 
-*backtick*, *back quote*, *grave* バックチック、バッククォート、グレイブ、ちょん
+*backtick*, *back quote*, *grave* バックチック、バックティック、バッククォート、グレイブ、ちょん
 
 - [Backtick - Wikipedia](https://en.wikipedia.org/wiki/Backtick)
+
+### <code>`abc`</code> テンプレートリテラル
+
+- [*NoSubstitutionTemplate* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-NoSubstitutionTemplate)
+- [*TemplateHead* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-TemplateHead)
+- [*TemplateTail* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-TemplateTail)
+- [13.2.8 Template Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-template-literals)
+- [テンプレートリテラル (テンプレート文字列) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Template_literals)
+
+基本的には文字列リテラル `"abc"` と同じ。加えて改行を加えたり、`${key}` のようにして値を埋め込んだりできる。
+
+```js
+const a = `abc`;
+```
+
+```js
+const title = "Hello World!";
+
+const el = document.createElement("div");
+el.innerHTML = `
+  <div>
+    <h1>${title}</h1>
+  </div>
+`;
+```
+
+入れ子も可能。
+
+```js
+const names = ["Alice", "Bob", "Charlie"];
+const html = `
+  <ul>
+    ${names.map((name) => `
+      <li>${name}</li>
+    `)}
+  </ul>
+`;
+```
+
+### [TODO] <code>f`abc`</code> タグ付きテンプレートリテラル
+
+- [タグ付きテンプレート - テンプレートリテラル (テンプレート文字列) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Template_literals#%E3%82%BF%E3%82%B0%E4%BB%98%E3%81%8D%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88)
+
+テンプレートリテラルに対して接頭辞のようにして、文字列を作成する関数を指定できる。
+
+```js
+function myTag(strings, ...values) {
+  console.log(strings); // ["aaa", "bbb", "ccc"]
+  console.log(values); // [111, 222]
+  return "OK";
+}
+
+const a = myTag`aaa${111}bbb${222}ccc`; // => "OK"
+```
 
 ## [TODO] `^` キャレット
 
