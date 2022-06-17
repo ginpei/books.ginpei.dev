@@ -1276,6 +1276,7 @@ function toDateString(date) {
 ### `@key`, `@f()` デコレーター (TypeScript)
 
 - [TypeScript: Documentation - Decorators](https://www.typescriptlang.org/docs/handbook/decorators.html)
+- [tc39/proposal-decorators: Decorators for ES6 classes](https://github.com/tc39/proposal-decorators)
 
 JavaScript ではなく TypeScript の機能。クラスやプロパティを装飾 (*decorate*) して拡張された意味を与える。
 
@@ -1293,6 +1294,14 @@ class Line {
 
 <small>（翻訳するなら装飾子？　修飾子 (*modifier*) と紛らわしい）</small>
 
+現在の JavaScript の仕様ではないが、検討中の[仕様案](https://github.com/tc39/proposal-hashbang)がある。そのうち正式に JavaScript の文法になるかもしれない。
+
+```js
+@defineElement("my-class")
+class C extends HTMLElement {
+  @reactive accessor clicked = false;
+}
+```
 ## `*` アスタリスク
 
 *asterisk*, *star* アスタリスク、スター、星
