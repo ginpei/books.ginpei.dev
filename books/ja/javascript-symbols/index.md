@@ -1248,7 +1248,7 @@ JavaScript ではなく Vue.js や Handlebars 、Nunjucks 等々の仕様。変�
 
 *at sign* アットマーク、単価記号
 
-現在の JavaScript では利用されていない記号。
+現在の JavaScript では（まだ）使用されていない記号。
 
 ### `/** @type {type} */`, `/** @param {type} key */` 型情報 (TypeScript/JSDoc)
 
