@@ -1913,11 +1913,73 @@ function myTag(strings, ...values) {
 const a = myTag`aaa${111}bbb${222}ccc`; // => "OK"
 ```
 
-## [TODO] `^` キャレット
+## `^` キャレット
 
 *caret*, *hat* キャレット、ハット、三角、とんがり
 
 - [キャレット - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%AC%E3%83%83%E3%83%88)
+
+### [TODO] `value ^ value` ビット排他的論理和
+
+- [*BitwiseXORExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BitwiseXORExpression)
+- [13.12 Binary Bitwise Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-binary-bitwise-operators)
+- [ビット排他的論理和 (^) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Bitwise_XOR)
+
+(WIP)
+
+XOR する。
+
+```js
+const a = 0b00000101; // => 5
+const b = 0b00001100; // => 12
+
+const c = a ^ b; // => 9
+const d = 0b00001001; // => 9
+```
+
+### [TODO] `key ^= value` ビット排他的論理和代入
+
+- [*AssignmentOperator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentOperator)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
+- [ビット排他的論理和代入 (^=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Bitwise_XOR_assignment)
+
+(WIP)
+
+XOR する。
+
+```js
+let a = 0b00000101; // => 5
+const b = 0b00001100; // => 12
+
+a ^=  b; // => 9
+const d = 0b00001001; // => 9
+```
+
+### `^` 先頭（正規表現）
+
+- [正規表現 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Regular_Expressions)
+
+JavaScript ではなく正規表現のパターン。（行の）先頭を意味する。また正規表現以外に転用される。
+
+```js
+const rx = /^a/;
+
+rx.test("abc"); // => true;
+rx.test("xabc"); // => false;
+```
+
+[CSS の属性セレクター](https://developer.mozilla.org/ja/docs/Web/CSS/Attribute_selectors#%E6%A7%8B%E6%96%87)でも、属性の値が `xxx` で始まる、という書き方ができる。
+
+```css
+a { color: blue; }
+a[href^="mailto:"] { color: red; }
+```
+
+```html
+<a href="https://example.com">Blue</a>
+<a href="mailto:me@example.com">Red</a>
+```
+
 
 ## [TODO] `+` プラス
 
