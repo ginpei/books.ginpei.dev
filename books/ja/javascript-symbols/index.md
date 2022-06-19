@@ -304,6 +304,22 @@ const b = 1 / +0; // Infinity
 const c = 1 / -0; // -Infinity
 ```
 
+### `value--` 後置き減算演算子
+
+- [*UpdateExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UpdateExpression)
+- [13.4.3 Postfix Decrement Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-postfix-decrement-operator)
+- [デクリメント (--) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Decrement)
+
+変数 `value` を 1 減算した結果を `value` に代入し、減算前の値を評価値として返す。`--value` との違いに注意。
+
+```js
+let a = 10;
+const b = a--;
+console.log(a, b); // => 10, 9
+```
+
+演算後の評価値と変数に格納されている値が異なるのはカンマ `,` を使って確認できる。
+
 ### `--value` 前置き減算演算子
 
 - [*UpdateExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UpdateExpression)
@@ -321,22 +337,6 @@ console.log(a, b); // => 9, 9
 `--value` は `value -= 1` と同じと考えてよい。<small>（近年は `-=` で代入を明示する方が好まれるように思う。）</small>
 
 変数が `const` の場合は再代入できないので実行時にエラーになる。（例：TypeError: Assignment to constant variable.）
-
-### `value--` 後置き減算演算子
-
-- [*UpdateExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UpdateExpression)
-- [13.4.3 Postfix Decrement Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-postfix-decrement-operator)
-- [デクリメント (--) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Decrement)
-
-変数 `value` を 1 減算した結果を `value` に代入し、減算前の値を評価値として返す。`--value` との違いに注意。
-
-```js
-let a = 10;
-const b = a--;
-console.log(a, b); // => 10, 9
-```
-
-演算後の評価値と変数に格納されている値が異なるのはカンマ `,` を使って確認できる。
 
 ### [TODO] `key -= value` 代入演算子のひとつ
 
@@ -2004,9 +2004,94 @@ a[href^="mailto:"] { color: red; }
 ```
 
 
-## [TODO] `+` プラス
+## `+` プラス
 
 *plus* プラス、足す、足し算
+
+### [TODO] `value + value` 加算演算子
+
+- [*AdditiveExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AdditiveExpression)
+- [13.8 Additive Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-additive-operators)
+- [加算 (+) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Addition)
+
+(WIP)
+
+```js
+const a = 3 + 4; // => 7
+```
+
+### `+value` 単項プラス演算子
+
+- [*UnaryExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UnaryExpression)
+- [13.5.4 Unary + Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-unary-plus-operator)
+- [単項プラス (+) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Unary_plus)
+
+単項 `-` 演算子と対になるもの。符号 (+/-) を変化させないため、実質意味はない。
+
+が、与えられた値を数値へ変換する機能がある。
+
+```js
+const a = +-1; // => -1
+const b = +true; // => 1
+const c = +false; // => 0
+const d = +"123"; // => 123
+const e = +"abc"; // => NaN
+```
+
+### [TODO] `+1` 数値リテラルの一部（符号付き整数）
+
+- [*SignedInteger* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-SignedInteger)
+
+### `key++` 後置き加算演算子
+
+- [*UpdateExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UpdateExpression)
+- [13.4.2 Postfix Increment Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-postfix-increment-operator)
+- [インクリメント (++) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Increment)
+
+変数 `key` を `1` 加算した結果を `key` に代入し、減算前の値を評価値として返す。前置き `--key` との違いに注意。
+
+```js
+let a = 10;
+const b = a++;
+console.log(a, b); // => 11, 10
+```
+
+`for` 文でよく使う。<small>（現代では `for` より `for-of` 文を使うべき場面が多いので、見る機会は減った。）</small>
+
+```js
+const arr = ["A", "B", "C"];
+for (let i = 0; i < arr.length; i++) {
+  const item = arr[i];
+  console.log(i, item);
+}
+```
+
+### `++key` 前置き加算演算子
+
+- [*UpdateExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UpdateExpression)
+- [13.4.4 Prefix Increment Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-prefix-increment-operator)
+- [インクリメント (++) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Increment)
+
+変数 `key` を `1` 加算した結果を `key` に代入し、その値を評価値として返す。後置き `key++` との違いに注意。
+
+```js
+let a = 10;
+const b = ++a;
+console.log(a, b); // => 11, 11
+```
+
+### [TODO] `key += value` 加算代入演算子
+
+- [*AssignmentOperator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentOperator)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
+- [加算代入 (+=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Addition_assignment)
+
+(WIP)
+
+```js
+let a = 1;
+a += 2; // => 3
+```
 
 ## [TODO] `<` 小なり
 
