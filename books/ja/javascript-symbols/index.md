@@ -2118,15 +2118,56 @@ a += 2; // => 3
 - [13.11 Equality Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-equality-operators)
 - [厳密等価 (===) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Strict_equality)
 
-### [TODO] `() => value` アロー関数の一部
+### `() => {}` アロー関数式
 
-左側に引数、右側に関数の内容を書く。
+- [*ArrowFunction* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ArrowFunction)
+- [15.3 Arrow Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-arrow-function-definitions)
+- [アロー関数式 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+
+左側に引数、右側に関数の本文を書く。
 
 ```js
-const f = (x) => x + 1;
+const f = (x) => { return x + 1; };
+
+// 通常の関数式の場合（比較用）
+const f = function (x) { return x + 1; };
 ```
 
-WIP
+引数が 1 つの場合、丸括弧 `()` を省略できる。また右側も、`return` のみの場合は波括弧 `{}` と `return` を省略できる。
+
+
+```js
+const f = x => { return x + 1; };
+const g = (x) => x + 1;
+const h = x => x + 1;
+```
+
+`=>` の前に改行を置くと文法エラーになる。
+
+```js
+// ⛔ SyntaxError: Unexpected token '=>'
+f = x
+      => x + 1;
+```
+
+アロー関数は通常の関数とは `this` の扱いが異なる等の違いがある。（なお括弧の有無は関係ない。）
+
+```js
+const creator = {
+  name: "CREATOR",
+  create() {
+    return {
+      name: "CREATURE",
+      f: function() { return this.name; },
+      af: () => this.name,
+    };
+  },
+};
+
+const obj = creator.create();
+obj.f(); // => "CREATURE"、関数実行時の `this`
+obj.af(); // => "CREATOR"、関数作成時の `this`
+```
 
 ## [TODO] `>` 大なり
 
