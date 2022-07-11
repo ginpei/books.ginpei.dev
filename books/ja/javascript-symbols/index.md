@@ -2102,6 +2102,118 @@ a += 2; // => 3
 
 - [よく使う括弧の名前（日本語、英語）を調べてみたよ。ブラケット、ブレースとか。 | Ginpen.com](https://ginpen.com/2014/02/20/brackets/)
 
+### [TODO] `value < value` 小なり演算子
+
+- [*RelationalExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-RelationalExpression)
+- [13.10 Relational Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-relational-operators)
+- [小なり (<) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Less_than)
+
+```js
+const a = 4 < 5; // => true
+const b = 5 < 5; // => false
+
+const c = -6 < -5; // => true
+const d = -5 < -5; // => false
+```
+
+普通は `if` 文の条件で使う。
+
+```js
+// 最小値より小さいなら修正
+if (n < min) {
+  n = min;
+}
+```
+
+### [TODO] `value <= value` 小なりイコール演算子
+
+- [*RelationalExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-RelationalExpression)
+- [13.10 Relational Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-relational-operators)
+- [小なりイコール (<=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Less_than_or_equal)
+
+```js
+const a = 4 <= 5; // => true
+const b = 5 <= 5; // => true
+const c = 6 <= 5; // => false
+
+const d = -6 <= -5; // => true
+const e = -5 <= -5; // => true
+const f = -4 <= -5; // => false
+```
+
+普通は `if` 文の条件で使う。
+
+```js
+// 範囲内ならよし
+if (n <= max) {
+  return true;
+}
+```
+
+### [TODO] `value << value` 左シフト演算子
+
+- [*ShiftExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ShiftExpression)
+- [13.9 Bitwise Shift Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-bitwise-shift-operators)
+- [左シフト (<<) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Left_shift)
+
+ビット操作。
+
+```js
+const a = 1 << 1; // => 2
+const b = 1 << 2; // => 4
+const c = 1 << 3; // => 8
+const d = 1 << 4; // => 16
+const d = 1 << 10; // => 1024
+```
+
+2 進数で見るとわかりやすい。
+
+```js
+const a = 0b0001 << 1 === 0b0010; // => true;
+const b = 0b0001 << 2 === 0b0100; // => true;
+const c = 0b0001 << 3 === 0b1000; // => true;
+
+const d = 0b0_0000_0101 << 4 === 0b0_0101_0000; // => true;
+```
+
+### [TODO] `key <<= value` 左シフト代入演算子
+
+- [*AssignmentOperator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentOperator)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
+- [左シフト代入 (<<=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Left_shift_assignment)
+
+```js
+let a = 1;
+a <<= 10; // => 1024
+```
+
+### `<!--` HTML コメント
+
+- [SingleLineHTMLOpenComment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-annexB-SingleLineHTMLOpenComment)
+- [B.1.1 HTML-like Comments - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-html-like-comments)
+
+単行コメント `//` と同じ。
+
+JavaScript のコードを HTML コードへ埋め込む際、かつてまだ JavaScript が全てのブラウザーで対応されていなかった頃、JS コード部分が露出するのを避ける目的で「念のため」HTML コメントにしていた時代の名残。
+
+```html
+<script>
+<!--
+window.alert("Hello World!");
+-->
+</script>
+```
+
+Node.js も対応している。
+
+<small>（わざわざ使わないでください。）</small>
+
+### [TODO] `<div>` 要素やコンポーネント (React/JSX)
+
+- [JSX の導入 – React](https://ja.reactjs.org/docs/introducing-jsx.html)
+
+JavaScript ではなく React/JSX の仕様。
+
 ## [TODO] `=` イコール
 
 *equal* イコール、等号
