@@ -345,6 +345,14 @@ console.log(a, b); // => 9, 9
 
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 
+### `-->` HTML コメント
+
+- [*HTMLCloseComment* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-annexB-HTMLCloseComment)
+- [B.1.1 HTML-like Comments - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-html-like-comments)
+
+
+[`<!---` HTML コメント](#<!---html-コメント)を参照。
+
 ## `,` カンマ
 
 *comma* カンマ、コンマ
