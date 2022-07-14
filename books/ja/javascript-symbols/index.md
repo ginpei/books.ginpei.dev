@@ -2197,12 +2197,12 @@ a <<= 10; // => 1024
 
 ### `<!--` HTML コメント
 
-- [SingleLineHTMLOpenComment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-annexB-SingleLineHTMLOpenComment)
+- [*SingleLineHTMLOpenComment* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-annexB-SingleLineHTMLOpenComment)
 - [B.1.1 HTML-like Comments - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-html-like-comments)
 
-単行コメント `//` と同じ。
+単行コメント `//` と基本的に同じ。ここでは HTML ではなく JavaScript の文法。
 
-かつて最新機能である JavaScript がまだ全ての環境で対応されていなかった時代、HTML へ埋め込んだ JS コード部分が露出するのを避ける目的で「念のため」HTML コメントにしていた時代の名残。<small>（だと思う。）</small>
+<small>（かつて最新機能である JavaScript がまだ全ての環境で対応されていなかった時代、HTML へ埋め込んだ JS コード部分が露出するのを避ける目的で「念のため」HTML コメントにしていた時代の名残、だと思う。）</small>
 
 ```html
 <script><!--
@@ -2210,7 +2210,7 @@ window.alert("Hello World!");
 --></script>
 ```
 
-HTML から分離された JS ファイルでも利用可能。なんなら Node.js でも使える。<small>（わざわざ使わないでください。）</small>
+HTML から分離された JS ファイルでも利用可能。<small>（わざわざ利用しないでください。）</small>
 
 
 ```js
@@ -2219,8 +2219,29 @@ const a = 123;
 
 <!-- 関数だよ
 function foo() {
-  <!-- コ……コメント……だよ…… -->
+  <!-- コ……
+  <!-- コメント……
+  <!-- だよ……
 }
+
+--> 矢印っぽくて格好良いね
+--> でもコメントだよ
+--> 使うなよ
+```
+
+なんなら Node.js でも使える。<small>（わざわざ使わないでください。）</small>
+
+```
+$ node
+Welcome to Node.js v16.16.0.
+Type ".help" for more information.
+> //
+undefined
+> <!--
+undefined
+> -->
+undefined
+>
 ```
 
 ### [TODO] `<div>` 要素やコンポーネント (React/JSX)
