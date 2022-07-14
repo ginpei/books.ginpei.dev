@@ -2225,17 +2225,183 @@ JavaScript ではなく React/JSX の仕様。
 
 *equal* イコール、等号
 
-### [TODO] `key = value`
+### `const key = value` 変数宣言の一部
 
-### [TODO] `value == value`
+- [*Initializer* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-Initializer)
+- [14.3 Declarations and the Variable Statement - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-declarations-and-the-variable-statement)
 
+基本的には代入演算子と同じで変数の内容を設定する。
+
+```js
+const a = 123;
+let b = { name: "foo" };
+var c = function() { return Math.random(); };
+```
+
+`+=` のようなバリエーションはない。
+
+### `key = value` 代入演算子
+
+- [*AssignmentExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#prod-AssignmentExpression)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-assignment-operators)
+- [代入 (=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Assignment)
+
+左辺で示す変数に右辺で与える値を代入する。
+
+変数を置く部分にはオブジェクトリテラル `{}` や配列リテラル `[]` も利用できる。（ただしブロック構文 `{}` と混同しないような書き方にする必要がある。）　分割代入を参照。
+
+```js
+const obj = { a: 11, b: 22, c: 33, d: 44, e: 55 };
+let a, c;
+({ a, c } = obj);
+console.log(a, c); // => 11, 33
+
+const arr = [11, 22, 33, 44, 55];
+let two, four;
+[, two,, four ] = arr;
+console.log(two, four); // => 22, 44
+```
+
+現在の値に足し算しながら代入、のようなバリエーションが豊富。（各項を参照。）
+
+- `=`
+- `*=`
+- `/=`
+- `%=`
+- `+=`
+- `-=`
+- `<<=`
+- `>>=`
+- `>>>=`
+- `&=`
+- `^=`
+- `|=`
+- `**=`
+- `&&=`
+- `||=`
+- `??=`
+
+なお分割代入は `=` 専用。
+
+```js
+const arr = [11];
+let a = 2;
+
+// ⛔ SyntaxError: Invalid left-hand side in assignment
+[a] *= obj;
+```
+
+### `value == value` 等価演算子
+
+- [*EqualityExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-EqualityExpression)
 - [13.11 Equality Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-equality-operators)
 - [等価 (==) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Equality)
 
-### [TODO] `value === value`
+左辺と右辺を比較し、等価なら `true` を、そうでなければ `false` を返す。
 
+```js
+const a = 1 == 1; // => true
+const b = 1 == 2; // => false
+```
+
+`if` 文の条件として使うことが多い。
+
+```js
+const sNum = window.prompt("数字を入力してください", "123");
+
+if (sNum == 334) {
+  throw new Error("禁止されている値です。");
+}
+
+window.alert(`ありがとう：${num}`);
+```
+
+厳密等価演算子 `===` と異なり、型が異なる場合は自動的に変換される。<small>（便利なようで気を付けないと予期しない比較になることがある。精神力に頼るより明示的に型変換を行い常に `===` を使うべき。）</small>
+
+```js
+const a = 1 == '1'; // => true
+const b = 1 === '1'; // => false
+
+const c = null == undefined; // => true
+const d = null === undefined; // => false
+```
+
+オブジェクトは形が同じでも別の存在（インスタンス instance）なので、`==` で比較すると `false` になる。逆に、別の変数でも同じインスタンスを指す場合は `true` になる。
+
+```js
+const a = {};
+const b = {};
+const c = a;
+
+const d = a == b; // => false
+const e = a == c; // => true
+```
+
+オブジェクトが `toString()` や `valueOf()` メソッドを持っていると、プリミティブ値（文字列や数値等）と比較する場合の型変換に利用される。
+
+```js
+const stringLike = {
+  toString() {
+    return "obj";
+  },
+};
+const a = stringLike == "obj"; // => true
+
+const numberLike = {
+  valueOf() {
+    return 123;
+  },
+};
+
+const b = numberLike == 123; // => true
+```
+
+### `value === value` 厳密等価演算子
+
+- [*EqualityExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-EqualityExpression)
 - [13.11 Equality Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-equality-operators)
 - [厳密等価 (===) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Strict_equality)
+
+左辺と右辺を比較し、等価なら `true` を、そうでなければ `false` を返す。
+
+```js
+const a = 1 === 1; // => true
+const b = 1 === 2; // => false
+```
+
+`if` 文の条件として使うことが多い。
+
+```js
+const sNum = window.prompt("数字を入力してください", "123");
+const num = Number(sNum);
+
+if (num === 334) {
+  throw new Error("禁止されている値です。");
+}
+
+window.alert(`ありがとう：${num}`);
+```
+
+ただの比較演算子 `==` と異なり、型が異なる場合は即時 `false` を返す。
+
+```js
+const a = 1 == '1'; // => true
+const b = 1 === '1'; // => false
+
+const c = null == undefined; // => true
+const d = null === undefined; // => false
+```
+
+オブジェクトは形が同じでも別の存在（インスタンス instance）なので、`===` で比較すると `false` になる。逆に、別の変数でも同じインスタンスを指す場合は `true` になる。
+
+```js
+const a = {};
+const b = {};
+const c = a;
+
+const d = a === b; // => false
+const e = a === c; // => true
+```
 
 ### `() => {}` アロー関数式
 
@@ -2256,9 +2422,11 @@ const f = function (x) { return x + 1; };
 
 
 ```js
-const f = x => { return x + 1; };
-const g = (x) => x + 1;
-const h = x => x + 1;
+const f = (x) => { return x + 1; };
+
+const g = x => { return x + 1; };
+const h = (x) => x + 1;
+const i = x => x + 1;
 ```
 
 `=>` の前に改行を置くと文法エラーになる。
@@ -2284,8 +2452,18 @@ const creator = {
 };
 
 const obj = creator.create();
-obj.f(); // => "CREATURE"、関数実行時の `this`
-obj.af(); // => "CREATOR"、関数作成時の `this`
+obj.f(); // => "CREATURE"、関数 f() 実行時の `this`
+obj.af(); // => "CREATOR"、関数 af() 作成時の `this`
+```
+
+### [TODO] `() => void` 関数型 (TypeScript)
+
+JavaScript ではなく TypeScript の文法。
+
+```ts
+const f: (s: string) => string[] = (s) => s.split("");
+//       ~~~~~~~~~~~~~~~~~~~~~~~   ~~~~~~~~~~~~~~~~~~
+//       ^ f の型                  ^ f の値
 ```
 
 ## [TODO] `>` 大なり
