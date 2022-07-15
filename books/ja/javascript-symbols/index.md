@@ -345,13 +345,32 @@ console.log(a, b); // => 9, 9
 
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 
-### `-->` HTML コメント
+### `-->` HTML 閉じコメント
 
 - [*HTMLCloseComment* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-annexB-HTMLCloseComment)
 - [B.1.1 HTML-like Comments - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-html-like-comments)
 
+ここでは HTML ではなく JavaScript の文法。単行コメント `//` のようなもので、右側に任意のコメントを置ける。
 
-[`<!---` HTML コメント](#<!---html-コメント)を参照。
+```js
+--> 矢印っぽくて格好良いね
+--> でもコメントだよ
+--> 使うなよ
+```
+
+ただし単行コメント `//` や HTML 開始コメント `<!--` と異なり、`-->` の左側には `/* … */` （と空白）しか置けない。
+
+```js
+const a = 1; // OK
+const b = 1; <!-- OK
+
+/* */ --> OK
+
+// ⛔ SyntaxError: Invalid left-hand side expression in postfix operation
+const c = 1; --> NG
+```
+
+[`<!--` HTML 開きコメント](#<!---html-開きコメント)も参照。
 
 ## `,` カンマ
 
@@ -2195,12 +2214,12 @@ let a = 1;
 a <<= 10; // => 1024
 ```
 
-### `<!--` HTML コメント
+### `<!--` HTML 開きコメント
 
 - [*SingleLineHTMLOpenComment* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-annexB-SingleLineHTMLOpenComment)
 - [B.1.1 HTML-like Comments - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-html-like-comments)
 
-単行コメント `//` と基本的に同じ。ここでは HTML ではなく JavaScript の文法。
+ここでは HTML ではなく JavaScript の文法。単行コメント `//` と基本的に同じ。
 
 <small>（かつて最新機能である JavaScript がまだ全ての環境で対応されていなかった時代、HTML へ埋め込んだ JS コード部分が露出するのを避ける目的で「念のため」HTML コメントにしていた時代の名残、だと思う。）</small>
 
@@ -2216,17 +2235,6 @@ HTML から分離された JS ファイルでも利用可能。<small>（わざ�
 ```js
 <!-- aに123を代入
 const a = 123;
-
-<!-- 関数だよ
-function foo() {
-  <!-- コ……
-  <!-- コメント……
-  <!-- だよ……
-}
-
---> 矢印っぽくて格好良いね
---> でもコメントだよ
---> 使うなよ
 ```
 
 なんなら Node.js でも使える。<small>（わざわざ使わないでください。）</small>
@@ -2243,6 +2251,19 @@ undefined
 undefined
 >
 ```
+
+HTML のコメントではないので、行を挟んでも別にコメントアウトされない。
+
+```js
+let a = 1;
+<!--
+a = 2;
+-->
+
+console.log(a); // 2
+```
+
+[`-->` HTML 閉じコメント](#-->-html-閉じコメント)も参照。
 
 ### [TODO] `<div>` 要素やコンポーネント (React/JSX)
 
