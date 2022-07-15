@@ -2123,7 +2123,7 @@ let a = 1;
 a += 2; // => 3
 ```
 
-## [TODO] `<` 小なり
+## `<` 小なり
 
 *less-than sign* 小なり、不等号
 
@@ -2271,7 +2271,7 @@ console.log(a); // 2
 
 JavaScript ではなく React/JSX の仕様。
 
-## [TODO] `=` イコール
+## `=` イコール
 
 *equal* イコール、等号
 
