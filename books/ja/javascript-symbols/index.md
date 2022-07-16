@@ -2652,7 +2652,7 @@ a >>>= 1; // => 2147483647
 
 *bar*, *vertical bar*, *pipe* バー、垂直バー、パイプ
 
-### [TODO] `value | value` ビット論理和演算子
+### `value | value` ビット論理和演算子
 
 - [BitwiseORExpression - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BitwiseORExpression)
 - [13.12 Binary Bitwise Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-binary-bitwise-operators)
@@ -2721,14 +2721,40 @@ const a = obj.a ?? []; // => [1, 2, 3]
 const b = obj.b ?? []; // => []
 ```
 
-### [TODO] `key |= value` 代入演算子のひとつ
+### `key |= value` ビット論理和代入
 
+- [*AssignmentOperator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentOperator)
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
+- [ビット論理和代入 (|=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Bitwise_OR_assignment)
 
-### [TODO] `key ||= value` 代入演算子のひとつ
+ビット論理和を取りながら代入する。
 
+```js
+let   a = 0b0101; // => 5
+const b = 0b1100; // => 12
+
+a |= b; // => 4 (0b1101)
+```
+
+ビット論理和演算子 `|` を参照。
+
+### `key ||= value` 論理和代入演算子
+
+- [*AssignmentExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentExpression)
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
+- [論理和代入 (||=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Logical_OR_assignment)
 
+論理和代入を取りながら代入する。
+
+```js
+let a = true;
+let b = false;
+
+a ||= 123; // => true
+b ||= 123; // => 123
+```
+
+論理和代入演算子 `||` を参照。
 ### `value |> f(%)` パイプ演算子
 
 - [tc39/proposal-pipeline-operator: A proposal for adding a useful pipe operator to JavaScript.](https://github.com/tc39/proposal-pipeline-operator)
@@ -2751,6 +2777,18 @@ const e = 123 |> h(%) |> g(%) |> f(%);
 ```
 
 あくまで仕様案なのでまだ利用できないし、文法や動作は確定していない。`%` も <q>`%` is not a final choice</q> と提案書に記載されている。
+
+### `value|value` いずれか（正規表現）
+
+JavaScript ではなく正規表現の文法。いずれかひとつを満たす場合にマッチする。また正規表現以外に転用される。
+
+```js
+const rx = /javascript|js/;
+
+const a = rx.text("I love javascript"); // => true
+const b = rx.text("I love js"); // => true
+const c = rx.text("I love java script"); // => false
+```
 
 ## [TODO] `~` チルダ
 
