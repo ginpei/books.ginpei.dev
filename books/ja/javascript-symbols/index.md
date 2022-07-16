@@ -1681,7 +1681,7 @@ if (obj.b && obj.b.length > 1) {
 }
 ```
 
-現代ではオプショナルチェイン `?.` で実現できる。
+現代ではオプショナルチェイン `?.` で実現できる。（その場合は falsy ではなく `null` or `undefined` となる点に注意。）
 
 ```js
 const obj = { a: [1, 2, 3], b: undefined };
@@ -2648,13 +2648,78 @@ a >>>= 1; // => 2147483647
 
 符号なし右シフト演算子 `>>>` を参照。
 
-## [TODO] `|` バー
+## `|` バー
 
 *bar*, *vertical bar*, *pipe* バー、垂直バー、パイプ
 
-### [TODO] `value | value`
+### [TODO] `value | value` ビット論理和演算子
 
-### [TODO] `value || value`
+- [BitwiseORExpression - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BitwiseORExpression)
+- [13.12 Binary Bitwise Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-binary-bitwise-operators)
+- [ビット論理和 (|) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Bitwise_OR)
+
+ビット、つまり 2 進数の計算で、両辺ないしいずれかが `1` である箇所を `1` に、それ以外を `0` にする。
+
+ちなみに JavaScript では `0b10` のような形で 2 進数を表現できる。
+
+```js
+const a = 0b0101; // => 5
+const b = 0b1100; // => 12
+const c = a | b; // => 4 (0b1101)
+```
+
+### `value || value` 論理和演算子
+
+- [LogicalORExpression - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-LogicalORExpression)
+- [13.13 Binary Logical Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-binary-logical-operators)
+- [論理和 (||) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Logical_OR)
+
+左辺が truthy の場合は左辺、そうでなければ右辺を返す。条件分岐でよく利用される。
+
+```js
+// いずれかが NG なら
+if (he.isNg() || she.isNg()) {
+  he.bye(she);
+}
+```
+
+他の言語では真偽値 `true` か `false` を返すものが多いが、JavaScript では与えられた 2 項のいずれかを返す点に注意。
+
+```js
+const a = true || 123; // => true
+const b = false || 123; // => 123
+
+const c = 1 || 123; // => 1
+const d = 0 || 123; // => 123
+```
+
+真偽値として欲しい場合 `Boolean()` を用いるとよい。
+
+```js
+const a = Boolean(false || 123); // => true
+const b = Boolean(false || 0); // => false
+
+const c = Boolean("" || 123); // => true
+const d = Boolean("" || 0); // => false
+```
+
+かつて、オプションが与えられた場合に初期値を設定、のような用途でも使われていた。
+
+```js
+const obj = { a: [1, 2, 3], b: undefined };
+
+const a = obj.a || []; // => [1, 2, 3]
+const b = obj.b || []; // => []
+```
+
+現代ではNull 合体演算子 `??` で実現できる。（その場合は falsy ではなく `null` or `undefined` となる点に注意。）
+
+```js
+const obj = { a: [1, 2, 3], b: undefined };
+
+const a = obj.a ?? []; // => [1, 2, 3]
+const b = obj.b ?? []; // => []
+```
 
 ### [TODO] `key |= value` 代入演算子のひとつ
 
