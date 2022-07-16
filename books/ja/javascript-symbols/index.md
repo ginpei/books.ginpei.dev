@@ -441,18 +441,20 @@ const c = 1; --> NG
 
 ### `a, b` カンマ演算子
 
+- [*Expression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-Expression)
 - [13.16 Comma Operator ( `,` ) - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-comma-operator)
 - [カンマ演算子 (,) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Comma_Operator)
 
 左辺を評価し、その後右辺を評価しその値を返す。
 
 ```js
-const a = 1, 2 + 3, 4; // => 4
+const a = 11, 22; // => 22
+const b = 1, 2 + 3, 4; // => 4
 ```
 
 <small>（minify 後のコードでにはよく出てくる程度で、普通使わないと思う。）</small>
 
-`for` 文の初期化式で使われることがある。<small>（良いやり方ではないと思う。）</small>
+`for` 文の初期化式で使われることがある。<small>（良いやり方ではないと思う。）</small><small>（そもそも繰り返しに `for` を使うべき場面が少ない。）</small>
 
 ```js
 for (let i = 0, count = 0; i < str.length && count < MAX; i++) {
@@ -465,7 +467,11 @@ for (let i = 0, count = 0; i < str.length && count < MAX; i++) {
 
 ### `[value, value]` 配列初期化子の一部
 
+- [*ArrayLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ArrayLiteral)
+- [*ElementList* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ElementList)
+- [*Elision* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-Elision)
 - [13.2.4 Array Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-array-initializer)
+- [配列リテラル記法 - Array() コンストラクター - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/Array#array_literal_notation)
 
 いわゆる配列リテラルで要素を区切るのに用いる。末尾に置いても良い。
 
@@ -478,7 +484,7 @@ const b = [
 ]; // => ["foo", "bar", "baz"]
 ```
 
-また要素なしも許可されている。与えられなかった要素は `undefined` ではなく空 (empty) となる。空は `length` に含まれるものの、例えば `map()` 等のコールバックで呼ばれなかったりする。`fill()` で上書きは可能。一方イテレーターには含まれるので `for-of` を使うのが良い。
+また要素なしも許可されている。与えられなかった要素は `undefined` ではなく空 (empty) となる。空は `length` に含まれるものの、例えば `map()` 等のコールバックで呼ばれない等、ただ `undefined` が含まれる状態とは異なる。`fill()` で上書きは可能。一方イテレーターには含まれるので `for-of` を使うのが良い。
 
 ```js
 const a = [1, 2, 3,,]; // => [ 1, 2, 3, <1 empty item> ]
@@ -501,9 +507,12 @@ for (const v of b) {
 // => undefined
 ```
 
-### `{ prop: value, prop: value }` オブジェクト初期化子の一部
+### `{ key: value, key: value }` オブジェクト初期化子の一部
 
+- [*ObjectLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ObjectLiteral)
+- [*PropertyDefinitionList* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-PropertyDefinitionList)
 - [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
+- [オブジェクト初期化子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Object_initializer)
 
 いわゆるオブジェクトリテラルで要素を区切るのに用いる。末尾に置いても良い。
 
@@ -515,18 +524,21 @@ const b = {
 };
 ```
 
-### `function (param, param) {}` 関数仮引数の一部
+### `function (key, key) {}` 関数の仮引数の区切り
 
+- [*FormalParameters* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FormalParameters)
+- [*Expression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-Expression)
 - [15.1 Parameter Lists - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-parameter-lists)
+- [15.3 Arrow Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-arrow-function-definitions)
 
-各種関数宣言における仮引数の区切り文字。
+各種関数宣言における仮引数 (parameters) の区切り文字。
 
 ```js
 function f(a, b) {}
 const g = (v, i) => v * i;
 ```
 
-最近の JavaScript （[ECMAScript 2017](https://262.ecma-international.org/8.0/#prod-FormalParameters) 以降）では区切りだけでなく末尾にも置ける。
+区切りだけでなく末尾にも置ける。（[ECMAScript 2017](https://262.ecma-international.org/8.0/#prod-FormalParameters) 以降。）
 
 ```js
 function longFunctionName(
@@ -537,11 +549,12 @@ function longFunctionName(
 }
 ```
 
-### `f(value, value)` 関数呼び出しの一部
+### `f(value, value)` 関数の引数の区切り
 
+- [*Arguments* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-Arguments)
 - [13.3 Left-Hand-Side Expressions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
 
-各種関数呼び出しにおける引数の区切り文字。
+各種関数呼び出しにおける引数 (arguments) の区切り文字。
 
 ```js
 f(a, b);
@@ -549,7 +562,7 @@ obj.prop(a, b);
 super(a, b);
 ```
 
-最近の JavaScript （[ECMAScript 2017](https://262.ecma-international.org/8.0/#prod-Arguments) 以降）では区切りだけでなく末尾にも置ける。
+区切りだけでなく末尾にも置ける。（[ECMAScript 2017](https://262.ecma-international.org/8.0/#prod-Arguments) 以降。）
 
 ```js
 const someNiceResult = longFunctionName(
