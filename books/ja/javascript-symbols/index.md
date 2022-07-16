@@ -2883,10 +2883,13 @@ const b = `Hello ${a}!`;
 
 ## その他
 
-せっかくなので記号ではないが特殊な用途のものも紹介します。
+せっかくなので記号ではないが特殊なものも紹介する。
 
-### `0x00`, `0o00`, `0b00` 数値リテラルの一部（進数）
+### `0x00`, `0o00`, `0b00` 16 進数、8 進数、2 進数（数値リテラル）
 
+- [*BinaryIntegerLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BinaryIntegerLiteral)
+- [*OctalIntegerLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-OctalIntegerLiteral)
+- [*HexIntegerLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-HexIntegerLiteral)
 - [12.8.3 Numeric Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-numeric-literals)
 
 数値への接頭辞 `0x`, `0X` (HexIntegerLiteral) は 16 進数を意味する。同じく `0o`, `0O` (OctalIntegerLiteral) は 8 進数、`0b`, `0B` (BinaryIntegerLiteral) は 2 進数となる。
@@ -2898,12 +2901,12 @@ const c = 0b10; // => 2
 const d =   10; // => 10
 ```
 
-### `0e0` 数値リテラルの一部（指数）
+### `0e0` 指数（数値リテラルの一部）
 
-- [BigInt - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
+- [*ExponentIndicator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ExponentIndicator)
 - [12.8.3 Numeric Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-numeric-literals)
 
-例えば `3e2` のようにして指数を表現する。この場合は `3 * 10 ** 2` となる。
+例えば `3e2` のようにして基数 `3` 、指数 `2` を表現する。この場合は `3 * 10 ** 2` となる。
 
 ```js
 const a = 1e0; // => 1
@@ -2914,8 +2917,18 @@ const d = 1e-1; // => 0.1
 const pi = 314e-2; // => 3.14
 ```
 
-### `0n` 数値リテラルの一部（bigint）
+10 進数のみで利用可能。なお 16 進数は数字に "e" を含むので文法エラーにはならないが指数にはならない。
 
+```js
+const a = 1e0;
+
+// ⛔ SyntaxError: Invalid or unexpected token
+const b = 0b1e2;
+```
+
+### `0n` bigint（数値リテラルの一部）
+
+- [*BigIntLiteralSuffix* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BigIntLiteralSuffix)
 - [12.8.3 Numeric Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-numeric-literals)
 - [BigInt - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
 
