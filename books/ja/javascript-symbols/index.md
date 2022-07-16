@@ -2891,6 +2891,7 @@ const b = `Hello ${a}!`;
 - [*OctalIntegerLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-OctalIntegerLiteral)
 - [*HexIntegerLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-HexIntegerLiteral)
 - [12.8.3 Numeric Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-numeric-literals)
+- [数値リテラル - 字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar#%E6%95%B0%E5%80%A4%E3%83%AA%E3%83%86%E3%83%A9%E3%83%AB)
 
 数値への接頭辞 `0x`, `0X` (HexIntegerLiteral) は 16 進数を意味する。同じく `0o`, `0O` (OctalIntegerLiteral) は 8 進数、`0b`, `0B` (BinaryIntegerLiteral) は 2 進数となる。
 
@@ -2901,10 +2902,11 @@ const c = 0b10; // => 2
 const d =   10; // => 10
 ```
 
-### `0e0` 指数（数値リテラルの一部）
+### `0e0` 指数（数値リテラル）
 
 - [*ExponentIndicator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ExponentIndicator)
 - [12.8.3 Numeric Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-numeric-literals)
+- [数値リテラル - 字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar#%E6%95%B0%E5%80%A4%E3%83%AA%E3%83%86%E3%83%A9%E3%83%AB)
 
 例えば `3e2` のようにして基数 `3` 、指数 `2` を表現する。この場合は `3 * 10 ** 2` となる。
 
@@ -2926,13 +2928,13 @@ const a = 1e0;
 const b = 0b1e2;
 ```
 
-### `0n` bigint（数値リテラルの一部）
+### `0n` 長整数（数値リテラル）
 
 - [*BigIntLiteralSuffix* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BigIntLiteralSuffix)
 - [12.8.3 Numeric Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-numeric-literals)
-- [BigInt - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
+- [数値リテラル - 字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar#%E6%95%B0%E5%80%A4%E3%83%AA%E3%83%86%E3%83%A9%E3%83%AB)
 
-`123n` のように接尾辞を与えると、数値が bigint (BigInt) になる。通常の数値 number とは一部異なる。
+`123n` のように接尾辞を与えると、数値が長整数 (bigint) になる。通常の数値 (number) とは一部異なる。
 
 ```js
 const a = 123 === 123n; // => false
