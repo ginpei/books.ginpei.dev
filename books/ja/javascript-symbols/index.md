@@ -2654,8 +2654,6 @@ a >>>= 1; // => 2147483647
 
 ### [TODO] `value | value`
 
-### [TODO] `value |> xxx` パイプライン演算子
-
 ### [TODO] `value || value`
 
 ### [TODO] `key |= value` 代入演算子のひとつ
@@ -2665,6 +2663,29 @@ a >>>= 1; // => 2147483647
 ### [TODO] `key ||= value` 代入演算子のひとつ
 
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
+
+### `value |> f(%)` パイプ演算子
+
+- [tc39/proposal-pipeline-operator: A proposal for adding a useful pipe operator to JavaScript.](https://github.com/tc39/proposal-pipeline-operator)
+
+パイプライン演算子とも。関数を入れ子にして利用する、つまりある関数の戻り値を次の関数の引数へ与えるような処理を横に並べて書けるようにする文法の仕様案。
+
+左辺に値（あるいは値へ解決される処理）、右辺にその値を受け取る処理を書く。右辺においては `%` をその受け取った左辺値を表す変数のようなものとして利用できる。
+
+```js
+// 各処理の結果を変数に一度格納する場合
+const a = h(123);
+const b = g(a);
+const c = f(b);
+
+// 変数を利用せず、戻り値を直接引数へ与える場合
+const d = f(g(h(123)));
+
+// パイプ演算子で連結する場合
+const e = 123 |> h(%) |> g(%) |> f(%);
+```
+
+あくまで仕様案なのでまだ利用できないし、文法や動作は確定していない。`%` も <q>`%` is not a final choice</q> と提案書に記載されている。
 
 ## [TODO] `~` チルダ
 
