@@ -1256,12 +1256,6 @@ someInitializer({
 
 - [13.15.5 Destructuring Assignment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
 
-### [TODO] <code>&#96;${value}&#96;</code> 値の埋め込み（テンプレートリテラル）
-
-- [*TemplateHead* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-TemplateHead)
-- [*TemplateMiddle* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-TemplateMiddle)
-- [*TemplateTail* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-TemplateTail)
-
 ### `<div>{value}<div>` 値の埋め込み（React/JSX）
 
 - [JSX の導入 – React](https://ja.reactjs.org/docs/introducing-jsx.html)
@@ -1834,7 +1828,7 @@ JavaScript ではなく URL の仕様。通称 URL ハッシュ。
 
 JavaScript では DOM API の `window.location.hash` や `URL.hash` がある。
 
-### `#!/usr/bin/env node` シバン
+### `#!/usr/bin/env node` シバン (Linux)
 
 - [ハッシュバンコメント - 字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar)
 - [tc39/proposal-hashbang: #! for JS](https://github.com/tc39/proposal-hashbang)
@@ -2668,6 +2662,14 @@ const b = 0b1100; // => 12
 const c = a | b; // => 4 (0b1101)
 ```
 
+### `value | 0` ビット論理和演算子と数値 `0`
+
+ビット論理和演算子 `|` の結果が整数となる性質を利用して、小数点付きかもしれない数を整数へ変換するのに使うことがある。<small>（使わないでほしい。）</small>　数値 `0` はビットも全て 0 なので、ビット論理和を取っても値は変化しない。
+
+```js
+const a = 3.14 | 0; // => 3
+```
+
 ### `value || value` 論理和演算子
 
 - [LogicalORExpression - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-LogicalORExpression)
@@ -2796,6 +2798,35 @@ const c = rx.text("I love java script"); // => false
 
 - [チルダ - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%81%E3%83%AB%E3%83%80)
 
+### `~value` ビット否定演算子
+
+- [*UnaryExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UnaryExpression)
+- [13.5.6 Bitwise NOT Operator ( ~ ) - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-bitwise-not-operator)
+- [ビット否定 (~) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Bitwise_NOT)
+
+ビットを反転する単項演算子。符号付き整数になる。
+
+```js
+const a = ~1; // => -2
+```
+
+ビットの知識が必要。
+
+```js
+const a =   5;  // 00000000000000000000000000000101 ( 5)
+const b =  ~5;  // 11111111111111111111111111111010 (-6)
+```
+
+他のビット操作演算子 `&`, `|`, `^` と異なり単項演算子であるため、代入演算子 `~=` は存在しない。
+
+### `~~value` 二重のビット否定演算子
+
+ビット否定演算子 `~` の結果が整数となる性質を利用して、小数点付きかもしれない数を整数へ変換するのに使うことがある。<small>（使わないでほしい。）</small>　二重にすることで、反転した値を元へ戻している。
+
+```js
+const a = ~~3.14; // => 3
+```
+
 ## `$` ダラー
 
 *dollar* ダラー、ドル、お金
@@ -2833,9 +2864,22 @@ $(() => {
 <h1>The count is {$count}</h1>
 ```
 
-### [TODO] <code>&#96;${xxx}&#96;</code>
+### <code>&#96;${value}&#96;</code> プレイスホルダー（テンプレートリテラル）
 
-### [TODO] `$0`, `$1`, ...
+- [*TemplateHead* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-TemplateHead)
+- [*TemplateMiddle* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-TemplateMiddle)
+- [*TemplateTail* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-TemplateTail)
+- [13.2.8 Template Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-template-literals)
+- [テンプレートリテラル (テンプレート文字列) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Template_literals)
+
+テンプレートリテラル <code>&#96;…&#96;</code> で表現する文字列中に任意の値を差し込む文法。
+
+```js
+const a = "World";
+const b = `Hello ${a}!`;
+```
+
+[テンプレートリテラル](#%60abc%60-テンプレートリテラル)を参照。
 
 ## その他
 
