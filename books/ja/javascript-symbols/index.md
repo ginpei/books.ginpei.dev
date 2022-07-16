@@ -621,10 +621,11 @@ const c = 3
 const d = 4
 ```
 
-特に `return` 直後の改行は予期せぬ自動挿入のため不具合となりがち。[空白 ` ` の章を参照](#空白)。
+特に `return` 直後の改行は予期せぬ自動挿入のため不具合となりがち。[空白 ` ` の章を参照](#空白-1)。
 
 ### `for (let i = 0; i < length; i++)` `for` 文の一部
 
+- [*ForStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ForStatement)
 - [14.7.4 The for Statement - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-for-statement)
 - [for - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for)
 
@@ -638,7 +639,7 @@ for (let i = 0; i < arr.length; i++) {
 }
 ```
 
-<small>（現代では `for` 文はそのほとんどの場面で [`for-of` 文](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for...of)を使うべきだと思う。）</small>
+<small>（現代では `for` 文はそのほとんどの場面で [`for-of` 文](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for...of)等、他の手段を使うべきだと思う。）</small>
 
 ## `:` コロン
 
