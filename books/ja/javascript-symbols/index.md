@@ -177,8 +177,12 @@ function ok(someLongParameter, anotherLongParameter) {
 
 *underscore*, *underbar*, *lodash* アンダースコア、アンダーバー、ローダッシュ
 
+[JavaScript の仕様書 (ECMAScript 2023) - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/)では "underscore" の表記が出現する。
+
 ### `_key` 変数や関数の名前
 
+- [*IdentifierStartChar* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-IdentifierStartChar)
+- [*UnicodeIDContinue* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UnicodeIDContinue)
 - [12.6 Names and Keywords - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-names-and-keywords)
 
 変数や関数の名前として利用できる。特に意味はなく他の文字 `abc` やダラー `$` と同じ。名前の先頭でも利用可能。
@@ -193,7 +197,7 @@ const obj = {
 const _ = 1;
 ```
 
-アンダースコアで単語を区切る命名を[スネークケース](https://en.wikipedia.org/wiki/Snake_case)と呼ぶ。JavaScript では大文字で区切る[キャメルケース](https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%A1%E3%83%AB%E3%82%B1%E3%83%BC%E3%82%B9)が一般的。
+アンダースコアで単語を区切る命名を[スネークケース](https://en.wikipedia.org/wiki/Snake_case)と呼ぶ。（例：`this_is_a_pen`）　JavaScript では大文字で区切る[キャメルケース](https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%A3%E3%83%A1%E3%83%AB%E3%82%B1%E3%83%BC%E3%82%B9)が一般的。（例：`thisIsAPen`）
 
 アンダースコアで始まる名前を外部からアクセスされたくないプロパティに用いる、という文化がある。これは現在は[プライベートクラスメンバー `this.#key`](#%23prop%2C-%23f()-%7B%7D-プライベートメンバーの宣言) で実現できる。`_key` はあくまで文化やコーディング規約であり言語的な制限はないため、人間が読んで「何かおかしいぞ」と判断する。また JavaScript エンジンが内部的に用意するプロパティは 2 つのアンダースコアを接頭辞とすることがある。（`__proto__` など。）
 
@@ -207,23 +211,45 @@ _.flatten([1, [2], [3, [[4]]]]);
 _.defaults({ 'a': 1 }, { 'a': 3, 'b': 2 });
 ```
 
-[JavaScript の仕様書 (ECMAScript 2023) - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/)では "underscore" の表記が出現する。
+### `1_000` 数値の区切り文字（数値リテラル）
 
-### `1_000` 数値区切り文字
-
+- [*NumericLiteralSeparator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-NumericLiteralSeparator)
 - [12.8.3 Numeric Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-numeric-literals)
+- [数値リテラル - 字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar#%E6%95%B0%E5%80%A4%E3%83%AA%E3%83%86%E3%83%A9%E3%83%AB)
 
-`1234` といった数値に混ぜこんで利用できる。
+人間が読みやすいカンマ付き数字（例："1,234"）のように、数値の途中に混ぜこんで利用できる。（例：`1_234`）
 
 数値としては単に無視されるので、区切る位置は任意。
 
 ```js
-const a = 1_000_000_000; // 1000000000
-const b = 10_0000_0000; // 1000000000
-const c = 1_2_3; // 123
+const a = 1_000_000_000; // => 1000000000
+const b = 10_0000_0000;  // => 1000000000
+const c = 1_2_3; // => 123
 ```
 
-数字の途中でのみ利用可能。`123_` のように末尾に置くと文法エラーになる。（例：SyntaxError: Numeric separators are not allowed at the end of numeric literals）　`_123` と先頭に置くと変数等の名として認識される。用意されていなければ参照エラーになる。（例：ReferenceError: _123 is not defined）
+10 進数以外でも利用可能。
+
+```js
+const a = 0x1234_abcd; // 16 進数
+const a = 0b100_0000_0000; // 2 進数
+```
+
+`123_` のように末尾に置いたり、`1__23` のように複数連続させると文法エラーになる。`_123` と先頭に置くと数値ではなく変数等の名として認識される。用意されていなければ参照エラーになる。
+
+```js
+// ⛔ SyntaxError: Numeric separators are not allowed at the end of numeric literals
+const a = 123_;
+
+// ⛔ SyntaxError: Only one underscore is allowed as numeric separator
+const b = 1__23;
+
+// ⛔ ReferenceError: _123 is not defined
+const c = _123;
+
+// 👍
+const _999 = 999;
+const d = _999;
+```
 
 ## `-` ハイフン
 
