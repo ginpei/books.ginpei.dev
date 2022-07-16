@@ -2190,7 +2190,7 @@ const a = 1 << 1; // => 2
 const b = 1 << 2; // => 4
 const c = 1 << 3; // => 8
 const d = 1 << 4; // => 16
-const d = 1 << 10; // => 1024
+const e = 1 << 10; // => 1024
 ```
 
 2 進数で見るとわかりやすい。
@@ -2516,11 +2516,137 @@ const f: (s: string) => string[] = (s) => s.split("");
 //       ^ f の型                  ^ f の値
 ```
 
-## [TODO] `>` 大なり
+## `>` 大なり
 
 *greater-than sign* 大なり、不等号
 
 - [よく使う括弧の名前（日本語、英語）を調べてみたよ。ブラケット、ブレースとか。 | Ginpen.com](https://ginpen.com/2014/02/20/brackets/)
+
+### [TODO] `value > value` 大なり演算子
+
+- [*RelationalExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-RelationalExpression)
+- [13.10 Relational Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-relational-operators)
+- [大なり (>) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Greater_than)
+
+```js
+const a = 4 > 5; // => true
+const b = 5 > 5; // => false
+
+const c = -5 > -5; // => false
+const d = -4 > -5; // => true
+```
+
+```js
+// 最大値より大きいなら修正
+if (n > max) {
+  n = max;
+}
+```
+
+### [TODO] `value >= value` 大なりイコール演算子
+
+- [*RelationalExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-RelationalExpression)
+- [13.10 Relational Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-relational-operators)
+- [大なりイコール (>=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Greater_than_or_equal)
+
+```js
+const a = 4 >= 5; // => false
+const b = 5 >= 5; // => true
+const c = 6 >= 5; // => true
+
+const d = -6 >= -5; // => false
+const e = -5 >= -5; // => true
+const f = -4 >= -5; // => true
+```
+
+普通は `if` 文の条件で使う。
+
+```js
+// 範囲内ならよし
+if (n >= min) {
+  return true;
+}
+```
+
+### [TODO] `value >> value` 右シフト演算子
+
+- [*ShiftExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ShiftExpression)
+- [13.9 Bitwise Shift Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-bitwise-shift-operators)
+- [右シフト (>>) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Right_shift)
+
+ビット操作。
+
+```js
+const a = 32 >> 1; // => 16
+const b = 32 >> 2; // => 8
+const c = 32 >> 3; // => 4
+const d = 32 >> 4; // => 2
+
+const e = 1 >> 999; // => 0
+```
+
+2 進数で見るとわかりやすい。
+
+```js
+const a = 0b1000 >> 1 === 0b0100; // => true;
+const b = 0b1000 >> 2 === 0b0010; // => true;
+const c = 0b1000 >> 3 === 0b0001; // => true;
+
+const d = 0b0_0101_0000 >> 4 === 0b0_0000_0101; // => true;
+```
+
+### `value >>> value` 符号なし右シフト演算子
+
+- [*ShiftExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ShiftExpression)
+- [13.9 Bitwise Shift Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-bitwise-shift-operators)
+- [符号なし右シフト (>>>) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Unsigned_right_shift)
+
+```js
+const a = -4 >> 1; // => -2
+const b = -4 >>> 1; // => 2147483646
+```
+
+負数をビットでどう表現するかという知識が必要。[基本情報技術者試験](https://www.jitec.ipa.go.jp/1_11seido/fe.html)の出題範囲<small>（のはず）</small>。
+
+```js
+const a = -5;       // 11111111111111111111111111111011
+
+const b = -5 >> 1;  // 11111111111111111111111111111101 = -3
+const c = -5 >> 2;  // 11111111111111111111111111111110 = -1
+
+const d = -5 >>> 1; // 01111111111111111111111111111101 = 2147483645
+const e = -5 >>> 2; // 00111111111111111111111111111110 = 1073741822
+```
+
+### `key >>= value` 右シフト代入演算子
+
+- [*AssignmentOperator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentOperator)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
+- [右シフト代入 (>>=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Right_shift_assignment)
+
+右シフトしながら代入する。
+
+```js
+let a = 32;
+a >>= 1; // => 16
+```
+
+右シフト演算子 `>>` を参照。
+
+### `key >>>= value` 符号なし右シフト代入演算子
+
+- [*AssignmentOperator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentOperator)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
+- [符号なし右シフト代入 (>>>=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Unsigned_right_shift_assignment)
+
+符号なし右シフトしながら代入する。
+
+```js
+let a = -1;
+a >>>= 1; // => 2147483647
+```
+
+符号なし右シフト演算子 `>>>` を参照。
 
 ## [TODO] `|` バー
 
