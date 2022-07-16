@@ -88,11 +88,12 @@ date: 0000-00-00
 
 ### ` `&nbsp;空白
 
+- [*WhiteSpace* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-WhiteSpace)
 - [12.2 White Space - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-white-space)
 - [12.3 Line Terminators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-line-terminators)
 - [字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar)
 
-トークンの区切りとして扱われる。ただのスペースの他タブやいくつかの空白文字を含み、いずれも差はない。多くの場合は改行も同じような扱いで、つまり 1 行に全て書いても良いし全ての区切りで改行しても良い。インデントも任意。
+トークンの区切りとして扱われる。通常のスペースやタブ、その他いくつかの空白文字を含み、いずれも差はない。改行文字は、多くの場面では同じ扱い。
 
 ```js
 function f(a, b, c) { return a + b * c; }
@@ -116,7 +117,7 @@ return           a
 }
 ```
 
-ただし改行は一部の箇所では異なる挙動をする事がある。（先の例でも `return` と `a` の間で改行すると変わる。）　改行を参照。
+改行文字は一部の箇所では異なる挙動をする事がある。（先の例でも `return` と `a` の間で改行すると変わる。）　[改行](#改行-1)を参照。
 
 ## ` `&nbsp;改行
 
@@ -124,6 +125,7 @@ return           a
 
 ### ` `&nbsp;改行
 
+- [*LineTerminator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-LineTerminator)
 - [12.2 White Space - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-white-space)
 - [12.3 Line Terminators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-line-terminators)
 - [12.9 Automatic Semicolon Insertion - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion)
@@ -131,9 +133,9 @@ return           a
 
 基本的には空白 ` ` と同じで、トークンの区切りとして扱われる。ただし文法上空白を置ける箇所でも一部は許可されていなかったり、セミコロン `;`  の自動挿入関係で異なる解釈をされる場合がある。
 
-改行を置けないのは、例えば文字列リテラル `""`, `''` の途中や行コメント。
+改行を置けないのは、例えば文字列リテラル `""`, `''` や行コメントの途中。
 
-解釈が変わるのは、例えば非同期関数の `async` と `function` の間。ここに改行を置くと自動挿入の仕組みによりセミコロンがあると暗黙的に解釈され、`async` は構文ではなく変数等の識別子として解釈される。多くの場合はそんな変数を用意していないだろうから参照エラーになる。（例：ReferenceError: async is not defined）
+解釈が変わるのは、例えば非同期関数の `async` と `function` の間。ここに改行を置くと自動挿入の仕組みによりセミコロンがあると暗黙的に解釈され、`async` は構文ではなく変数等の識別子として解釈される。多くの場合はそんな変数を用意していないだろうから参照エラーになる。
 
 ```js
 // 👍
@@ -142,7 +144,8 @@ async           function asyncFunction() {}
 
 // 👎
 // 改行を置くとセミコロンが挿入され変数 `async` を参照する
-// （参照するだけで何もしないが、もし参照先がないならエラー）
+// （参照するだけで何もしない。もし参照先がないならエラー）
+// ⛔ ReferenceError: async is not defined
 async
       function ordinaryFunction() {}
 ```
