@@ -272,9 +272,13 @@ const a = "-5" - - -1; // => -6
 - [減算 (-) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Subtraction)
 - [Table 13: ToNumber Conversions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#table-tonumber-conversions)
 
-`value - value` など。左辺から右辺を引く。
+左辺から右辺を引く。
 
-左辺や右辺が数値でない場合、数値へ変換してから計算される。[変換方法は値の型による - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#table-tonumber-conversions)。
+```js
+const a = 5 - 3; // => 2
+```
+
+左辺や右辺が数値でない場合、数値へ変換してから計算される。[変換方法は値の型による](https://tc39.es/ecma262/#table-tonumber-conversions)。
 
 ```js
 const a = true - 0; // => 1
@@ -286,33 +290,33 @@ const d = undefined - 0; // => NaN
 文字列は `Number()` コンストラクターを関数として使う（`new` を付けない）場合と同じ方法で変換される。
 
 ```js
-const e = "1" - 0; // => 1
-const f = "a" - 0; // => NaN
+const a = "1" - 0; // => 1
+const b = "a" - 0; // => NaN
 ```
 
 オブジェクトは基本的に `NaN` になるが、`valueOf()` や `toString()` が実装されている場合はそれらが利用される。<small>（どこの変換作業で `NaN` になるんだろ？）</small>
 
 ```js
-const g = {} - 0; // => NaN
-const h = { valueOf: () => 1 } - 0; // => 1
-const i = { toString: () => "1" } - 0; // => 1
-const j = { [Symbol.toPrimitive]: () => 1 } - 0 // => 1
+const a = {} - 0; // => NaN
+const b = { valueOf: () => 1 } - 0; // => 1
+const c = { toString: () => "1" } - 0; // => 1
+const d = { [Symbol.toPrimitive]: () => 1 } - 0 // => 1
 ```
 
-[big int `123n`](#0n-数値リテラルの一部（bigint）) でも利用できるが、数値（や数値へ変換されるもの）と混ぜるとエラー。
+長整数 `123n` でも利用できるが、数値（や数値へ変換されるもの）と混ぜるとエラー。
 
 ```js
-const k = 1n - 0n; // => 1n
+const a = 1n - 0n; // => 1n
 
 // ⛔ TypeError: Cannot mix BigInt and other types, use explicit conversions
-const l = 1n - 0;
+const b = 1n - 0;
 ```
 
 シンボルは数値へ変換できないのでエラーになる。
 
 ```js
 // ⛔ TypeError: Cannot convert a Symbol value to a number
-const m = Symbol() - 0;
+const a = Symbol() - 0;
 ```
 
 ### `-value` 単項マイナス演算子
@@ -323,7 +327,15 @@ const m = Symbol() - 0;
 
 `-value` や `- 1` など。左辺を持たず右辺のみを取り演算する単項演算子。右辺の数値の符号 (+/-) を反転させる。
 
-### `-1` 数値リテラルの一部（符号付き整数）
+```js
+const a = - 3; // => -3
+const b = -(a + 2); // => 1
+const c = -b; // => -1
+```
+
+数値の前に付くもの `-1` はこの単項演算子ではなく数値リテラルの一部。
+
+### `-1` 符号付き整数（数値リテラル）
 
 - [*SignedInteger* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-SignedInteger)
 - [12.8.3 Numeric Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-numeric-literals)
@@ -334,7 +346,7 @@ const m = Symbol() - 0;
 
 `-1` など。数字との間に空白を挟んだ `- 1` の場合は文法上単項演算子のマイナス `-` になる。
 
-ちなみに JavaScript には `-0` という値がある。これは基本的に `0`, `+0` と同じで `-0 === +0` も `true` となるが、いくつかの限定された場面で `+0` と異なる挙動をする。
+ところで JavaScript には `-0` という値がある。これは基本的に `0`, `+0` と同じで `-0 === +0` も `true` となるが、いくつかの限定された場面で `+0` と異なる挙動をする。
 
 ```js
 const a = 1 / 0; // Infinity
@@ -356,8 +368,6 @@ const b = a--;
 console.log(a, b); // => 10, 9
 ```
 
-演算後の評価値と変数に格納されている値が異なるのはカンマ `,` を使って確認できる。
-
 ### `--value` 前置き減算演算子
 
 - [*UpdateExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UpdateExpression)
@@ -374,11 +384,27 @@ console.log(a, b); // => 9, 9
 
 `--value` は `value -= 1` と同じと考えてよい。<small>（近年は `-=` で代入を明示する方が好まれるように思う。）</small>
 
-変数が `const` の場合は再代入できないので実行時にエラーになる。（例：TypeError: Assignment to constant variable.）
+変数が `const` の場合は再代入できないので実行時にエラーになる。
 
-### [TODO] `key -= value` 代入演算子のひとつ
+```js
+const a = 123;
 
+// ⛔ TypeError: Assignment to constant variable.
+--a;
+```
+
+### `key -= value` 減算代入演算子
+
+- [*AssignmentOperator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentOperator)
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
+- [減算代入 (-=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Subtraction_assignment)
+
+減算 `-` しながら代入する。
+
+```js
+let a = 3;
+a -= 2; // => 1
+```
 
 ### `-->` HTML 閉じコメント
 
@@ -393,7 +419,7 @@ console.log(a, b); // => 9, 9
 --> 使うなよ
 ```
 
-ただし単行コメント `//` や HTML 開始コメント `<!--` と異なり、`-->` の左側には `/* … */` （と空白）しか置けない。
+ただし単行コメント `//` や HTML 開始コメント `<!--` と異なり、`-->` の左側には複数行コメント `/* … */` （と空白）しか置けない。
 
 ```js
 const a = 1; // OK
@@ -405,7 +431,7 @@ const b = 1; <!-- OK
 const c = 1; --> NG
 ```
 
-[`<!--` HTML 開きコメント](#<!---html-開きコメント)も参照。
+[HTML 開きコメント `<!--`](#<!---html-開きコメント)も参照。
 
 ## `,` カンマ
 
