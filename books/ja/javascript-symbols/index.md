@@ -86,6 +86,8 @@ date: 0000-00-00
 
 *white space* 空白、スペース、ホワイトスペース
 
+### ` `&nbsp;空白
+
 - [12.2 White Space - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-white-space)
 - [12.3 Line Terminators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-line-terminators)
 - [字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar)
@@ -119,6 +121,8 @@ return           a
 ## ` `&nbsp;改行
 
 *line break*, *line feed*, *carriage return* 改行、ラインフィード、キャリッジリターン
+
+### ` `&nbsp;改行
 
 - [12.2 White Space - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-white-space)
 - [12.3 Line Terminators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-line-terminators)
