@@ -847,7 +847,27 @@ let v: string | number = "";
 - [13.5.7 Logical NOT Operator ( `!` ) - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-logical-not-operator)
 - [論理否定 (!) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Logical_NOT)
 
-右辺の真偽 `true`, `false` を反転させる演算子。真偽値ではない場合、まず変換してから反転させる。
+右辺の真偽 `true`, `false` を反転させる演算子。
+
+```js
+const a = !true; // => false
+```
+
+`if` 文の条件として使うことが多い。
+
+```js
+const ok = doSomething();
+if (!ok) {
+  return;
+}
+```
+
+真偽値ではない場合、まず変換してから反転させる。
+
+```js
+const a = !0; // => true
+const b = !"!"; // => false
+```
 
 ### `!!value` 二重の論理否定演算子
 
@@ -865,7 +885,7 @@ const d = !!c; // `false` となる
 
 "truthy" とは真偽値へ変換した際に `true` となるもののこと。同じく "falsy" は `false` となるもの。`0` や空文字列 `""` は falsy だが、空のオブジェクト `{}` や配列 `[]` は truthy 。
 
-[`Boolean` コンストラクター](https://tc39.es/ecma262/#sec-boolean-objects)を関数として使う（`new` を付けない）ことで、この `!!` の代替とできる。<small>（その方が明瞭で良いと思う。）</small>
+[`Boolean` コンストラクター](https://tc39.es/ecma262/#sec-boolean-objects)を関数として使う（`new` を付けない）ことで、この `!!` の代替とできる。<small>（この方が明瞭で良いと思う。）</small>
 
 ```js
 const a = Boolean(1); // => true
