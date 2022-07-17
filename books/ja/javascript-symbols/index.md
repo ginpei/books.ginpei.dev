@@ -868,6 +868,7 @@ let v: string | number = "";
 
 ### `!value` 論理否定演算子
 
+- [*UnaryExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UnaryExpression)
 - [13.5.7 Logical NOT Operator ( `!` ) - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-logical-not-operator)
 - [論理否定 (!) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Logical_NOT)
 
@@ -889,7 +890,7 @@ const d = !!c; // `false` となる
 
 "truthy" とは真偽値へ変換した際に `true` となるもののこと。同じく "falsy" は `false` となるもの。`0` や空文字列 `""` は falsy だが、空のオブジェクト `{}` や配列 `[]` は truthy 。
 
-[`Boolean` コンストラクター - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-boolean-objects)を関数として使う（`new` を付けない）ことで、この `!!` の代替とできる。<small>（その方が明瞭で良いと思う。）</small>
+[`Boolean` コンストラクター](https://tc39.es/ecma262/#sec-boolean-objects)を関数として使う（`new` を付けない）ことで、この `!!` の代替とできる。<small>（その方が明瞭で良いと思う。）</small>
 
 ```js
 const a = Boolean(1); // => true
@@ -898,23 +899,34 @@ const b = Boolean(""); // => false
 
 ### `value != value` 不等価演算子
 
+- [*EqualityExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-EqualityExpression)
 - [13.11 Equality Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-equality-operators)
 - [不等価 (!=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Inequality)
 
-`!==` と同じようなもの。ただし左右の値をふわっと変換してよさげに比較する。
+厳密不等価演算子 `!==` と同じようなもの。ただし左右の値をふわっと変換してよさげに比較する。
 
-変換については `==` を参照。
+変換については等価演算子 `==` を参照。
 
 <small>（`==` と同様、使うのを避け厳密な比較 `!==` を用いるべき。）</small>
 
 ### `value !== value` 厳密不等価演算子
 
+- [*EqualityExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-EqualityExpression)
 - [13.11 Equality Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-equality-operators)
 - [厳密不等価 (!==) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Strict_inequality)
 
 左右の値を比較して同じでなければ `true` 、そうでなければ `false` を返す。
 
-比較については `===` を参照。
+普通は `if` 文の条件で使う。
+
+```js
+const result = doSomething();
+if (result !== "OK") {
+  throw new Error("やべー");
+}
+```
+
+比較については厳密等価演算子 `===` を参照。
 
 ### `value!` non-null assertion
 
