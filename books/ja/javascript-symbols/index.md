@@ -35,8 +35,6 @@ date: 0000-00-00
 
 <fue-button book-id="HsCH6wIHbEmT0PtcDgSu" layout="right bottom"></fue-button>
 
-<div id="searchForm"></div>
-
 ## ` `&nbsp;空白
 
 *white space* 空白、スペース、ホワイトスペース
