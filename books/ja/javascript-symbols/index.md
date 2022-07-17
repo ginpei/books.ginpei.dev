@@ -1159,19 +1159,58 @@ const c = 1024.toString(); // => "1024"
 
 小数点 `0.0` を参照。
 
-### [TODO] `{ ...key } = value`, `[...arr] = key`, `function (...arr) {}` 分割代入（スプレッド構文）
+### `{ ...key } = value` 残余プロパティ（分割代入）
 
 - [*AssignmentRestProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentRestProperty)
 - [*BindingRestProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BindingRestProperty)
 - [13.15.5 Destructuring Assignment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
 - [14.3.3 Destructuring Binding Patterns - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-binding-patterns)
 - [12.7 Punctuators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-punctuators)
+- [分割代入 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
-構文であり演算子ではない。
+分割代入で受け取らなかったプロパティをまとめて受け取る構文。
 
-通称スプレッド構文。
+```js
+const obj = { a: 11, b: 22, c: 33 };
+const { a, ...rest } = obj;
+console.log(a); // 11
+console.log(rest); // { b: 22, c: 33 }
+```
 
-WIP
+### `[...arr] = key` 残余要素（分割代入）
+
+- [*AssignmentRestElement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentRestElement)
+- [*BindingRestElement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BindingRestElement)
+- [14.3.3 Destructuring Binding Patterns - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-binding-patterns)
+- [12.7 Punctuators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-punctuators)
+- [分割代入 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+
+分割代入で受け取らなかった配列要素をまとめて受け取る構文。
+
+```js
+const arr = [11, 22, 33];
+const [first, ...rest] = arr;
+console.log(first); // 11
+console.log(rest); // [22, 33]
+```
+
+### `function (...arr) {}` 残余引数（分割代入）
+
+- [BindingRestElement - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BindingRestElement)
+- [15.2 Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-function-definitions)
+
+分割代入で受け取らなかった仮引数をまとめて受け取る構文。配列になる。
+
+```js
+f(11, 22, 33);
+
+function f(a, ...rest) {
+  console.log(a); // 11
+  console.log(rest); // [22, 33];
+}
+```
+
+関数の引数は `arguments` オブジェクトからも参照できるが、アロー関数は元のスコープでの `arguments` オブジェクトを引き継ぐため、任意個数の引数を受け取るにはこの残余引数の表現を用いる。<small>（そもそも残余引数よりこの `arguments` オブジェクトを選ぶ理由は現代ではないと思う。）</small>
 
 ### [TODO] `{ ...obj }` オブジェクトのプロパティ展開（スプレッド構文）
 
