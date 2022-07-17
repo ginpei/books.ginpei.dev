@@ -530,6 +530,17 @@ const someNiceResult = longFunctionName(
 
 ### `value;` 文の終端
 
+- [*VariableStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-VariableStatement)
+- [*LexicalDeclaration* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-LexicalDeclaration)
+- [*EmptyStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-EmptyStatement)
+- [*ExpressionStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ExpressionStatement)
+- [*ContinueStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ContinueStatement)
+- [*BreakStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BreakStatement)
+- [*ReturnStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ReturnStatement)
+- [*ThrowStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ThrowStatement)
+- [*DebuggerStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-DebuggerStatement)
+- [*ImportDeclaration* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ImportDeclaration)
+- [*ExportDeclaration* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ExportDeclaration)
 - [14 ECMAScript Language: Statements and Declarations - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-ecmascript-language-statements-and-declarations)
 - [12.9 Automatic Semicolon Insertion - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion)
 - [16.2 Modules - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-modules)
