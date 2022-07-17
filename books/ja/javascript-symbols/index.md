@@ -1082,8 +1082,6 @@ const a = new obj.c();
 const b = new obj?.c();
 ```
 
-テンプレートリテラルとの組み合わせ <code>f?.&#x60;xxx&#x60;</code> は、[字句解析 - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-OptionalChain)の仕様上は許可されているものの[文法エラーを発生する - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-left-hand-side-expressions-static-semantics-early-errors)よう定められている。（例：SyntaxError: Invalid optional chain from new expression）<small>（用語の扱いが不正確かもしれない。エラーになるのはマジ。)</small>
-
 ### `key ??= value` Null 合体代入演算子
 
 - [*AssignmentExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentExpression)
