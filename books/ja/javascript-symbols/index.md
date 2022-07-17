@@ -1067,7 +1067,10 @@ const g = obj.b || 1; // => 1
 プロパティアクセス用のオプショナルチェイン構文 `obj?.prop` と同様、左側が nullish かどうかで判断される構文。通常のプロパティアクセス `obj.key` の枠を超えて利用できる。
 
 ```js
-const obj = { f(){ return 1; }, o: { a: 1 } };
+const obj = {
+  f(){ return 1; },
+  o: { a: 1 },
+};
 
 const a = obj.f?.(); // => 1
 const b = obj.g?.(); // => undefined
