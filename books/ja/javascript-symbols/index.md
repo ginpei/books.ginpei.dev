@@ -307,20 +307,6 @@ const b = 1 / +0; // Infinity
 const c = 1 / -0; // -Infinity
 ```
 
-### `value--` 後置き減算演算子
-
-- [*UpdateExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UpdateExpression)
-- [13.4.3 Postfix Decrement Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-postfix-decrement-operator)
-- [デクリメント (--) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Decrement)
-
-変数 `value` を 1 減算した結果を `value` に代入し、減算前の値を評価値として返す。`--value` との違いに注意。
-
-```js
-let a = 10;
-const b = a--;
-console.log(a, b); // => 10, 9
-```
-
 ### `--value` 前置き減算演算子
 
 - [*UpdateExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UpdateExpression)
@@ -344,6 +330,20 @@ const a = 123;
 
 // ⛔ TypeError: Assignment to constant variable.
 --a;
+```
+
+### `value--` 後置き減算演算子
+
+- [*UpdateExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UpdateExpression)
+- [13.4.3 Postfix Decrement Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-postfix-decrement-operator)
+- [デクリメント (--) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Decrement)
+
+変数 `value` を 1 減算した結果を `value` に代入し、減算前の値を評価値として返す。`--value` との違いに注意。
+
+```js
+let a = 10;
+const b = a--;
+console.log(a, b); // => 10, 9
 ```
 
 ### `key -= value` 減算代入演算子
