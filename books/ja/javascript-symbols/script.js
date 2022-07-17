@@ -90,14 +90,17 @@ function createElStyle() {
 }
 
 function prepareElements() {
-  const elPlaceholder = document.querySelector("#searchForm");
-  if (!elPlaceholder) {
-    throw new Error('<div id="searchForm"> required');
-  }
-  elPlaceholder.innerHTML = html;
-
   const elStyle = createElStyle();
   document.head.append(elStyle);
+
+  const elForm = document.createElement("div");
+  elForm.innerHTML = html;
+
+  const elToc = document.querySelector(".baseLayout-toc");
+  if (!elToc) {
+    throw new Error('`.baseLayout-toc` required');
+  }
+  elToc.prepend(elForm);
 }
 
 /**
