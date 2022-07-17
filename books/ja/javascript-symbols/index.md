@@ -2831,6 +2831,28 @@ obj.f(); // => "CREATURE"、関数 f() 実行時の `this`
 obj.af(); // => "CREATOR"、関数 af() 作成時の `this`
 ```
 
+### [TODO] `{ key = value } = value`, `[key = value] = value`, `function({ key = value }) {}` 分割代入の初期値
+
+```js
+const obj = { a: 123 };
+const { a = 11, b = 22 } = obj;
+console.log(a, b); // 123, 22
+```
+
+```js
+const arr = [123];
+const [a = 11, b = 22] = arr;
+console.log(a, b); // 123, 22
+```
+
+```js
+f({ a: 123 });
+
+function f({ a = 11, b = 22 }) {
+  console.log(a, b); // 123, 22
+}
+```
+
 ### [TODO] `() => void` 関数型 (TypeScript)
 
 JavaScript ではなく TypeScript の文法。
