@@ -20,15 +20,61 @@
  * }} PageState
  */
 
+const css = /*css*/`
+  .searchResult-list {
+    padding: 0;
+    list-style-type: none;
+  }
+    .searchResult-list:empty {
+      display: none;
+    }
+
+  .searchResult-item {
+    border-color: lightgray lightgray transparent;
+    border-style: solid;
+    border-width: thin;
+  }
+    .searchResult-item:last-child {
+      border-bottom-color: lightgray;
+    }
+
+  .searchResult-itemLink {
+    display: block;
+    padding: 0.5em;
+  }
+    .searchResult-itemLink:hover {
+      background-color: #9ff1;
+    }
+
+  .searchResult-childList  .searchResult-item {
+    border: none;
+  }
+  .searchResult-childList {
+    list-style: none;
+    margin-bottom: 1px;
+    margin-right: 1px;
+    padding-left: 1rem;
+  }
+`;
+
 document.addEventListener("DOMContentLoaded", onDOMContentLoaded);
 
 function onDOMContentLoaded() {
   const props = getPageProps();
 
+  const elStyle = createElStyle();
+  document.head.append(elStyle);
+
   props.elInput.addEventListener("input", () => {
     const state = getCurrentState(props);
     render(props, state);
   });
+}
+
+function createElStyle() {
+  const el = document.createElement("style");
+  el.textContent = css;
+  return el;
 }
 
 /**
