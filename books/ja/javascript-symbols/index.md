@@ -31,8 +31,8 @@ date: 0000-00-00
 {% raw %}
 
 <script src="./script.js"></script>
-<script src="https://fue.ginpei.dev/fue-button/latest/fue-button.js"></script>
 
+<script src="https://fue.ginpei.dev/fue-button/latest/fue-button.js"></script>
 <fue-button book-id="HsCH6wIHbEmT0PtcDgSu" layout="right bottom"></fue-button>
 
 ## ` `&nbsp;空白
