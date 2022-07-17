@@ -2867,6 +2867,8 @@ const c = a | b; // => 4 (0b1101)
 const a = 3.14 | 0; // => 3
 ```
 
+[二重のビット否定演算子 `~~value`](#~~value-二重のビット否定演算子) も参照。
+
 ### `value || value` 論理和演算子
 
 - [LogicalORExpression - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-LogicalORExpression)
@@ -3018,10 +3020,20 @@ const b =  ~5;  // 11111111111111111111111111111010 (-6)
 
 ### `~~value` 二重のビット否定演算子
 
-ビット否定演算子 `~` の結果が整数となる性質を利用して、小数点付きかもしれない数を整数へ変換するのに使うことがある。<small>（使わないでほしい。）</small>　二重にすることで、反転した値を元へ戻している。
+- [実数を整数に丸める4パターン（JavaScript おれおれ Advent Calendar 2011 – 7日目） | Ginpen.com](https://ginpen.com/2011/12/07/rounding/)
+
+ビット否定演算子 `~` をふたつ続けたもの。そういう仕様があるわけではない。
+
+`~~value` は `~(~value)` と同じ。二重にすることで、反転した値を元へ戻している。ビット否定の結果が整数となる性質を利用して、小数点付きかもしれない数を整数へ変換するのに使うことがある。<small>（使わないでほしい。）</small>
 
 ```js
 const a = ~~3.14; // => 3
+```
+
+整数へ変換したい、つまり小数部分を切り縮めたい (truncate) 場合は `Math.trunc()` を使うのが良い。
+
+```js
+const a = Math.trunc(3.14); // => 3
 ```
 
 ## `$` ダラー
