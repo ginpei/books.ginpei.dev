@@ -721,6 +721,13 @@ const obj = {
 const a = obj["Hello World!"]; // => "Uh huh"
 ```
 
+### [TODO] `{ prop: key } = obj`, `function ({ prop: key }) {}` 分割代入
+
+- [*AssignmentProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentProperty)
+- [*BindingProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BindingProperty)
+- [13.15.5 Destructuring Assignment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
+- [15.2 Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-function-definitions)
+
 ### `case key:` `case` 節
 
 - [*CaseClause* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-CaseClause)
@@ -831,13 +838,6 @@ switch (a) {
 
 console.log(b); // わかりません
 ```
-
-### [TODO] `{ prop: key } = obj`, `function ({ prop: key }) {}` 分割代入
-
-- [*AssignmentProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentProperty)
-- [*BindingProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BindingProperty)
-- [13.15.5 Destructuring Assignment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
-- [15.2 Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-function-definitions)
 
 ### `key: type` 型指定
 
