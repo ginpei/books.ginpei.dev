@@ -130,7 +130,7 @@ function ok(someLongParameter, anotherLongParameter) {
 
 *underscore*, *underbar*, *lodash* アンダースコア、アンダーバー、ローダッシュ
 
-[JavaScript の仕様書 (ECMAScript 2023) - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/)では "underscore" の表記が出現する。
+[JavaScript の仕様書 (ECMAScript 2023)](https://tc39.es/ecma262/)では "underscore" の表記が出現する。
 
 ### `_key` 変数や関数の名前
 
