@@ -940,15 +940,18 @@ JavaScript ではなく TypeScript の機能。nullable な値を非 nullable �
 
 ### `condition ? value : value` 条件演算子
 
+- [*ConditionalExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ConditionalExpression)
 - [13.14 Conditional Operator ( `? :` ) - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-conditional-operator)
 - [条件 (三項) 演算子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
 
-`<条件> ? <真の場合の評価値> : <偽の場合の評価値>` の形を取る。3 つの項を取る唯一の演算子なので「三項演算子」とも呼ばれる。（二項演算子、単項演算子は複数ある。）
+`<条件> ? <真の場合の評価値> : <偽の場合の評価値>` の形を取り、条件に応じて真偽いずれかの評価値を返す演算子。
 
 ```js
 const a = true ? 1 : 2; // => 1
 const b = false ? 1 : 2; // => 2
 ```
+
+3 つの項を取る唯一の演算子なので「三項演算子」とも呼ばれる。（二項演算子、単項演算子は複数ある。）
 
 ### `value ?? value` Null 合体演算子
 
@@ -985,13 +988,33 @@ const g = obj.b || 1; // => 1
 - [13.3 Left-Hand-Side Expressions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
 - [13.3.9 Optional Chains - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-optional-chains)
 
-左側が `null` または `undefined` であれば `undefined` を、そうでない場合は左側を receiver として右側の名前のプロパティを返す。<small>（receiver という表現で正確だろうか？）</small>　なお `null` の場合でも `null` ではなく `undefined` が返る点に注意。
+左側が `null` または `undefined` であれば `undefined` を、そうでない場合は左側を receiver として右側の名前のプロパティを返す。<small>（receiver という表現で正確だろうか？）</small>
 
 ```js
 const obj = { a: 1, c: null };
 
 const a = obj.a?.toFixed(2); // => "1.00"
 const b = obj.b?.toFixed(2); // => undefined
+```
+
+存在しないプロパティを通常の `.` で利用しようとすると、型エラーになる。
+
+```js
+const obj = { a: 1, c: null };
+
+// 得るだけは問題なし
+// （もちろん得られる値はない）
+const x = obj.b; // => undefined
+
+// ⛔ TypeError: Cannot read properties of undefined (reading 'toFixed')
+const b = obj.b.toFixed(2);
+```
+
+左辺が `null` の場合でも `null` ではなく `undefined` が返る点に注意。
+
+```js
+const obj = { a: 1, c: null };
+
 const c = obj.c?.toFixed(2); // => undefined
 ```
 
@@ -1001,19 +1024,6 @@ const c = obj.c?.toFixed(2); // => undefined
 const obj = { a: 1, c: null };
 
 const b = obj.b?.toFixed(2) ?? "0.00"; // => "0.00"
-```
-
-存在しないプロパティを `?.` ではなく `.` で利用すると型エラーになる。（例：TypeError: Cannot read properties of undefined (reading 'toFixed')）
-
-```js
-const obj = { a: 1, c: null };
-
-// 得るだけは問題なし
-// （もちろん得られる値はない）
-const d = obj.b; // => undefined
-
-// ⛔ 型エラーになる
-const e = obj.b.toFixed(2);
 ```
 
 かつては `&&` を用いて次のように書くことが多かった。この書き方は `null`, `undefined` 以外の falsy な値に対応できないという問題があった。
@@ -1026,23 +1036,71 @@ const b = obj.b && obj.b.toFixed(2); // => undefined
 const c = obj.c && obj.c.toFixed(2); // => 0
 ```
 
-あらゆるプロパティアクセス `obj.prop` を置き換え得るわけではなく、例えば `obj?.prop = value` のように代入の左辺に置くのは禁止されており、文法エラーになる。（例：SyntaxError: Invalid left-hand side in assignment）
+あらゆるプロパティアクセス `obj.prop` を置き換え得るわけではなく、例えば `obj?.prop = value` のように代入の左辺に置くのは禁止されており、文法エラーになる。
+
+```js
+const obj = {};
+
+// ⛔ SyntaxError: Invalid left-hand side in assignment
+obj?.foo = 1;
+```
 
 `?.` の 2 文字でひとつの塊なので、`? .` のように空白を挟むことはできない。`obj ?. foo` のように前後に空白を置くことは可能。
+
+```js
+const obj = { a: 1 };
+
+// ⛔ SyntaxError: Unexpected token '.'
+const a = obj? .a;
+```
 
 ### `f?.()`, `obj?.[value]` オプショナルチェイン構文
 
 - [13.3 Left-Hand-Side Expressions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
 
-プロパティアクセス用のオプショナルチェイン構文 `obj?.prop` と同様、左側が nullish かどうかで判断される構文。
+プロパティアクセス用のオプショナルチェイン構文 `obj?.prop` と同様、左側が nullish かどうかで判断される構文。通常のプロパティアクセス `obj.key` の枠を超えて利用できる。
 
-`new` と組み合わせた `new f?.()` は構文エラーになる。（例：SyntaxError: Invalid tagged template on optional chain）
+```js
+const obj = { f(){ return 1; }, o: { a: 1 } };
+
+const a = obj.f?.(); // => 1
+const b = obj.g?.(); // => undefined
+
+const c = obj.o?.a; // => 1
+const d = obj.p?.a; // => undefined
+```
+
+`new` と組み合わせた `new f?.()` は構文エラーになる等、単純な置き換えが常にできるとは限らない。
+
+```js
+const obj = { c: class {} };
+
+// 👍
+const a = new obj.c();
+
+// ⛔ SyntaxError: Invalid optional chain from new expression
+const b = new obj?.c();
+```
 
 テンプレートリテラルとの組み合わせ <code>f?.&#x60;xxx&#x60;</code> は、[字句解析 - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-OptionalChain)の仕様上は許可されているものの[文法エラーを発生する - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-left-hand-side-expressions-static-semantics-early-errors)よう定められている。（例：SyntaxError: Invalid optional chain from new expression）<small>（用語の扱いが不正確かもしれない。エラーになるのはマジ。)</small>
 
-### [TODO] `key ??= value` 代入演算子のひとつ
+### `key ??= value` Null 合体代入演算子
 
+- [*AssignmentExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentExpression)
 - [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
+- [Null 合体代入 (??=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Logical_nullish_assignment)
+
+Null 合体 `??` の判断をしながら代入する。
+
+```js
+let a = null;
+a ??= "OK"; // => "OK"
+
+let b = 0;
+b ??= "OK"; // => 0
+```
+
+Null 合体演算子 `??` を参照。
 
 ## `.` ドット
 
