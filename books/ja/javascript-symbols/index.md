@@ -898,6 +898,8 @@ const b = Boolean(""); // => false
 - [13.11 Equality Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-equality-operators)
 - [不等価 (!=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Inequality)
 
+左右の値を比較して同じでなければ `true` 、そうでなければ `false` を返す。
+
 厳密不等価演算子 `!==` と同じようなもの。ただし左右の値をふわっと変換してよさげに比較する。
 
 変換については等価演算子 `==` を参照。
