@@ -615,7 +615,7 @@ for (let i = 0; i < arr.length; i++) {
 - [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
 - [オブジェクト初期化子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Object_initializer)
 
-オブジェクトリテラルでプロパティを定義する。右側に値を与えるが、式ならその評価結果になる。
+オブジェクトリテラルでプロパティを定義する。右側が式ならその評価結果になる。
 
 ```js
 const obj = {
@@ -663,8 +663,8 @@ const b = obj.bar; // => 1
 ```js
 const obj = {
   a: 123,
-  "Hello World!": "Uh huh",
   123: "a",
+  "Hello World!": "Uh huh",
 };
 ```
 
