@@ -1115,7 +1115,7 @@ Null 合体演算子 `??` を参照。
 
 ### `obj.prop` プロパティアクセス
 
-- [13.3 Left-Hand-Side Expressions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
+- [*MemberExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MemberExpression)
 - [13.3.2 Property Accessors - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-property-accessors)
 - [プロパティアクセサー - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Property_Accessors)
 
@@ -1129,17 +1129,47 @@ const a = obj.a; // => 1
 
 `obj.prop` は `obj["prop"]` に置き換えられる。
 
-### `0.0` 数値リテラルの一部（小数点）
+### `0.0` 小数点（数値リテラル）
+
+- [*DecimalLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-DecimalLiteral)
+- [12.8.3 Numeric Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-numeric-literals)
+- [数値リテラル - 字句文法 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar#%E6%95%B0%E5%80%A4%E3%83%AA%E3%83%86%E3%83%A9%E3%83%AB)
 
 `3.14` のようにして小数点となる。
 
 `.` 部分の左右は省略可能で、`1.` ないし `.1` という表現も可能。ただし両方を省略した `.` だけでは駄目。
 
-数値直後の `.` は小数点として扱われるため、Number のプロパティを `123.toString()` のように参照することはできない。代わりに `123..toString()` であれば `123.` までが数値、その次の `.` からがプロパティ参照となり利用可能。
+```js
+const a = 3.14;
+const b = 1024.;
+const c = .84;
+```
+
+数値直後の `.` は小数点として扱われるため、Number のプロパティを `123.toString()` のように参照することはできない。`123..toString()` のようにする。
+
+```js
+// 👍
+const a = 1024..toString(); // => "1024"
+const b = 1024 .toString(); // => "1024"
+
+// ⛔ SyntaxError: Invalid or unexpected token
+const c = 1024.toString(); // => "1024"
+```
 
 ### `0..prop` 数値リテラルとプロパティアクセス
 
 `0.` が数値（小数点ありかつ小数点以下の数字なし）で、それとプロパティアクセス `obj.prop` の組み合わせ。つまり `(0.).prop` 。`..` という構文はない。
+
+数値直後の `.` は小数点として扱われるため、Number のプロパティを `123.toString()` のように参照することはできない。`123..toString()` であれば `123.` までが数値、その次の `.` からがプロパティ参照となり利用可能。単に空白を置いても良い。
+
+```js
+// 👍
+const a = 1024..toString(); // => "1024"
+const b = 1024 .toString(); // => "1024"
+
+// ⛔ SyntaxError: Invalid or unexpected token
+const c = 1024.toString(); // => "1024"
+```
 
 ### [TODO] `{ ...key } = value`, `[...arr] = key`, `function (...arr) {}` 分割代入（スプレッド構文）
 
