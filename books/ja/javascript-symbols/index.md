@@ -649,6 +649,7 @@ for (let i = 0; i < arr.length; i++) {
 
 - [*PropertyDefinition* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-PropertyDefinition)
 - [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
+- [オブジェクト初期化子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Object_initializer)
 
 オブジェクトリテラルでプロパティを定義する。右側に値を与えるが、式ならその評価結果になる。
 
@@ -670,11 +671,11 @@ const obj = {
 };
 ```
 
-右側の評価はオブジェクト生成と代入の前に行われるので、再帰構造を表現することはできない。
+右側の評価は代入の前に行われるので、再帰構造をこのやり方で表現することはできない。
 
 ```js
-// ⛔ まだ `obj.a` はない
-// ReferenceError: obj is not defined
+// まだ `obj` の中身はない
+// ⛔ ReferenceError: obj is not defined
 const obj = { a: obj.a };
 ```
 
@@ -693,43 +694,162 @@ const a = obj.foo; // => "abc"
 const b = obj.bar; // => 1
 ```
 
-左側プロパティ名は変数名に利用できるものの他、数値リテラル、文字列リテラルも利用可能。与えた名前がドットを用いたプロパティアクセス `obj.key` で利用できないものは、角括弧を用いたプロパティアクセス `obj[key]` で参照できる。なお数値は文字列へ変換される。
+左側プロパティ名は変数名に利用できるものの他、数値リテラル、文字列リテラルも利用可能。
 
 ```js
 const obj = {
-  abc: "abc",
-  123: 123,
-  "Hello World!": true,
+  a: 123,
+  "Hello World!": "Uh huh",
+  123: "a",
 };
-
-const a = obj[123]; // 123
-const b = obj["123"]; // 123
-const c = obj["Hello World!"]; // true
 ```
 
-その条件から外れる命名を行いたい場合、計算プロパティ名 `{ [key]: value }` が利用できる。
+計算プロパティ名 `[]` を用いると変数等も利用できる。計算プロパティ名 `[]` を参照。
 
-### [TODO] `case key:` `case` 節
+```js
+const a = "foo";
+const obj = { [a]: 123 };
+const b = obj.foo; // => 123;
+```
 
+与えた名前がドットを用いたプロパティアクセス `obj.key` の形で利用できないものは、角括弧を用いたプロパティアクセス `obj[key]` で参照できる。プロパティアクセス `[]` を参照。
+
+```js
+const obj = {
+  "Hello World!": "Uh huh",
+};
+const a = obj["Hello World!"]; // => "Uh huh"
+```
+
+### `case key:` `case` 節
+
+- [*CaseClause* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-CaseClause)
 - [14.12 The switch Statement - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
+- [switch - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/switch)
 
-### [TODO] `default:` `default` 節
+`switch` 文の一部。条件に合致した際の移動先。
 
+```js
+const a = 1;
+let b;
+
+switch (a) {
+  case 1:
+    b = "ひとつ";
+    break;
+  case 2:
+    b = "ふたつ";
+    break;
+}
+console.log(b); // ひとつ
+
+// 同じことを if 文で記述する例
+if (a === 1) {
+  b = "ひとつ";
+} else if (a === 2) {
+  b = "ふたつ";
+}
+```
+
+次の `case` 文があっても終了しないので、`break` を置かない場合は続行して実行される。<small>（`break` 漏れはしばしば不具合の原因となるという。）</small>
+
+```js
+const a = 1;
+let b;
+
+switch (a) {
+  case 1:
+    b = "ひとつ";
+    // break していないので、このまま次が実行されてしまう
+  case 2:
+    b = "ふたつ";
+    break;
+
+  // あえて複数ケースに対応させる場合も
+  case 3:
+  case 4:
+    b = "みっつかよっつ";
+    break;
+}
+
+console.log(b); // ふたつ
+```
+
+判定は厳密等価演算子 `===` と同じく型が考慮される。
+
+```js
+const a = 1;
+let b;
+
+switch (a) {
+  case "1":
+    b = "数字の 1";
+    break;
+  case 1:
+    b = "数値の 1";
+    break;
+}
+```
+
+<small>（`switch` 文を使うより `if` 文を並べる方が `break` 漏れもないし柔軟だしで良いんじゃないかなあ。）</small>
+
+<small>（対応する値を得る用途では、`switch` の代わりにマップを利用しても良い。）</small>
+
+```js
+const langMessageMap = {
+  en: "Hi",
+  es: "Hola",
+  ja: "やあ",
+};
+
+const lang = "ja";
+const message = langMessageMap[lang];
+```
+
+### `default:` `default` 節
+
+- [*DefaultClause* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-DefaultClause)
 - [14.12 The switch Statement - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
+- [switch - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/switch)
 
-### [TODO] `{ prop: value }` オブジェクト初期化子の一部
+`switch` 文の一部。条件に合致しなかった際の移動先。
 
-- [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
+```js
+const a = 999;
+let b;
 
-### [TODO] `{ prop: key } = obj`, `function ({ prop: key }) {}` 分割代入の一部
+switch (a) {
+  case 1:
+    b = "ひとつ";
+    break;
+  case 2:
+    b = "ふたつ";
+    break;
+  default:
+    b = "わかりません";
+}
 
+console.log(b); // わかりません
+```
+
+### [TODO] `{ prop: key } = obj`, `function ({ prop: key }) {}` 分割代入
+
+- [*AssignmentProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentProperty)
+- [*BindingProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BindingProperty)
 - [13.15.5 Destructuring Assignment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
+- [15.2 Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-function-definitions)
 
 ### `key: type` 型指定
 
 - [TypeScript: Documentation - TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
 
 JavaScript ではなく TypeScript の文法。
+
+```ts
+let v: string | number = "";
+//     ~~~~~~~~~~~~~~~   ~~
+//     ^ 変数の型         ^ 変数の値
+```
 
 ### `key:` ラベル
 
@@ -738,9 +858,9 @@ JavaScript ではなく TypeScript の文法。
 
 `break` や `continue` で「ジャンプ」する先の位置を定義する文法。
 
-古の言語にある GOTO の仕組み。<small>（JavaScript では黎明期から現代に至るまでまず使われていない。）</small>
+古の言語にある GOTO のサブセット的な仕組み。<small>（JavaScript では黎明期から現代に至るまでまず使われていない。）</small>
 
-<small>（使うな。）</small>
+<small>（使わないでね。）</small>
 
 ## `!` エクスクラメーション
 
@@ -2584,7 +2704,7 @@ JavaScript ではなく TypeScript の文法。
 ```ts
 const f: (s: string) => string[] = (s) => s.split("");
 //       ~~~~~~~~~~~~~~~~~~~~~~~   ~~~~~~~~~~~~~~~~~~
-//       ^ f の型                  ^ f の値
+//       ^ 変数の型                 ^ 変数の値
 ```
 
 ## `>` 大なり
