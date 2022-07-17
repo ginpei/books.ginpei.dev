@@ -35,15 +35,7 @@ date: 0000-00-00
 
 <fue-button book-id="HsCH6wIHbEmT0PtcDgSu" layout="right bottom"></fue-button>
 
-<label>
-  Search by symbols:
-  <input
-    data-ref="input"
-    placeholder="_-,;:!?.'&quot;()[]{}@*/\&amp;#%`^+<=>|~$"
-    type="search"
-  />
-</label>
-<ul class="searchResult-list" data-ref="list"></ul>
+<div id="searchForm"></div>
 
 ## ` `&nbsp;空白
 

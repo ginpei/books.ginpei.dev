@@ -20,6 +20,20 @@
  * }} PageState
  */
 
+const html = /*html*/`
+  <div>
+    <label>
+      Search by symbols:
+      <input
+        data-ref="input"
+        placeholder="_-,;:!?.'&quot;()[]{}@*/\&amp;#%\`^+<=>|~$"
+        type="search"
+      />
+    </label>
+    <ul class="searchResult-list" data-ref="list"></ul>
+  </div>
+`;
+
 const css = /*css*/`
   .searchResult-list {
     padding: 0;
@@ -60,11 +74,9 @@ const css = /*css*/`
 document.addEventListener("DOMContentLoaded", onDOMContentLoaded);
 
 function onDOMContentLoaded() {
+  prepareElements();
+
   const props = getPageProps();
-
-  const elStyle = createElStyle();
-  document.head.append(elStyle);
-
   props.elInput.addEventListener("input", () => {
     const state = getCurrentState(props);
     render(props, state);
@@ -75,6 +87,17 @@ function createElStyle() {
   const el = document.createElement("style");
   el.textContent = css;
   return el;
+}
+
+function prepareElements() {
+  const elPlaceholder = document.querySelector("#searchForm");
+  if (!elPlaceholder) {
+    throw new Error('<div id="searchForm"> required');
+  }
+  elPlaceholder.innerHTML = html;
+
+  const elStyle = createElStyle();
+  document.head.append(elStyle);
 }
 
 /**
