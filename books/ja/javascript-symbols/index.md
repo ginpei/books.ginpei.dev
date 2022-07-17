@@ -692,6 +692,17 @@ const a = obj["Hello World!"]; // => "Uh huh"
 - [13.15.5 Destructuring Assignment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
 - [15.2 Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-function-definitions)
 
+```js
+const obj = { a: 11, b: 22, c: 33 };
+const { a, b } = obj;
+console.log(a); // 11
+console.log(b); // 22
+```
+
+```js
+const { hostname, port } = location;
+```
+
 ### `case key:` `case` 節
 
 - [*CaseClause* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-CaseClause)
