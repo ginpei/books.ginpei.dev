@@ -953,36 +953,6 @@ const b = false ? 1 : 2; // => 2
 
 3 つの項を取る唯一の演算子なので「三項演算子」とも呼ばれる。（二項演算子、単項演算子は複数ある。）
 
-### `value ?? value` Null 合体演算子
-
-左辺が nullish 、つまり `null` か `undefined` である場合に右辺を、そうでなければ左辺を返す。
-
-```js
-const a = null ?? 1; // => 1
-const b = undefined ?? 1; // => 1
-const c = 0 ?? 1; // => 0
-const d = "" ?? 1; // => ""
-
-const obj = { a: 0 };
-const f = obj.a ?? 1; // => 0
-const g = obj.b ?? 1; // => 1
-```
-
-<small>（利用者入力値の初期値を与えたり、`?.` と組み合わせて利用する場面が多いと思う。）</small>
-
-かつては `||` を用いて次のように書くことが多かった。この書き方は `null`, `undefined` 以外の falsy な値に対応できないという問題があった。
-
-```js
-const a = null || 1; // => 1
-const b = undefined || 1; // => 1
-const c = 0 || 1; // => 1
-const d = "" || 1; // => 1
-
-const obj = { a: 0 };
-const f = obj.a || 1; // => 1
-const g = obj.b || 1; // => 1
-```
-
 ### `obj?.prop` オプショナルチェイン構文
 
 - [13.3 Left-Hand-Side Expressions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-left-hand-side-expressions)
@@ -1052,6 +1022,36 @@ const obj = { a: 1 };
 
 // ⛔ SyntaxError: Unexpected token '.'
 const a = obj? .a;
+```
+
+### `value ?? value` Null 合体演算子
+
+左辺が nullish 、つまり `null` か `undefined` である場合に右辺を、そうでなければ左辺を返す。
+
+```js
+const a = null ?? 1; // => 1
+const b = undefined ?? 1; // => 1
+const c = 0 ?? 1; // => 0
+const d = "" ?? 1; // => ""
+
+const obj = { a: 0 };
+const f = obj.a ?? 1; // => 0
+const g = obj.b ?? 1; // => 1
+```
+
+<small>（利用者入力値の初期値を与えたり、`?.` と組み合わせて利用する場面が多いと思う。）</small>
+
+かつては `||` を用いて次のように書くことが多かった。この書き方は `null`, `undefined` 以外の falsy な値に対応できないという問題があった。
+
+```js
+const a = null || 1; // => 1
+const b = undefined || 1; // => 1
+const c = 0 || 1; // => 1
+const d = "" || 1; // => 1
+
+const obj = { a: 0 };
+const f = obj.a || 1; // => 1
+const g = obj.b || 1; // => 1
 ```
 
 ### `f?.()`, `obj?.[value]` オプショナルチェイン構文
