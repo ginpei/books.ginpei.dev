@@ -2944,6 +2944,16 @@ obj.f(); // => "CREATURE"、関数 f() 実行時の `this`
 obj.af(); // => "CREATOR"、関数 af() 作成時の `this`
 ```
 
+### [TODO] `function (key = value) {}` 仮引数の初期値
+
+```js
+f(123);
+
+function f(a = 11, b = 22) {
+  console.log(a, b); // 123, 22
+}
+```
+
 ### [TODO] `{ key = value } = value`, `[key = value] = value`, `function({ key = value }) {}` 分割代入の初期値
 
 ```js
