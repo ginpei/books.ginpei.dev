@@ -1533,9 +1533,25 @@ a.hi();
 // I'm 123 years old
 ```
 
-### [TODO] `new F()` コンストラクター実行
+### `new F()` コンストラクターの引数
 
-- [MemberExpression - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MemberExpression)
+- [*NewExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-NewExpression)
+- [13.3.5 The new Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-new-operator)
+- [new 演算子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/new)
+
+`new` 演算子でコンストラクターを実行する際に引数を与える。
+
+```js
+const a = new Date("2022-01-23 12:34:56");
+```
+
+`new` 演算子の利用自体には括弧 `()` は必須ではない。
+
+```js
+// 同じ
+const a = new Date;
+const b = new Date();
+```
 
 ### [TODO] `function () {}` 定義の一部
 
