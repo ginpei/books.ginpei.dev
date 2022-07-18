@@ -1445,11 +1445,37 @@ const obj = { f2: f };
 obj.f2(); // obj
 ```
 
+関数が既に特定のオブジェクトを `this` として紐付けられている場合、そちらが優先される。（解除方法はない。）
+
+```js
+function f() {
+  console.log(this);
+}
+
+const obj1 = { id: 1 };
+const bound = f.bind(obj1);
+
+const obj2 = { id: 2, f2: bound };
+obj2.f2(); // obj1
+```
+
 ### `f().prop` 関数呼び出しとプロパティアクセス
 
 関数呼び出し `f()` とプロパティアクセス `obj.prop` の組み合わせ。`().` という構文はない。
 
 <small>（読みづらいので `f()` の結果は一度変数に代入してから `obj.prop` でプロパティアクセスするべきだと思う。）</small>
+
+```js
+function f() {
+  const obj = { a: 123 };
+  return obj;
+}
+
+const a = f().a; // => 123
+
+const o = f();
+const b = o.a; // => 123
+```
 
 ### [TODO] `super()` スーパークラスのコンストラクター呼び出し
 
