@@ -1361,9 +1361,21 @@ const html = /*html*/`
 
 - [よく使う括弧の名前（日本語、英語）を調べてみたよ。ブラケット、ブレースとか。 | Ginpen.com](https://ginpen.com/2014/02/20/brackets/)
 
-### [TODO] `()` 演算順序の優先度変更（括弧付き式）
+### `()` グループ化演算子
 
+- [*CoverParenthesizedExpressionAndArrowParameterList* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-CoverParenthesizedExpressionAndArrowParameterList)
 - [*ParenthesizedExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ParenthesizedExpression)
+- [グループ化演算子 ( ) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Grouping)
+
+括弧式とも。数学の括弧 "()" と同様、計算順序を変更し括弧で括られた部分の計算を優先する。
+
+```js
+const a = 1 + 2 * 3; // => 7
+const b = (1 + 2) * 3; // => 9
+```
+
+（意味的には順序を変更するよりグループ化して別途計算するというべきか。）
+
 
 ### [TODO] `f()` 関数呼び出し
 
