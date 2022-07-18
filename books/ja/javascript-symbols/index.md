@@ -1376,10 +1376,56 @@ const b = (1 + 2) * 3; // => 9
 
 （意味的には順序を変更するよりグループ化して別途計算するというべきか。）
 
+### `f()` 関数呼び出し
 
-### [TODO] `f()` 関数呼び出し
+- [*Arguments* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-Arguments)
+- [13.3.6 Function Calls - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-function-calls)
 
-- [*CallExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-CallExpression)
+関数に任意の引数を与えて実行する。
+
+```js
+// 関数定義
+function f() {}
+
+// 関数呼び出し
+f();
+
+// 変数へ代入
+const a = f;
+
+// 変数経由で実行
+a();
+```
+
+変数の中身が何であれ、括弧を付けた式を実行することでその変数の中の関数を呼び出し実行する。関数でなければ実行時に型エラーになる。（文法エラーにはならない。）
+
+```js
+const f = 1;
+
+// ⛔ TypeError: a is not a function
+f();
+```
+
+括弧 `()` の中に引数をカンマ `,` 区切りで羅列する。なお JavaScript では関数作成時に用意される仮引数と実行時に与える引数の数が同じである必要はない。（TypeScript ならコンパイル時に型エラーとして教えてくれる。）
+
+```js
+function f(a, b) {
+  return `${a}+${b}`;
+}
+
+const a = f(123); // => "123+undefined"
+const b = f(123, 456, 789); // => "123+456"
+```
+
+任意数の引数を受け取る場合は残余 `...key` を用いる。残余仮引数を参照。
+
+```js
+f(11, 22, 33);
+
+function f(a, ...b) {
+  console.log(a, b); // => 11, [22, 32]
+}
+```
 
 ### [TODO] `obj.f()` メソッド呼び出し
 
