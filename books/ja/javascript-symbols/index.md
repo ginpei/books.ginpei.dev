@@ -1479,9 +1479,59 @@ const o = f();
 const b = o.a; // => 123
 ```
 
-### [TODO] `super()` スーパークラスのコンストラクター呼び出し
+### `super()` スーパークラスのコンストラクター呼び出し
 
 - [*SuperCall* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-SuperCall)
+- [13.3.7 The super Keyword - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-super-keyword)
+- [super - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/super)
+
+スーパークラス（親クラス）のコンストラクターを呼び出す。
+
+```js
+class Parent {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+class Child extends Parent {
+  constructor(name, age) {
+    super(name);
+    this.age = age;
+  }
+}
+```
+
+`super` キーワードはスーパークラスのメソッドやプロパティへアクセスするのにも使う。
+
+```js
+class Parent {
+  constructor(name) {
+    this.name = name;
+  }
+
+  hi() {
+    console.log(`Hi, I'm ${this.name}`);
+  }
+}
+
+class Child extends Parent {
+  constructor(name, age) {
+    super(name);
+    this.age = age;
+  }
+
+  hi() {
+    super.hi();
+    console.log(`I'm ${this.age} years old`);
+  }
+}
+
+const a = new Child('Alice', 123);
+a.hi();
+// Hi, I'm Alice
+// I'm 123 years old
+```
 
 ### [TODO] `new F()` コンストラクター実行
 
