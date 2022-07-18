@@ -1427,9 +1427,23 @@ function f(a, ...b) {
 }
 ```
 
-### [TODO] `obj.f()` メソッド呼び出し
+### `obj.f()` メソッド呼び出し
 
-- [*CallExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-CallExpression)
+- [*Arguments* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-Arguments)
+- [13.3.6 Function Calls - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-function-calls)
+
+基本的には関数呼び出しと同じ。それに加えオブジェクトを `this` に設定する。
+
+```js
+function f() {
+  console.log(this);
+}
+
+f(); // window 等のグローバルオブジェクト
+
+const obj = { f2: f };
+obj.f2(); // obj
+```
 
 ### `f().prop` 関数呼び出しとプロパティアクセス
 
