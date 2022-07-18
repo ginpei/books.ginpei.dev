@@ -1307,16 +1307,53 @@ const b = <Foo a={props.a} b={props.b} />;
 
 *quote*, *single quote*, *double quote* クォート、シングルクォート、ダブルクォート、引用符、二重引用符
 
-### [TODO] `"abc"`, `'abc'` 文字列リテラル
+### `"abc"`, `'abc'` 文字列リテラル
 
 - [*StringLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-StringLiteral)
 - [12.8.4 String Literals - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-literals-string-literals)
+- [String - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+文字列を表現する文法。二重引用符 `""` と単引用符 `''` のいずれも利用できる。意味に違いはないが混ぜて利用（二重引用符で始めて単引用符で終わる）はできない。
+
+```js
+const a = "Hello World!";
+const b = 'My name is Alice.';
+
+const c = "It's a small world";
+```
+
+文字列中で引用符を利用する、改行文字を含める等にはバックスラッシュ `\` を用いたエスケープ機能を利用する。
+
+```js
+// 単引用符の中で単引用符
+const c = 'It\'s a small world';
+
+// 改行
+const d = "7 8 9\n4 5 6\n1 2 3";
+
+// バックスラッシュ自体
+const e = "\\";
+```
+
+文字列リテラル中にエスケープなしの改行は利用できない。代わりにテンプレートリテラルを使う。テンプレートリテラル <code>&#96;abc&#96;</code> を参照。
+
+```js
+const d = `7 8 9
+4 5 6
+1 2 3`;
+
+const html = /*html*/`
+  <div>
+    <h1>Hello World!</h1>
+  </div>
+`;
+```
 
 ### `{ "abc": 1 }`, `{ 'abc': 1 }` プロパティ定義
 
-[プロパティ定義 `{ key: value }`](#%7B-key%3A-value-%7D-%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E5%AE%9A%E7%BE%A9) の一種。
+[プロパティ定義 `{ key: value }`](#%7B-key%3A-value-%7D-%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E5%AE%9A%E7%BE%A9) を参照。
 
-なお JSON の場合は必ず二重引用符で括る。
+なお JSON の場合は必ず二重引用符で括る必要がある。
 
 ## `(`, `)` 丸括弧
 
