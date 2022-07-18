@@ -1212,20 +1212,96 @@ function f(a, ...rest) {
 
 関数の引数は `arguments` オブジェクトからも参照できるが、アロー関数は元のスコープでの `arguments` オブジェクトを引き継ぐため、任意個数の引数を受け取るにはこの残余引数の表現を用いる。<small>（そもそも残余引数よりこの `arguments` オブジェクトを選ぶ理由は現代ではないと思う。）</small>
 
-### [TODO] `{ ...obj }` オブジェクトのプロパティ展開（スプレッド構文）
+### `{ ...obj }` プロパティ展開（スプレッド構文）
 
 - [*PropertyDefinition* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-PropertyDefinition)
 - [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
+- [スプレッド構文 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
 
-### [TODO] `[...arr]` 配列の項目展開（スプレッド構文）
+オブジェクトのプロパティをばらばらにして与える構文。
+
+```js
+const obj = { a:11, b: 22, c: 33 };
+
+// 同じ
+const a = { foo: "foo", ...obj };
+const b = { foo: "foo", a: obj.a, b: obj.b, c: obj.c };
+```
+
+shallow copy であり、入れ子になったオブジェクトのオブジェクトは展開されない（オブジェクトの与えられる）。複製には用いないこと。
+
+```js
+const obj = { a: 11, sub: { b: 1 } };
+
+// 👎
+const cloned = { ...obj };
+
+// 元の obj の変更が複製 cloned に影響してしまう
+obj.sub.b = 99;
+console.log(cloned.sub.b); // 99
+```
+
+代わりに[`structuredClone()`](https://developer.mozilla.org/en-US/docs/Web/API/structuredClone) というウェブ標準の API を用いる。（なお比較的新しいのでサポート状況に注意。）
+
+```js
+const obj = { a: 11, sub: { b: 1 } };
+
+// 👍
+const cloned = structuredClone(obj);
+
+// 元の obj の変更が複製 cloned に影響しない
+obj.sub.b = 99;
+console.log(cloned.sub.b); // 1
+```
+
+### `[...arr]` 配列要素展開（スプレッド構文）
 
 - [*SpreadElement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-SpreadElement)
 - [13.2.4 Array Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-array-initializer)
+- [スプレッド構文 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
 
-### [TODO] `f(...arr)` 関数の引数展開（スプレッド構文）
+配列の要素をばらばらにして与える構文。
+
+```js
+const arr = [11, 22, 33];
+
+// 同じ
+const a = [999, ...arr];
+const b = [999, arr[0], arr[1], arr[2]];
+const c = [999].concat(arr);
+```
+
+配列の複製を作るのも使えるが shallow copy になる点に注意。プロパティ展開を参照。
+
+### `f(...key)` 引数展開（スプレッド構文）
 
 - [*ArgumentList* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ArgumentList)
 - [13.3.8 Argument Lists - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-argument-lists)
+- [スプレッド構文 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+
+配列の要素をばらばらにして関数呼び出しの引数として与える構文。
+
+```js
+const arr = ["メモ", new Date()];
+
+// 同じ
+console.log(...arr);
+console.log(arr[0], arr[1]);
+```
+
+### `<Component {...key}>` プロパティ展開 (React/JSX)
+
+- [属性の展開 - JSX を深く理解する – React](https://ja.reactjs.org/docs/jsx-in-depth.html#spread-attributes)
+
+JavaScript ではなく React/JSX の仕様。JavaScript におけるオブジェクトのプロパティ展開と同様、オブジェクトを展開してコンポーネントの props へ与える。
+
+```jsx
+const props = { a: 11, b: 22 };
+
+// 同じ
+const a = <Foo {...props} />;
+const b = <Foo a={props.a} b={props.b} />;
+```
 
 ## `'`, `"` シングルクォート、ダブルクォート
 
