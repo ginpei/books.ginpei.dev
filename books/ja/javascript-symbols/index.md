@@ -1194,7 +1194,7 @@ console.log(first); // 11
 console.log(rest); // [22, 33]
 ```
 
-### `function (...arr) {}` 残余引数（分割代入）
+### `function (...arr) {}` 残余仮引数（分割代入）
 
 - [BindingRestElement - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BindingRestElement)
 - [15.2 Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-function-definitions)
