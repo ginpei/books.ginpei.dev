@@ -1210,7 +1210,7 @@ function f(a, ...rest) {
 }
 ```
 
-関数の引数は `arguments` オブジェクトからも参照できるが、アロー関数は元のスコープでの `arguments` オブジェクトを引き継ぐため、任意個数の引数を受け取るにはこの残余引数の表現を用いる。<small>（そもそも残余引数よりこの `arguments` オブジェクトを選ぶ理由は現代ではないと思う。）</small>
+関数の引数は [`arguments` オブジェクト](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Functions#using_the_arguments_object)からも参照できるが、アロー関数は元のスコープでの `arguments` オブジェクトを引き継ぐため、任意個数の引数を受け取るにはこの残余引数の表現を用いる。<small>（そもそも残余引数よりこの `arguments` オブジェクトを選ぶ理由は現代ではないと思う。）</small>
 
 ### `{ ...obj }` プロパティ展開（スプレッド構文）
 
