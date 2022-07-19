@@ -1659,7 +1659,7 @@ const a = 100 + obj; // => 110
 
 計算プロパティ名、`{ [key]: value }`、メソッド定義 `{ f() {} }` を参照。
 
-### `import(key)` インポート呼び出し
+### `import(value)` インポート呼び出し
 
 - [*ImportCall* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ImportCall)
 - [13.3.10 Import Calls - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-import-calls)
@@ -1775,7 +1775,7 @@ let x = do {
 };
 ```
 
-### `if ()` 条件（`if` 文）
+### `if (value)` 条件（`if` 文）
 
 - [*IfStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-IfStatement)
 - [*WhileStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-WhileStatement)
@@ -1808,7 +1808,7 @@ switch (value) {
 }
 ```
 
-### `with()` 追加スコープ（`with` 文）
+### `with (value)` 追加スコープ（`with` 文）
 
 - [*WithStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-WithStatement)
 - [14.11 The with Statement - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-with-statement)
