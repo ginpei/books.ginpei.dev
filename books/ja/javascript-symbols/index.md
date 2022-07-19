@@ -1775,12 +1775,22 @@ let x = do {
 };
 ```
 
-### [TODO] `if ()` if 文の一部
+### `if ()` 条件（`if` 文）
 
 - [*IfStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-IfStatement)
 - [*WhileStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-WhileStatement)
 - [*DoWhileStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-DoWhileStatement)
 - [*SwitchStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-SwitchStatement)
+
+`if` 文のうち条件を括る括弧。
+
+```js
+if (num === 334) {
+  throw new Error("禁止されている値です。");
+}
+```
+
+分岐先は通常ブロック `{}` にするが、一行で書いても良い。括弧は省略できない。
 
 ### [TODO] `with()` with 文の一部
 
