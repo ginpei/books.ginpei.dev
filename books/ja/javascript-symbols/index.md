@@ -1553,15 +1553,18 @@ const a = new Date;
 const b = new Date();
 ```
 
-### [TODO] `function () {}` 定義の一部
+### [TODO] `function () {}` 仮引数（関数）
 
 - [*FunctionDeclaration* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FunctionDeclaration)
 - [*FunctionExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FunctionExpression)
 - [15.2 Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-function-definitions)
 
-### `{ f() {} }` メソッド定義の一部
+### `{ f() {} }` 仮引数（メソッド）
 
 - [*MethodDefinition* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MethodDefinition)
+- [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
+- [オブジェクト初期化子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Object_initializer)
+
 
 オブジェクトリテラルのプロパティとして関数を値に持つものを定義するもの。
 
@@ -1583,12 +1586,28 @@ const obj = {
 };
 ```
 
-### [TODO] `{ key: function() {} }` 関数式の一部
+### `{ key: function() {} }` 関数式の一部
 
 - [*FunctionExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FunctionExpression)
 
+オブジェクト初期化子のプロパティ定義で値が関数式になったもの。
+
+```js
+const obj1 = { key: function() {} };
+
+// 一度変数に入れた場合
+const f = function() {};
+const obj2 = { key: f };
+
+// メソッド定義を利用した場合
+const obj3 = { key() {} };
+```
+
+メソッド定義 `{ f() {} }` も併せて参照。
+
 ### `{ [key]() {} }` メソッド定義の一部
 
+<!-- TODO `[]` へ移動 -->
 - [*ComputedPropertyName* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ComputedPropertyName)
 - [*MethodDefinition* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MethodDefinition)
 
@@ -1618,7 +1637,8 @@ const obj = {
 const a = 100 + obj; // => 110
 ```
 
-### [TODO] `import(key)` 動的インポート
+計算プロパティ名、`{ [key]: value }`、メソッド定義 `{ f() {} }` を参照。
+
 
 - [*ImportCall* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ImportCall)
 - [動的インポート - import - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports)
