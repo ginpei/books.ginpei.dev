@@ -1639,9 +1639,39 @@ const a = 100 + obj; // => 110
 
 計算プロパティ名、`{ [key]: value }`、メソッド定義 `{ f() {} }` を参照。
 
+### `import(key)` インポート呼び出し
 
 - [*ImportCall* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ImportCall)
+- [13.3.10 Import Calls - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-import-calls)
 - [動的インポート - import - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports)
+
+JS ファイルをインポートする構文。import 文 `import { key } from "path";` と異なり、初期化時ではなく実行中に必要になった時点で読み込むことができる。
+
+`export` されたものを含むオブジェクトが Promise 経由で返る。
+
+```js
+// my-module.js
+// import される側
+
+export default {
+  foo: 123,
+};
+
+export function hello() {
+  return "Yo";
+}
+```
+
+```js
+// main.js
+// import する側
+
+button.onclick = async () => {
+  const myModule await import("./my-module.js");
+  console.log(myModule.default); // { foo: 123 }
+  console.log(myModule.hello()); // "Yo"
+};
+```
 
 ### `(function () {})()` 即時実行関数式、IIFE
 
