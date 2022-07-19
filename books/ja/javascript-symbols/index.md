@@ -1792,6 +1792,22 @@ if (num === 334) {
 
 分岐先は通常ブロック `{}` にするが、一行で書いても良い。括弧は省略できない。
 
+### `switch (value) {}` `switch` 文
+
+- [*SwitchStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-SwitchStatement)
+- [14.12 The switch Statement - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-switch-statement)
+- [switch - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/switch)
+
+`switch` 文のうち条件を括る丸括弧、分岐を括る波括弧。いずれも省略できない。
+
+```js
+switch (value) {
+  case 11:
+  default:
+    // …
+}
+```
+
 ### `with()` 追加スコープ（`with` 文）
 
 - [*WithStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-WithStatement)
