@@ -1792,9 +1792,13 @@ if (num === 334) {
 
 分岐先は通常ブロック `{}` にするが、一行で書いても良い。括弧は省略できない。
 
-### [TODO] `with()` with 文の一部
+### `with()` 追加スコープ（with 文）
 
 - [*WithStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-WithStatement)
+- [14.11 The with Statement - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-with-statement)
+- [with - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/with)
+
+<small>（可読性とおそらく実行速度の問題があります。使わないでください。）</small>
 
 ### `delete(key)`, `void(key)`, `typeof(key)` 括弧式
 
