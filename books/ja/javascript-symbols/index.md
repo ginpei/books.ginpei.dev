@@ -1553,11 +1553,31 @@ const a = new Date;
 const b = new Date();
 ```
 
-### [TODO] `function () {}` 仮引数（関数）
+### `function () {}` 仮引数（関数）
 
 - [*FunctionDeclaration* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FunctionDeclaration)
 - [*FunctionExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FunctionExpression)
 - [15.2 Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-function-definitions)
+
+関数文、関数式の仮引数部分を括る括弧。
+
+```js
+// 関数文
+function f(a, b, c) {}
+
+// 関数式（右側）
+const g = function(a, b, c) {};
+```
+
+仮引数は様々な書き方がある。
+
+- 初期値 `(a = 123)`
+- 分割代入 `({ a })`
+- 残余仮引数 `(...a)`
+
+各節を参照。
+
+アロー関数 `() => {}` の仮引数部分は条件次第で括弧を省略できる。アロー関数を参照。
 
 ### `{ f() {} }` 仮引数（メソッド）
 
