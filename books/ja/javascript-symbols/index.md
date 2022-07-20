@@ -1848,6 +1848,11 @@ const c = typeof(obj); // => "object"
 
 - [*ArrayLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ArrayLiteral)
 - [13.2.4 Array Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-array-initializer)
+- [配列リテラル - 文法とデータ型 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Grammar_and_types#array_literals)
+
+```js
+const a = [11, 22, 33];
+```
 
 ### [TODO] `arr[number]` 配列要素アクセス
 
