@@ -25,7 +25,6 @@ date: 0000-00-00
 - エラーになるコード例はそれをコメントで提示 `// ⛔ XxxError: ...`
 - エラーは Node.js v16 (current LTS) で得られるもの
 - とりあえず最後まで節 `###` を立てる
-- multipage じゃない方にする（最後に一括置換でいい）
 - TODO 仕様書の見出しに operator として存在するもののみを演算子と呼ぶ。確認
 - TODO 演算子は該当する見出しへのリンクにする（狭くする）
 -->
@@ -2600,8 +2599,8 @@ URL としては `#` 以降はフラグメント識別子以上の意味は持�
 
 ### [TODO] `value % value` 剰余
 
-- [*MultiplicativeOperator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#prod-MultiplicativeOperator)
-- [13.7 Multiplicative Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-multiplicative-operators)
+- [*MultiplicativeOperator* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MultiplicativeOperator)
+- [13.7 Multiplicative Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-multiplicative-operators)
 - [剰余 (%) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Remainder)
 
 割った余りを求める。
@@ -3011,8 +3010,8 @@ var c = function() { return Math.random(); };
 
 ### `key = value` 代入演算子
 
-- [*AssignmentExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#prod-AssignmentExpression)
-- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-assignment-operators)
+- [*AssignmentExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentExpression)
+- [13.15 Assignment Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-assignment-operators)
 - [代入 (=) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Assignment)
 
 左辺で示す変数に右辺で与える値を代入する。
