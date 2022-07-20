@@ -6,3 +6,4 @@ noToc: true
 
 - [Eleventy](./eleventy/)
 - [GitHub Actions で GitHub Pages へ公開する](./github-actions-publish-pages/)
+- [Linux tips](./linux-tips/)
