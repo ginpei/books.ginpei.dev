@@ -2736,7 +2736,7 @@ JavaScript ではなく正規表現のパターン。（行の）先頭を意味
 const rx = /^a/;
 
 rx.test("abc"); // => true;
-rx.test("xabc"); // => false;
+rx.test(" abc"); // => false;
 ```
 
 [CSS の属性セレクター](https://developer.mozilla.org/ja/docs/Web/CSS/Attribute_selectors#%E6%A7%8B%E6%96%87)でも、属性の値が `xxx` で始まる、という書き方ができる。
