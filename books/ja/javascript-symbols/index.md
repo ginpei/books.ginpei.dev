@@ -1876,7 +1876,34 @@ const a = arr[0]; // => 11
 ### [TODO] `obj[key]` プロパティアクセス
 
 - [*MemberExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MemberExpression)
+- [*CallExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-CallExpression)
 - [13.3.2 Property Accessors - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-property-accessors)
+- [プロパティアクセサー - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Property_Accessors)
+
+他言語では連想配列とも。
+
+```js
+const obj = { a: 11 };
+
+const a = obj.a; // => 11
+const b = obj["a"]; // => 11
+
+const name = "a";
+const c = obj[name]; // => 11
+```
+
+### `obj[key]()` プロパティアクセスと関数呼び出し
+
+プロパティアクセス `obj[key]` の結果として関数を得、それを実行している。`[]()` のような文法があるわけではない。
+
+```js
+const obj = { f() {} };
+
+obj.f();
+
+const name = "f";
+obj[name]();
+```
 
 ### [TODO] `[key] = value` 分割代入
 
