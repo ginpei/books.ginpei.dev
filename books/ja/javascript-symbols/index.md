@@ -1909,6 +1909,18 @@ obj[name]();
 
 - [*ArrayAssignmentPattern* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ArrayAssignmentPattern)
 - [13.15.5 Destructuring Assignment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
+- [分割代入 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+
+```js
+const arr = [11, 22, 33];
+
+const [a, b, c] = arr;
+console.log(a); // 11
+console.log(b); // 22
+console.log(c); // 33
+```
+
+波括弧 `{}` を使ったオブジェクトの分割代入もある。
 
 ### [TODO] `function f([key]) {}` 分割代入
 
