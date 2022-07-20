@@ -1856,6 +1856,19 @@ const a = [11, 22, 33];
 
 ### [TODO] `arr[number]` 配列要素アクセス
 
+- [*MemberExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MemberExpression)
+- [*CallExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-CallExpression)
+- [13.3.2 Property Accessors - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-property-accessors)
+- [添字による配列の要素へのアクセス - Array - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array#%E6%B7%BB%E5%AD%97%E3%81%AB%E3%82%88%E3%82%8B%E9%85%8D%E5%88%97%E3%81%AE%E8%A6%81%E7%B4%A0%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9)
+
+```js
+const arr = [11, 22, 33];
+
+const a = arr[0]; // => 11
+```
+
+実態はプロパティアクセス。
+
 ### [TODO] `arr[number][number]` 2 次元配列要素アクセス
 
 `arr[number]` の結果が配列のとき、さらにその配列の要素へアクセスする。N 次元配列であれば N 回 `[number]` 部分が繰り返される。`[][]` のような構文があるわけではない。
