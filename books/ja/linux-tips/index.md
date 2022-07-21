@@ -64,6 +64,12 @@ $ sudo vi /etc/fstab
 
 > make: g++: Command not found
 
+いずれかを実行。
+
+```
+$ sudo apt install build-essential
+```
+
 ```
 $ sudo yum groupinstall -y 'Development Tools'
 ```
