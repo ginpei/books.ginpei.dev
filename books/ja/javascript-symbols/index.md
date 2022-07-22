@@ -1922,7 +1922,7 @@ console.log(c); // 33
 
 波括弧 `{}` を使ったオブジェクトの分割代入もある。
 
-### [TODO] `function f([key]) {}` 仮引数の分割代入
+### [TODO] `function f([key]) {}` 配列仮引数の分割代入
 
 - [*ArrayBindingPattern* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ArrayBindingPattern)
 - [14.3.3 Destructuring Binding Patterns - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-binding-patterns)
@@ -1936,6 +1936,8 @@ function f([a, b]) {
   console.log(b); // 22
 }
 ```
+
+同じことを、一度普通に仮引数で受け取ってから目的の名前の変数へ分割代入する場合。
 
 ```js
 const arr = [11, 22, 33];
