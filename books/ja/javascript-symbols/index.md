@@ -1953,6 +1953,31 @@ function f(param) {
 ### [TODO] `{ [key]: value }` 計算プロパティ名
 
 - [*ComputedPropertyName* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ComputedPropertyName)
+- [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
+- [オブジェクト初期化子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Object_initializer)
+
+オブジェクトリテラル `{}` で記述する際にプロパティ名を動的に決定する文法。
+
+```js
+// "00" ～ "99" を作成
+const n = Math.trunc(Math.random() * 100).toString().padStart(2, '0');
+
+const obj = {
+  [`id-${n}`]: 0,
+};
+```
+
+シンボルをプロパティ名にする場合にも利用する。該当のシンボルを保持していないとアクセスできなくなる。<small>（だよね？）</small>
+
+```js
+const s = Symbol('foo');
+
+const obj = {
+  [s]: 123,
+};
+
+const a = obj[s]; // => 123
+```
 
 ### `@param {type} [key]` 省略可能な引数
 
