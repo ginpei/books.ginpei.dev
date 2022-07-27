@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set up dev env for Windows</title>
+    <link rel="shortcut icon" href="/assets/icon-512.png"/>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/prismjs@1.20.0/themes/prism-tomorrow.css"
+    />
+    <link rel="stylesheet" href="/assets/baseLayout.css" />
+  </head>
+  <body>
+    <header class="baseLayout-headerOuter">
+      <div class="ui-container baseLayout-headerInner">
+        <a
+          class="baseLayout-headerLink"
+          href="/en/"
+          tabindex="-1"
+        >
+          <span class="baseLayout-siteTitle">books.ginpei.dev</span>
+        </a>
+        <a
+          class="baseLayout-headerLink"
+          href="https://github.com/ginpei/books.ginpei.dev"
+          tabindex="-1"
+        >
+          GitHub
+        </a>
+      </div>
+    </header>
+    <article class="ui-container baseLayout-body">
+      <div class="baseLayout-titleGroup">
+        <h1 class="baseLayout-title">Set up dev env for Windows</h1>
+        <div class="baseLayout-metaLine">
+          <a
+            href="https://github.com/ginpei/books.ginpei.dev/commits/main/./books/en/setup-windows-env/index.md"
+            tabindex="-1"
+          >
+            
+              <time>2022-07-27</time>
+              (History)
+            
+          </a>
+        </div>
+      </div>
+      
+      <aside class="baseLayout-toc">
+        <nav class="toc" >
+        <ol><li><a href="#windows-terminal">Windows Terminal</a></li><li><a href="#winget">WinGet</a></li><li><a href="#clink">Clink</a><ol><li><a href="#mridgers's-clink-vs-chrisant996's-clink">mridgers's Clink vs chrisant996's Clink</a></li></ol></li><li><a href="#gow">Gow</a></li><li><a href="#wsl-(windows-subsystem-for-linux)">WSL (Windows Subsystem for Linux)</a></li></ol>
+      </nav>
+      </aside>
+      
+      <h2 id="windows-terminal" tabindex="-1"><a class="header-anchor" href="#windows-terminal"><span>Windows Terminal</span></a></h2>
+<p>A terminal/console/CLI app.</p>
+<ul>
+<li><a href="https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701">Windows Terminal - Microsoft Store Apps</a></li>
+</ul>
+<blockquote>
+<p>The Windows Terminal is a modern, fast, efficient, powerful, and productive terminal application for users of command-line tools and shells like Command Prompt, PowerShell, and WSL. Its main features include multiple tabs, panes, Unicode and UTF-8 character support, a GPU accelerated text rendering engine, and custom themes, styles, and configurations.</p>
+</blockquote>
+<p>If you use Windows 11, this has been installed from the beginning.</p>
+<h2 id="winget" tabindex="-1"><a class="header-anchor" href="#winget"><span>WinGet</span></a></h2>
+<p>A package manager app for Windows by Microsoft.</p>
+<p>Installed from the beginning.</p>
+<pre><code>&gt;winget --help
+</code></pre>
+<h2 id="clink" tabindex="-1"><a class="header-anchor" href="#clink"><span>Clink</span></a></h2>
+<p>A shell that enables common keyboard operations: <code>Ctrl+R</code>, <code>Ctrl+W</code>, etc.</p>
+<ul>
+<li><a href="https://chrisant996.github.io/clink/">Overview | Clink</a></li>
+</ul>
+<blockquote>
+<p>Clink combines the native Windows shell cmd.exe with the powerful command line editing features of the GNU Readline library, which provides rich completion, history, and line-editing capabilities. Readline is best known for its use in the Unix shell Bash, the standard shell for Mac OS X and many Linux distributions.</p>
+</blockquote>
+<p>To install, on your terminal:</p>
+<pre><code>&gt;winget install clink
+</code></pre>
+<p>To uninstall:</p>
+<pre><code>&gt;winget uninstall clink
+</code></pre>
+<h3 id="mridgers's-clink-vs-chrisant996's-clink" tabindex="-1"><a class="header-anchor" href="#mridgers's-clink-vs-chrisant996's-clink"><span>mridgers's Clink vs chrisant996's Clink</span></a></h3>
+<p>Use chrisant996's one.</p>
+<p>Clink is originally created by <a href="http://mridgers.github.io/clink/">mridgers</a>, but not maintained today.</p>
+<h2 id="gow" tabindex="-1"><a class="header-anchor" href="#gow"><span>Gow</span></a></h2>
+<p>A command set that provides Linux-like ones.</p>
+<ul>
+<li><a href="https://github.com/bmatzelle/gow/wiki">Home · bmatzelle/gow Wiki</a></li>
+</ul>
+<blockquote>
+<p>Gow (Gnu On Windows) is the lightweight alternative to Cygwin. It uses a convenient NSIS installer that installs over 100 extremely useful open source UNIX applications compiled as native win32 binaries. It is designed to be as small as possible, about 18 MB, as opposed to Cygwin which can run well over 100 MB depending upon options.</p>
+</blockquote>
+<p>It includes <code>ls</code>, <code>pwd</code>, <code>vim</code></p>
+<p>To install, on your terminal:</p>
+<pre><code>&gt;winget install gow
+</code></pre>
+<p>To uninstall:</p>
+<pre><code>&gt;winget uninstall gow
+</code></pre>
+<h2 id="wsl-(windows-subsystem-for-linux)" tabindex="-1"><a class="header-anchor" href="#wsl-(windows-subsystem-for-linux)"><span>WSL (Windows Subsystem for Linux)</span></a></h2>
+<p>A kind of Linux virtual machine for Windows by Microsoft.</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/windows/wsl/">Windows Subsystem for Linux Documentation | Microsoft Docs</a></li>
+</ul>
+<blockquote>
+<p>Windows Subsystem for Linux (WSL) lets developers run a GNU/Linux environment -- including most command-line tools, utilities, and applications -- directly on Windows, unmodified, without the overhead of a traditional virtual machine or dual-boot setup.</p>
+</blockquote>
+<p>It's not a virtual machine as our tech term though.</p>
+<p>Don't really remember how to set up WSL itself, but you have to install a distribution. For example, here is Ubuntu.</p>
+<ul>
+<li><a href="https://apps.microsoft.com/store/detail/ubuntu/9PDXGNCFSCZV">Ubuntu - Microsoft Store Apps</a></li>
+</ul>
+
+    </article>
+    <footer class="baseLayout-footer">
+      <div class="ui-container">
+        <p><a href="/en/">Home</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
