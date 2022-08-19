@@ -3655,7 +3655,7 @@ const b = rx.text("I love js"); // => true
 const c = rx.text("I love java script"); // => false
 ```
 
-## [TODO] `~` チルダ
+## `~` チルダ
 
 *tilde* チルダ、チルド、波線符号、波、にょろ
 
