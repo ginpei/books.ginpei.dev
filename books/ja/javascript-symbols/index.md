@@ -1987,7 +1987,7 @@ const a = obj[s]; // => 123
 
 - [`@param` and `@returns` - TypeScript: Documentation - JSDoc Reference](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#param-and-returns)
 
-JavaScript ではなく TypeScript の仕様。`@param` を参照。
+JavaScript ではなく TypeScript の機能。`@param` を参照。
 
 ややこしいが、TypeScript ではなく JavaScript のコード (`*.js`) で TypeScript のような型を記述するの際、関数引数が任意であることを TypeScript コンパイラーへ伝える。TypeScript の `key?` に相当。
 
