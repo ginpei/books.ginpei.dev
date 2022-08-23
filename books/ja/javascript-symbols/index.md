@@ -1983,7 +1983,7 @@ const obj = {
 const a = obj[s]; // => 123
 ```
 
-### `@param {type} [key]` 省略可能な引数
+### `@param {type} [key]` 省略可能な引数 (TypeScript)
 
 - [`@param` and `@returns` - TypeScript: Documentation - JSDoc Reference](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#param-and-returns)
 
