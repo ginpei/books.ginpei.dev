@@ -1171,13 +1171,7 @@ console.log(rest); // { a: 11, c: 33 }
 
 ### `[...arr] = key` 残余要素（分割代入）
 
-- [*AssignmentRestElement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentRestElement)
-- [*BindingRestElement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BindingRestElement)
-- [14.3.3 Destructuring Binding Patterns - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-binding-patterns)
-- [12.7 Punctuators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-punctuators)
-- [分割代入 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
-
-分割代入で受け取らなかった配列要素をまとめて受け取る構文。
+→ [`[key] = value` 配列の分割代入](#%5Bkey%5D-%3D-value-配列の分割代入)
 
 ```js
 const arr = [11, 22, 33];
@@ -1896,49 +1890,94 @@ const name = "f";
 obj[name]();
 ```
 
-### [TODO] `[key] = value` 配列の分割代入
+### `[key] = value` 配列の分割代入
+
+<!-- TODO 揃ってるか確認 -->
 
 - [*ArrayAssignmentPattern* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ArrayAssignmentPattern)
+- [*AssignmentRestElement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentRestElement)
+- [*BindingRestElement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BindingRestElement)
 - [13.15.5 Destructuring Assignment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
+- [14.3.3 Destructuring Binding Patterns - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-binding-patterns)
+- [12.7 Punctuators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-punctuators)
 - [分割代入 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+
+配列要素を直接変数へ代入（初期化）する。
+
+通常の変数初期化と配列要素アクセスを用いた書き方。
+
+```js
+const arr = [11, 22, 33];
+
+const a = arr[0];
+const b = arr[1];
+const c = arr[2];
+console.log(a, b, c); // 11, 22, 33
+```
+
+これを分割代入の書き方にするとこう。複数ある場合はカンマ `,` で連結する。
 
 ```js
 const arr = [11, 22, 33];
 
 const [a, b, c] = arr;
-console.log(a); // 11
-console.log(b); // 22
+console.log(a, b, c); // 11, 22, 33
+```
+
+変数名を与えずカンマ `,` だけ並べると、該当位置の配列要素をスキップできる。
+
+```js
+const arr = [11, 22, 33];
+
+const [,, c] = arr;
 console.log(c); // 33
 ```
 
-波括弧 `{}` を使ったオブジェクトの分割代入もある。
-
-### [TODO] `function f([key]) {}` 配列仮引数の分割代入
-
-- [*ArrayBindingPattern* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ArrayBindingPattern)
-- [14.3.3 Destructuring Binding Patterns - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-binding-patterns)
+`=` で代替として与える値を指定できる。値が `undefined` のときも初期値は利用されるが `null` の場合はされない。
 
 ```js
-const arr = [11, 22, 33];
-f(arr);
+// 配列の分割代入
+const arr = [123, , undefined, null];
+const [a = 11, b = 22, c = 33, d = 44, e = 55] = arr;
+console.log(a, b, c, d, e); // 123, 22, 33, null, 55
+```
+`...` で分割代入で受け取らなかった配列要素をまとめて受け取ることもできる。`,` でスキップした配列要素はそれに含まれない。
 
-function f([a, b]) {
-  console.log(a); // 11
-  console.log(b); // 22
-}
+```js
+const arr = [11, 22, 33, 44];
+const [, b, ...rest] = arr;
+console.log(b, rest); // 22, [33, 44]
 ```
 
-同じことを、一度普通に仮引数で受け取ってから目的の名前の変数へ分割代入する場合。
+関数の仮引数が配列の場合、同様の操作が可能。
 
 ```js
-const arr = [11, 22, 33];
-f(arr);
-
-function f(param) {
-  const [a, b] = param;
-  console.log(a); // 11
-  console.log(b); // 22
+// 関数仮引数を分割代入
+function f([a, b]) {
+  console.log(a, b);
 }
+
+// アロー関数の引数を分割代入
+const af = ([a, b]) => console.log(a, b);
+
+// 関数呼び出し
+const arr = [11, 22];
+f(arr);
+af(arr);
+```
+
+オブジェクトも概ね同じ操作が可能。[`{ key } = obj` オブジェクトの分割代入](#%7B-key-%7D-%3D-obj-オブジェクトの分割代入)を参照。
+
+###  `function f([key]) {}` 配列仮引数の分割代入
+
+→ [`[key] = value` 配列の分割代入](#%5Bkey%5D-%3D-value-配列の分割代入)
+
+```js
+function f([a, b]) {
+  console.log(a, b); // 11, 22
+}
+
+f([11, 22, 33]);
 ```
 
 ### [TODO] `{ [key]: value }` 計算プロパティ名
@@ -2105,11 +2144,10 @@ console.log(bar); // undefined
 const obj = { foo: 123 };
 
 const { foo, bar } = obj;
-console.log(foo); // 123
-console.log(bar); // undefined
+console.log(foo, bar); // 123, undefined
 ```
 
-`:` で参照するプロパティ名と利用する変数名とを別のものにできる。その場合プロパティ名と同じ名前の変数は用意されない。
+`:` で参照するプロパティ名と利用する変数名とを別のものにできる。
 
 ```js
 const obj = { foo: 123 };
@@ -2139,14 +2177,13 @@ console.log(value); // 11
 ```js
 const obj = { a: 11, b: 22, c: 33 };
 const { a, ...rest } = obj;
-console.log(a); // 11
-console.log(rest); // { b: 22, c: 33 }
+console.log(a, rest); // 11, { b: 22, c: 33 }
 ```
 
 関数の仮引数がオブジェクトの場合、同様の操作が可能。
 
 ```js
-// 関数引数を分割代入
+// 関数仮引数を分割代入
 function f({ foo }) {
   console.log(foo);
 }
@@ -3443,6 +3480,12 @@ console.log(b); // 22
 ### `[key = value] = value`, `function([key = value]) {}`, `([key = value]) => {}` 分割代入の初期値
 
 → [`[key] = value` 配列の分割代入](#%5Bkey%5D-%3D-value-配列の分割代入)
+
+```js
+const arr = [123];
+const [a = 11, b = 22] = arr;
+console.log(a, b); // 123, 22
+```
 
 ### [TODO] `() => void` 関数型 (TypeScript)
 
