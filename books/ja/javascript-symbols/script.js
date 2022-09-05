@@ -23,7 +23,7 @@
 const html = /*html*/`
   <div>
     <label>
-      Search by symbols:
+      Search by symbols (beta):
       <input
         data-ref="input"
         placeholder="_-,;:!?.'&quot;()[]{}@*/\&amp;#%\`^+<=>|~$"
