@@ -690,22 +690,15 @@ const obj = {
 const a = obj["Hello World!"]; // => "Uh huh"
 ```
 
-### [TODO] `{ prop: key } = obj`, `function ({ prop: key }) {}` 分割代入
+### `{ prop: key } = obj`, `function ({ prop: key }) {}`, `({ prop: key }) => {}` 分割代入で変数を命名
 
-- [*AssignmentProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentProperty)
-- [*BindingProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BindingProperty)
-- [13.15.5 Destructuring Assignment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
-- [15.2 Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-function-definitions)
+→ [`{ key } = obj` オブジェクトの分割代入](#%7B-key-%7D-%3D-obj-オブジェクトの分割代入)
 
 ```js
-const obj = { a: 11, b: 22, c: 33 };
-const { a, b } = obj;
-console.log(a); // 11
-console.log(b); // 22
-```
+const obj = { a: 123 };
 
-```js
-const { hostname, port } = location;
+const { a: b } = obj;
+console.log(b); // 123
 ```
 
 ### `case key:` `case` 節
@@ -1166,20 +1159,14 @@ const c = 1024.toString(); // => "1024"
 
 ### `{ ...key } = value` 残余プロパティ（分割代入）
 
-- [*AssignmentRestProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentRestProperty)
-- [*BindingRestProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BindingRestProperty)
-- [13.15.5 Destructuring Assignment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
-- [14.3.3 Destructuring Binding Patterns - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-binding-patterns)
-- [12.7 Punctuators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-punctuators)
-- [分割代入 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
-
-分割代入で受け取らなかったプロパティをまとめて受け取る構文。
+→ [`{ key } = obj` オブジェクトの分割代入](#%7B-key-%7D-%3D-obj-オブジェクトの分割代入)
 
 ```js
-const obj = { a: 11, b: 22, c: 33 };
-const { a, ...rest } = obj;
-console.log(a); // 11
-console.log(rest); // { b: 22, c: 33 }
+const obj = { a: 11, b: 22, c, 33 };
+
+const { b, ...rest } = obj;
+console.log(b); // 22
+console.log(rest); // { a: 11, c: 33 }
 ```
 
 ### `[...arr] = key` 残余要素（分割代入）
@@ -2085,9 +2072,107 @@ someInitializer({
 });
 ```
 
-### [TODO] `{key} = obj`, `function f({key}) {}`, `({key}) => value` 分割代入
+### `{ key } = obj` オブジェクトの分割代入
 
+<!-- TODO 揃ってるか確認 -->
+
+- [*AssignmentProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentProperty)
+- [*AssignmentRestProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-AssignmentRestProperty)
+- [*BindingProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BindingProperty)
+- [*BindingRestProperty* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BindingRestProperty)
 - [13.15.5 Destructuring Assignment - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-assignment)
+- [15.2 Function Definitions - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-function-definitions)
+- [14.3.3 Destructuring Binding Patterns - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-destructuring-binding-patterns)
+- [12.7 Punctuators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-punctuators)
+- [分割代入 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+
+オブジェクトのプロパティを直接変数へ代入（初期化）する。
+
+通常の変数初期化とプロパティアクセスを用いた書き方。
+
+```js
+const obj = { foo: 123 };
+
+const foo = obj.foo;
+const bar = obj.bar;
+console.log(foo); // 123
+console.log(bar); // undefined
+```
+
+これを分割代入の書き方にするとこう。複数ある場合はカンマ `,` で連結する。
+
+```js
+const obj = { foo: 123 };
+
+const { foo, bar } = obj;
+console.log(foo); // 123
+console.log(bar); // undefined
+```
+
+`:` で参照するプロパティ名と利用する変数名とを別のものにできる。その場合プロパティ名と同じ名前の変数は用意されない。
+
+```js
+const obj = { foo: 123 };
+
+const { foo: myFoo } = obj;
+console.log(myFoo); // 123
+```
+
+`=` で代替として与える値を指定できる。値が `undefined` のときも初期値は利用されるが `null` の場合はされない。
+
+```js
+const obj = { a: 123, b: undefined, c: null };
+const { a = 11, b = 22, c = 33, d = 44 } = obj;
+console.log(a, b, c, d); // 123, 22, null, 44
+```
+
+変数名の指定と初期値を併用する場合は、初期値が後ろ。
+
+```js
+const obj = {};
+const { a: value = 11 } = obj;
+console.log(value); // 11
+```
+
+`...` で分割代入で受け取らなかったプロパティをまとめて受け取ることもできる。
+
+```js
+const obj = { a: 11, b: 22, c: 33 };
+const { a, ...rest } = obj;
+console.log(a); // 11
+console.log(rest); // { b: 22, c: 33 }
+```
+
+関数の仮引数がオブジェクトの場合、同様の操作が可能。
+
+```js
+// 関数引数を分割代入
+function f({ foo }) {
+  console.log(foo);
+}
+
+// アロー関数の引数を分割代入
+const af = ({ foo }) => console.log(foo);
+
+// 関数呼び出し
+const obj = { foo: 123 };
+f(obj);
+af(obj);
+```
+
+配列も概ね同じ操作が可能。[`[key] = value` 配列の分割代入](#%5Bkey%5D-%3D-value-配列の分割代入)を参照。
+
+### `function f({ key }) {}`, `({ key }) => value` 関数仮引数の分割代入
+
+→ [`{ key } = obj` オブジェクトの分割代入](#%7B-key-%7D-%3D-obj-オブジェクトの分割代入)
+
+```js
+function f({ foo }) {
+  console.log(foo); // 123
+}
+
+f({ foo: 123 });
+```
 
 ### `<div>{value}<div>` 値の埋め込み（React/JSX）
 
@@ -3343,27 +3428,21 @@ function f(a = 11, b = 22) {
 }
 ```
 
-### [TODO] `{ key = value } = value`, `[key = value] = value`, `function({ key = value }) {}` 分割代入の初期値
+### `{ key = value } = value`, `function({ key = value }) {}`, `({ key = value }) => {}` 分割代入の初期値
+
+→ [`{ key } = obj` オブジェクトの分割代入](#%7B-key-%7D-%3D-obj-オブジェクトの分割代入)
 
 ```js
 const obj = { a: 123 };
+
 const { a = 11, b = 22 } = obj;
-console.log(a, b); // 123, 22
+console.log(a); // 123
+console.log(b); // 22
 ```
 
-```js
-const arr = [123];
-const [a = 11, b = 22] = arr;
-console.log(a, b); // 123, 22
-```
+### `[key = value] = value`, `function([key = value]) {}`, `([key = value]) => {}` 分割代入の初期値
 
-```js
-f({ a: 123 });
-
-function f({ a = 11, b = 22 }) {
-  console.log(a, b); // 123, 22
-}
-```
+→ [`[key] = value` 配列の分割代入](#%5Bkey%5D-%3D-value-配列の分割代入)
 
 ### [TODO] `() => void` 関数型 (TypeScript)
 
