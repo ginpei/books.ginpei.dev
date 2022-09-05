@@ -2060,26 +2060,33 @@ Linux の `grep` コマンドも以下のような説明がある。
 
 - [よく使う括弧の名前（日本語、英語）を調べてみたよ。ブラケット、ブレースとか。 | Ginpen.com](https://ginpen.com/2014/02/20/brackets/)
 
-### [TODO] `{ }` ブロック文
+### `{ }` ブロック文
 
-- [*BlockStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BlockStatement)
+- [*Block* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-Block)
+- [14.2 Block - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-block)
+- [ブロック - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/block)
 
-### [TODO] `if() {}`, `else {}`, `for() {}` `if` 文等とブロック文
+ブロック（block = 塊）を表現する文。ブロックスコープを生成し、`const`/`let` の範囲を閉じ込めることができる。
 
-- [*IfStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-IfStatement)
-- [*BlockStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-BlockStatement)
-- [*ForStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ForStatement)
+```js
+let a = 1;
+a += 1;
+console.log(a); // 2
 
-### [TODO] `function() {}` 関数宣言の一部
+// ここからブロックスコープ
+{
+  let a = 10; // ブロックスコープ外側の変数 `a` とは別物
+  a += 1;
+  console.log(a); // 11
+}
+// ここまでブロックスコープ
 
-- [*FunctionExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FunctionExpression)
-- [*FunctionDeclaration* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FunctionDeclaration)
+console.log(a); // 2
+```
 
-### [TODO] `try {}`, `catch() {}`, `finally {}` `try` 文等の一部
+`if` 文や `try` 文の `{}` もブロック文。`function() {}` は `{}` の部分も含めての文法で、ブロック文ではない。
 
-- [*TryStatement* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-TryStatement)
-- [*Catch* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-Catch)
-- [*Finally* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-Finally)
+`if` 文等がなくても、狭い範囲のスコープを生成する用途でブロック文単体を利用可能。<small>（その箇所の入出力を判断して関数に切り出す方が読みやすいと思う。）</small>
 
 ### [TODO] `obj = {}` オブジェクトリテラル
 
