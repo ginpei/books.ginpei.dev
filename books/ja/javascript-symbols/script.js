@@ -117,13 +117,13 @@ function getPageProps() {
     if (article.level === 2) {
       articles.push(article);
     } else {
-      articles.at(-1).children.push(article);
+      articles.at(-1)?.children.push(article);
     }
   }
 
   return {
-    elInput: document.querySelector("[data-ref='input']"),
-    elList: document.querySelector("[data-ref='list']"),
+    elInput: querySelector("[data-ref='input']", HTMLInputElement),
+    elList: querySelector("[data-ref='list']"),
     articles,
   };
 }
@@ -233,4 +233,20 @@ function createListItem(elHeading, children) {
   }
 
   return elListItem;
+}
+
+/**
+ * @template {HTMLElement} T
+ * @param {string} selector
+ * @param {{ new(): T; prototype: T }} [Constructor]
+ * @param {Element | Document} d
+ * @returns {T}
+ */
+function querySelector(selector, Constructor, d = document) {
+  const el = d.querySelector(selector);
+  if (!(el instanceof (Constructor ?? HTMLElement))) {
+    throw new Error(`Expected an HTMLElement for "${selector}"`);
+  }
+  // @ts-ignore: el is T
+  return el;
 }
