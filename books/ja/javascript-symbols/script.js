@@ -171,19 +171,7 @@ function render(props, state) {
  * @param {PageState} state
  */
 function renderList(props, state) {
-  /** @type {Article[]} */
-  const matchedHeadings = [];
-  if (state.input) {
-    for (const article of props.articles) {
-      const matched = isHeadingMatched(article.symbols, state.input);
-      const matchedChildren = article.children.filter((v) =>
-        isHeadingMatched(v.symbols, state.input)
-      );
-      if (matched || matchedChildren.length > 0) {
-        matchedHeadings.push({ ...article, children: matchedChildren });
-      }
-    }
-  }
+  const matchedHeadings = getMatchedArticles(props.articles, state.input);
 
   const elListItems = matchedHeadings.map((v) =>
     createListItem(v.el, v.children)
@@ -193,6 +181,30 @@ function renderList(props, state) {
   for (const elItem of elListItems) {
     props.elList.append(elItem);
   }
+}
+
+/**
+ * @param {Article[]} articles
+ * @param {string} input
+ * @returns {Article[]}
+ */
+function getMatchedArticles(articles, input) {
+  if (!input) {
+    return [];
+  }
+
+  /** @type {Article[]} */
+  const matchedHeadings = [];
+  for (const article of articles) {
+    const matched = isHeadingMatched(article.symbols, input);
+    const matchedChildren = article.children.filter((v) =>
+      isHeadingMatched(v.symbols, input)
+    );
+    if (matched || matchedChildren.length > 0) {
+      matchedHeadings.push({ ...article, children: matchedChildren });
+    }
+  }
+  return matchedHeadings;
 }
 
 /**
