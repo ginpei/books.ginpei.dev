@@ -1854,9 +1854,16 @@ const a = arr[0]; // => 11
 
 実態はプロパティアクセス。
 
-### [TODO] `arr[number][number]` 2 次元配列要素アクセス
+### `arr[number][number]` 2 次元配列要素アクセス
 
 `arr[number]` の結果が配列のとき、さらにその配列の要素へアクセスする。N 次元配列であれば N 回 `[number]` 部分が繰り返される。`[][]` のような構文があるわけではない。
+
+```js
+const arr = [11, 22, 33];
+const parentArr = [arr];
+
+const a = parentArr[0][1]; // => 22
+```
 
 ### [TODO] `obj[key]` プロパティアクセス
 
