@@ -171,9 +171,10 @@ function render(props, state) {
  * @param {PageState} state
  */
 function renderList(props, state) {
-  const matchedHeadings = getMatchedArticles(props.articles, state.input);
+  const matchedHeadings = filterArticles(props.articles, state.input);
+  const sortedHeadings = sortArticles(matchedHeadings, state.input);
 
-  const elListItems = matchedHeadings.map((v) =>
+  const elListItems = sortedHeadings.map((v) =>
     createListItem(v.el, v.children)
   );
 
@@ -188,7 +189,7 @@ function renderList(props, state) {
  * @param {string} input
  * @returns {Article[]}
  */
-function getMatchedArticles(articles, input) {
+function filterArticles(articles, input) {
   if (!input) {
     return [];
   }
@@ -219,6 +220,26 @@ function isHeadingMatched(symbols, input) {
   const inputSymbols = input.split(" ").filter((v) => v.length > 0);
 
   return inputSymbols.some((v) => symbols.includes(v));
+}
+
+/**
+ * @param {Article[]} articles
+ * @param {string} input
+ * @returns {Article[]}
+ */
+function sortArticles(articles, input) {
+  // move the symbol group to the top
+  const [firstChar] = input;
+  const bestGroupIndex = articles.findIndex((v) =>
+    v.symbols.includes(firstChar)
+  );
+  if (bestGroupIndex >= 0) {
+    const bestGroup = articles[bestGroupIndex];
+    articles.splice(bestGroupIndex, 1);
+    articles.unshift(bestGroup);
+  }
+
+  return articles;
 }
 
 /**
