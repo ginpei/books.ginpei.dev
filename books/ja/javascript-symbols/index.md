@@ -1829,14 +1829,57 @@ const c = typeof(obj); // => "object"
 
 - [よく使う括弧の名前（日本語、英語）を調べてみたよ。ブラケット、ブレースとか。 | Ginpen.com](https://ginpen.com/2014/02/20/brackets/)
 
-### [TODO] `[value, value]` 配列リテラル
+### `[value, value]` 配列リテラル
 
 - [*ArrayLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ArrayLiteral)
 - [13.2.4 Array Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-array-initializer)
-- [配列リテラル - 文法とデータ型 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Grammar_and_types#array_literals)
+- [配列リテラル - 文法とデータ型 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Grammar_and_types#%E9%85%8D%E5%88%97%E3%83%AA%E3%83%86%E3%83%A9%E3%83%AB)
+
+配列初期化子とも。
+
+`[]` を使って配列オブジェクトを生成する。配列要素はカンマ `,` で区切る。改行しても良い。
 
 ```js
 const a = [11, 22, 33];
+
+const b = [
+  11,
+  22,
+  33,
+];
+```
+
+末尾にカンマを置いてもよい。（無視される。）
+
+配列要素なしにカンマ `,` を置くことができる。その場合、配列の要素数は増えるにも関わらず配列要素は存在せず "empty item(s)" となる。これは `undefined` が設定されている状態とは異なり、`map()` 等の繰り返しでも呼ばれない。配列要素を得ようとする場合は（中身が存在しない結果として） `undefined` になる。
+
+```js
+const a = [, undefined, 33,,];
+// => [ <1 empty item>, undefined, 33, <1 empty item> ]
+console.log(a.length); // 4
+
+// "value: undefined, index: 1" と "value: 33, index: 2" だけが出力される
+a.forEach((v, i) => {
+  console.log(`value: ${v}, index: ${i}`);
+});
+
+// empty item はそのまま
+const b = a.map((v, i) => i); // => [ <1 empty item>, 1, 2, <1 empty item> ]
+
+// empty item を取得しようとする
+const c = a[0]; // => undefined
+```
+
+なお `fill()` は例外的に empty item の位置にも値を設定する。（オブジェクトを設定すると複製されない点には注意。）
+
+```js
+const a = [,, 33]; // => [ <2 empty items>, 33 ]
+const b = a.map((v, i) => i); // => [ <2 empty items>, 2 ]
+const c = a.fill(0); // => [ 0, 0, 0 ]
+
+const d = a.fill({ a: 1 }); // => [ { a: 1 }, { a: 1 }, { a: 1 } ]
+d[0].a = 9
+console.log(d); // [ { a: 9 }, { a: 9 }, { a: 9 } ]
 ```
 
 ### [TODO] `arr[number]` 配列要素アクセス
