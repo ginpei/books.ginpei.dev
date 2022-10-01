@@ -4012,4 +4012,24 @@ const b = 0b1e2;
 const a = 123 === 123n; // => false
 ```
 
+### `in` 演算子
+
+- [*RelationalExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-RelationalExpression)
+- [13.10 Relational Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-relational-operators)
+- [in 演算子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/in)
+
+あるプロパティがオブジェクトに存在するか調べ真偽値を返す演算子。`for-in` 文とは別。
+
+```js
+const obj = { a: 123, b: undefined };
+console.log(obj.a, 'a' in obj); // 123, true
+console.log(obj.b, 'b' in obj); // undefined, true
+console.log(obj.c, 'c' in obj); // undefined, false
+
+const arr = [123, undefined];
+console.log(arr[0], '0' in obj); // 123, true
+console.log(arr[1], '1' in obj); // undefined, true
+console.log(arr[2], '2' in obj); // undefined, false
+```
+
 {% endraw %}
