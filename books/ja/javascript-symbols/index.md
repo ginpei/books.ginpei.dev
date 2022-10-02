@@ -1898,20 +1898,31 @@ a.fill(0);
 console.log(a); // => [ 0, 0, 0 ]
 ```
 
-### [TODO] `arr[number]` 配列要素アクセス
+### `arr[number]` 配列要素アクセス
 
 - [*MemberExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MemberExpression)
 - [*CallExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-CallExpression)
 - [13.3.2 Property Accessors - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-property-accessors)
 - [添字による配列の要素へのアクセス - Array - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array#%E6%B7%BB%E5%AD%97%E3%81%AB%E3%82%88%E3%82%8B%E9%85%8D%E5%88%97%E3%81%AE%E8%A6%81%E7%B4%A0%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9)
 
+配列を構成する要素にアクセスする。
+
 ```js
 const arr = [11, 22, 33];
 
 const a = arr[0]; // => 11
+
+arr[0] = -1;
+console.log(arr); // [ -1, 22, 33 ]
 ```
 
-実態はプロパティアクセス。
+実態はオブジェクトのプロパティアクセスと同じ。
+
+```js
+const obj = { 1: 11, 2: 22, 3: 33 };
+const a = obj[0]; // => 11
+const b = obj['0']; // => 11
+```
 
 ### `arr[number][number]` 2 次元配列要素アクセス
 
@@ -1924,7 +1935,7 @@ const parentArr = [arr];
 const a = parentArr[0][1]; // => 22
 ```
 
-### [TODO] `obj[key]` プロパティアクセス
+### `obj[key]` プロパティアクセス
 
 - [*MemberExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MemberExpression)
 - [*CallExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-CallExpression)
@@ -1941,6 +1952,8 @@ const b = obj["a"]; // => 11
 
 const name = "a";
 const c = obj[name]; // => 11
+
+const d = obj[getMyTargetPropName()];
 ```
 
 ### `obj[key]()` プロパティアクセスと関数呼び出し
@@ -1954,6 +1967,23 @@ obj.f();
 
 const name = "f";
 obj[name]();
+```
+
+これを 2 段階に分けると `this` の扱いで結果が変わる場合がある。
+
+```js
+const obj = {
+  foo: 'FOO',
+  f() {
+    return this.foo;
+  },
+}
+
+const name = "f";
+const a = obj[name](); // => FOO
+
+const f = obj[name];
+const b = f(); // => undefined
 ```
 
 ### `[key] = value` 配列の分割代入
