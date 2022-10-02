@@ -1800,14 +1800,16 @@ switch (value) {
 
 <small>（可読性とおそらく実行速度の問題があります。使わないでください。）</small>
 
-### `delete(key)`, `void(key)`, `typeof(key)` 括弧式
+### `delete(key)`, `void(key)`, `typeof(key)` 単項演算子と括弧
 
 - [*UnaryExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-UnaryExpression)
 - [13.5.1 The delete Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-delete-operator)
 - [13.5.2 The void Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-void-operator)
 - [13.5.3 The typeof Operator - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-typeof-operator)
 
-`delete`, `void`, `typeof` は本来はいずれも括弧不要の単項演算子。
+単項演算子 `delete`, `void`, `typeof` の値に括弧を付けたもの。
+
+本来これらいずれも括弧は不要。
 
 ```js
 const a = delete obj.prop; // => true or false
@@ -1821,6 +1823,13 @@ const c = typeof obj; // => "object"
 const a = delete(obj.prop); // => true or false
 const b = void(obj); // => undefined
 const c = typeof(obj); // => "object"
+```
+
+<small>（他の単項演算子だと意味がわかりやすいかもしれない。）</small>
+
+```js
+let n = 1;
+const a = ++(n);
 ```
 
 ## `[`, `]` 角括弧
