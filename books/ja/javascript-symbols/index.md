@@ -4032,4 +4032,94 @@ console.log(arr[1], '1' in obj); // undefined, true
 console.log(arr[2], '2' in obj); // undefined, false
 ```
 
+### `instanceof` 演算子
+
+- [*RelationalExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-RelationalExpression)
+- [13.10 Relational Operators - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-relational-operators)
+- [instanceof - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/instanceof)
+- [Array.isArray() - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray)
+- [window.parent - Web API | MDN](https://developer.mozilla.org/ja/docs/Web/API/Window/parent)
+- [VM (executing JavaScript) | Node.js v18.10.0 Documentation](https://nodejs.org/api/vm.html)
+- [`instanceof` type guards - TypeScript: Documentation - Advanced Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html#instanceof-type-guards)
+
+オブジェクトがコンストラクターやクラスのインスタンスであるか調べ真偽値を返す演算子。直接のインスタンスでなくても、プロトタイプチェインのいずれかに該当すれば（例えば親の親のコンストラクターであれば）`true` になる。
+
+```js
+const a = document.body instanceof HTMLBodyElement; // => true
+const b = document.body instanceof Element; // => true
+const c = document.body instanceof HTMLButtonElement; // => false
+```
+
+インスタンス用で、コンストラクターやクラス同士の関係性の判断には利用できない。
+
+```js
+const a = HTMLBodyElement instanceof HTMLElement; // => false
+```
+
+コンストラクターやクラスがある種の境界を越えて与えられるとき、そのコンストラクターやクラスは同じコードから生成された別のインスタンスになるため、予想に反する動作になる場合がある。これは例えば npm package が peerDependencies でない場合や、クライアント側であれば Window を、サーバー側であれば vm を越えて利用する場合に起こりうる。
+
+配列の場合はそれに対応した `isArray()` が用意されている。
+
+```js
+// window.parent は親ウィンドウを得る DOM API
+// （親ウィンドウがない場合は `window.parent === window` になる）
+console.assert(window.parent !== window);
+
+const arr = new window.parent.Array();
+
+const a = arr instanceof Array; // => false
+const b = Array.isArray(arr); // => true
+```
+
+```js
+// vm は隔離された空間で JavaScript を実行する Node.js API
+
+const context = vm.createContext({});
+const script = new vm.Script('[]');
+
+const a = script.runInContext(context); // => []
+const b = a instanceof Array; // => false
+const c = Array.isArray(a); // => true
+```
+
+TypeScript においては type guard となり型を絞ることができる。
+
+```ts
+function onInput(event: InputEvent) {
+  const el = event.currentTarget;
+  if (!el) {
+    return;
+  }
+
+  if (el instanceof HTMLInputElement) {
+    // ここでは el が `<input>` 系であることが確実なので、
+    // el.value を利用できる
+    console.log(el.value);
+  }
+
+  // ここでは el が `<input>` であるとは限らない
+  // ⛔ Property 'value' does not exist on type 'EventTarget'
+  console.log(el.value);
+}
+```
+
+```ts
+class MyValidationError extends Error { … }
+
+try {
+  …
+} catch (error) {
+  if (error instanceof MyValidationError) {
+    // 独自に作成したエラークラスのインスタンス
+    showValidationError(error);
+  } else if (error instanceof Error) {
+    showError(error.message);
+  }
+
+  // error が Error オブジェクトとは限らない
+  // ⛔ Object is of type 'unknown'
+  showError(error.message);
+}
+```
+
 {% endraw %}
