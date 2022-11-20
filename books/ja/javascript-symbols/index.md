@@ -465,14 +465,11 @@ for (const v of b) {
 // => undefined
 ```
 
-### `{ key: value, key: value }` オブジェクト初期化子の一部
+### `{ key: value, key: value }` プロパティの区切り子（オブジェクト初期化子の一部）
 
-- [*ObjectLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ObjectLiteral)
-- [*PropertyDefinitionList* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-PropertyDefinitionList)
-- [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
-- [オブジェクト初期化子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Object_initializer)
+[`{ }` オブジェクトリテラル](#%7B-%7D-オブジェクトリテラル)を参照。
 
-いわゆるオブジェクトリテラルで要素を区切るのに用いる。末尾に置いても良い。
+オブジェクトの要素であるプロパティを区切るのに用いる。末尾に置いても良い。
 
 ```js
 const a = { foo: 123, bar: 456 };
@@ -614,81 +611,9 @@ for (let i = 0; i < arr.length; i++) {
 
 *colon* コロン
 
-### `{ key: value }` プロパティ定義
+### `{ key: value }` プロパティ定義（オブジェクト初期化子の一部）
 
-- [*PropertyDefinition* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-PropertyDefinition)
-- [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
-- [オブジェクト初期化子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Object_initializer)
-
-オブジェクトリテラルでプロパティを定義する。右側が式ならその評価結果になる。
-
-```js
-const obj = {
-  a: "abc",
-  b: 1 + 2 - 3 * 4 / 5 ** 6 % 7,
-  c: Math.random(), // 関数を実行した結果（数値）
-  d: Math.random,   // 関数オブジェクト自体（`obj.d()` で呼び出し可能）
-  e: function() {},
-  f: () => -1,
-  nest: {
-    foo: {
-      baf: {
-        boo: {},
-      },
-    },
-  },
-};
-```
-
-右側の評価は代入の前に行われるので、再帰構造をこのやり方で表現することはできない。
-
-```js
-// まだ `obj` の中身はない
-// ⛔ ReferenceError: obj is not defined
-const obj = { a: obj.a };
-```
-
-右側が変数で、その名前がプロパティ名と同じ場合、省略することができる。
-
-```js
-const foo = "abc";
-const bar = 1;
-
-const obj = {
-  foo: foo, // 省略しない場合
-  bar,      // 省略した場合
-};
-
-const a = obj.foo; // => "abc"
-const b = obj.bar; // => 1
-```
-
-左側プロパティ名は変数名に利用できるものの他、数値リテラル、文字列リテラルも利用可能。
-
-```js
-const obj = {
-  a: 123,
-  123: "a",
-  "Hello World!": "Uh huh",
-};
-```
-
-計算プロパティ名 `[]` を用いると変数等も利用できる。計算プロパティ名 `[]` を参照。
-
-```js
-const a = "foo";
-const obj = { [a]: 123 };
-const b = obj.foo; // => 123;
-```
-
-与えた名前がドットを用いたプロパティアクセス `obj.key` の形で利用できないものは、角括弧を用いたプロパティアクセス `obj[key]` で参照できる。プロパティアクセス `[]` を参照。
-
-```js
-const obj = {
-  "Hello World!": "Uh huh",
-};
-const a = obj["Hello World!"]; // => "Uh huh"
-```
+[`{ }` オブジェクトリテラル](#%7B-%7D-オブジェクトリテラル)を参照。
 
 ### `{ prop: key } = obj`, `function ({ prop: key }) {}`, `({ prop: key }) => {}` 分割代入で変数を命名
 
@@ -1335,11 +1260,18 @@ const html = /*html*/`
 `;
 ```
 
-### `{ "abc": 1 }`, `{ 'abc': 1 }` プロパティ定義
+### `{ "abc": 1 }`, `{ 'abc': 1 }` プロパティ名（オブジェクト初期化子の一部）
 
-[プロパティ定義 `{ key: value }`](#%7B-key%3A-value-%7D-%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E5%AE%9A%E7%BE%A9) を参照。
+[`{ }` オブジェクトリテラル](#%7B-%7D-オブジェクトリテラル)を参照。
 
-なお JSON の場合は必ず二重引用符で括る必要がある。
+```js
+const a = {
+  helloWorld: 1,
+  "Hello World!": 2,
+};
+```
+
+実態は文字列リテラルで、二重引用符と単引用符の差はない。（混同はできない。）　ただし JavaScript ではなく JSON の場合は必ず二重引用符で括る必要がある。
 
 ## `(`, `)` 丸括弧
 
@@ -1563,12 +1495,9 @@ const g = function(a, b, c) {};
 
 アロー関数 `() => {}` の仮引数部分は条件次第で括弧を省略できる。アロー関数を参照。
 
-### `{ f() {} }` 仮引数（メソッド）
+### `{ f() {} }` メソッド定義（オブジェクト初期化子の一部）
 
-- [*MethodDefinition* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MethodDefinition)
-- [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
-- [オブジェクト初期化子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Object_initializer)
-
+[`{ }` オブジェクトリテラル](#%7B-%7D-オブジェクトリテラル)を参照。
 
 オブジェクトリテラルのプロパティとして関数を値に持つものを定義するもの。
 
@@ -1590,13 +1519,16 @@ const obj = {
 };
 ```
 
-### `{ key: function() {} }` 関数式の一部
+### `key: function() {}` プロパティの値としての関数式
 
 - [*FunctionExpression* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-FunctionExpression)
 
-オブジェクト初期化子のプロパティ定義で値が関数式になったもの。
+[`{ }` オブジェクトリテラル](#%7B-%7D-オブジェクトリテラル)を参照。
+
+オブジェクトリテラル `{}` で、プロパティ `key: prop` の値 `prop` が関数式 `function() {}` になったもの。
 
 ```js
+// 関数式をプロパティ key の値とした場合
 const obj1 = { key: function() {} };
 
 // 一度変数に入れた場合
@@ -1607,13 +1539,9 @@ const obj2 = { key: f };
 const obj3 = { key() {} };
 ```
 
-メソッド定義 `{ f() {} }` も併せて参照。
-
 ### `{ [key]() {} }` メソッド定義の一部
 
-<!-- TODO `[]` へ移動 -->
-- [*ComputedPropertyName* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ComputedPropertyName)
-- [*MethodDefinition* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MethodDefinition)
+[`{ }` オブジェクトリテラル](#%7B-%7D-オブジェクトリテラル)を参照。
 
 計算プロパティ名 `[key]` を用いたメソッド定義 `{ key(){} }`の方法。
 
@@ -1628,20 +1556,6 @@ const obj = {
 obj[methodName]();
 // obj.foo() と同じ
 ```
-
-メソッド名をシンボルにする場合に有用。（JavaScript の細かい機能を利用する際に必要となることがある。）
-
-```js
-const obj = {
-  [Symbol.toPrimitive]() {
-    return 10;
-  },
-};
-
-const a = 100 + obj; // => 110
-```
-
-計算プロパティ名、`{ [key]: value }`、メソッド定義 `{ f() {} }` を参照。
 
 ### `import(value)` インポート呼び出し
 
@@ -1846,7 +1760,7 @@ const a = ++(n);
 
 配列初期化子とも。
 
-`[]` を使って配列オブジェクトを生成する。配列要素はカンマ `,` で区切る。改行しても良い。
+`[]` を使って配列オブジェクトを生成する。配列要素はカンマ `,` で区切る。
 
 ```js
 const a = [11, 22, 33];
@@ -2085,33 +1999,16 @@ function f([a, b]) {
 f([11, 22, 33]);
 ```
 
-### [TODO] `{ [key]: value }` 計算プロパティ名
+### `{ [key]: value }` 計算プロパティ名（オブジェクト初期化子の一部）
 
-- [*ComputedPropertyName* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ComputedPropertyName)
-- [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
-- [オブジェクト初期化子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Object_initializer)
-
-オブジェクトリテラル `{}` で記述する際にプロパティ名を動的に決定する文法。
+[`{ }` オブジェクトリテラル](#%7B-%7D-オブジェクトリテラル)を参照。
 
 ```js
-// "00" ～ "99" を作成
-const n = Math.trunc(Math.random() * 100).toString().padStart(2, '0');
-
-const obj = {
-  [`id-${n}`]: 0,
+const a = "foo";
+const b = {
+  [`${a}_bar`]: 999;
 };
-```
-
-プロパティ名をシンボルにすることもできる。その場合 `Object.keys()` や `for...in` 文の対象にはならなず、該当のシンボルを保持していないとアクセスできなくなる。<small>（だよね？）</small>
-
-```js
-const s = Symbol('foo');
-
-const obj = {
-  [s]: 123,
-};
-
-const a = obj[s]; // => 123
+console.log(b.foo_bar); // 999
 ```
 
 ### `@param {type} [key]` 省略可能な引数 (TypeScript)
@@ -2186,9 +2083,177 @@ console.log(a); // 2
 
 `if` 文等がなくても、狭い範囲のスコープを生成する用途でブロック文単体を利用可能。<small>（その箇所の入出力を判断して関数に切り出す方が読みやすいと思う。）</small>
 
-### [TODO] `obj = {}` オブジェクトリテラル
+### `{ }` オブジェクトリテラル
 
 - [*ObjectLiteral* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ObjectLiteral)
+- [*PropertyDefinition* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-PropertyDefinition)
+- [*PropertyDefinitionList* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-PropertyDefinitionList)
+- [*ComputedPropertyName* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-ComputedPropertyName)
+- [*MethodDefinition* - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#prod-MethodDefinition)
+- [13.2.5 Object Initializer - ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/#sec-object-initializer)
+- [オブジェクト初期化子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Object_initializer)
+- [structuredClone() - Web API | MDN](https://developer.mozilla.org/ja/docs/Web/API/structuredClone)
+
+オブジェクト初期化子とも。
+
+`{}` を使ってオブジェクトを生成する。要素は `:` の左にプロパティ名、右に値を置き、各要素はカンマ `,` で区切る。カンマは最後の要素の次に置いても良い。
+
+```js
+const a = { a: 11, b: 22, c: 33 };
+
+const b = {
+  a: 11,
+  b: 22,
+  c: 33,
+};
+
+const c = {
+  name: 'My Group',
+  ids: ['001', '002', '003'],
+  config: {
+    theme: 'light',
+    delay: 300,
+  },
+};
+
+const obj = {
+  a: "abc",
+  b: 1 + 2 - 3 * 4 / 5 ** 6 % 7,
+  c: Math.random(), // 関数を実行した結果（数値）
+  d: Math.random,   // 関数オブジェクト自体（`obj.d()` で呼び出し可能）
+  e: function() {},
+  f: () => -1,
+  nest: {
+    foo: {
+      baf: {
+        boo: {},
+      },
+    },
+  },
+};
+```
+
+変数へ代入することなく関数引数として与えても良い。
+
+```js
+const a = { a: 11 };
+f(a);
+
+f({ a: 11 });
+```
+
+右側の評価は代入の前に行われるので、再帰構造をこのやり方で表現することはできない。
+
+```js
+// まだ `obj` は用意されていない
+// ⛔ ReferenceError: can't access lexical declaration 'obj' before initialization 
+const obj = { a: obj };
+```
+
+プロパティ名と同じ変数を値として与える場合、省略記法がある。
+
+```js
+const foo = "abc";
+const bar = "xyz";
+
+const obj = {
+  foo: foo, // 省略しない場合
+  bar,      // 省略した場合
+};
+```
+
+左側プロパティ名は `$` 等変数名に利用できるものの他、数値リテラル、文字列リテラルも利用可能。ただしテンプレートリテラル <code>&#96;xxx&#96;</code> は利用できない。
+
+さらに計算プロパティ名 `[]` を用いるとプロパティ名をその場で演算できる。
+
+```js
+const obj = {
+  a: 123,
+  123: "a",
+  "Hello World!": "Uh huh",
+};
+
+// ⛔ SyntaxError: Unexpected template string
+const a = { `a`: "a" };
+```
+
+```js
+const a = "foo";
+const obj = { [`${a}_bar`]: 123 };
+const b = obj.foo_bar; // => 123;
+```
+
+与えた名前が数字であったり記号を含む等の理由でドットを用いたプロパティアクセス `obj.key` の形で利用できないものは、角括弧を用いたプロパティアクセス `obj[key]` で参照できる。プロパティアクセス `[]` を参照。
+
+```js
+const obj = {
+  "Hello World!": "Uh huh",
+};
+const a = obj["Hello World!"]; // => "Uh huh"
+```
+
+プロパティ名をシンボルにすることもできる。その場合 `Object.keys()` や `for...in` 文の対象にはならなず、該当のシンボルを保持していないとアクセスできなくなる。<small>（だよね？）</small>
+
+```js
+const s = Symbol('foo');
+
+const obj = {
+  [s]: 123,
+};
+
+const a = obj[s]; // => 123
+```
+
+スプレッド構文 `...` を用いると他のオブジェクトを展開し、含まれるプロパティを全て受け取ることができる。
+
+その際入れ子になった子オブジェクトは複製されない。複製したい場合は `structuredClone()` が利用できる。<small>（比較的新しい標準 API で、Node.js は v17 から対応。）</small>
+
+```js
+const obj1 = { a: 11, b: 22, x: {} }; 
+
+const obj2 = {
+  ...obj1,
+  a: 11,
+  c: 33,
+}; // => { a: 11, b: 22, x: {}, c: 33 }
+
+
+const obj3 = {
+  ...structuredClone(obj1),
+  a: 11,
+  c: 33,
+}; // => { a: 11, b: 22, x: {}, c: 33 }
+
+console.log(obj1.x === obj2.x); // true
+console.log(obj1.x === obj3.x); // false
+```
+
+プロパティの値が関数の場合、メソッドとして定義する記法がある。
+
+```js
+function myFunc() {
+  return this.name;
+}
+
+const obj = {
+  name: "MyObject",
+
+  // 値が関数であるもの
+  f1: myFunc,
+
+  // 値が関数（無名の関数リテラル）であるもの
+  f2: function() {
+    return this.name;
+  },
+
+  // メソッド定義記法
+  f3() {
+    return this.name;
+  },
+};
+```
+
+アロー関数 `() => {}` は実行時コンテキスト `this` の扱いが異なる。<small>（プロパティ値として利用しない方が良いと思う。）</small>　[`() => {}` アロー関数式](#()-%3D>-%7B%7D-アロー関数式)を参照。
 
 ### `f({})` オブジェクトリテラルと関数呼び出し
 
