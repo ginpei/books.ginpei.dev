@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo - Drag elements by JavaScript</title>
+  <style>
+body {
+  min-height: 200vh;
+}
+
+.box {
+  background-color: #fcfcfccc;
+  border: 3px solid #333;
+  box-sizing: border-box;
+  cursor: move;
+  display: grid;
+  height: 40vmin;
+  left: 0;
+  place-items: center;
+  position: absolute;
+  top: 0;
+  user-select: none;
+  width: 40vmin;
+  z-index: 1;
+}
+
+.container {
+  border: thin solid gray;
+  height: 80vmin;
+  overflow: auto;
+  position: relative;
+  z-index: 0;
+}
+
+.contained {
+  height: 200%;
+}
+  </style>
+</head>
+<body>
+  <h1>Drag demo</h1>
+  <p>
+    <a href="../">← Back</a>
+  </p>
+  <div class="box" style="left: 10px; top:10px">BOX</div>
+  <div class="box" style="left: 10px; top:calc(10px + 40vmin + 16px)">BOX</div>
+  <div class="container">
+    <div class="contained">
+      <div class="box" style="left: 10px; top:10px">BOX</div>
+    </div>
+  </div>
+  <script>
+const elTargets = document.querySelectorAll('.box');
+for (const el of elTargets) {
+  el.addEventListener('pointerdown', onPointerDown);
+}
+
+/**
+ * @param {PointerEvent} event
+ */
+function onPointerDown(event) {
+  if (!(event.currentTarget instanceof HTMLElement)) {
+    throw new Error('No current target');
+  }
+  const el = event.currentTarget;
+
+  const offsetX = event.clientX - el.offsetLeft;
+  const offsetY = event.clientY - el.offsetTop;
+
+  el.setPointerCapture(event.pointerId);
+  el.addEventListener('pointermove', _onPointerMove);
+  el.addEventListener('pointerup', _onPointerUp);
+  el.addEventListener('pointercancel', _onPointerUp);
+
+  /**
+   * @param {PointerEvent} event
+   */
+  function _onPointerMove(event) {
+    const { clientX, clientY } = event;
+    el.style.left = `${clientX - offsetX}px`;
+    el.style.top = `${clientY - offsetY}px`;
+  };
+
+  /**
+   * @param {PointerEvent} event
+   */
+  function _onPointerUp(event) {
+    el.releasePointerCapture(event.pointerId);
+    el.removeEventListener('pointermove', _onPointerMove);
+    el.removeEventListener('pointerup', _onPointerUp);
+    el.removeEventListener('pointercancel', _onPointerUp);
+  };
+}
+  </script>
+</body>
+</html>
