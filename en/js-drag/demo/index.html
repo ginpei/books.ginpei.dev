@@ -53,6 +53,10 @@ body {
   <script>
 const elTargets = document.querySelectorAll('.box');
 for (const el of elTargets) {
+  if (!(el instanceof HTMLElement)) {
+    throw new Error('No element');
+  }
+  el.addEventListener('touchstart', (v) => v.preventDefault());
   el.addEventListener('pointerdown', onPointerDown);
 }
 
