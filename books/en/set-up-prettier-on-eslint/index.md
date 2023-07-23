@@ -6,7 +6,7 @@ date: 2023-07-22
 
 ## Install
 
-```console
+```
 $ npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 ```
 
@@ -22,6 +22,6 @@ $ npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 
 ## Run
 
-```console
+```
 $ npx eslint --fix .
 ```
