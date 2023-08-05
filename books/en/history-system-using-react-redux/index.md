@@ -20,6 +20,8 @@ const Home: NextPage = () => {
 export default Home;
 ```
 
+And the result code: https://gist.github.com/ginpei/4a6842db2efd5159e1accf2bbe121121
+
 ## Add Redux to your page
 
 Hints:
@@ -362,3 +364,5 @@ And replace the existing ones, like `ActionCreators.undo()` with `numberHistoryA
   </li>
 ))}
 ```
+
+As a result, you'll see code like this: https://gist.github.com/ginpei/4a6842db2efd5159e1accf2bbe121121
