@@ -7,7 +7,7 @@
   "scripts": {
     "build": "eleventy --input=books/ --formats=html,md,css,png",
     "clean": "rm -rf _site/",
-    "start": "eleventy --input=books/ --formats=html,md,css,png --serve"
+    "start": "eleventy --input=books/ --formats=html,md,js,css,png --serve"
   },
   "author": "Ginpei Takanashi",
   "license": "UNLICENSED",
