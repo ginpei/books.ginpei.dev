@@ -56,7 +56,13 @@
       <h2 id="install" tabindex="-1"><a class="header-anchor" href="#install"><span>Install</span></a></h2>
 <pre><code>$ npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 </code></pre>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"extends"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"next/core-web-vitals"</span><span class="token punctuation">,</span> <span class="token string">"prettier"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token property">"plugins"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"prettier"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token property">"prettier/prettier"</span><span class="token operator">:</span> <span class="token string">"error"</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"extends"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"next/core-web-vitals"</span><span class="token punctuation">,</span> <span class="token string">"prettier"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"plugins"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"prettier"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"prettier/prettier"</span><span class="token operator">:</span> <span class="token string">"error"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <h2 id="run" tabindex="-1"><a class="header-anchor" href="#run"><span>Run</span></a></h2>
 <pre><code>$ npx eslint --fix .
 </code></pre>
