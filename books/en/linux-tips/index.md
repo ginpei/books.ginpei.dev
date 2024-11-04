@@ -55,6 +55,21 @@ $ sudo vi /etc/fstab
 /swaps/1          swap                    swap    defaults        0 0
 ```
 
+### Errors
+
+```
+$ sudo swapon /swaps/1
+swapon: /swaps/1: swapon failed: Invalid argument
+```
+
+Check your file system. The "overlay" file system (most likely Docker) does not support swap.
+
+```
+$ df -Th /swaps
+Filesystem     Type     Size  Used Avail Use% Mounted on
+overlay        overlay   32G   16G   15G  52% /
+```
+
 ## Prepare for `make`
 
 > make: g++: Command not found
