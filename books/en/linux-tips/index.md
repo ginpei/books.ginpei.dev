@@ -38,6 +38,11 @@ tmpfs             386M     0  386M   0% /run/user/1000
 ### Directories
 
 ```
+$ du -BM -d0 /path/to/dir
+579M    /path/to/dir
+```
+
+```
 $ du -BM -d1
 2M      ./.git
 169M    ./packages
