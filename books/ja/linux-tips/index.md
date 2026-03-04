@@ -190,3 +190,34 @@ const httpsOptions = {
 const server = https.createServer(httpsOptions, app);
 server.listen(PORT, () => console.log(`Port: ${PORT}`));
 ```
+
+## あるポートを利用中のプロセスを止める
+
+あるポート（例えば `3000`）を使っているプロセスを見つける。
+
+```
+$ lsof -i :3000
+COMMAND  PID   USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME
+node    8677 ginpei   33u  IPv6 1259878      0t0  TCP *:3000 (LISTEN)
+```
+
+"lsof" は "list open files" の略。`-i` オプションはインターネットファイル用。（Linux では諸々をファイルと呼ぶ。）
+
+また、`lsof` には `PID` のみを表示する `-t` オプションがある。
+
+```
+$ lsof -i :8180 -t
+8677
+```
+
+`kill` コマンドと組み合わせてプロセスを直接止めることができる。
+
+```
+$ kill $(lsof -i :3000 -t)
+```
+
+プロセスが止まらない場合は、`-9` オプションを使って強制終了する。
+
+```
+$ kill -9 $(lsof -i :3000 -t)
+```

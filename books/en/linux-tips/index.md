@@ -181,3 +181,34 @@ const httpsOptions = {
 const server = https.createServer(httpsOptions, app);
 server.listen(PORT, () => console.log(`Port: ${PORT}`));
 ```
+
+## Stop a process that is using a port
+
+To find out which process is using a port, let's say `3000`:
+
+```
+$ lsof -i :3000
+COMMAND  PID   USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME
+node    8677 ginpei   33u  IPv6 1259878      0t0  TCP *:3000 (LISTEN)
+```
+
+The "lsof" stands for "list open files", and the `-i` option is for Internet files. (Note that Linux calls everything a file.)
+
+Also `lsof` has `-t` option to show only `PID`.
+
+```
+$ lsof -i :8180 -t
+8677
+```
+
+You can combine it with `kill` command to directly stop the process:
+
+```
+$ kill $(lsof -i :3000 -t)
+```
+
+If the process doesn't stop, then you may want to use `-9` option to force it:
+
+```
+$ kill -9 $(lsof -i :3000 -t)
+```
