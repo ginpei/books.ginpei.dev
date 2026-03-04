@@ -212,3 +212,18 @@ If the process doesn't stop, then you may want to use `-9` option to force it:
 ```
 $ kill -9 $(lsof -i :3000 -t)
 ```
+
+## Add a user
+
+Use `adduser` for most case.
+
+`useradd` is more low-level and requires more options.
+
+## SSH key
+
+```console
+$ ssh-keygen -t ed25519
+$ cat ~/.ssh/id_ed25519.pub
+```
+
+Share `id_ed25519.pub` to public. (pub = public)

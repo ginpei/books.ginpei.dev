@@ -221,3 +221,18 @@ $ kill $(lsof -i :3000 -t)
 ```
 $ kill -9 $(lsof -i :3000 -t)
 ```
+
+## ユーザー追加
+
+主に `adduser` を用いる。
+
+`useradd` はより低レベルで、より多くのオプションが必要。
+
+## SSH キー
+
+```console
+$ ssh-keygen -t ed25519
+$ cat ~/.ssh/id_ed25519.pub
+```
+
+公開鍵 `id_ed25519.pub` を共有する。（pub = public = 公開）
