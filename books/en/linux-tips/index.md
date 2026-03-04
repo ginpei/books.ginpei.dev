@@ -6,6 +6,19 @@ date: 2022-07-19
 
 Things I forget and search everytime.
 
+## Command
+
+### Embed output in another command
+
+`$(...)` can be used to include its standard output in the command line.
+
+```
+$ pwd
+/home/ginpei
+$ echo You are in $(pwd)
+You are in /home/ginpei
+```
+
 ## Disk
 
 ### File system
